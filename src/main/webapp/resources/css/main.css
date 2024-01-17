@@ -1,1 +1,21 @@
 @charset "UTF-8";
+
+.pb-3 {
+    padding: 10px 0px 0px 70px;
+}
+
+div#div1_box {
+    padding: 50px 0px 0px 70px;
+}
+
+div#div2_box {
+    padding: 0px 0px 0px 600px;
+}
+
+table.table.table-striped.table-hover.table-bordered {
+    border: white 1px solid;
+}
+
+table.table.table-striped.table-hover {
+    border: white 1px solid;
+}
