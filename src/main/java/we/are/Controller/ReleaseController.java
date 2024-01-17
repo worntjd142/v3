@@ -1,14 +1,14 @@
-package we.are.variable;
+package we.are.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class OrderController {
+public class ReleaseController {
 
-	@GetMapping("order")
-	public String mainorder() {
-		return "order";
+	@GetMapping("release")
+	public String release() {
+		return "release";
 	}
 	
 }
