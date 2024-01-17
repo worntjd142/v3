@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품 등록</title>
+<title>제품 입고</title>
 </head>
 <body>
 	
