@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class OrderController {
 
 	@GetMapping("order")
-	public String mainLogin() {
+	public String mainorder() {
 		return "order";
 	}
 	
