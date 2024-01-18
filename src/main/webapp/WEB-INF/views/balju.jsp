@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+<!-- CDN -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- 외부 JS -->
+<script type="text/javascript" src="/resources/js/order.js"></script>
 <meta charset="UTF-8">
 <title>발주</title>
 </head>
@@ -27,15 +33,18 @@
 		<tr>
 			<th>제품명</th>
 			<td>
-			<select name="bproduct">
+			<select name="bproduct" id="selectbox">
 			<option selected="selected">제품선택</option>
-			<option >제품명1</option>
 			</select>
-			</td>
+			</td>			
 		</tr>
 		<tr>
 			<th>수량</th>
 			<td><input type="number" name="bcount"></td>
+		</tr>
+		<tr>
+			<th>단가</th>
+			<td>${}</td>
 		</tr>
 	</table>
 	<input type="submit" value="발주등록">

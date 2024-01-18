@@ -10,5 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 insert into balju values (#{baljuday}, #{bnumber}, #{bname}, #{bproduct}, #{bcount});
 </insert>
 
+<select id="product_select" resultType="we.are.Model.InventoryDTO" >
+select pname from product;
+</select>
+
+
 
 </mapper>
