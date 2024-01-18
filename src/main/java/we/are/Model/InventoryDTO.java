@@ -1,7 +1,7 @@
 package we.are.Model;
 
 public class InventoryDTO {
-	private int pcode;
+	private String pcode;
 	
 	private String pname;
 	
@@ -13,11 +13,11 @@ public class InventoryDTO {
 	
 	private String pmi;
 
-	public int getPcode() {
+	public String getPcode() {
 		return pcode;
 	}
 
-	public void setPcode(int pcode) {
+	public void setPcode(String pcode) {
 		this.pcode = pcode;
 	}
 

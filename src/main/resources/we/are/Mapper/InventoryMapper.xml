@@ -6,7 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace = "we.are.Mapper.InventoryMapper">
 
 	<insert id = "p_insert">
-		insert into product(pname,pprice,pmc,pstock,pmi) values(#{pname},#{pprice},#{pmc},#{pstock},#{pmi});
+		insert into product(pcode,pname,pprice,pmc,pstock,pmi) 
+		values(#{pcode},#{pname},#{pprice},#{pmc},#{pstock},#{pmi});
 	</insert>
 
 	<select id = "p_list" resultType = "we.are.Model.InventoryDTO">

@@ -5,6 +5,8 @@
 <html>
 <head>
 <link rel = "stylesheet" href = "resources/css/p_manage.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src = "resources/js/p_manage.js"></script>
 <meta charset="UTF-8">
 <title>제품 관리</title>
 </head>
@@ -15,6 +17,7 @@
 	<div class = insert_container>
 		<div class = "comment"><h4>신규 제품 등록</h4></div>
 		<form action = "p_insert" method = "post">
+		<input type = "hidden" name = "pcode" id = "randomcode">
 		<div>
 		<table id = "p_insertt">
 		<tr>
@@ -61,7 +64,7 @@
 	</div>
 <!-- 상세내역 div -->
 	<div class = "detail_container">
-	
+		
 	</div>
 
 </div>
