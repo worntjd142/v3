@@ -2,6 +2,7 @@ package we.are.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -21,17 +22,19 @@ public class InventoryController {
 	
 	//제품 관리화면
 	@GetMapping("p_manage")
-	public String p_insertform() {
+	public String p_list(Model model, InventoryDTO id) {
+		model.addAttribute("p_list", is.p_list(id));
 		return "p_manage";
 	}
 	
 	
 	//제품 등록
-	@GetMapping("p_insert")
+	@PostMapping("p_insert")
 	public String p_insert(InventoryDTO id) {
 		is.p_insert(id);
-		return "p_manage";
+		return "redirect:/p_manage";
 	}
-
+	
+	
 }
 	
