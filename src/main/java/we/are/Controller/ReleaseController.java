@@ -8,6 +8,7 @@ public class ReleaseController {
 
 	@GetMapping("release")
 	public String release() {
+		
 		return "release";
 	}
 	
