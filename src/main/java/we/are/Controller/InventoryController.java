@@ -30,7 +30,7 @@ public class InventoryController {
 	@GetMapping("p_insert")
 	public String p_insert(InventoryDTO id) {
 		is.p_insert(id);
-		return "inventory";
+		return "p_manage";
 	}
 
 }
