@@ -14,12 +14,12 @@
 <!--등록창 div -->
 	<div class = insert_container>
 		<div class = "comment"><h4>신규 제품 등록</h4></div>
-		<form action = "p_insert" method = "get">
+		<form action = "p_insert" method = "post">
 		<div>
 		<table id = "p_insertt">
 		<tr>
 			<th>제품명</th>
-			<td><input type = "text" name = "pcode"></td>
+			<td><input type = "text" name = "pname"></td>
 			<th>제품단가</th>
 			<td><input type = "text" name = "pprice"></td>
 		</tr>
@@ -35,6 +35,7 @@
 		</tr>
 		</table>
 		</div>
+		<input type = "submit">
 		</form>
 	</div>
 <!-- 제품 리스트 div -->
@@ -47,12 +48,14 @@
 				<th>제품단가</th>
 				<th>재고 수</th>
 			</tr>
+		<c:forEach items = "${p_list}" var = "pro">
 			<tr>
-				<td>$제품.코드</td>
-				<td>$제품.이름</td>
-				<td>$제품.단가</td>
-				<td>$제품.재고 수</td>
+				<td>${pro.pcode}</td>
+				<td>${pro.pname}</td>
+				<td>${pro.pprice}</td>
+				<td>${pro.pstock}</td>
 			</tr>
+		</c:forEach>
 		</table>
 		
 	</div>

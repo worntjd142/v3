@@ -4,8 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "we.are.Mapper.InventoryMapper">
-<insert id = "p_insert">
-	insert into product(pname,pprice) values(#{pname},#{pprice});
-</insert>
 
+	<insert id = "p_insert">
+		insert into product(pname,pprice,pmc,pstock,pmi) values(#{pname},#{pprice},#{pmc},#{pstock},#{pmi});
+	</insert>
+
+	<select id = "p_list" resultType = "we.are.Model.InventoryDTO">
+		select * from product;
+	</select>
 </mapper>
