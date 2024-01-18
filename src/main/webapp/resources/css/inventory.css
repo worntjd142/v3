@@ -107,5 +107,13 @@
 	position : relative;
 	text-align : left;
 	margin-bottom: 10px; 
+	width : 550px;
+}
+
+.manage_b{
+	position : relative;
+	float : right;
+	right : 530px;
+	top : 65px;
 }
 
