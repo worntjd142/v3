@@ -1,5 +1,7 @@
 package we.are.Service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,11 @@ public class InventoryServiceImpl implements InventoryService {
 	public void p_insert(InventoryDTO id) {
 		im.p_insert(id);
 		
+	}
+
+	@Override
+	public ArrayList<InventoryDTO> p_list(InventoryDTO id) {
+	
+		return im.p_list(id);
 	}
 }

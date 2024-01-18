@@ -4,7 +4,7 @@
 .main_container{
 	display : inline-block;
 	position : relative;
-	left : 600px;
+	left : 500px;
 }
 
 .comment{
@@ -75,11 +75,12 @@
   color: #333;
   border-radius: .4em;
   overflow: hidden;
-  width : 600px;
+  width : 800px;
 }
 
 #p_list tr {
   border-color: #bfbfbf;
+  height : 35px;
 }
 
 #p_list th,
