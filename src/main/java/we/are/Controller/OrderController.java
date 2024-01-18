@@ -23,6 +23,11 @@ public class OrderController {
 	@Autowired
 	BaljuService bals;
 	
+	//임시등록 수주서
+	@GetMapping("sujuletter")
+	public String sujuletter() {
+		return "sujuletter";
+	}
 	
 	// 수주 페이지
 	@GetMapping("order")
