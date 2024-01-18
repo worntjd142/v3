@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+
+.main_container{
+	display : inline-block;
+	position : relative;
+	left : 600px;
+}
+
+.comment{
+	text-align : center;
+}
+
+.p_cate{
+	display : inline-block;
+	position : relative;
+	margin : 2px;
+}
+
+#p_insertt tr th{
+	background-color : black;
+	color : white;
+}
+
+/* 제품 등록 테이블 */
+  #p_list tr:first-child {
+  border-top: none;
+  background: black;
+  color: #fff;
+}
+
+/* 리스트 css */
+#p_list tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f9fc;
+}
+
+#p_list tr:nth-child(odd):not(:first-child) {
+  background-color: #ebf3f9;
+}
+
+#p_list th {
+  display: none;
+  width : 150px;
+  text-align : center;
+}
+
+#p_list td {
+  display: block;
+}
+
+#p_list td:first-child {
+  margin-top: .5em;
+}
+
+#p_list td:last-child {
+  margin-bottom: .5em;
+}
+
+#p_list td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  width: 120px;
+  display: inline-block;
+  color: #000;
+}
+
+#p_list th,
+#p_list td {
+  text-align: left;
+}
+
+#p_list {
+  color: #333;
+  border-radius: .4em;
+  overflow: hidden;
+  width : 600px;
+}
+
+#p_list tr {
+  border-color: #bfbfbf;
+}
+
+#p_list th,
+#p_list td {
+  padding: .5em 1em;
+}
+@media screen and (max-width: 601px) {
+  #p_list tr:nth-child(2) {
+    border-top: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  #p_list tr:hover:not(:first-child) {
+    background-color: #d8e7f3;
+  }
+  #p_list td:before {
+    display: none;
+  }
+  #p_list th,
+  #p_list td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  #p_list th:first-child,
+  #p_list td:first-child {
+    padding-left: 0;
+  }
+  #p_list th:last-child,
+  #p_list td:last-child {
+    padding-right: 0;
+  }
+  #p_list th,
+  #p_list td {
+    padding: 1em !important;
+  }
+}
