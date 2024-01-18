@@ -18,8 +18,6 @@
 	</bean>
 	
 	
-	
-	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
 	</bean>
@@ -32,6 +30,24 @@
 	<mybatis-spring:scan base-package="we.are.Mapper"/>	
 	
 	<context:component-scan base-package="we.are.Service"/>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+     	<property name="host" value="smtp.gmail.com" />
+  		<property name="port" value="25" />
+ 		<property name="username" value="redstarparmas@gmail.com"/> <!-- 자신의 이메일 아이디 -->
+	 	<property name="password" value="ivrn vhyr mtpb etla"/> <!-- 자신의 비밀번호 -->
+	 <!-- 보안연결 TLS과 관련된 설정 -->
+	     <property name="javaMailProperties">
+		    <props>
+		       <prop key="mail.smtp.starttls.enable">true</prop>
+		       <prop key="mail.smtp.auth">true</prop>
+		       <prop key="mail.transport.protocol">smtp</prop>
+		       <prop key="mail.debug">true</prop>
+		       <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+			   <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+		    </props>
+	     </property>
+	</bean>
 	
 		
 </beans>
