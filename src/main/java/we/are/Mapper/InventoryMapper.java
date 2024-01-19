@@ -9,4 +9,6 @@ public interface InventoryMapper {
 	public void p_insert(InventoryDTO id);
 
 	public ArrayList<InventoryDTO> p_list(InventoryDTO id);
+
+	public ArrayList<InventoryDTO> p_detail(String pcode);
 }

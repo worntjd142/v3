@@ -13,4 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id = "p_list" resultType = "we.are.Model.InventoryDTO">
 		select * from product;
 	</select>
+	
+	<select id = "p_detail" resultType = "we.are.Model.InventoryDTO">
+		select * from product where pcode = ${pcode};
+	</select>
 </mapper>

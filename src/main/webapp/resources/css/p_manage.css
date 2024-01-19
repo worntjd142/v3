@@ -17,103 +17,51 @@
 	margin : 2px;
 }
 
+#p_insertt{
+	width : 900px;
+}
+
 #p_insertt tr th{
 	background-color : black;
 	color : white;
 }
 
 /* 제품 등록 테이블 */
-  #p_list tr:first-child {
-  border-top: none;
-  background: black;
-  color: #fff;
+
+#p_list{
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #888;
+    width : 900px;
+}
+#p_list thead {
+    display:block;
+    background: black;
+    color:#fff;
 }
 
-/* 리스트 css */
-#p_list tr {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  background-color: #f5f9fc;
+
+#p_list tbody {
+	display : block;
+    height : 150px;
+    overflow:auto;
+    
 }
 
-#p_list tr:nth-child(odd):not(:first-child) {
-  background-color: #ebf3f9;
-}
 
-#p_list th {
-  display: none;
-  width : 150px;
-  text-align : center;
-}
-
-#p_list td {
-  display: block;
-}
-
-#p_list td:first-child {
-  margin-top: .5em;
-}
-
-#p_list td:last-child {
-  margin-bottom: .5em;
-}
-
-#p_list td:before {
-  content: attr(data-th) ": ";
-  font-weight: bold;
-  width: 120px;
-  display: inline-block;
-  color: #000;
-}
-
-#p_list th,
-#p_list td {
+#p_list th, #p_list td {
+  padding: 15px;
   text-align: left;
+  width: 250px;
+  text-align: center;
+  font-size: 0.875em;
 }
 
-#p_list {
-  color: #333;
-  border-radius: .4em;
-  overflow: hidden;
-  width : 800px;
+
+#p_list tbody tr:nth-child(2n+1){
+    background-color: #f0f0f0;
 }
 
-#p_list tr {
-  border-color: #bfbfbf;
-  height : 35px;
-}
-
-#p_list th,
-#p_list td {
-  padding: .5em 1em;
-}
-@media screen and (max-width: 601px) {
-  #p_list tr:nth-child(2) {
-    border-top: none;
-  }
-}
-@media screen and (min-width: 600px) {
-  #p_list tr:hover:not(:first-child) {
-    background-color: #d8e7f3;
-  }
-  #p_list td:before {
-    display: none;
-  }
-  #p_list th,
-  #p_list td {
-    display: table-cell;
-    padding: .25em .5em;
-  }
-  #p_list th:first-child,
-  #p_list td:first-child {
-    padding-left: 0;
-  }
-  #p_list th:last-child,
-  #p_list td:last-child {
-    padding-right: 0;
-  }
-  #p_list th,
-  #p_list td {
-    padding: 1em !important;
-  }
+#p_list tbody tr:hover{
+	background-color : #d8e7f3;
 }
