@@ -11,7 +11,7 @@ insert into balju values (#{baljuday}, #{bnumber}, #{bname}, #{bproduct}, #{bcou
 </insert>
 
 <select id="product_select" resultType="we.are.Model.InventoryDTO" >
-select pname, pstock from product;
+select * from product;
 </select>
 
 
