@@ -12,6 +12,7 @@ public class InventoryDTO {
 	private int pstock;
 	
 	private String pmi;
+	
 
 	public String getPcode() {
 		return pcode;
