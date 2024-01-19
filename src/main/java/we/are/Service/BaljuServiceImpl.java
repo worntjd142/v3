@@ -30,4 +30,8 @@ public class BaljuServiceImpl implements BaljuService {
 		return balm.product_select();
 	}
 	
+	// 거래처 리스트
+	public ArrayList<InventoryDTO> company_select(){
+		return balm.company_select();
+	}
 }
