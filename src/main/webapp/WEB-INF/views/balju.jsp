@@ -39,13 +39,18 @@
 			</td>			
 		</tr>
 		<tr>
+			<th id="stock">단가</th>
+			<td></td>
+		</tr>
+		<tr>
 			<th>수량</th>
 			<td><input type="number" name="bcount"></td>
 		</tr>
 		<tr>
-			<th>단가</th>
-			<td>${}</td>
+			<th>합계</th>
+			<td><input type="number"></td>
 		</tr>
+		
 	</table>
 	<input type="submit" value="발주등록">
 	</form>
