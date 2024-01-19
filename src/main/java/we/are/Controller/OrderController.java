@@ -26,6 +26,14 @@ public class OrderController {
 		return "sujuletter";
 	}
 	
+	//임시등록 수주서함
+	@GetMapping("sujubox")
+	public String sujubox() {
+		
+		
+		return "sujubox";
+	}
+	
 	// 수주 페이지
 	@GetMapping("order")
 	public String order(Model model) {

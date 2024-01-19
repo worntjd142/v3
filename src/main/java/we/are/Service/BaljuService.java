@@ -15,4 +15,6 @@ public interface BaljuService {
 	
 	//제품 리스트
 	public ArrayList<InventoryDTO> product_select();
+	
+
 }
