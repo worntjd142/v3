@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 발주 등록 insert 쿼리문 -->
 <insert id="balju_insert">
-insert into balju values (#{baljuday}, #{bnumber}, #{bname}, #{bproduct}, #{bcount}, #{bsum});
+insert into balju(bno, bnumber, bname, bproduct, bcount, bsum) value(UUID_SHORT(),#{bnumber}, #{bname}, #{bproduct}, #{bcount}, #{bsum});
 </insert>
 
 <!--제품 리스트  -->

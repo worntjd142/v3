@@ -17,8 +17,18 @@ public class BaljuDTO {
 	
 	private int pprice;
 	
+	private String bno;
+	
 
 	
+	public String getBno() {
+		return bno;
+	}
+
+	public void setBno(String bno) {
+		this.bno = bno;
+	}
+
 	public int getPprice() {
 		return pprice;
 	}
