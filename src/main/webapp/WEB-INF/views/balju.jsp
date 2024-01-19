@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- 외부 JS -->
-<script type="text/javascript" src="/resources/js/order.js"></script>
+<script type="text/javascript" src="/resources/js/balju.js"></script>
 <meta charset="UTF-8">
 <title>발주</title>
 </head>
@@ -44,11 +44,11 @@
 		</tr>
 		<tr>
 			<th>수량</th>
-			<td><input type="number" name="bcount"></td>
+			<td><input type="text" name="bcount" id="num1"></td>
 		</tr>
 		<tr>
 			<th>합계</th>
-			<td><input type="number"></td>
+			<td><input type="text" name="bsum" id="total" readonly="readonly"></td>
 		</tr>
 		
 	</table>

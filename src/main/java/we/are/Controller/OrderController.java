@@ -8,10 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.mysql.cj.Session;
 
 import we.are.Model.BaljuDTO;
 import we.are.Model.InventoryDTO;
@@ -31,7 +28,10 @@ public class OrderController {
 	
 	// 수주 페이지
 	@GetMapping("order")
-	public String order() {
+	public String order(Model model) {
+		//발주 목록 가져오기
+		
+		model.addAttribute("baljulist", bals.balju_select());
 		return "order";
 	}
 	
@@ -49,11 +49,12 @@ public class OrderController {
 		return "redirect:/order";
 	}
 	
-	// 발주 등록 제품 가져오기
+	// 발주 등록 제품 ajax !
 	@RequestMapping("product_select.json")
 	public ResponseEntity<?> product_select(InventoryDTO id, Model model, HttpSession session) {		
 		System.out.println(bals.product_select());
 		return new ResponseEntity<>(bals.product_select(),HttpStatus.OK);
 	}
+	
 	
 }

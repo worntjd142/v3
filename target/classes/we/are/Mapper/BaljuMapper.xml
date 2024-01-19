@@ -7,13 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 발주 등록 insert 쿼리문 -->
 <insert id="balju_insert">
-insert into balju values (#{baljuday}, #{bnumber}, #{bname}, #{bproduct}, #{bcount});
+insert into balju values (#{baljuday}, #{bnumber}, #{bname}, #{bproduct}, #{bcount}, #{bsum});
 </insert>
 
+<!--제품 리스트  -->
 <select id="product_select" resultType="we.are.Model.InventoryDTO" >
 select * from product;
 </select>
 
+<!-- 발주 목록 리스트 -->
+<select id="balju_select" resultType="we.are.Model.BaljuDTO" >
+select * from balju left join product on balju.bproduct = product.pname;
+</select>
 
 
 </mapper>

@@ -84,12 +84,16 @@
 	</c:forEach>
 	</table>
 	</div>
+				 <div id="ment">
+				 <p>안녕하십니까? redstarpharma입니다. "</p>
+				 <p>귀사의 일익 번창하심을 진심으로 기원하며 귀사 수주의뢰서를 드립니다.</p>
+				 <p>정보를 확인 부탁드립니다.</p>
+				 <p>TEL - 1588-1666</p>
+				 </div>
 	</div>
 
 <input type="submit" value="발행">
 </form>
-</div>
-
-
+</div>			 
 </body>
 </html>
