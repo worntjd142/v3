@@ -3,20 +3,22 @@ package we.are.Model;
 public class BaljuDTO {
 
 	// 발주일자
-	public String baljuday;
+	private String baljuday;
 	// 사업자번호
-	public String bnumber;
+	private String bnumber;
 	// 상호명
-	public String bname;
+	private String bname;
 	// 제품명
-	public String bproduct;
+	private String bproduct;
 	// 발주 수량
-	public int bcount;
+	private int bcount;
 	// 합계
-	public int bsum;
+	private int bsum;
 	
-	public int pprice;
+	private int pprice;
+	
 
+	
 	public int getPprice() {
 		return pprice;
 	}
