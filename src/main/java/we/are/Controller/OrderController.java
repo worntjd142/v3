@@ -8,10 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.mysql.cj.Session;
 
 import we.are.Model.BaljuDTO;
 import we.are.Model.InventoryDTO;
@@ -31,7 +28,10 @@ public class OrderController {
 	
 	// 수주 페이지
 	@GetMapping("order")
-	public String order() {
+	public String order(Model model) {
+		//발주 목록 가져오기
+		
+		model.addAttribute("baljulist", bals.balju_select());
 		return "order";
 	}
 	

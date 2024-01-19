@@ -20,7 +20,14 @@ public class BaljuServiceImpl implements BaljuService {
 		balm.balju_insert(baldto);
 	}
 	
+	//발주 목록 리스트
+	public ArrayList<InventoryDTO> balju_select(){
+		return balm.balju_select();
+	}
+	
+	//상품 목록 리스트
 	public ArrayList<InventoryDTO> product_select() {		
 		return balm.product_select();
 	}
+	
 }

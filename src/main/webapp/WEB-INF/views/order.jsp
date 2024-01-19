@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,6 @@
 <title>수주</title>
 </head>
 <body>
-
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 
@@ -64,7 +64,7 @@
 					<table class="table table-striped table-hover table-bordered">
 						<thead>
 							<tr>
-								<th scope="col" class="table-dark">#</th>
+								<th scope="col" class="table-dark">주문번호</th>
 								<!-- 발주 데이터 -->
 								<th scope="col" class="table-dark">수주 일자</th>								
 								<th scope="col" class="table-dark">사업자번호</th>
@@ -80,19 +80,21 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach items="${baljulist}" var="balju"> 
 							<tr>
-								<th scope="row">NO</th>
-								<td>2024-01-18</td>
-								<td>123-456-7890</td>
-								<td>병원</td>
-								<td>뭐 파라요</td>
-								<td>10,000</td>
-								<td>10</td>
-								<td>100,000</td>
+								<th scope="row"></th>
+								<td>${balju.baljuday}</td>
+								<td>${balju.bnumber}</td>
+								<td>${balju.bname}</td>
+								<td>${balju.bproduct}</td>
+								<td><fmt:formatNumber value="${balju.pprice}" pattern="#,###" ></fmt:formatNumber></td>
+								<td><fmt:formatNumber value="${balju.bcount}" pattern="#,###" ></fmt:formatNumber></td>
+								<td><fmt:formatNumber value="${balju.bsum}" pattern="#,###" ></fmt:formatNumber></td>
 								<td>결제 완료</td>
 								<td>주문 접수</td>
 								<td><button id="sujuletter">발행</button></td>
 							</tr>
+							</c:forEach>
 							<!-- 반복문으로 데이터 가져오기 -->
 						</tbody>
 					</table>

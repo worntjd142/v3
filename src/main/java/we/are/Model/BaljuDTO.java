@@ -14,6 +14,16 @@ public class BaljuDTO {
 	public int bcount;
 	// 합계
 	public int bsum;
+	
+	public int pprice;
+
+	public int getPprice() {
+		return pprice;
+	}
+
+	public void setPprice(int pprice) {
+		this.pprice = pprice;
+	}
 
 	public int getBsum() {
 		return bsum;
