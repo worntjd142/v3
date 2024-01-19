@@ -40,7 +40,7 @@
 		</tr>
 		<tr>
 			<th id="stock">단가</th>
-			<td></td>
+			<td id="stock_money"></td>
 		</tr>
 		<tr>
 			<th>수량</th>

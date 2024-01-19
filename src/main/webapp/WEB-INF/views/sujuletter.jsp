@@ -9,7 +9,7 @@
 <link rel = "stylesheet" href = "resources/css/sujuletter.css" />
 <body>
 <div>
-
+<form action="mail">
 	<div style="text-align: center;"><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
 
 	<div>
@@ -86,21 +86,10 @@
 	</div>
 	</div>
 
-
-
-
-
-
-
-
-
-
+<input type="submit" value="발행">
+</form>
 </div>
 
-
-
-
-<body>
 
 </body>
 </html>
