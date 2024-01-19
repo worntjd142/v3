@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- 외부 JS -->
-
+<script type="text/javascript" src="/resources/js/order.js"></script>
 
 <meta charset="UTF-8">
 <title>수주</title>
@@ -91,7 +91,7 @@
 								<td>100,000</td>
 								<td>결제 완료</td>
 								<td>주문 접수</td>
-								<td><button>발행</button></td>
+								<td><button id="sujuletter">발행</button></td>
 							</tr>
 							<!-- 반복문으로 데이터 가져오기 -->
 						</tbody>
