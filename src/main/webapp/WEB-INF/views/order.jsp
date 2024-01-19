@@ -65,14 +65,14 @@
 						<thead>
 							<tr>
 								<th scope="col" class="table-dark">#</th>
-								<!-- 주문 접수일 -->
-								<th scope="col" class="table-dark">수주 일자</th>
-								<!-- 발주시 데이터 -->
+								<!-- 발주 데이터 -->
+								<th scope="col" class="table-dark">수주 일자</th>								
 								<th scope="col" class="table-dark">사업자번호</th>
 								<th scope="col" class="table-dark">거래처</th>
 								<th scope="col" class="table-dark">제품명</th>
 								<th scope="col" class="table-dark">단가</th>
 								<th scope="col" class="table-dark">수량</th>
+								<!-- 수주 데이터 -->
 								<th scope="col" class="table-dark">합계액</th>
 								<th scope="col" class="table-dark">결제상태</th>
 								<th scope="col" class="table-dark">배송상태</th>

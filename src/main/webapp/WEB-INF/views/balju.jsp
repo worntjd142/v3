@@ -44,11 +44,11 @@
 		</tr>
 		<tr>
 			<th>수량</th>
-			<td><input type="number" name="bcount"></td>
+			<td><input type="text" name="bcount" id="num1"></td>
 		</tr>
 		<tr>
 			<th>합계</th>
-			<td><input type="number"></td>
+			<td><input type="text" name="bsum" id="total" readonly="readonly"></td>
 		</tr>
 		
 	</table>
