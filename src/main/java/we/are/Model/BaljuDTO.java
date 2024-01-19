@@ -12,6 +12,16 @@ public class BaljuDTO {
 	public String bproduct;
 	// 발주 수량
 	public int bcount;
+	// 합계
+	public int bsum;
+
+	public int getBsum() {
+		return bsum;
+	}
+
+	public void setBsum(int bsum) {
+		this.bsum = bsum;
+	}
 
 	public String getBaljuday() {
 		return baljuday;

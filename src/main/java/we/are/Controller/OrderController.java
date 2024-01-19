@@ -49,11 +49,12 @@ public class OrderController {
 		return "redirect:/order";
 	}
 	
-	// 발주 등록 제품 가져오기
+	// 발주 등록 제품 ajax !
 	@RequestMapping("product_select.json")
 	public ResponseEntity<?> product_select(InventoryDTO id, Model model, HttpSession session) {		
 		System.out.println(bals.product_select());
 		return new ResponseEntity<>(bals.product_select(),HttpStatus.OK);
 	}
+	
 	
 }
