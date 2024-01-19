@@ -18,17 +18,12 @@
 	<form action="balju_insert" method="post" accept-charset="utf-8">
 	<table border="1">
 		<tr>
-			<th>발주일자</th>
-				<!-- input name이 db이름과 같아야 데이터가 들어감 -->
-			<td><input type="date" name="baljuday"></td>
-		</tr>
-		<tr>
 			<th>사업자번호</th>
-			<td><input type="text" name="bnumber"></td>
+			<td><input type="text" name="bnumber" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<th>상호</th>
-			<td><input type="text" name="bname"></td>
+			<td><input type="text" name="bname" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<th>제품명</th>

@@ -82,7 +82,7 @@
 						<tbody>
 							<c:forEach items="${baljulist}" var="balju"> 
 							<tr>
-								<th scope="row"></th>
+								<th scope="row">${balju.bno}</th>
 								<td>${balju.baljuday}</td>
 								<td>${balju.bnumber}</td>
 								<td>${balju.bname}</td>
@@ -100,7 +100,6 @@
 					</table>
 				</div>
 			</div>
-
 
 		</div>
 		<div class="col-md-4 themed-grid-col">.col-md-4</div>
