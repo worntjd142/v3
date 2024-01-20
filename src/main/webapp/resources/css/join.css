@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
@@ -6,13 +8,6 @@
 .imagebox {
 	margin-left: 450px;
 	margin-top: 100px;
-}
-
-input#input_join {
-    border-radius: 5rem;
-    margin-top: 10px;
-    padding: 1rem;
-    font-size: 80%;
 }
 
 /* body {
