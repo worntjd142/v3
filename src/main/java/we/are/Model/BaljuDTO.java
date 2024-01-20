@@ -14,13 +14,23 @@ public class BaljuDTO {
 	private int bcount;
 	// 합계
 	private int bsum;
-	
+	// 단가
 	private int pprice;
-	
+	// 주문 번호
 	private String bno;
 	
+	// join을 위한 dto 결합용 sujudto 선언
+	private SujuDTO SujuDTO;
 
-	
+
+	public SujuDTO getSujuDTO() {
+		return SujuDTO;
+	}
+
+	public void setSujuDTO(SujuDTO sujuDTO) {
+		SujuDTO = sujuDTO;
+	}
+
 	public String getBno() {
 		return bno;
 	}

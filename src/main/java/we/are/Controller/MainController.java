@@ -22,7 +22,7 @@ public class MainController {
 	// 로그인하면 수주관리 페이지로
 	@RequestMapping("login")
 	public String login() {		
-		return "order";
+		return "redirect:/order";
 	}
 	
 	
