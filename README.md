@@ -11,7 +11,6 @@ usenum varchar(30) not null, -- 나이
 usetel varchar(30) not null -- 전화번호
 );
 
-select * from balju;
 -- 발주 등록 테이블
 create table balju (
 bno binary(18) primary key, -- 주문 번호
@@ -22,7 +21,7 @@ bproduct varchar(50) not null, -- 제품 이름
 bcount int not null, -- 제품 갯수
 bsum int -- 합 계
 );
-select * from suju;
+select * from balju;
 
 -- 수주 테이블
 create table suju (
