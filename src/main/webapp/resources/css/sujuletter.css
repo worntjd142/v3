@@ -1,8 +1,17 @@
 @charset "UTF-8";
 
+#send{
+position: relative;
+    top: -678px;
+    left: 680px;
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+}
 #ment{
     position: relative;
-    top: -120px;
+    top: 30px;
+    margin-left: 17px;
 }
 
 #aa{

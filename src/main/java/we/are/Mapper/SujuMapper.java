@@ -1,7 +1,9 @@
 package we.are.Mapper;
 
+import java.util.ArrayList;
+
 public interface SujuMapper {
 
-	public void suju_select();
+	public ArrayList<String> suju_select();
 	
 }
