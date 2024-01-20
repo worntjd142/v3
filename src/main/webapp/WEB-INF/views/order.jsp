@@ -51,11 +51,11 @@
 				<div class="col-md-6 themed-grid-col"></div>
 
 				<div class="col-md-6 themed-grid-col">
-					<button type="button" class="btn btn-outline-secondary btn-sm">오름차순
-						정렬</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm">내림차순
-						정렬</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm">오름차순 정렬</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm">내림차순 정렬</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm">모두보기</button>
+					<button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button>
 				</div>
 
 
@@ -64,8 +64,10 @@
 					<table class="table table-striped table-hover table-bordered">
 						<thead>
 							<tr>
+								<td><input type="checkbox" id="check_all" ></td>
 								<th scope="col" class="table-dark">주문번호</th>
 								<!-- 발주 데이터 -->
+								<th scope="col" class="table-dark">발주 일자</th>								
 								<th scope="col" class="table-dark">수주 일자</th>								
 								<th scope="col" class="table-dark">사업자번호</th>
 								<th scope="col" class="table-dark">거래처</th>
@@ -80,10 +82,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${baljulist}" var="balju"> 
+							<c:forEach items="${baljulist}" var="balju" varStatus="a"> 
 							<tr>
-								<th scope="row"></th>
+								<td><input type="checkbox" id="check_all" id="check_box${a.index}"></td>
+								<td scope="row">${balju.bno}</td>
 								<td>${balju.baljuday}</td>
+								<td></td>
 								<td>${balju.bnumber}</td>
 								<td>${balju.bname}</td>
 								<td>${balju.bproduct}</td>
@@ -92,7 +96,7 @@
 								<td><fmt:formatNumber value="${balju.bsum}" pattern="#,###" ></fmt:formatNumber></td>
 								<td>결제 완료</td>
 								<td>주문 접수</td>
-								<td><button id="sujuletter">발행</button></td>
+								<td id="sujuletter" onclick="sujuletter('${balju.baljuday}', '${balju.bno}', '${balju.bname}', '${balju.bcount}','${balju.bsum}','${balju.bproduct}', '${balju.pprice}','${balju.bnumber}')">미발행</td>
 							</tr>
 							</c:forEach>
 							<!-- 반복문으로 데이터 가져오기 -->
@@ -100,7 +104,6 @@
 					</table>
 				</div>
 			</div>
-
 
 		</div>
 		<div class="col-md-4 themed-grid-col">.col-md-4</div>

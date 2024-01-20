@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,11 @@
 
 	<div>
 	<div  id="aa">
-<div class="sujuletter">수 주 일 자 :    <label>     </label></div>
-	<div class="sujuletter">수 주 번 호 :    <label>     </label></div>
-	<div class="sujuletter">거   래   처 :    <label>     </label></div>
-	<div class="sujuletter">팩 스 번 호 :    <label>     </label></div>
-	<div class="sujuletter">수   신   처 :    <label>     </label></div>
+<div class="sujuletter">수 주 일 자 :    <label> ${sujuletter[0].baljuday}</label></div>
+	<div class="sujuletter">수 주 번 호	:    <label> ${sujuletter[0].bnumber}</label></div>
+	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}    </label></div>
+	<div class="sujuletter">전 화 번 호	:    <label>     </label></div>
+	<div class="sujuletter">메        일	:	  <label> asd@aasd.com    </label></div>
 	</div>
 	<div id="baljuletter">
 	<table border="1">
@@ -55,7 +56,7 @@
 	</table>
 	<div id="money">
 	<label id="suju_ment1">아래와 같이 수주합니다.</label>
-	<label id="suju_ment2">수주 금액 : </label> <div id="total_money">₩</div>
+	<label id="suju_ment2">수주 금액 : </label> <div id="total_money">₩ <fmt:formatNumber value="${sujuletter[0].bsum}" pattern="#,###" ></fmt:formatNumber>원</div>
 	</div>
 	</div>
 	
@@ -68,18 +69,17 @@
 	<td class="susutext_title">수 량</td>
 	<td class="susutext_title">단 가</td>
 	<td class="susutext_title">합 계</td>
-	<td class="susutext_title">메 모</td>
+	<td class="susutext_title">비 고</td>
 	</tr >
-	
-	<c:forEach begin="1" end="7">
+	<c:forEach items="${sujuletter}" var="letter" varStatus="a"> 
 	<tr>
-	<td>a</td>
-	<td>a</td>
-	<td>a</td>
-	<td>a</td>
-	<td>a</td>
-	<td>a</td>
-	<td>a</td>
+	<td style="text-align: center;">${a.count}</td>
+	<td style="text-align: center;">${letter.bproduct}</td>
+	<td style="text-align: center;"></td>
+	<td style="text-align: center;">${letter.bcount}</td>
+	<td style="text-align: right;"><fmt:formatNumber value="${letter.pprice}" pattern="#,###" ></fmt:formatNumber></td>
+	<td style="text-align: right;"><fmt:formatNumber value="${letter.bsum}" pattern="#,###" ></fmt:formatNumber></td>
+	<td></td>
 	</tr>
 	</c:forEach>
 	</table>
@@ -92,7 +92,7 @@
 				 </div>
 	</div>
 
-<input type="submit" value="발행">
+<input type="submit" value="발행" id="send">
 </form>
 </div>			 
 </body>
