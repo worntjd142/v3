@@ -34,6 +34,7 @@
 					<!-- a태그 클릭 비활성화 -->
 					<li><a href="#" class="nav-link px-2 text-secondary"
 						style="pointer-events: none"></a></li>
+					<li><a href="balju" class="nav-link px-2 text-white">발주</a></li>
 					<li><a href="order" class="nav-link px-2 text-white">수주내역</a></li>
 					<li><a href="inventory" class="nav-link px-2 text-white">제품현황</a></li>
 					<li><a href="release" class="nav-link px-2 text-white">출고현황</a></li>
