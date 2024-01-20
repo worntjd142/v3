@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="we.are.Mapper.JoinMapper">
+
+<!-- 회원가입 INSERT 쿼리문 -->
+<insert id="join_insert">
+insert into usejoin (useid, usepassword, usename, usenum, usetel) value (#{useid}, #{usepassword}, #{usename}, #{usenum}, #{usetel});
+</insert>
+
+</mapper>
