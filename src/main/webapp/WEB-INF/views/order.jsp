@@ -79,6 +79,7 @@
 								<th scope="col" class="table-dark">결제상태</th>
 								<th scope="col" class="table-dark">배송상태</th>
 								<th scope="col" class="table-dark">수주서 발행</th>
+								<th scope="col" class="table-dark">수주서</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -94,9 +95,10 @@
 								<td><fmt:formatNumber value="${balju.pprice}" pattern="#,###" ></fmt:formatNumber></td>
 								<td><fmt:formatNumber value="${balju.bcount}" pattern="#,###" ></fmt:formatNumber></td>
 								<td><fmt:formatNumber value="${balju.bsum}" pattern="#,###" ></fmt:formatNumber></td>
-								<td>결제 완료</td>
-								<td>주문 접수</td>
-								<td id="sujuletter" onclick="sujuletter('${balju.baljuday}', '${balju.bno}', '${balju.bname}', '${balju.bcount}','${balju.bsum}','${balju.bproduct}', '${balju.pprice}','${balju.bnumber}')">미발행</td>
+								<td>미결제</td>
+								<td>-</td>
+								<td>미발행</td>
+									<td><button id="sujuletter" onclick="sujuletter('${balju.baljuday}', '${balju.bno}', '${balju.bname}', '${balju.bcount}','${balju.bsum}','${balju.bproduct}', '${balju.pprice}','${balju.bnumber}')">확인</button></td>					
 							</tr>
 							</c:forEach>
 							<!-- 반복문으로 데이터 가져오기 -->
@@ -105,7 +107,7 @@
 				</div>
 			</div>
 
-		</div>
+		</div> 
 		<div class="col-md-4 themed-grid-col">.col-md-4</div>
 
 

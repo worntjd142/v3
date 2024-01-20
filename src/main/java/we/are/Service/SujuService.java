@@ -7,4 +7,6 @@ import we.are.Model.BaljuDTO;
 public interface SujuService {
 
 	public ArrayList<String> suju_select();
+
+	public void suju_insert(BaljuDTO bd);
 }

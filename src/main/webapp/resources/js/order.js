@@ -1,4 +1,4 @@
-$(function(){
+$(function(){ 
 		
 		$("#check_all").on("click", function(){ // check_all을 클릭 시 반응
 				let chk = $(this).is(":checked");// check_all 의 체크여부 확인  (체크가 되어있으면 ture, 체크가 안돼어있으면 false값을 반환);
