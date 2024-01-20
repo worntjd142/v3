@@ -1,13 +1,12 @@
 /* 발주 등록 SELECT 박스 안에 제품명, 제품코드 값 넣기 */
 $(function() {
-	
 	// balju.jsp id=selectbox인 태그를 한번 클릭했을때
 	$("#selectbox").one("click", function() {
 		// pselect() 실행
 		pselect();
 	})
-		
 });
+
 function pselect() {
 	
 	//전역변수
@@ -31,8 +30,8 @@ function pselect() {
 			for (var i = 0; i < data.length; i++) {
 				$("#selectbox")
 						.append("<option>" + data[i].pname + "</option>");
-				stock.push(data[i].pname);// stock 배열에 data[i].panme 값이 뒷 배열에 쌓임
-				stock_money.push(data[i].pprice); //stock_money 배열에 data[i].pprice 값이 뒷 배열에 쌓임
+				stock.push(data[i].pname);// stock 배열에 data[i].panme 값을 누적
+				stock_money.push(data[i].pprice); //stock_money 배열에 data[i].pprice 값을 누적
 			};
 			// 해당 제품명의 제품단가 
 
@@ -61,12 +60,3 @@ function pselect() {
 	
 
 };
-//온클릭으로 매개변수 2개의 값을 인수에 저장
-function insert_company(name, number){
-	
-	$("#bname").val(name); // 인수 값을 id=bame의 value에 저장
-	$("#bnumber").val(number); // 인수 값을 id="bnumber의 value에 저장
-}
-
-
-

@@ -20,5 +20,9 @@ select * from product;
 select * from balju left join product on balju.bproduct = product.pname;
 </select>
 
+<!--거래처 목록 리스트 -->
+<select id="company_select" resultType="we.are.Model.CompanyDTO">
+select * from company;
+</select>
 
 </mapper>

@@ -16,5 +16,7 @@ public interface BaljuService {
 	//제품 리스트
 	public ArrayList<InventoryDTO> product_select();
 	
-
+	//거래처 리스트
+	public ArrayList<InventoryDTO> company_select();
+	
 }
