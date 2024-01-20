@@ -4,6 +4,15 @@ create database v3;
 
 use v3;
 
+-- 사용자 등록 (회원가입)
+create table usejoin (
+useid varchar(20) primary key, -- 아이디
+usepassword varchar(30) not null, -- 패스워드
+usename varchar(10) not null, -- 이름
+usenum varchar(30) not null, -- 나이
+usetel varchar(30) not null -- 전화번호
+);
+
 select * from balju;
 -- 발주 등록 테이블
 create table balju (
