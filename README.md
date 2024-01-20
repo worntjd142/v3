@@ -1,11 +1,9 @@
-mysql 등록 ~
-
 create database v3;
 
 use v3;
 
 -- 사용자 등록 (회원가입)
-create table usejoin (
+create table usejoin ( 
 useid varchar(20) primary key, -- 아이디
 usepassword varchar(30) not null, -- 패스워드
 usename varchar(10) not null, -- 이름
@@ -16,19 +14,32 @@ usetel varchar(30) not null -- 전화번호
 select * from balju;
 -- 발주 등록 테이블
 create table balju (
-bno binary(36) primary key, -- 주문 번호
+bno binary(18) primary key, -- 주문 번호
+bnumber varchar(50) not null, -- 사업자 번호
+bname varchar(50) not null, -- 거래처 이름
 baljuday DATE DEFAULT (current_date), -- 발주일
 bproduct varchar(50) not null, -- 제품 이름
-bcount int(100) not null, -- 제품 갯수
+bcount int not null, -- 제품 갯수
 bsum int -- 합 계
 );
+select * from suju;
 
 -- 수주 테이블
 create table suju (
-bno binary(36),
-spayment varchar(10) not null, -- 결제 상태
-sdelivery varchar(10) not null -- 배송 상태
+bno binary(18), -- 주문번호 //
+bnumber varchar(50) not null, -- 사업자 번호 //
+bname varchar(50) not null, -- 거래처 이름 //
+baljuday DATE not null, -- 발주일 //
+bproduct varchar(50) not null, -- 제품 이름//
+bcount int not null, -- 제품 갯수//
+pprice int not null, -- 단 가//
+bsum int, -- 합 계 //
+sujuday  DATE DEFAULT (current_date), -- 수주일
+spayment varchar(10) default "미결제" not null, -- 결제 상태 (미결제 or 결제)
+sdelivery varchar(10)  default "-" null -- 배송 상태 (- or 배송 중 or 배송 준비) 
 );
+drop table suju;
+select * from suju;
 
 -- 제품 관리 DB
 create table product(
@@ -63,5 +74,5 @@ insert into company(cname, cnumber, caddress, ctel) value('보람병원','610-82
 insert into company(cname, cnumber, caddress, ctel) value('황만근내과','987-28-11234','울산광역시 울주군 범서읍 천상리 317-2','052-248-7760');
 insert into company(cname, cnumber, caddress, ctel) value('엔젤리내과','555-11-19997','경상남도 양산시 물금읍 범어로 62','055-388-1475');
 
-
+select a.bno, a.baljuday, a.bnumber, a.bname, a.bproduct, a.bcount, a.bsum, b.sdelivery, b.spayment from balju a left join suju b on a.bno = b.bno;
 
