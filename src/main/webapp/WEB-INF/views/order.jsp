@@ -86,19 +86,19 @@
 							<c:forEach items="${baljulist}" var="balju" varStatus="a"> 
 							<tr>
 								<td><input type="checkbox" id="check_all" id="check_box${a.index}"></td>
-								<td scope="row">${balju.bno}</td>
+								<td scope="row">${balju.uuid}</td>
 								<td>${balju.baljuday}</td>
-								<td></td>
+								<td>${balju.sujuday}</td>
 								<td>${balju.bnumber}</td>
 								<td>${balju.bname}</td>
 								<td>${balju.bproduct}</td>
 								<td><fmt:formatNumber value="${balju.pprice}" pattern="#,###" ></fmt:formatNumber></td>
 								<td><fmt:formatNumber value="${balju.bcount}" pattern="#,###" ></fmt:formatNumber></td>
 								<td><fmt:formatNumber value="${balju.bsum}" pattern="#,###" ></fmt:formatNumber></td>
-								<td>미결제</td>
-								<td>-</td>
-								<td>미발행</td>
-									<td><button id="sujuletter" onclick="sujuletter('${balju.baljuday}', '${balju.bno}', '${balju.bname}', '${balju.bcount}','${balju.bsum}','${balju.bproduct}', '${balju.pprice}','${balju.bnumber}')">확인</button></td>					
+								<td>${balju.spayment}</td>
+								<td>${balju.sdelivery}</td>
+								<td>${balju.sujubox}</td>
+									<td><button id="sujuletter" onclick="sujuletter('${balju.bno}', '${balju.baljuday}', '${balju.uuid}', '${balju.bname}', '${balju.bcount}','${balju.bsum}','${balju.bproduct}', '${balju.pprice}','${balju.bnumber}','${balju.pcode}', '${ balju.sujubox}')">확인</button></td>					
 							</tr>
 							</c:forEach>
 							<!-- 반복문으로 데이터 가져오기 -->
@@ -106,7 +106,6 @@
 					</table>
 				</div>
 			</div>
-
 		</div> 
 		<div class="col-md-4 themed-grid-col">.col-md-4</div>
 

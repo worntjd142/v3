@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<th id="stock">단가</th>
-			<td id="stock_money"></td>
+			<td><input type="text" name="pprice"  id="stock_money" readonly="readonly"> </td>
 		</tr>
 		<tr>
 			<th>수량</th>
@@ -49,6 +49,7 @@
 		
 	</table>
 	<input type="submit" value="발주등록">
+	<input type="hidden" name="pcode" id="pcode">
 	</form>
 <table border="1" id="table">
 <tr>

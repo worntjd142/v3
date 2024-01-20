@@ -20,14 +20,12 @@ $(function(){
 
 		
 	
-function sujuletter(day, bno, name,count, total,product, price, number){
-	
-		let url="sujuletter?day="+day+"&bno="+bno+"&name="+name+"&count="+count+"&total="+total+"&product="+product+"&price="+price+"&number="+number+"";
+function sujuletter(bno, day, uuid, name,count, total,product, price, number, pcode, sujubox){
 		
-		let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no'; 	
+let url="sujuletter?day="+day+"&sujubox="+sujubox+"&bno="+bno+"&uuid="+uuid+"&name="+name+"&count="+count+"&total="+total+"&product="+product+"&price="+price+"&number="+number+"&pcode="+pcode+"";
+		
+		let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no, menubar=no, '; 	
 			
 		window.open(url, name,option);
-	
-	
 	
 }

@@ -14,6 +14,7 @@ function pselect() {
 	let stock = Array(); // 배열 stock 선언
 	let stock_money = Array(); // 배열 stock_money 선언
 	let select_name; // 변수 select_name 선언
+	let stock_pcode = Array();
 	
 	var sum = '';
 	var num1 = 0;
@@ -33,6 +34,7 @@ function pselect() {
 						.append("<option>" + data[i].pname + "</option>");
 				stock.push(data[i].pname);// stock 배열에 data[i].panme 값이 뒷 배열에 쌓임
 				stock_money.push(data[i].pprice); //stock_money 배열에 data[i].pprice 값이 뒷 배열에 쌓임
+				stock_pcode.push(data[i].pcode); //stock_money 배열에 data[i].pcode 값이 뒷 배열에 쌓임
 			};
 			// 해당 제품명의 제품단가 
 
@@ -40,7 +42,8 @@ function pselect() {
 				select_name = $(this).val(); //선택한 값을 select_name 변수에 저장
 				for (var j = 0; j < data.length; j++) { // data의 배열 길이 만큼 반복
 					if (select_name == stock[j]) { // select_name 의 값과 stock[j] 값이 같으면 
-						$("#stock_money").text(stock_money[j]); // stock_money의 빈 공간에 stock_money[j]을 삽입.
+						$("#stock_money").val(stock_money[j]); // stock_money의 빈 공간에 stock_money[j]을 삽입.
+						$("#pcode").val(stock_pcode[j]); // stock_money의 빈 공간에 stock_money[j]을 삽입.
 						
 						// stock_money[j] num1에 저장
 						var num1 = stock_money[j];

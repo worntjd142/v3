@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수주서</title>
+<title>수 주 서</title>
 </head>
 <link rel = "stylesheet" href = "resources/css/sujuletter.css" />
 <body>
@@ -19,7 +19,7 @@
 	<div class="sujuletter">사업자 번 호	:    <label> ${sujuletter[0].bnumber} <input type="hidden" value="${sujuletter[0].bnumber}" name="bnumber"></label></div>
 	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}<input type="hidden" value="${sujuletter[0].bname}" name="bname"></label></div>
 	<div class="sujuletter">전 화 번 호	:    <label>     </label></div>
-	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].bno} <input type="hidden" value="${sujuletter[0].bno}" name="bno"></label></div>
+	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].uuid} <input type="hidden" value="${sujuletter[0].uuid}" name="bno"></label></div>
 	</div>
 	<div id="baljuletter">
 	<table border="1">
@@ -57,7 +57,7 @@
 	<div id="money">
 	<label id="suju_ment1">아래와 같이 수주합니다.</label>
 	<label id="suju_ment2">수주 금액 : </label> <div id="total_money">₩ <fmt:formatNumber value="${sujuletter[0].bsum}" pattern="#,###" ></fmt:formatNumber>원
-																				<input type="hidden" value="${sujuletter[0].bsum}"></div>
+																				<input type="hidden" value="${sujuletter[0].bsum}" name="bsum"></div>
 	</div>
 	</div>
 	
@@ -76,7 +76,7 @@
 	<tr>
 	<td style="text-align: center;">${a.count} </td>
 	<td style="text-align: center;">${letter.bproduct}<input type="hidden" value="${letter.bproduct}" name="bproduct"></td>
-	<td style="text-align: center;"></td>
+	<td style="text-align: center;">${letter.pcode} </td>
 	<td style="text-align: center;">${letter.bcount} <input type="hidden" value="${letter.bcount}" name="bcount"></td>
 	<td style="text-align: right;"><fmt:formatNumber value="${letter.pprice}" pattern="#,###" ></fmt:formatNumber> <input type="hidden" value="${letter.pprice}" name="pprice"></td>
 	<td style="text-align: right;"><fmt:formatNumber value="${letter.bsum}" pattern="#,###" ></fmt:formatNumber> </td>
@@ -84,6 +84,7 @@
 	</tr>
 	</c:forEach>
 	</table>
+	<input type="hidden" value="${letter.bno}" name="bno">
 	</div>
 				 <div id="ment">
 				 <p>안녕하십니까? redstar제약기술재단 변수제약입니다. "</p>
@@ -92,8 +93,9 @@
 				 <p>TEL - 1588-1666</p>
 				 </div>
 	</div>
-
+<c:if test="${letter.sujubox == '미발행'}">
 <input type="submit" value="발행" id="send">
+</c:if>
 </form>
 </div>			 
 </body>
