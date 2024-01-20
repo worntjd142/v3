@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -53,12 +54,12 @@ public class OrderController {
 		session.setAttribute("maillist",  bt1);
 	}
 	
-	//임시등록 수주서함
-	@GetMapping("sujubox")
-	public String sujubox(Model model) {
-		//수주 박스에 리스트 출력
-		  model.addAttribute("list", ss.suju_select()); 
-		return "sujubox";
+	//임시등록 수주서 발행
+	@PostMapping("order")
+	public String sujubox(Model model, BaljuDTO bd) {
+		System.out.println(bd);
+		ss.suju_insert(bd);
+		return "order";
 	}
 	
 	// 수주 페이지
