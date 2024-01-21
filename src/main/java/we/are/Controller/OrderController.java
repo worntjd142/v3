@@ -33,8 +33,8 @@ public class OrderController {
 			@RequestParam("count") int count, @RequestParam("total") int total, @RequestParam("product") String product, @RequestParam("price") int price,
 			@RequestParam("number") String number, @RequestParam("pcode") String pcode, @RequestParam("bno") int bno, @RequestParam("sujubox") String sujubox) {
 		// url 주수로 받아온 값을 DTO에 하나씩 저장
-		od.setBaljuday(day); // 발주 일자 or 수주 일자
-		od.setUuid(uuid);
+		od.setBaljuday(day); // 발주 일자
+		od.setUuid(uuid);// 주문 번호
 		od.setBname(name); // 거래처 
 		od.setBcount(count);// 물품 갯수
 		od.setBsum(total);// 합계
@@ -43,23 +43,22 @@ public class OrderController {
 		od.setBnumber(number);//사업자 번호
 		od.setPcode(pcode);// 상품 코드
 		od.setBno(bno); // 번호
-		System.out.println(sujubox);
 		od.setSujubox(sujubox);// 발행 여부
 		
 		// <c:forEach> 를 쓰기위해선 배열형태로 변경해야 하므로 
 		ArrayList<OrderDTO> od1 = new  ArrayList<>(); //배열 선언 
 		
-			od1.add(od); // bt1의 배열 인덱스 0번에 BaljuDTO타입 bt값을 넣음.
+			od1.add(od); // ot1의 배열 ot값을 넣음.
 			
-		model.addAttribute("sujuletter", od1);	//배열 bt1에 저장된 값을 model 객체의 "sujuletter"라는 변수로 저장.
-		session.setAttribute("maillist",  od1);
+		model.addAttribute("sujuletter", od1);	//배열 ot1에 저장된 값을 model 객체의 "sujuletter"라는 변수로 저장.
 	}
 	
 	//임시등록 수주서 발행
-	@PostMapping("order")
+	@GetMapping("issuance")
 	public String sujubox(Model model, OrderDTO od) {
+		// sujuday에 update 미발행 - > 발 행
 		os.suju_update(od);
-		return "order";
+		return "redirect:/order";
 	}
 	
 	// 수주 페이지

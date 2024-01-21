@@ -7,11 +7,15 @@
 <meta charset="UTF-8">
 <title>수 주 서</title>
 </head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/sujuletter.js"></script>
 <link rel = "stylesheet" href = "resources/css/sujuletter.css" />
 <body>
 <div>
-<form action="order" method="post">
-	<div style="text-align: center;"><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
+<form action="issuance" method="get">
+
+	<div id="print_page">
+	<div style="text-align: center;" ><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
 
 	<div>
 	<div  id="aa">
@@ -19,7 +23,7 @@
 	<div class="sujuletter">사업자 번 호	:    <label> ${sujuletter[0].bnumber} <input type="hidden" value="${sujuletter[0].bnumber}" name="bnumber"></label></div>
 	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}<input type="hidden" value="${sujuletter[0].bname}" name="bname"></label></div>
 	<div class="sujuletter">전 화 번 호	:    <label>     </label></div>
-	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].uuid} <input type="hidden" value="${sujuletter[0].uuid}" name="bno"></label></div>
+	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].uuid} <input type="hidden" value="${sujuletter[0].uuid}" name="uuid"></label></div>
 	</div>
 	<div id="baljuletter">
 	<table border="1">
@@ -84,19 +88,27 @@
 	</tr>
 	</c:forEach>
 	</table>
-	<input type="hidden" value="${letter.bno}" name="bno">
+	<input type="hidden" value="${sujuletter[0].bno}" name="bno"> <!--  업데이트 구분을 위한 bno -->
 	</div>
+	
 				 <div id="ment">
 				 <p>안녕하십니까? redstar제약기술재단 변수제약입니다. "</p>
 				 <p>귀사의 일익 번창하심을 진심으로 기원하며 귀사 수주의뢰서를 드립니다.</p>
 				 <p>정보를 확인 부탁드립니다.</p>
 				 <p>TEL - 1588-1666</p>
 				 </div>
+			</div><!--  프린트 페이지  -->
 	</div>
-<c:if test="${letter.sujubox == '미발행'}">
+	<div>
+		<input type="button" id="print" onclick="return prints()" value="출력">
+		<input type="button" id="close" onclick="closes()" value="닫기">
+	</div>
+	
+	<!--  발행 여부를 확인하여 발행버튼 보이게하기 -->
+<c:if test="${sujuletter[0].sujubox.equals('미발행')}"> 
 <input type="submit" value="발행" id="send">
 </c:if>
 </form>
-</div>			 
+</div>
 </body>
 </html>

@@ -85,7 +85,7 @@
 						<tbody>
 							<c:forEach items="${baljulist}" var="balju" varStatus="a"> 
 							<tr>
-								<td><input type="checkbox" id="check_all" id="check_box${a.index}"></td>
+								<td><c:if test="${balju.sujubox.equals('미발행')}"><input type="checkbox" id="check_all" id="check_box${a.index}">	</c:if></td>
 								<td scope="row">${balju.uuid}</td>
 								<td>${balju.baljuday}</td>
 								<td>${balju.sujuday}</td>
