@@ -64,14 +64,21 @@ function closes(){
 
 function issuance(bno){
 	
+	//인수 bno값으로 json 타입으로 만듦
+	let bnos = {"bno":bno}
+	
 	$.ajax({
-		type : "GET", // controller post/get따라서 바뀜
-		url : "issuance", // controller 도메인 주소 똑같이
-		data : bno, // 
+		type : "GET", // method 타입 get
+		url : "issuance", // url value
+		data : bnos, //  jsno 타입의 bnos를 컨트롤러로 값을 전달
+		dataType: 'json',
 		async : false,
 		success : function(data) {
-			console.log(data.length)
-		}
+				console.log(data);
+				
+				window.close();
+			}
+			
+		})
 	
-})
-	}
+}

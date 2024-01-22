@@ -29,3 +29,4 @@ let url="sujuletter?day="+day+"&sujubox="+sujubox+"&bno="+bno+"&uuid="+uuid+"&na
 		window.open(url, name,option);
 	
 }
+

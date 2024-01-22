@@ -1,7 +1,6 @@
 package we.are.Controller;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -55,12 +54,14 @@ public class OrderController {
 	
 	//임시등록 수주서 발행
 	@GetMapping("issuance")
-	public ResponseEntity<?> issuance(@RequestParam Map<String, Object> bno, OrderDTO od)  {		
-		int bnos = (int)bno.get("bno");
-		od.setBno(bnos);
-		os.suju_update(od);
+	public ResponseEntity<?> issuance(OrderDTO od, Model model, HttpSession session,@RequestParam("bno") int bno) {		
+		// order dto bno에 bno값을 저장
+		od.setBno(bno); // 반환 값 1 or 0
+		//bno값으로 업데이트. 
 		return new ResponseEntity<>(os.suju_update(od),HttpStatus.OK);
 	}
+	
+	
 	
 	// 수주 페이지
 	@GetMapping("order")

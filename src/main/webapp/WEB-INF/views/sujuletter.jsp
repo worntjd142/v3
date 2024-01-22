@@ -9,6 +9,7 @@
 </head>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/sujuletter.js"></script>
+<script type="text/javascript" src="/resources/js/orderajax.js"></script>
 <link rel = "stylesheet" href = "resources/css/sujuletter.css" />
 <body>
 <div>
