@@ -90,5 +90,13 @@ public class OrderController {
 		return new ResponseEntity<>(os.product_select(),HttpStatus.OK);
 	}
 	
+	// 수주내역 날짜 검색
+	@RequestMapping("search_day")
+	public String search_day (OrderDTO od, Model model) {
+		model.addAttribute("baljulist", os.daysearch(od));
+		System.out.println(os.daysearch(od));
+		System.out.println(od.getEndday());
+		return "order";
+	}
 	
 }

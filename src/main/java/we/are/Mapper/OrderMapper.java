@@ -21,5 +21,8 @@ public interface OrderMapper {
 	
 	//수주서 발행
 	public void suju_update(OrderDTO od);
+	
+	// 날짜 검색 : 배열안에 OrderDTO데이터를 담아서 !
+	public ArrayList<OrderDTO> daysearch(OrderDTO od);
 
 }
