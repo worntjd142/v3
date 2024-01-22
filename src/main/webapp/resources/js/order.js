@@ -1,4 +1,4 @@
-$(function(){
+$(function(){ 
 		
 		$("#check_all").on("click", function(){ // check_all을 클릭 시 반응
 				let chk = $(this).is(":checked");// check_all 의 체크여부 확인  (체크가 되어있으면 ture, 체크가 안돼어있으면 false값을 반환);
@@ -20,14 +20,12 @@ $(function(){
 
 		
 	
-function sujuletter(day, bno, name,count, total,product, price, number){
-	
-		let url="sujuletter?day="+day+"&bno="+bno+"&name="+name+"&count="+count+"&total="+total+"&product="+product+"&price="+price+"&number="+number+"";
+function sujuletter(bno, day, uuid, name,count, total,product, price, number, pcode, sujubox){
 		
-		let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no'; 	
+let url="sujuletter?day="+day+"&sujubox="+sujubox+"&bno="+bno+"&uuid="+uuid+"&name="+name+"&count="+count+"&total="+total+"&product="+product+"&price="+price+"&number="+number+"&pcode="+pcode+"";
+		
+		let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no, menubar=no, '; 	
 			
 		window.open(url, name,option);
-	
-	
 	
 }

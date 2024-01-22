@@ -5,21 +5,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수주서</title>
+<title>수 주 서</title>
 </head>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/sujuletter.js"></script>
 <link rel = "stylesheet" href = "resources/css/sujuletter.css" />
 <body>
 <div>
-<form action="mail">
-	<div style="text-align: center;"><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
+<form action="issuance" method="get">
+
+	<div id="print_page">
+	<div style="text-align: center;" ><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
 
 	<div>
 	<div  id="aa">
-<div class="sujuletter">수 주 일 자 :    <label> ${sujuletter[0].baljuday}</label></div>
-	<div class="sujuletter">수 주 번 호	:    <label> ${sujuletter[0].bnumber}</label></div>
-	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}    </label></div>
+<div class="sujuletter">수 주 일 자 :    <label> ${sujuletter[0].baljuday} <input type="hidden" value="${sujuletter[0].baljuday}" name="baljuday"></label></div>
+	<div class="sujuletter">사업자 번 호	:    <label> ${sujuletter[0].bnumber} <input type="hidden" value="${sujuletter[0].bnumber}" name="bnumber"></label></div>
+	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}<input type="hidden" value="${sujuletter[0].bname}" name="bname"></label></div>
 	<div class="sujuletter">전 화 번 호	:    <label>     </label></div>
-	<div class="sujuletter">메        일	:	  <label> asd@aasd.com    </label></div>
+	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].uuid} <input type="hidden" value="${sujuletter[0].uuid}" name="uuid"></label></div>
 	</div>
 	<div id="baljuletter">
 	<table border="1">
@@ -30,7 +34,7 @@
 	
 	<tr>
 	<td class="subtitle">상  호</td>
-	<td class="input" id="company">RED STAR</td>
+	<td class="input" id="company">변수제약</td>
 	<td class="subtitle"> 성  명</td>
 	<td class="input" id="company_boss">최 나 영</td>
 	</tr >
@@ -56,7 +60,8 @@
 	</table>
 	<div id="money">
 	<label id="suju_ment1">아래와 같이 수주합니다.</label>
-	<label id="suju_ment2">수주 금액 : </label> <div id="total_money">₩ <fmt:formatNumber value="${sujuletter[0].bsum}" pattern="#,###" ></fmt:formatNumber>원</div>
+	<label id="suju_ment2">수주 금액 : </label> <div id="total_money">₩ <fmt:formatNumber value="${sujuletter[0].bsum}" pattern="#,###" ></fmt:formatNumber>원
+																				<input type="hidden" value="${sujuletter[0].bsum}" name="bsum"></div>
 	</div>
 	</div>
 	
@@ -73,27 +78,37 @@
 	</tr >
 	<c:forEach items="${sujuletter}" var="letter" varStatus="a"> 
 	<tr>
-	<td style="text-align: center;">${a.count}</td>
-	<td style="text-align: center;">${letter.bproduct}</td>
-	<td style="text-align: center;"></td>
-	<td style="text-align: center;">${letter.bcount}</td>
-	<td style="text-align: right;"><fmt:formatNumber value="${letter.pprice}" pattern="#,###" ></fmt:formatNumber></td>
-	<td style="text-align: right;"><fmt:formatNumber value="${letter.bsum}" pattern="#,###" ></fmt:formatNumber></td>
+	<td style="text-align: center;">${a.count} </td>
+	<td style="text-align: center;">${letter.bproduct}<input type="hidden" value="${letter.bproduct}" name="bproduct"></td>
+	<td style="text-align: center;">${letter.pcode} </td>
+	<td style="text-align: center;">${letter.bcount} <input type="hidden" value="${letter.bcount}" name="bcount"></td>
+	<td style="text-align: right;"><fmt:formatNumber value="${letter.pprice}" pattern="#,###" ></fmt:formatNumber> <input type="hidden" value="${letter.pprice}" name="pprice"></td>
+	<td style="text-align: right;"><fmt:formatNumber value="${letter.bsum}" pattern="#,###" ></fmt:formatNumber> </td>
 	<td></td>
 	</tr>
 	</c:forEach>
 	</table>
+	<input type="hidden" value="${sujuletter[0].bno}" name="bno"> <!--  업데이트 구분을 위한 bno -->
 	</div>
+	
 				 <div id="ment">
-				 <p>안녕하십니까? redstarpharma입니다. "</p>
+				 <p>안녕하십니까? redstar제약기술재단 변수제약입니다. "</p>
 				 <p>귀사의 일익 번창하심을 진심으로 기원하며 귀사 수주의뢰서를 드립니다.</p>
 				 <p>정보를 확인 부탁드립니다.</p>
 				 <p>TEL - 1588-1666</p>
 				 </div>
+			</div><!--  프린트 페이지  -->
 	</div>
-
+	<div>
+		<input type="button" id="print" onclick="return prints()" value="출력">
+		<input type="button" id="close" onclick="closes()" value="닫기">
+	</div>
+	
+	<!--  발행 여부를 확인하여 발행버튼 보이게하기 -->
+<c:if test="${sujuletter[0].sujubox.equals('미발행')}"> 
 <input type="submit" value="발행" id="send">
+</c:if>
 </form>
-</div>			 
+</div>
 </body>
 </html>

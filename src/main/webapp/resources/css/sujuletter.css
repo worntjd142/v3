@@ -1,10 +1,28 @@
 @charset "UTF-8";
 
-#send{
-position: relative;
-    top: -678px;
-    left: 680px;
-    width: 100px;
+#print {
+    position: relative;
+   top: -648px;
+    left: 630px;
+    width: 70px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+#close{
+    position: relative;
+    top: -648px;
+    left: 630px;
+    width: 70px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+#send {
+    position: relative;
+   top: -672px;
+    left: 553px;
+    width: 70px;
     height: 25px;
     border-radius: 5px;
 }
