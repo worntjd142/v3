@@ -33,9 +33,9 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>시작날짜</td>
-								<td>종료날짜</td>
-								<td>거래처명</td>
+								<td><input type="date" name="startday">시작날짜</td>
+								<td><input type="date" name="endday">종료날짜</td>
+								<td><input type="text" name="companyname">거래처명</td>
 							</tr>
 						</tbody>
 					</table>
