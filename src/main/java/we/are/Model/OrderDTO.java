@@ -31,6 +31,37 @@ public class OrderDTO {
 	//차트 번호
 	private int bno;
 	
+	//검색
+	private String startday;
+	private String endday;
+	private String companyname;
+	
+	
+	
+	public String getStartday() {
+		return startday;
+	}
+
+	public void setStartday(String startday) {
+		this.startday = startday;
+	}
+
+	public String getEndday() {
+		return endday;
+	}
+
+	public void setEndday(String endday) {
+		this.endday = endday;
+	}
+
+	public String getCompanyname() {
+		return companyname;
+	}
+
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
+
 	public String getUuid() {
 		return uuid;
 	}

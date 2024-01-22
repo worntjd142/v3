@@ -22,4 +22,6 @@ public interface OrderService {
 	//수주서 발행
 	public void suju_update(OrderDTO od);
 	
+	//수주내역 날짜 검색
+	public ArrayList<OrderDTO> daysearch(OrderDTO od);
 }

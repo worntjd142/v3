@@ -34,10 +34,15 @@ public class OrderServiceImpl implements OrderService {
 	public ArrayList<InventoryDTO> company_select(){
 		return om.company_select();
 	}
+	
 	//수주서 발행
 	public void suju_update(OrderDTO od) {
 		 om.suju_update(od);
 	}
 	
+	// 날짜 검색
+	public ArrayList<OrderDTO> daysearch(OrderDTO od) {
+		return om.daysearch(od);
+	};
 	
 }
