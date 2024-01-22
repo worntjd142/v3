@@ -12,7 +12,6 @@
 <link rel = "stylesheet" href = "resources/css/sujuletter.css" />
 <body>
 <div>
-<form action="issuance" method="get">
 
 	<div id="print_page">
 	<div style="text-align: center;" ><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
@@ -88,7 +87,7 @@
 	</tr>
 	</c:forEach>
 	</table>
-	<input type="hidden" value="${sujuletter[0].bno}" name="bno"> <!--  업데이트 구분을 위한 bno -->
+	<input type="hidden" value="${sujuletter[0].bno}" name="bno" id="bno"> <!--  업데이트 구분을 위한 bno -->
 	</div>
 	
 				 <div id="ment">
@@ -106,9 +105,8 @@
 	
 	<!--  발행 여부를 확인하여 발행버튼 보이게하기 -->
 <c:if test="${sujuletter[0].sujubox.equals('미발행')}"> 
-<input type="submit" value="발행" id="send">
+<input type="button" value="발행" id="send">
 </c:if>
-</form>
 </div>
 </body>
 </html>
