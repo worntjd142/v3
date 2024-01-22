@@ -41,10 +41,10 @@ public class InventoryController {
 	}
 	
 	@PostMapping("p_detail")
-	public ResponseEntity<?> p_detail(InventoryDTO id, Model model, HttpSession session, @PathVariable String pcode) {
+	public ResponseEntity<?> p_detail(InventoryDTO id, Model model, HttpSession session) {
 		
-		System.out.println(is.p_detail(pcode));
-		return new ResponseEntity<>(is.p_detail(pcode),HttpStatus.OK);
+		System.out.println(is.p_detail());
+		return new ResponseEntity<>(is.p_detail(),HttpStatus.OK);
 	}
 	
 	

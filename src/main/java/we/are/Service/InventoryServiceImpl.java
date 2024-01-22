@@ -25,7 +25,7 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public ArrayList<InventoryDTO> p_detail(String pcode) {
-		return im.p_detail(pcode);
+	public ArrayList<InventoryDTO> p_detail() {
+		return im.p_detail();
 	}
 }

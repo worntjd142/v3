@@ -14,7 +14,7 @@ public interface InventoryService {
 	public ArrayList<InventoryDTO> p_list(InventoryDTO id);
 	
 	//제픔
-	public ArrayList<InventoryDTO> p_detail(String pcode);
+	public ArrayList<InventoryDTO> p_detail();
 	
 	
 }
