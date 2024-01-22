@@ -1,6 +1,7 @@
 package we.are.Controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -55,10 +55,11 @@ public class OrderController {
 	
 	//임시등록 수주서 발행
 	@GetMapping("issuance")
-	public String sujubox(Model model, OrderDTO od) {
-		// sujuday에 update 미발행 - > 발 행
+	public ResponseEntity<?> issuance(@RequestParam Map<String, Object> bno, OrderDTO od)  {		
+		int bnos = (int)bno.get("bno");
+		od.setBno(bnos);
 		os.suju_update(od);
-		return "redirect:/order";
+		return new ResponseEntity<>(os.suju_update(od),HttpStatus.OK);
 	}
 	
 	// 수주 페이지
@@ -94,8 +95,6 @@ public class OrderController {
 	@RequestMapping("search_day")
 	public String search_day (OrderDTO od, Model model) {
 		model.addAttribute("baljulist", os.daysearch(od));
-		System.out.println(os.daysearch(od));
-		System.out.println(od.getEndday());
 		return "order";
 	}
 	
