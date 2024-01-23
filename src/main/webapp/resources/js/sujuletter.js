@@ -39,6 +39,7 @@ $(function(){
 	window.onbeforeprint = beforePrint;  //프린트 하기 전 실행 객체
 	window.onafterprint = afterPrint; // 프린트 후 실행 객체
 	
+//발행 함수
 function issuance(bno,bname,bnumber){
 	
 	//인수 bno값으로 json 타입으로 만듦
