@@ -31,7 +31,11 @@
           </thead>
           <tbody>
             <tr>
-              <td><input type="date" name="startday"> ~ <input type="date" name="endday"></td>
+              <td>
+              <input type="date" name="startday">
+              		             ~ 
+              <input type="date" name="endday">
+              </td>
               <td><input type="text" name="companyname">거래처명</td>
             </tr>
             <tr>
@@ -48,6 +52,9 @@
 					<button type="button" class="btn btn-outline-secondary btn-sm">모두보기</button>
 					<button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button>
+					<br><hr>
+					<input type="radio">미발행
+					<input type="radio">발행
     </div>
     
 
