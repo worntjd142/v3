@@ -17,7 +17,7 @@
  <!--전체 div-->
 <div class = main_container>
 <!--등록창 div -->
-	<div class = col-md-8>
+	<div>
 		<div class = "comment"><h4>신규 제품 등록</h4></div>
 		<form action = "p_insert" method = "post">
 		<input type = "hidden" name = "pcode" id = "randomcode">
@@ -45,7 +45,7 @@
 		</form>
 	</div>
 <!-- 제품 리스트 div -->
-	<div class = "col-md-8">
+	<div>
 		<div class = "comment"><h4>제품목록</h4></div>
 		<table id = "p_list">
 			<thead>
@@ -71,7 +71,7 @@
 		
 	</div>
 <!-- 상세내역 div -->
-	<div class = "col-md-8">
+	<div>
 		<div class = "comment"><h4>제품 상세 정보</h4></div>
 		<table id = "p_detail" >
 			<tr>

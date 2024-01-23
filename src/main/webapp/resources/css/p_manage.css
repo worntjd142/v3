@@ -22,7 +22,7 @@
 }
 
 #p_insertt tr th{
-	background-color : black;
+	background-color : #212529;;
 	color : white;
 }
 
@@ -36,7 +36,7 @@
 }
 #p_list thead {
     display:block;
-    background: black;
+    background: #212529;;
     color:#fff;
 }
 
