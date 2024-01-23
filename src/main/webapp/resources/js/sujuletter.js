@@ -51,3 +51,27 @@ let initBody = document.body;
 function closes(){
 	window.close();
 }
+
+
+
+
+function issuance(bno){
+	
+	//인수 bno값으로 json 타입으로 만듦
+	let bnos = {"bno":bno}
+	
+	$.ajax({
+		type : "GET", // method 타입 get
+		url : "issuance", // url value
+		data : bnos, //  jsno 타입의 bnos를 컨트롤러로 값을 전달
+		dataType: 'json',
+		async : false,
+		success : function(data) {
+				console.log(data);
+				
+				window.close();
+			}
+			
+		})
+	
+}
