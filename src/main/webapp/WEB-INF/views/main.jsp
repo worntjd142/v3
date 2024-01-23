@@ -37,13 +37,13 @@
 
 							<div class="form-label-group">
 								<input type="text" id="inputid" class="form-control"
-									placeholder="아이디" required autofocus> <label
+									placeholder="아이디" name="useid" required autofocus> <label
 									for="inputid">아이디</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="password" id="inputPassword" class="form-control"
-									placeholder="비밀번호" required> <label
+									placeholder="비밀번호" name="usepassword" required> <label
 									for="inputPassword">비밀번호</label>
 							</div>
 
