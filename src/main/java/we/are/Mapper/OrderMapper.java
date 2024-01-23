@@ -20,7 +20,7 @@ public interface OrderMapper {
 	public ArrayList<InventoryDTO> company_select();
 	
 	//수주서 발행
-	public int suju_update(OrderDTO od);
+	public void suju_update(OrderDTO od);
 	
 	// 날짜 검색 : 배열안에 OrderDTO데이터를 담아서 !
 	public ArrayList<OrderDTO> daysearch(OrderDTO od);
