@@ -9,11 +9,11 @@
 </head>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/sujuletter.js"></script>
-<script type="text/javascript" src="/resources/js/orderajax.js"></script>
 <link rel = "stylesheet" href = "resources/css/sujuletter.css" />
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 <body>
 <div>
-<form action="issuance" method="get">
 
 	<div id="print_page">
 	<div style="text-align: center;" ><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
@@ -21,8 +21,8 @@
 	<div>
 	<div  id="aa">
 <div class="sujuletter">수 주 일 자 :    <label> ${sujuletter[0].baljuday} <input type="hidden" value="${sujuletter[0].baljuday}" name="baljuday"></label></div>
-	<div class="sujuletter">사업자 번 호	:    <label> ${sujuletter[0].bnumber} <input type="hidden" value="${sujuletter[0].bnumber}" name="bnumber"></label></div>
-	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}<input type="hidden" value="${sujuletter[0].bname}" name="bname"></label></div>
+	<div class="sujuletter">사업자 번 호	:    <label> ${sujuletter[0].bnumber} <input type="hidden" value="${sujuletter[0].bnumber}" name="bnumber" id="bnumber"></label></div>
+	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}<input type="hidden" value="${sujuletter[0].bname}" name="bname" id="bname"></label></div>
 	<div class="sujuletter">전 화 번 호	:    <label>     </label></div>
 	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].uuid} <input type="hidden" value="${sujuletter[0].uuid}" name="uuid"></label></div>
 	</div>
@@ -89,7 +89,7 @@
 	</tr>
 	</c:forEach>
 	</table>
-	<input type="hidden" value="${sujuletter[0].bno}" name="bno"> <!--  업데이트 구분을 위한 bno -->
+	<input type="hidden" value="${sujuletter[0].bno}" name="bno" id="bno"> <!--  업데이트 구분을 위한 bno -->
 	</div>
 	
 				 <div id="ment">
@@ -107,9 +107,8 @@
 	
 	<!--  발행 여부를 확인하여 발행버튼 보이게하기 -->
 <c:if test="${sujuletter[0].sujubox.equals('미발행')}"> 
-<input type="submit" value="발행" id="send">
+<input type="button" value="발행" id="send">
 </c:if>
-</form>
 </div>
 </body>
 </html>

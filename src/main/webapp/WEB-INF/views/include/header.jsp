@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link href="../resources/css/main.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"	crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+	crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="generator" content="Hugo 0.115.4">
@@ -48,8 +54,21 @@
 				</form>
 
 				<div class="text-end">
-					<button type="button" class="btn btn-outline-light me-2">로그인</button>
-					<button type="button" class="btn btn-warning">회원가입</button>
+
+					
+					
+					<c:if test="${login.useid == null}"> <!-- 만약에 로그인을 했을때 값이 null이면  -->
+						<a href="main"><button type="button" class="btn btn-outline-light me-2">로그인</button></a>
+						<a href="join"><button type="button" class="btn btn-warning">회원가입</button></a>
+					</c:if>
+					
+					<c:if test="${login.useid ne null}"> <!-- 로그인을 했을때 값이 null이 아니면 -->
+						<p class="login">${sessionScope.login.usename} 님, 어서오세요.</p>
+						
+						<a href="logout"><button type="button" class="btn btn-outline-light me-2">로그아웃</button></a>
+					
+					</c:if>
+					
 				</div>
 			</div>
 		</div>

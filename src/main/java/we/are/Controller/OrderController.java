@@ -94,8 +94,9 @@ public class OrderController {
 	
 	// 수주내역 날짜 검색
 	@RequestMapping("search_day")
-	public String search_day (OrderDTO od, Model model) {
+	public String search_day (OrderDTO od, Model model, HttpSession session) {
 		model.addAttribute("baljulist", os.daysearch(od));
+		session.setAttribute("searchday", os.daysearch(od));
 		return "order";
 	}
 	

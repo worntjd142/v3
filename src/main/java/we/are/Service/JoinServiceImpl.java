@@ -16,5 +16,13 @@ public class JoinServiceImpl implements JoinService {
 	public void join_insert (JoinDTO joindto) {
 		joinm.join_insert(joindto);
 	}
+		
+
+	// 로그인
+	public JoinDTO login(JoinDTO joindto) {
+		return joinm.login(joindto);
+		
+	}
+	
 	
 }

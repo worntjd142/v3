@@ -31,15 +31,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>
-              <input type="date" name="startday">
-              		             ~ 
-              <input type="date" name="endday">
-              </td>
+              <td><input type="date" name="startday" id="startday"> ~ <input type="date" name="endday"></td>
               <td><input type="text" name="companyname">거래처명</td>
             </tr>
             <tr>
-            <td><input type="submit" value="날짜검색" class="btn btn-outline-secondary btn-sm"></td>
+            <td><input type="submit" value="날짜검색" onclick="search()" class="btn btn-outline-secondary btn-sm"></td>
             </tr>
           </tbody>
         </table>
@@ -52,9 +48,6 @@
 					<button type="button" class="btn btn-outline-secondary btn-sm">모두보기</button>
 					<button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button>
-					<br><hr>
-					<input type="radio">미발행
-					<input type="radio">발행
     </div>
     
 
@@ -94,8 +87,8 @@
             <td><fmt:formatNumber value="${balju.bcount}" pattern="#,###" ></fmt:formatNumber></td>
             <td><fmt:formatNumber value="${balju.bsum}" pattern="#,###" ></fmt:formatNumber></td>
             <td>${balju.spayment}</td>
-            <td>${balju.sdelivery}</td>
-            <td>${balju.sujubox}</td>
+            <td >${balju.sdelivery}</td>
+            <td id="sujubox${balju.bno}">${balju.sujubox}</td>
               <td><button id="sujuletter" onclick="sujuletter('${balju.bno}', '${balju.baljuday}', '${balju.uuid}', '${balju.bname}', '${balju.bcount}','${balju.bsum}','${balju.bproduct}', '${balju.pprice}','${balju.bnumber}','${balju.pcode}', '${ balju.sujubox}')">확인</button></td>					
           </tr>
           </c:forEach>
