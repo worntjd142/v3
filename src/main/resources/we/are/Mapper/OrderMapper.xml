@@ -38,7 +38,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT * FROM orders WHERE baljuday BETWEEN #{startday} AND #{endday};
 	</select>
 
-
+<insert id="saveFile">
+		insert into image(bimage) values(#{fileName})
+</insert>
 
 
 

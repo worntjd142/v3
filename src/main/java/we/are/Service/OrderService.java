@@ -3,6 +3,7 @@ package we.are.Service;
 import java.util.ArrayList;
 
 import we.are.Model.InventoryDTO;
+import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
 
 public interface OrderService {
@@ -24,4 +25,8 @@ public interface OrderService {
 	
 	//수주내역 날짜 검색
 	public ArrayList<OrderDTO> daysearch(OrderDTO od);
+	
+	public void saveFile(MailDTO md);
+	
+	
 }

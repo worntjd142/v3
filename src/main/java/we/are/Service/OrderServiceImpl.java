@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import we.are.Mapper.OrderMapper;
 import we.are.Model.InventoryDTO;
+import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
 
 @Service
@@ -45,4 +46,7 @@ public class OrderServiceImpl implements OrderService {
 		return om.daysearch(od);
 	};
 	
+	public void saveFile(MailDTO md) {
+			om.saveFile(md);
+	}
 }
