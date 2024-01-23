@@ -31,11 +31,11 @@
           </thead>
           <tbody>
             <tr>
-              <td><input type="date" name="startday"> ~ <input type="date" name="endday"></td>
+              <td><input type="date" name="startday" id="startday"> ~ <input type="date" name="endday"></td>
               <td><input type="text" name="companyname">거래처명</td>
             </tr>
             <tr>
-            <td><input type="submit" value="날짜검색" class="btn btn-outline-secondary btn-sm"></td>
+            <td><input type="submit" value="날짜검색" onclick="search()" class="btn btn-outline-secondary btn-sm"></td>
             </tr>
           </tbody>
         </table>
