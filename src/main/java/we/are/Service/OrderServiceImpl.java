@@ -36,8 +36,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	//수주서 발행
-	public void suju_update(OrderDTO od) {
-		 om.suju_update(od);
+	public int suju_update(OrderDTO od) {
+		 return om.suju_update(od);
 	}
 	
 	// 날짜 검색
