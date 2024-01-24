@@ -137,7 +137,59 @@
     
   </div>
 
+<div id="released">
+<table border="1">
+<tr>
+<td colspan="2">출고기간</td>
+<td>납품처</td>
+</tr>
+<tr>
+<td colspan="2">
+<input type="date" name="startday" value="${paging.cdto.startday}">
+~
+<input type="date" name="endday" value="${paging.cdto.endday}">
+</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2"><button type="submit">검색하기</button></td>
+</tr>
+</table>
 
 
+<div >
+
+<button>모두표시</button>
+<button>날짜정렬</button>
+</div>
+
+
+<table border="1">
+<tr>
+<td>출고날짜</td>
+<td>발주처</td>
+<td>제품코드</td>
+<td>제품명</td>
+<td>출고 수량</td>
+<td>운송자 위치</td>
+</tr>
+<!-- 테이블 10개 생성 -->
+<!-- varStatus를 이용하여 테이블 위치확인에 id값을 10개 생성하기. -->
+<c:forEach begin="1" end="10" varStatus="location">
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td id="location${location.index}"><button id="mapmarker"> 위치확인</button></td>
+</tr>
+</c:forEach>
+</table>
+
+<button onclick="setCenter()">이동</button>
+<button onclick="rCenter()">이전</button>
+
+</div>
 </body>
 </html>
