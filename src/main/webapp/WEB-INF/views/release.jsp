@@ -13,34 +13,44 @@
 <div>
 
 <div>
+
+<form action="release_day" method="get">
 <table border="1">
 <tr>
-<td colspan="2"> 출고기간 </td>
+<td colspan="2">출고기간</td>
 <td>납품처</td>
 </tr>
 <tr>
-<td>2016-04-01</td>
-<td>2016-04-05</td>
-<td>
+<td colspan="2">
+<input type="date" name="startday" value="${paging.cdto.startday}">
+~
+<input type="date" name="endday" value="${paging.cdto.endday}">
 </td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2"><button type="submit">검색하기</button></td>
 </tr>
 </table>
+</form>
 </div>
 
 
 <div>
-<button>검색하기</button>
+
 <button>모두표시</button>
 <button>날짜정렬</button>
 </div>
 
+
 <table border="1">
 <tr>
-<td>출 고 날 짜</td>
-<td>납 품 처</td>
-<td>제 품 코 드 </td>
-<td>품 명</td>
-<td>운 송 자 현 위 치</td>
+<td>출고날짜</td>
+<td>발주처</td>
+<td>제품코드</td>
+<td>제품명</td>
+<td>출고 수량</td>
+<td>운송자 위치</td>
 </tr>
 <!-- 테이블 10개 생성 -->
 <!-- varStatus를 이용하여 테이블 위치확인에 id값을 10개 생성하기. -->
@@ -50,7 +60,8 @@
 <td></td>
 <td></td>
 <td></td>
-<td id="location${location.index}">위 치 확 인</td>
+<td></td>
+<td id="location${location.index}"><button id="mapmarker"> 위치확인</button></td>
 </tr>
 </c:forEach>
 </table>
@@ -65,8 +76,8 @@
 		<script>
 		// 이미지 변경 변수
 		var icon = new kakao.maps.MarkerImage(
-			    '../resources/image/main.png',
-			    new kakao.maps.Size(31, 35),
+			    '../resources/image/car_icon.png',
+			    new kakao.maps.Size(50, 52),
 			    {
 			        offset: new kakao.maps.Point(16, 34),
 			        alt: "마커 이미지 예제",
