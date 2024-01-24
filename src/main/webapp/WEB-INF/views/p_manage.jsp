@@ -58,11 +58,11 @@
 			</thead>
 			<tbody>
 		<c:forEach items = "${p_list}" var = "pro" varStatus="a">
-				<tr class = "datacount">
-					<td class="ss${a.index}">${pro.pcode}</td>
-					<td class="ss${a.index}">${pro.pname}</td>
-					<td class="ss${a.index}">${pro.pprice}</td>
-					<td class="ss${a.index}">${pro.pstock}</td>
+				<tr onclick = "insert_info('${pro.pcode}','${pro.pname}','${pro.pprice}','${pro.pmc}','${pro.pstock}','${pro.pmi}')">
+					<td>${pro.pcode}</td>
+					<td>${pro.pname}</td>
+					<td>${pro.pprice}</td>
+					<td>${pro.pstock}</td>
 				</tr>
 		</c:forEach>
 			</tbody>
@@ -75,23 +75,23 @@
 		<table id = "p_detail" >
 			<tr>
 				<th>제품 코드</th>
-				<td>$제품 코드</td>
+				<td id = "pcodei"></td>
 			</tr>
 			<tr>
 				<th>제품명</th>
-				<td>$제품명</td>
+				<td id = "pnamei"></td>
 				<th>제품단가</th>
-				<td>$제품단가</td>
+				<td id = "ppricei"></td>
 			</tr>
 			<tr>
 				<th>제조사</th>
-				<td>$제품단가</td>
+				<td id = "pmci"></td>
 				<th>재고 수</th>
-				<td>$재고 수</td>
+				<td id = "pstocki"></td>
 			</tr>
 			<tr>
 				<th>제품설명</th>
-				<td>$제품설명</td>
+				<td id = "pmii"></td>
 			</tr>
 		</table>
 	</div>
