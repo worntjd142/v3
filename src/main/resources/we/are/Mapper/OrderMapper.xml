@@ -59,6 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from company where cnumber = #{cnumber};
 	</select>
 
+	
+
 
 	<!-- DTO 2개를 합쳐서 JOIN으로 검색된 값을 넣기 위한 쿼리문. -->
 	<!-- <resultMap type="we.are.Model.SujuDTO" id="SujuDTO"> 4. resultMap="SujuDTO"로 
