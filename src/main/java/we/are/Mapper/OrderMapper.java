@@ -2,6 +2,7 @@ package we.are.Mapper;
 
 import java.util.ArrayList;
 
+import we.are.Model.CompanyDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
@@ -18,7 +19,10 @@ public interface OrderMapper {
 	public ArrayList<InventoryDTO> product_select();
 	
 	//거래처 리스트
-	public ArrayList<InventoryDTO> company_select();
+	public ArrayList<CompanyDTO> company_select();
+	
+	//거래처 리스트
+	public CompanyDTO sujucom_select(String od);
 	
 	//수주서 발행
 	public int suju_update(OrderDTO od);
@@ -27,5 +31,8 @@ public interface OrderMapper {
 	public ArrayList<OrderDTO> daysearch(OrderDTO od);
 	
 	public void saveFile(MailDTO md);
+
+	public OrderDTO sujuletter_select(OrderDTO od);
+	
 
 }

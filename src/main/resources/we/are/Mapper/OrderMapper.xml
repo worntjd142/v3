@@ -38,11 +38,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT * FROM orders WHERE baljuday BETWEEN #{startday} AND #{endday};
 	</select>
 
-<insert id="saveFile">
-		insert into image(bimage) values(#{fileName})
-</insert>
+	
+	<select id="sujuletter_select" resultType="we.are.Model.OrderDTO">
+	SELECT * FROM orders WHERE bno = #{bno};
+	</select>
 
-
+	<select id="sujucom_select" resultType="we.are.Model.CompanyDTO">
+		select * from company where cnumber = #{cnumber};
+	</select>
 
 
 	<!-- DTO 2개를 합쳐서 JOIN으로 검색된 값을 넣기 위한 쿼리문. -->

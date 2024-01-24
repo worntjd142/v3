@@ -24,7 +24,7 @@
 	<div class="sujuletter">사업자 번 호	:    <label> ${sujuletter[0].bnumber} <input type="hidden" value="${sujuletter[0].bnumber}" name="bnumber" id="bnumber"></label></div>
 	<div class="sujuletter">거   래   처	:    <label> ${sujuletter[0].bname}<input type="hidden" value="${sujuletter[0].bname}" name="bname" id="bname"></label></div>
 	<div class="sujuletter">전 화 번 호	:    <label>     </label></div>
-	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].uuid} <input type="hidden" value="${sujuletter[0].uuid}" name="uuid"></label></div>
+	<div class="sujuletter">수 주 번 호	:	  <label>${sujuletter[0].uuid} <input type="hidden" value="${sujuletter[0].uuid}" name="uuid" id="uuid"></label></div>
 	</div>
 	<div id="baljuletter">
 	<table border="1">
@@ -90,6 +90,7 @@
 	</c:forEach>
 	</table>
 	<input type="hidden" value="${sujuletter[0].bno}" name="bno" id="bno"> <!--  업데이트 구분을 위한 bno -->
+	<input type="hidden" value="${sujuletter[0].sujubox}" name="sujubox" id="sujubox"> <!--  업데이트 구분을 위한 bno -->
 	</div>
 	
 				 <div id="ment">

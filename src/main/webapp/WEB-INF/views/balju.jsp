@@ -57,7 +57,7 @@
 <td>사업자 번호</td>
 <td>주소</td>
 <td>전화번호</td>
-<td>팩스</td>
+<td>원장</td>
 </tr>
 <c:forEach items="${company}" var="com" varStatus="c"><!--  DB에 등록된 거래처 리스트 -->
 <tr>
@@ -65,7 +65,7 @@
 <td onclick="insert_company('${com.cname}', '${com.cnumber}')" style="cursor:pointer;">${com.cnumber} </td>
 <td onclick="insert_company('${com.cname}', '${com.cnumber}')" style="cursor:pointer;">${com.caddress}</td>
 <td >${com.ctel}</td>
-<td >${com.cfax}</td>
+<td >${com.cdoc}</td>
 </tr>
 </c:forEach>
 </table>

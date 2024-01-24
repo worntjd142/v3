@@ -89,7 +89,7 @@
             <td>${balju.spayment}</td>
             <td >${balju.sdelivery}</td>
             <td id="sujubox${balju.bno}">${balju.sujubox}</td>
-              <td><button id="sujuletter" onclick="sujuletter('${balju.bno}', '${balju.baljuday}', '${balju.uuid}', '${balju.bname}', '${balju.bcount}','${balju.bsum}','${balju.bproduct}', '${balju.pprice}','${balju.bnumber}','${balju.pcode}', '${ balju.sujubox}')">확인</button></td>					
+              <td><button id="sujuletter" onclick="sujuletter('${balju.bno}')">확인</button></td>					
           </tr>
           </c:forEach>
           <!-- 반복문으로 데이터 가져오기 -->

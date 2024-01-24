@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+#print_page{
+	background: white;
+}
+
 #print {
     position: relative;
    top: -648px;
