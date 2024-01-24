@@ -91,7 +91,7 @@
 	              <td><button id="sujuletter" onclick="sujuletter('${balju.bno}')">확인</button></td>					
 	          </tr>
 	          </c:forEach>
-	          <!-- 반복문으로 데이터 가져오기 -->
+	          <!-- /반복문으로 데이터 가져오기 -->
 	        </tbody>
 	      </table>
 	    </div>
