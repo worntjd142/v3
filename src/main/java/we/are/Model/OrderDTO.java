@@ -32,35 +32,35 @@ public class OrderDTO {
 	private int bno;
 	
 	//검색
-	private String startday;
-	private String endday;
-	private String companyname;
+//	private String startday;
+//	private String endday;
+//	private String companyname;
 	
 	
 	
-	public String getStartday() {
-		return startday;
-	}
-
-	public void setStartday(String startday) {
-		this.startday = startday;
-	}
-
-	public String getEndday() {
-		return endday;
-	}
-
-	public void setEndday(String endday) {
-		this.endday = endday;
-	}
-
-	public String getCompanyname() {
-		return companyname;
-	}
-
-	public void setCompanyname(String companyname) {
-		this.companyname = companyname;
-	}
+//	public String getStartday() {
+//		return startday;
+//	}
+//
+//	public void setStartday(String startday) {
+//		this.startday = startday;
+//	}
+//
+//	public String getEndday() {
+//		return endday;
+//	}
+//
+//	public void setEndday(String endday) {
+//		this.endday = endday;
+//	}
+//
+//	public String getCompanyname() {
+//		return companyname;
+//	}
+//
+//	public void setCompanyname(String companyname) {
+//		this.companyname = companyname;
+//	}
 
 	public String getUuid() {
 		return uuid;
@@ -187,5 +187,17 @@ public class OrderDTO {
 	public void setBcount(int bcount) {
 		this.bcount = bcount;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderDTO [baljuday=" + baljuday + ", bnumber=" + bnumber + ", bname=" + bname + ", bproduct=" + bproduct
+				+ ", bcount=" + bcount + ", bsum=" + bsum + ", pprice=" + pprice + ", uuid=" + uuid + ", spayment="
+				+ spayment + ", sdelivery=" + sdelivery + ", sujubox=" + sujubox + ", pcode=" + pcode + ", sujuday="
+				+ sujuday + ", bno=" + bno + "]";
+	}
+
+	
+	
+	
 
 }

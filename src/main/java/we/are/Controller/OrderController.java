@@ -125,7 +125,7 @@ public class OrderController {
 	@RequestMapping("search_day")
 	public String search_day (OrderDTO od, Model model, HttpSession session) {
 		model.addAttribute("baljulist", os.daysearch(od));
-		session.setAttribute("searchday", os.daysearch(od));
+		//session.setAttribute("searchday", os.daysearch(od));
 		return "order";
 	}
 	
