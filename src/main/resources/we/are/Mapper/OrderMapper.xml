@@ -20,7 +20,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 발주 목록 리스트 -->
 	<select id="balju_select" resultType="we.are.Model.OrderDTO">
-		select * from orders;
+		select * 
+		from (
+			select @rownum:=@rownum+1 rownum, b.*
+			from orders b, (select @rownum:=0) as tmp
+			order by bno desc
+		)	as orders
+		<![CDATA[
+		where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+		]]>
 	</select>
 	
 	<!--거래처 목록 리스트 -->
@@ -37,7 +45,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="daysearch" resultType="we.are.Model.OrderDTO">
 	SELECT * FROM orders WHERE baljuday BETWEEN #{startday} AND #{endday};
 	</select>
-
+	
+	<!-- total을 위한 select -->
+	<select id="total" resultType="int">
+	SELECT COUNT(*) FROM orders;
+	</select>
 	
 	<select id="sujuletter_select" resultType="we.are.Model.OrderDTO">
 	SELECT * FROM orders WHERE bno = #{bno};

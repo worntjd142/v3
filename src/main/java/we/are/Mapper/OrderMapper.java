@@ -3,6 +3,7 @@ package we.are.Mapper;
 import java.util.ArrayList;
 
 import we.are.Model.CompanyDTO;
+import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
@@ -13,7 +14,7 @@ public interface OrderMapper {
 	public void balju_insert(OrderDTO od);
 	
 	//발주 목록 리스트
-	public ArrayList<OrderDTO> balju_select();
+	public ArrayList<OrderDTO> balju_select(CriteriaDTO cdto);
 	
 	//제품 목록 데이터 가져오기
 	public ArrayList<InventoryDTO> product_select();
@@ -34,5 +35,7 @@ public interface OrderMapper {
 
 	public OrderDTO sujuletter_select(OrderDTO od);
 	
-
+	// 페이지 전체 건수 total
+	public int total (CriteriaDTO cdto);
+	
 }
