@@ -1,36 +1,20 @@
 @charset "UTF-8";
 
-#print {
-    position: relative;
-   top: -648px;
-    left: 630px;
-    width: 70px;
-    height: 25px;
-    border-radius: 5px;
+
+textarea {
+	width: 100%;
+    height: 150px;
+    border: none;
+    resize: none;
 }
 
-#close{
-    position: relative;
-    top: -648px;
-    left: 630px;
-    width: 70px;
-    height: 25px;
-    border-radius: 5px;
+
+#print_page{
+	background: white;
+	position: relative;
+    top: 370px;
 }
 
-#send {
-    position: relative;
-   top: -672px;
-    left: 553px;
-    width: 70px;
-    height: 25px;
-    border-radius: 5px;
-}
-#ment{
-    position: relative;
-    top: 30px;
-    margin-left: 17px;
-}
 
 #aa{
 	position: relative;
@@ -45,19 +29,19 @@ html{
     top: 30px;
 }
 
-#total_money{
-	position: relative;
-    left: 160%;
+#total_money {
+    position: relative;
+    left: 142%;
     font-size: 20px;
     border-bottom: 1px solid black;
-    width: 131px;
+    width: 200px;
+    letter-spacing: 3px;
 }
 
 body{
 	margin: auto;
 	width: 21cm;
     height: 14.8cm;
-    border:1px solid black;
 }
 
 .sujuletter {

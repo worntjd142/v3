@@ -1,6 +1,5 @@
 package we.are.Controller;
 
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,8 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import we.are.Model.CompanyDTO;
+import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
+import we.are.Model.PageDTO;
 import we.are.Service.OrderService;
 
 
@@ -24,33 +26,24 @@ public class OrderController {
 	@Autowired
 	OrderService os;
 	
+	//임시등록 수주서1
+	@GetMapping("sujuletter1")
+	public void sujuletter1(OrderDTO od, CompanyDTO cd, HttpSession session, @RequestParam("bno") int bno, Model model) {
+		
+		OrderDTO ood = new OrderDTO();//다른 주소의 OrderDTO타입 ood변수 생성
+		
+		od.setBno(bno);	//parameter로 bno값을 받고 OrderDTO od bno변수에 저장
+		
+		ood = os.sujuletter_select(od); // od변수에 있는 값을 이용해서 DB의 orders 테이블에서 셀렉하고 결과값을 ood에 저장
 	
-	//임시등록 수주서
-	@GetMapping("sujuletter")
-	public void sujuletter(OrderDTO od, HttpSession session,
-			@RequestParam("day") String day, @RequestParam("uuid") String uuid, @RequestParam("name") String name, Model model,
-			@RequestParam("count") int count, @RequestParam("total") int total, @RequestParam("product") String product, @RequestParam("price") int price,
-			@RequestParam("number") String number, @RequestParam("pcode") String pcode, @RequestParam("bno") int bno, @RequestParam("sujubox") String sujubox) {
-		// url 주수로 받아온 값을 DTO에 하나씩 저장
-		od.setBaljuday(day); // 발주 일자
-		od.setUuid(uuid);// 주문 번호
-		od.setBname(name); // 거래처 
-		od.setBcount(count);// 물품 갯수
-		od.setBsum(total);// 합계
-		od.setBproduct(product);// 제품 이름
-		od.setPprice(price);// 단가
-		od.setBnumber(number);//사업자 번호
-		od.setPcode(pcode);// 상품 코드
-		od.setBno(bno); // 번호
-		od.setSujubox(sujubox);// 발행 여부
+		model.addAttribute("sujuletter", os.sujuletter_select(od)); //셀렉한 값을 model 객체 "sujuletter"변수에 저장
+	
+		cd.setCnumber(ood.getBnumber()); // ood의 저장된 값중 bnumber를 CompanyDTO cd변수 안의 number에 저장
 		
-		// <c:forEach> 를 쓰기위해선 배열형태로 변경해야 하므로 
-		ArrayList<OrderDTO> od1 = new  ArrayList<>(); //배열 선언 
-		
-			od1.add(od); // ot1의 배열 ot값을 넣음.
-			
-		model.addAttribute("sujuletter", od1);	//배열 ot1에 저장된 값을 model 객체의 "sujuletter"라는 변수로 저장.
+		model.addAttribute("company", os.sujucom_select(cd.getCnumber())); // 저장받은 number값을 이용해서 DB company에서 결과값을 model 객체 "company"에 저장
 	}
+	
+	
 	
 	//임시등록 수주서 발행
 	@GetMapping("issuance")
@@ -62,14 +55,20 @@ public class OrderController {
 	}
 	
 	
+	// 수주 목록
+		@GetMapping("order")
+		public String order(OrderDTO odto, CriteriaDTO cdto, Model model) {
+			// order.jsp 실행할때 select된 결과를 가져와
+			model.addAttribute("baljulist", os.balju_select(cdto));
+			// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
+			int total = os.total(cdto);		
+			// order.jsp 실행할때 PageDTO에 저장되있는 데이터를 가져와
+										// 생성자 호출(매개변수가 2개인 생성자)
+										// new PageDTO(cdto, 190));
+			model.addAttribute("paging", new PageDTO(cdto, total));
+			return "order";
+		}
 	
-	// 수주 페이지
-	@GetMapping("order")
-	public String order(Model model) {
-		//발주 목록 가져오기
-		model.addAttribute("baljulist", os.balju_select());
-		return "order";
-	}
 	
 	// 발주 페이지
 	@RequestMapping("balju")
@@ -99,5 +98,7 @@ public class OrderController {
 		session.setAttribute("searchday", os.daysearch(od));
 		return "order";
 	}
+	
+	
 	
 }

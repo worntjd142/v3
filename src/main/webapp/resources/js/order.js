@@ -24,13 +24,9 @@ $(function() {
 
 })
 
-function sujuletter(bno, day, uuid, name, count, total, product, price, number,
-		pcode, sujubox) {
+function sujuletter(bno) {
 
-	let url = "sujuletter?day=" + day + "&sujubox=" + sujubox + "&bno=" + bno
-			+ "&uuid=" + uuid + "&name=" + name + "&count=" + count + "&total="
-			+ total + "&product=" + product + "&price=" + price + "&number="
-			+ number + "&pcode=" + pcode + "";
+	let url = "sujuletter1?bno=" + bno +"";
 
 	let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no, menubar=no, ';
 
@@ -39,12 +35,12 @@ function sujuletter(bno, day, uuid, name, count, total, product, price, number,
 }
 
 // 날짜 검색 후 검색 날짜 유지
-$(function(){
-
-const form = document.querySelector('#search_day');
-
-
-		
-	}
-	
-});
+//$(function(){
+//
+//const form = document.querySelector('#search_day');
+//
+//
+//		
+//	}
+//	
+//});
