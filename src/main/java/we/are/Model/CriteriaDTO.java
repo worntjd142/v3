@@ -8,6 +8,11 @@ public class CriteriaDTO {
 	// 한 페이지당 게시물 갯수
 	private int amount;
 	
+	//검색
+	private String startday;
+	private String endday;
+	private String companyname;
+	
 	
 	// pageNum = 1 , amount = 10;
 	public CriteriaDTO() {
@@ -35,10 +40,37 @@ public class CriteriaDTO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	
+	
+
+	public String getStartday() {
+		return startday;
+	}
+
+	public void setStartday(String startday) {
+		this.startday = startday;
+	}
+
+	public String getEndday() {
+		return endday;
+	}
+
+	public void setEndday(String endday) {
+		this.endday = endday;
+	}
+
+	public String getCompanyname() {
+		return companyname;
+	}
+
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
 
 	@Override
 	public String toString() {
-		return "CriteriaDTO [pageNum=" + pageNum + ", amount=" + amount + "]";
+		return "CriteriaDTO [pageNum=" + pageNum + ", amount=" + amount + ", startday=" + startday + ", endday="
+				+ endday + ", companyname=" + companyname + "]";
 	}
 	
 	

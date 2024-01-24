@@ -21,7 +21,7 @@
 	<div class="container">
 	  <div class="row justify-content-md-center">
 	    <div class="col col-lg-6">
-	      <form action="search_day" method="get">
+	      <form action="order" method="get">
 	        <table class="table table-striped table-hover table-bordered">
 	          <thead>
 	            <tr>
@@ -31,7 +31,7 @@
 	          </thead>
 	          <tbody>
 	            <tr>
-	              <td><input type="date" name="startday" id="startday"> ~ <input type="date" name="endday"></td>
+	              <td><input type="date" name="startday" id="startday" value="${paging.cdto.startday}"> ~ <input type="date" name="endday" value="${paging.cdto.endday}"></td>
 	              <td><input type="text" name="companyname">거래처명</td>
 	            </tr>
 	            <tr>
@@ -49,7 +49,6 @@
 						<button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 						<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button>
 	    </div>
-	    
 	
 	    <div class="col-auto">
 	      <table class="table table-striped table-hover table-bordered">
