@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import we.are.Mapper.OrderMapper;
 import we.are.Model.CompanyDTO;
+import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
@@ -23,8 +24,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	//발주 목록 리스트
-	public ArrayList<OrderDTO> balju_select(){
-		return om.balju_select();
+	public ArrayList<OrderDTO> balju_select(CriteriaDTO cdto){
+		return om.balju_select(cdto);
 	}
 	
 	//상품 목록 리스트
@@ -54,4 +55,11 @@ public class OrderServiceImpl implements OrderService {
 	public OrderDTO sujuletter_select(OrderDTO od) {
 		return om.sujuletter_select(od);
 	}
+
+	// 페이지 전체 건수 total
+	public int total(CriteriaDTO cdto) {
+		return om.total(cdto);
+	}
+
+	
 }

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import we.are.Model.CompanyDTO;
+import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
+import we.are.Model.PageDTO;
 import we.are.Service.OrderService;
 
 
@@ -26,7 +28,8 @@ public class OrderController {
 	@Autowired
 	OrderService os;
 	
-	//임시등록 수주서1
+	
+	// 임시등록 수주서1
 	@GetMapping("sujuletter1")
 	public void sujuletter1(OrderDTO od, CompanyDTO cd, HttpSession session, @RequestParam("bno") int bno, Model model) {
 		
@@ -38,10 +41,10 @@ public class OrderController {
 			
 		model.addAttribute("company", os.sujucom_select(cd.getCnumber()));
 		
-	}
+	}	
 	
 	
-	//임시등록 수주서
+	// 임시등록 수주서
 	@GetMapping("sujuletter")
 	public void sujuletter(OrderDTO od, HttpSession session,
 			@RequestParam("day") String day, @RequestParam("uuid") String uuid, @RequestParam("name") String name, Model model,
@@ -68,6 +71,7 @@ public class OrderController {
 		model.addAttribute("sujuletter", od1);	//배열 ot1에 저장된 값을 model 객체의 "sujuletter"라는 변수로 저장.
 	}
 	
+	
 	//임시등록 수주서 발행
 	@GetMapping("issuance")
 	public ResponseEntity<?> issuance(OrderDTO od, Model model, HttpSession session,@RequestParam("bno") int bno) {		
@@ -75,17 +79,23 @@ public class OrderController {
 		od.setBno(bno); // 반환 값 1 or 0
 		//bno값으로 업데이트. 
 		return new ResponseEntity<>(os.suju_update(od),HttpStatus.OK);
-	}
+	}	
 	
 	
-	
-	// 수주 페이지
+	// 수주 목록
 	@GetMapping("order")
-	public String order(Model model) {
-		//발주 목록 가져오기
-		model.addAttribute("baljulist", os.balju_select());
+	public String order(OrderDTO odto, CriteriaDTO cdto, Model model) {
+		// order.jsp 실행할때 select된 결과를 가져와
+		model.addAttribute("baljulist", os.balju_select(cdto));
+		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
+		int total = os.total(cdto);		
+		// order.jsp 실행할때 PageDTO에 저장되있는 데이터를 가져와
+									// 생성자 호출(매개변수가 2개인 생성자)
+									// new PageDTO(cdto, 190));
+		model.addAttribute("paging", new PageDTO(cdto, total));
 		return "order";
 	}
+	
 	
 	// 발주 페이지
 	@RequestMapping("balju")
@@ -95,6 +105,7 @@ public class OrderController {
 		return "balju";
 	}
 	
+	
 	// 발주 등록 insert
 	@RequestMapping("balju_insert")
 	public String balju_insert(OrderDTO od) {
@@ -102,11 +113,13 @@ public class OrderController {
 		return "redirect:/order";
 	}
 	
+	
 	// 발주 등록 제품 ajax !
 	@RequestMapping("product_select.json")
 	public ResponseEntity<?> product_select(InventoryDTO id, Model model, HttpSession session) {		
 		return new ResponseEntity<>(os.product_select(),HttpStatus.OK);
 	}
+	
 	
 	// 수주내역 날짜 검색
 	@RequestMapping("search_day")
