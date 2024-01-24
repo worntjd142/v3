@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import we.are.Mapper.OrderMapper;
+import we.are.Model.CompanyDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
@@ -31,9 +32,13 @@ public class OrderServiceImpl implements OrderService {
 		return om.product_select();
 	}
 	
-	// 거래처 리스트
-	public ArrayList<InventoryDTO> company_select(){
+	// 발주 목록 거래처 리스트
+	public ArrayList<CompanyDTO> company_select(){
 		return om.company_select();
+	}
+	// 수주서 목록 거래처 리스트
+	public CompanyDTO sujucom_select(String od){
+		return om.sujucom_select(od);
 	}
 	
 	//수주서 발행
@@ -46,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
 		return om.daysearch(od);
 	};
 	
-	public void saveFile(MailDTO md) {
-			om.saveFile(md);
+	public OrderDTO sujuletter_select(OrderDTO od) {
+		return om.sujuletter_select(od);
 	}
 }

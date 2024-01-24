@@ -9,10 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import we.are.Model.CompanyDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
 import we.are.Service.OrderService;
@@ -23,6 +25,20 @@ public class OrderController {
 
 	@Autowired
 	OrderService os;
+	
+	//임시등록 수주서1
+	@GetMapping("sujuletter1")
+	public void sujuletter1(OrderDTO od, CompanyDTO cd, HttpSession session, @RequestParam("bno") int bno, Model model) {
+		
+		od.setBno(bno); // 번호
+		
+		model.addAttribute("sujuletter", os.sujuletter_select(od));
+		
+		cd.setCnumber(od.getBnumber());
+			
+		model.addAttribute("company", os.sujucom_select(cd.getCnumber()));
+		
+	}
 	
 	
 	//임시등록 수주서
