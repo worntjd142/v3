@@ -34,7 +34,7 @@ public class MainController {
 	public String login(JoinDTO joindto, Model model, HttpSession session) {	
 		joins.login(joindto); // 로그인을 하면 DB에 있는 값과 입력한 값 비교해서 일치하면
 		session.setAttribute("login", joins.login(joindto)); // session객체 변수login에 저장
-		return "redirect:/order";
+		return "order";
 	}	
 	
 	// 회원가입 페이지

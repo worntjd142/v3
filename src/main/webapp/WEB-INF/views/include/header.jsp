@@ -30,8 +30,8 @@
 				class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 				<a href="/"
 					class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-					<img src="../resources/image/main.png"
-					style="width: 50px; height: 50px;"> <use
+					<img src="../resources/image/m_logo.png"
+					style="width: 65px; height: 65px;"> <use
 						xlink:href="#bootstrap"></use>
 				</a>
 
@@ -40,31 +40,20 @@
 					<!-- a태그 클릭 비활성화 -->
 					<li><a href="#" class="nav-link px-2 text-secondary"
 						style="pointer-events: none"></a></li>
-					<li><a href="balju" class="nav-link px-2 text-white">발주</a></li>
-					<li><a href="order" class="nav-link px-2 text-white">수주내역</a></li>
-					<li><a href="inventory" class="nav-link px-2 text-white">제품현황</a></li>
-					<li><a href="release" class="nav-link px-2 text-white">출고현황</a></li>
-					<li><a href="#" class="nav-link px-2 text-white">거래처목록</a></li>
-					<li><a href="#" class="nav-link px-2 text-white">거래처원장</a></li>
+					<li><a href="order" class="nav-link px-2 text-white">수주관리</a></li>
+					<li><a href="balju" class="nav-link px-2 text-white">거래처관리</a></li>
+					<li><a href="release" class="nav-link px-2 text-white">출고관리</a></li>					
+					<li><a href="inventory" class="nav-link px-2 text-white">제품관리</a></li>
 				</ul>
 
-				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-					<input type="search" class="form-control form-control-dark"
-						placeholder="검색..." aria-label="Search">
-				</form>
-
-				<div class="text-end">
-
+				<div class="text-end">					
 					
-					
-					<c:if test="${login.useid == null}"> <!-- 만약에 로그인을 했을때 값이 null이면  -->
+					<c:if test="${login.useid == null}"> <!-- 만약에 로그인을 했을때 값이 null이면 비활성화 -->
 						<a href="main"><button type="button" class="btn btn-outline-light me-2">로그인</button></a>
 						<a href="join"><button type="button" class="btn btn-warning">회원가입</button></a>
 					</c:if>
 					
-					<c:if test="${login.useid ne null}"> <!-- 로그인을 했을때 값이 null이 아니면 -->
-						<p class="login">${sessionScope.login.usename} 님, 어서오세요.</p>
-						
+					<c:if test="${login.useid ne null}"> <!-- 로그인을 했을때 값이 null이 아니면 활성화 -->						
 						<a href="logout"><button type="button" class="btn btn-outline-light me-2">로그아웃</button></a>
 					
 					</c:if>
