@@ -32,7 +32,7 @@
 		<tr>
 			<th>제조사</th>
 			<td><input type = "text" name = "pmc"></td>
-			<th>재고 수</th>
+			<th>입고수량</th>
 			<td><input type = "text" name = "pstock"></td>
 		</tr>
 		<tr>
@@ -48,6 +48,7 @@
 	<div class = "col-md-8">
 		<div class = "comment"><h4>제품목록</h4></div>
 		<table id = "p_list">
+		<caption id = temple>제품창고 온도 :<label id = wtemple></label>℃ </caption>
 			<thead>
 				<tr>
 					<th>제품코드</th>
@@ -86,7 +87,7 @@
 			<tr>
 				<th>제조사</th>
 				<td id = "pmci"></td>
-				<th>재고 수</th>
+				<th>재고수량</th>
 				<td id = "pstocki"></td>
 			</tr>
 			<tr>

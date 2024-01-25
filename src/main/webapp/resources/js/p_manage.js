@@ -21,18 +21,20 @@ function insert_info(code, name, price, pmc, pstock, pmi){
 $(document).ready(function(){
 	$("#randomcode").val(result);
 	
+	var getData = function() {
+		  $.ajax({
+		    url: 'w_temple',
+		    dataType: 'json',
+		    type: 'get',
+		    async : false, 
+		    success: function(data) {
+		    	console.log(data);
+		    	$("#wtemple").html(data);
 	
-//	$(".ss0").on("click",function(){
-//		$.ajax({
-//		type : "POST", // controller post/get따라서 바뀜
-//		url : "p_detail", // controller 도메인 주소 똑같이
-//		data : [], // 
-//		dataType : 'json',
-//		async : false,
-//		success : function(data) {
-//			console.log(data.length)
-//				
-//				}
-//
-//	})
+		    }
+		  })
+	
+
+	}
+	setInterval(getData, 5000);
 })
