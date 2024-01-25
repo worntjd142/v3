@@ -2,7 +2,9 @@ package we.are.Model;
 
 public class TempleDTO {
 	
-	public String temp;
+	private String temp;
+	
+	private String today;
 
 	public String getTemp() {
 		return temp;
@@ -11,4 +13,15 @@ public class TempleDTO {
 	public void setTemp(String temp) {
 		this.temp = temp;
 	}
+
+	public String getToday() {
+		return today;
+	}
+
+	public void setToday(String today) {
+		this.today = today;
+	}
+
+	
+	
 }

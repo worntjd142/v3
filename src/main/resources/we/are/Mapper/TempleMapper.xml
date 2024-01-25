@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "we.are.Mapper.TempleMapper">
+
+
+<!-- 	<select id = "p_temp" resultType = "we.are.Model.TempleDTO"> -->
+<!-- 		select * from w_temp order by today desc limit 1; -->
+<!-- 	</select> -->
+	
+	<select id = "w_temple" resultType = "String">
+		select temp from w_temp order by today desc limit 1;
+	</select>
+</mapper>

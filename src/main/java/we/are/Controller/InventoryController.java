@@ -10,15 +10,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import we.are.Model.InventoryDTO;
+import we.are.Model.TempleDTO;
 import we.are.Service.InventoryService;
+import we.are.Service.TempleService;
 
 @Controller
 public class InventoryController {
 	
 	@Autowired
 	InventoryService is;
+	
+	@Autowired
+	TempleService ts;
 	
 	@GetMapping("inventory")
 	public String inventory() {
@@ -28,11 +35,12 @@ public class InventoryController {
 	//제품 관리화면
 	@GetMapping("p_manage")
 	public String p_list(Model model, InventoryDTO id) {
+//		model.addAttribute("p_temp", ts.p_temp());
 		model.addAttribute("p_list", is.p_list(id));
 		return "p_manage";
 	}
 	
-	
+
 	//제품 등록
 	@PostMapping("p_insert")
 	public String p_insert(InventoryDTO id) {
@@ -47,6 +55,9 @@ public class InventoryController {
 		return new ResponseEntity<>(is.p_detail(pcode),HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "w_temple", method = RequestMethod.GET)
+	public ResponseEntity<?> w_temple(TempleDTO td, Model model, HttpSession session) {
+		return new ResponseEntity<>(ts.w_temple(), HttpStatus.OK);
 	
+	}
 }
-	
