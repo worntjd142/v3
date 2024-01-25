@@ -34,13 +34,3 @@ function sujuletter(bno) {
 
 }
 
-// 날짜 검색 후 검색 날짜 유지
-//$(function(){
-//
-//const form = document.querySelector('#search_day');
-//
-//
-//		
-//	}
-//	
-//});

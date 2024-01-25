@@ -73,13 +73,12 @@ public class MailController {
 	
 	//메일 작성 패치 형식으로 받음.
 	@GetMapping("mailsend")
-	public ResponseEntity<?> mailSend(MailDTO md, @RequestParam("uuid") String uuid, @RequestParam("bname") String bname) {
+	public ResponseEntity<?> mailSend(MailDTO md, @RequestParam("uuid") String uuid, @RequestParam("bname") String bname, @RequestParam("text") String text) {
 		String image_name = bname +"."+ uuid;  //첨부할 이미지 이름.
-		String title = bname +"수주번호 : " + uuid; // 제목
+		String title = bname + "  (수주번호) : " + uuid; // 제목
 		System.out.println(title);
 		String to = "goqudeo142@naver.com"; //받는 사람 이메일
-		String text = "안녕하십니까? "; //첨부 이미지
-		String image = "<img src='cid:mail'/>"+text; //첨부 이미지
+		String image = "<img src='cid:mail'/><br>"+text; //첨부 이미지
 		
 		try {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();

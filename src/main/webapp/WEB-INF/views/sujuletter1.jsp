@@ -48,7 +48,7 @@
 	
 	<tr>
 	<td>전달사항</td>
-	<td colspan="5"><textarea></textarea></td>
+	<td colspan="5"><textarea id="texta">안녕하십니까? 변수제약입니다. 귀사의 일익 번창하심을 진심으로 기원합니다. 수주서를 드립니다.</textarea></td>
 	</tr>
 	
 	</table>
@@ -87,11 +87,11 @@
 	
 	<div id="print_page" style="display: none;">
 	<div style="text-align: center;" ><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
-														<input type="hidden" value="${sujuletter.bno}" id="bno">
+	<input type="hidden" value="${sujuletter.bno}" id="bno">
 	<div>
 	<div  id="aa">
-	<div class="sujuletter">수 주 일 자 :   		 <label>${sujuletter.baljuday}	</label></div>
-	<div class="sujuletter">사업자 번 호	:   	 <label>${sujuletter.bnumber}	</label></div>
+	<div class="sujuletter">수 주 일 자 :   	 <label>${sujuletter.baljuday}	</label></div>
+	<div class="sujuletter">사업자 번 호:   	 <label>${sujuletter.bnumber}	</label></div>
 	<div class="sujuletter">거   래   처:   	 <label>${sujuletter.bname}		<input type="hidden" value="${sujuletter.bname}" id="bname"></label></div>
 	<div class="sujuletter">전 화 번 호	:  		 <label>${company.ctel}			</label></div>
 	<div class="sujuletter">수 주 번 호	:		 <label>${sujuletter.uuid}		<input type="hidden" value="${sujuletter.uuid}" id="uuid"></label></div>

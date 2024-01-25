@@ -6,10 +6,11 @@ $(function(){
 		let bno = $("#bno").val(); // 주문번호 거래처
 		let bname = $("#bname").val(); // 거래처
 		let uuid = $("#uuid").val(); // 주문번호 거래처
+		let text = $("#texta").val(); // 주문번호 거래처
 		console.log(uuid)
 
 		//함수 tissuance_close 호출
-		issuance(bno, bname, uuid)
+		issuance(bno, bname, uuid, text)
 	
 		
 	})
@@ -41,7 +42,7 @@ $(function(){
 	window.onafterprint = afterPrint; // 프린트 후 실행 객체
 	
 //발행 함수
-function issuance(bno, bname, uuid){
+function issuance(bno, bname, uuid, text){
 	
 	//인수 bno값으로 json 타입으로 만듦
 	let bnos = {"bno":bno}
@@ -58,7 +59,7 @@ function issuance(bno, bname, uuid){
 			if(data == 1){
 			//알림 문구
 					//pdf파일 함수 호출
-					dopdf(bname, uuid)
+					dopdf(bname, uuid, text)
 			//부모 페이지 화면을 새로고침 (order 화면)		
 			opener.parent.location.reload();
 				
@@ -72,7 +73,7 @@ function issuance(bno, bname, uuid){
 }
 
 //입퇴원 확인서 다운로드
-function dopdf(bname, uuid) {
+function dopdf(bname, uuid, text) {
 	$("#print_page").css("display","block");
 	const pdf = document.getElementById('print_page');
 	file = bname +'.'+uuid;
@@ -92,16 +93,16 @@ function dopdf(bname, uuid) {
 		    link.click();
 
 		    document.body.removeChild(link);
-		    setInterval(mail(bname, uuid), 3000);
+		    setInterval(mail(bname, uuid,text), 3000);
 		}
 		//pdf파일 만들고 난 후 3초 경과 후 widnow.closes를 호출
 			
 }
 
 
-function mail(bname,uuid){
+function mail(bname,uuid,text){
 	
-	send = {"bname":bname,"uuid":uuid};
+	send = {"bname":bname,"uuid":uuid,"text":text};
 	
 
 	$.ajax({
