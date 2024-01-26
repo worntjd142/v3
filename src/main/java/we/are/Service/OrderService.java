@@ -8,12 +8,12 @@ import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
 
 public interface OrderService {
-
-	// 발주 등록
-	public void balju_insert (OrderDTO od);
 	
-	//발주 목록 리스트
-	public ArrayList<OrderDTO> balju_select(CriteriaDTO cdto);
+	// 수주 등록
+	public void order_insert (OrderDTO od);
+	
+	// 수주 목록 리스트
+	public ArrayList<OrderDTO> order_select(CriteriaDTO cd);
 	
 	//제품 리스트
 	public ArrayList<InventoryDTO> product_select();
@@ -34,7 +34,6 @@ public interface OrderService {
 	public OrderDTO sujuletter_select(OrderDTO od);
 	
 	// 페이지 전체 건수 total
-	public int total (CriteriaDTO cdto);
-	
+	public int total (CriteriaDTO cd);	
 	
 }
