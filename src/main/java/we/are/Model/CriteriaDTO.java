@@ -9,11 +9,13 @@ public class CriteriaDTO {
 	private int amount;
 	
 	//검색
+	private String search;
 	private String startday;
 	private String endday;
 	private String companyname;
+	private String type;
 	
-	
+
 
 	// pageNum = 1 , amount = 10;
 	public CriteriaDTO() {
@@ -26,7 +28,8 @@ public class CriteriaDTO {
 		this.amount = amount;
 	}
 
-		
+	
+
 	// getter + setter
 	public int getPageNum() {
 		return pageNum;
@@ -67,13 +70,29 @@ public class CriteriaDTO {
 	public void setCompanyname(String companyname) {
 		this.companyname = companyname;
 	}
+	
+	public String getSearch() {
+		return search;
+	}
 
-	@Override
-	public String toString() {
-		return "CriteriaDTO [pageNum=" + pageNum + ", amount=" + amount + ", startday=" + startday + ", endday="
-				+ endday + ", companyname=" + companyname + "]";
+	public void setSearch(String search) {
+		this.search = search;
+	}	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	
 
+	@Override
+	public String toString() {
+		return "CriteriaDTO [pageNum=" + pageNum + ", amount=" + amount + ", search=" + search + ", startday="
+				+ startday + ", endday=" + endday + ", companyname=" + companyname + ", type=" + type + "]";
+	}
+	
 }

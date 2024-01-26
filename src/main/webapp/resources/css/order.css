@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.cname {
+	width: 160px;
+}
+
+.imgsize {
+	width: 40px;
+	height: 40px;
+}
+
+.a_1 {
+	float: right;
+}
+
+table.table.table-striped.table-secondary.table-hover.table-bordered.table-responsive {
+    width: auto;
+}
