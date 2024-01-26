@@ -33,19 +33,19 @@
 		</tr>
 		<tr>
 			<th>거래처명</th>
-			<td><input type="text" name="pprice"  id="stock_money" readonly="readonly"></td>			
+			<td><input type="text" name="cname"  id="cname" readonly="readonly"></td>			
 		</tr>
 		<tr>
 			<th>제품명</th>
-			<td><input type="text" name="pprice"  id="stock_money" readonly="readonly"> </td>
+			<td><input type="text" name="pname"  id="pname" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<th>요청수량</th>
-			<td><input type="number" name="bcount" id="num1"></td>
+			<td><input type="number" name="recount" id="recount" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<th>재고수량</th>
-			<td><input type="text" name="bsum" id="total" readonly="readonly"></td>
+			<td><input type="text" name="stock" id="stock" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<th>출고수량</th>
