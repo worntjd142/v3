@@ -30,7 +30,6 @@ public class OrderServiceImpl implements OrderService {
 	public ArrayList<InventoryDTO> product_select() {		
 		return om.product_select();
 	}
-	
 		
 	//수주서 발행
 	public int suju_update(OrderDTO od) {
