@@ -2,7 +2,6 @@ package we.are.Service;
 
 import java.util.ArrayList;
 
-import we.are.Model.CompanyDTO;
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
@@ -17,12 +16,6 @@ public interface OrderService {
 	
 	//제품 리스트
 	public ArrayList<InventoryDTO> product_select();
-	
-	//거래처 리스트
-	public CompanyDTO sujucom_select(String od);
-
-	//거래처 리스트
-	public ArrayList<CompanyDTO> company_select();
 	
 	//수주서 발행
 	public int suju_update(OrderDTO od);

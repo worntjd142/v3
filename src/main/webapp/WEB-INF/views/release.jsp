@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +14,6 @@
 <body>
 <div id="map" style="width:400px;height:350px;"></div>
 <div>예상소요시간:<label id="time"></label></div>
-		
-		
-		
 		
 	<!-- 지도 기본 위치 받아오는 키값 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e53e51300b84c3acadbd93d20d9fea8"></script>
@@ -59,16 +57,26 @@
 		        "Content-Type": "application/json" // 결과 값이 json
 		    },
 		    success: function (data) {
-		        // API 응답을 처리하는 로직
-		        $("#time").html(Math.floor(data.routes[0].sections[0].duration / 60) +"분");
+		    	// API 응답을 처리하는 로직
+		    	console.log(data.routes[0].sections[0].roads[0]);
+		    	
+		    	//초를 60분으로 나누고 소수점 올림하여 분으로 나타냄
+		        $("#time").html(Math.floor(data.routes[0].sections[0].duration / 60) +"분"); 
+		    	
 		        const linePath = []; // linePath 배열 선언
-		        data.routes[0].sections[0].roads.forEach(router => { // 성공하면 data.routes 배열 0번의 인덱스의 값을 가져와서 for문을 돌림
-		          router.vertexes.forEach((vertex, index) => { 
-		            if (index % 2 === 0) {
-		              linePath.push(new kakao.maps.LatLng(router.vertexes[index + 1], router.vertexes[index]));
+		        
+		        //data.routes[0].sections[0].roads 만큼 반복. = 1번 
+		        //router.vertexes.forEach((vertex, index) vertex의 index만큼 반복하여 배열로 만들고 그값을 
+		        //		
+		        //		router에 초기화
+		        data.routes[0].sections[0].roads.forEach (router => {router.vertexes.forEach((vertex, index) => {
+		        
+		        	if (index % 2 === 0) {
+		            	linePath.push(new kakao.maps.LatLng(router.vertexes[index + 1], router.vertexes[index]));
 		            }
 		          });
 		        });
+		        console.log(linePath);
 		        var polyline = new kakao.maps.Polyline({
 		          path: linePath,
 		          strokeWeight: 5,
@@ -80,7 +88,7 @@
 		        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			    mapOption = { 
 			    center: new kakao.maps.LatLng(Delivery_latitude, Delivery_longitude), // 지도의 중심좌표(현재위치)
-			    level: 4 // 지도의 확대 레벨
+			    level: 7 // 지도의 확대 레벨
 			    };
 				// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 				var map = new kakao.maps.Map(mapContainer, mapOption); 
