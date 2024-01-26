@@ -24,7 +24,7 @@ public class OrderController {
 	OrderService os;
 	
 	
-	// 수주등록 insert
+	// 수주등록 버튼을 누르면
 	@RequestMapping("order_insert")
 	public String order_insert(OrderDTO od) {
 		os.order_insert(od);
@@ -35,9 +35,7 @@ public class OrderController {
 	// 수주 목록 select
 	@RequestMapping("order")
 	public String order_select (OrderDTO od, CriteriaDTO cd, Model model) {
-		System.out.println("assd");
-		// order.jsp 실행할때 select된 결과를 "order"에 저장해서 가져와
-		System.out.println(os.order_select(cd));
+		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
 		model.addAttribute("olist", os.order_select(cd));
 		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
 		int total = os.total(cd);
