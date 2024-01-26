@@ -8,11 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import we.are.Model.CompanyDTO;
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
@@ -26,15 +23,66 @@ public class OrderController {
 	@Autowired
 	OrderService os;
 	
-	//임시등록 수주서1
+	
+	// 수주등록 insert
+	@RequestMapping("order_insert")
+	public String order_insert(OrderDTO od) {
+		os.order_insert(od);
+		return "redirect:/order";
+	}
+	
+	
+	// 수주 목록 select
+	@RequestMapping("order")
+	public String order_select (OrderDTO od, CriteriaDTO cd, Model model) {
+		System.out.println("assd");
+		// order.jsp 실행할때 select된 결과를 "order"에 저장해서 가져와
+		System.out.println(os.order_select(cd));
+		model.addAttribute("olist", os.order_select(cd));
+		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
+		int total = os.total(cd);
+		// order.jsp 실행할때 PageDTO에 저장되있는 데이터를 가져와
+									// 생성자 호출(매개변수가 2개인 생성자)
+									// new PageDTO(cdto, 190));
+		model.addAttribute("paging", new PageDTO(cd, total));
+		return "order";
+	}
+		
+	
+	// 발주 페이지
+	@RequestMapping("balju")
+	public String balju(Model model) {
+		//거래처 목록가져오기
+		model.addAttribute("company", os.company_select());
+		return "balju";
+	}
+	
+	
+	// 발주 등록 제품 ajax !
+	@RequestMapping("product_select.json")
+	public ResponseEntity<?> product_select(InventoryDTO id, Model model, HttpSession session) {		
+		return new ResponseEntity<>(os.product_select(),HttpStatus.OK);
+	}
+	
+	
+	// 수주내역 날짜 검색
+	@RequestMapping("search_day")
+	public String search_day (OrderDTO od, Model model, HttpSession session) {
+		model.addAttribute("baljulist", os.daysearch(od));
+		session.setAttribute("searchday", os.daysearch(od));
+		return "order";
+	}
+	
+	
+	/*	//임시등록 수주서1
 	@GetMapping("sujuletter1")
 	public void sujuletter1(OrderDTO od, CompanyDTO cd, HttpSession session, @RequestParam("bno") int bno, Model model) {
 		
 		OrderDTO ood = new OrderDTO();//다른 주소의 OrderDTO타입 ood변수 생성		
-		od.setBno(bno);	//parameter로 bno값을 받고 OrderDTO od bno변수에 저장		
+		od.setOno(bno);	//parameter로 bno값을 받고 OrderDTO od bno변수에 저장		
 		ood = os.sujuletter_select(od); // od변수에 있는 값을 이용해서 DB의 orders 테이블에서 셀렉하고 결과값을 ood에 저장
 		model.addAttribute("sujuletter", os.sujuletter_select(od)); //셀렉한 값을 model 객체 "sujuletter"변수에 저장
-		cd.setCnumber(ood.getBnumber()); // ood의 저장된 값중 bnumber를 CompanyDTO cd변수 안의 number에 저장
+		cd.setCnumber(ood.getOnumber()); // ood의 저장된 값중 bnumber를 CompanyDTO cd변수 안의 number에 저장
 		model.addAttribute("company", os.sujucom_select(cd.getCnumber())); // 저장받은 number값을 이용해서 DB company에서 결과값을 model 객체 "company"에 저장
 	}
 	
@@ -47,53 +95,7 @@ public class OrderController {
 		od.setBno(bno); // 반환 값 1 or 0
 		//bno값으로 업데이트. 
 		return new ResponseEntity<>(os.suju_update(od),HttpStatus.OK);
-	}
-	
-	
-	// 수주 목록
-		@GetMapping("order")
-		public String order(OrderDTO odto, CriteriaDTO cdto, Model model) {
-			// order.jsp 실행할때 select된 결과를 가져와
-			model.addAttribute("baljulist", os.balju_select(cdto));
-			// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
-			int total = os.total(cdto);		
-			// order.jsp 실행할때 PageDTO에 저장되있는 데이터를 가져와
-										// 생성자 호출(매개변수가 2개인 생성자)
-										// new PageDTO(cdto, 190));
-			model.addAttribute("paging", new PageDTO(cdto, total));
-			return "order";
-		}
-	
-	
-	// 발주 페이지
-	@RequestMapping("balju")
-	public String balju(Model model) {
-		//거래처 목록가져오기
-		model.addAttribute("company", os.company_select());
-		return "balju";
-	}
-	
-	// 발주 등록 insert
-	@RequestMapping("balju_insert")
-	public String balju_insert(OrderDTO od) {
-		os.balju_insert(od);
-		return "redirect:/order";
-	}
-	
-	// 발주 등록 제품 ajax !
-	@RequestMapping("product_select.json")
-	public ResponseEntity<?> product_select(InventoryDTO id, Model model, HttpSession session) {		
-		return new ResponseEntity<>(os.product_select(),HttpStatus.OK);
-	}
-	
-	// 수주내역 날짜 검색
-	@RequestMapping("search_day")
-	public String search_day (OrderDTO od, Model model, HttpSession session) {
-		model.addAttribute("baljulist", os.daysearch(od));
-		session.setAttribute("searchday", os.daysearch(od));
-		return "order";
-	}
-	
+	}*/
 	
 	
 }

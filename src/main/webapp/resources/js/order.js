@@ -33,4 +33,3 @@ function sujuletter(bno) {
 	window.open(url, name, option);
 
 }
-

@@ -9,12 +9,12 @@ import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
 
 public interface OrderMapper {
-
-	// 발주 등록
-	public void balju_insert(OrderDTO od);
 	
-	//발주 목록 리스트
-	public ArrayList<OrderDTO> balju_select(CriteriaDTO cdto);
+	// 수주 등록
+	public void order_insert(OrderDTO od);
+	
+	// 수주 목록 리스트
+	public ArrayList<OrderDTO> order_select(CriteriaDTO cd);
 	
 	//제품 목록 데이터 가져오기
 	public ArrayList<InventoryDTO> product_select();
@@ -36,6 +36,6 @@ public interface OrderMapper {
 	public OrderDTO sujuletter_select(OrderDTO od);
 	
 	// 페이지 전체 건수 total
-	public int total (CriteriaDTO cdto);
+	public int total (CriteriaDTO cd);
 	
 }

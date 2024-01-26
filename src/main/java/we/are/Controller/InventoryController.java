@@ -48,16 +48,19 @@ public class InventoryController {
 		return "redirect:/p_manage";
 	}
 	
+	//제품 상세보기
 	@PostMapping("p_detail")
 	public ResponseEntity<?> p_detail(InventoryDTO id, Model model, HttpSession session, @PathVariable String pcode) {
 		
 		System.out.println(is.p_detail(pcode));
 		return new ResponseEntity<>(is.p_detail(pcode),HttpStatus.OK);
 	}
-	
+	//창고 온도 실시간 변동
 	@RequestMapping(value = "w_temple", method = RequestMethod.GET)
 	public ResponseEntity<?> w_temple(TempleDTO td, Model model, HttpSession session) {
 		return new ResponseEntity<>(ts.w_temple(), HttpStatus.OK);
-	
 	}
+	
+	
+	
 }
