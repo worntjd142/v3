@@ -30,16 +30,11 @@ public class OrderController {
 	@GetMapping("sujuletter1")
 	public void sujuletter1(OrderDTO od, CompanyDTO cd, HttpSession session, @RequestParam("bno") int bno, Model model) {
 		
-		OrderDTO ood = new OrderDTO();//다른 주소의 OrderDTO타입 ood변수 생성
-		
-		od.setBno(bno);	//parameter로 bno값을 받고 OrderDTO od bno변수에 저장
-		
+		OrderDTO ood = new OrderDTO();//다른 주소의 OrderDTO타입 ood변수 생성		
+		od.setBno(bno);	//parameter로 bno값을 받고 OrderDTO od bno변수에 저장		
 		ood = os.sujuletter_select(od); // od변수에 있는 값을 이용해서 DB의 orders 테이블에서 셀렉하고 결과값을 ood에 저장
-	
 		model.addAttribute("sujuletter", os.sujuletter_select(od)); //셀렉한 값을 model 객체 "sujuletter"변수에 저장
-	
 		cd.setCnumber(ood.getBnumber()); // ood의 저장된 값중 bnumber를 CompanyDTO cd변수 안의 number에 저장
-		
 		model.addAttribute("company", os.sujucom_select(cd.getCnumber())); // 저장받은 number값을 이용해서 DB company에서 결과값을 model 객체 "company"에 저장
 	}
 	
