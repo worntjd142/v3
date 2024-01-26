@@ -31,10 +31,12 @@ ceo varchar(20) not null, -- 대표자 이름
 caddress varchar(100) not null, -- 거래처 주소
 cnumber varchar(20) not null, -- 거래처 번호
 cemail varchar (100) not null, -- 거래처 이메일
-cmi varchar(100) -- 비고
+cmi varchar(100), -- 비고
+y varchar(100),
+x varchar(100) 
 );
 
- 수주등록
+-- 수주등록
 create table orderr (
 ono int primary key auto_increment, -- 글번호
 uuid binary(18), -- 수주번호
@@ -51,7 +53,7 @@ omanager varchar(10) not null, -- 수주담당자
 otext text -- 비고
 );
 
-출고페이지
+-- 출고페이지
 create table store(
 sdate date not null, -- 출고날짜
 uuid binary(18) not null, -- 수주번호
