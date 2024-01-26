@@ -23,9 +23,6 @@ public interface OrderService {
 	//수주내역 날짜 검색
 	public ArrayList<OrderDTO> daysearch(OrderDTO od);
 	
-	//수주서 목록 리스트 
-	public OrderDTO sujuletter_select(OrderDTO od);
-	
 	// 페이지 전체 건수 total
 	public int total (CriteriaDTO cd);	
 	
