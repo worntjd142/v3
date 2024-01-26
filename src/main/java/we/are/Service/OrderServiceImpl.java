@@ -9,7 +9,6 @@ import we.are.Mapper.OrderMapper;
 import we.are.Model.CompanyDTO;
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
-import we.are.Model.MailDTO;
 import we.are.Model.OrderDTO;
 
 @Service
@@ -18,14 +17,14 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderMapper om;
 	
-	// 발주 등록
-	public void balju_insert (OrderDTO od) {
-		om.balju_insert(od);
+	// 수주 등록
+	public void order_insert(OrderDTO od) {
+		om.order_insert(od);		
 	}
 	
-	//발주 목록 리스트
-	public ArrayList<OrderDTO> balju_select(CriteriaDTO cdto){
-		return om.balju_select(cdto);
+	// 수주 목록 리스트
+	public ArrayList<OrderDTO> order_select(CriteriaDTO cd){
+		return om.order_select(cd);
 	}
 	
 	//상품 목록 리스트
@@ -57,9 +56,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	// 페이지 전체 건수 total
-	public int total(CriteriaDTO cdto) {
-		return om.total(cdto);
+	public int total(CriteriaDTO cd) {
+		return om.total(cd);
 	}
-
 	
 }
