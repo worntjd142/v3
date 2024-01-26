@@ -34,15 +34,20 @@ public class OrderController {
 	
 	// 수주 목록 select
 	@RequestMapping("order")
-	public String order_select (OrderDTO od, CriteriaDTO cd, Model model) {
+	public String order_list (CriteriaDTO cd, Model model) {
+		
+		System.out.println(cd);
+		
 		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
 		model.addAttribute("olist", os.order_select(cd));
+		
 		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
 		int total = os.total(cd);
 		// order.jsp 실행할때 PageDTO에 저장되있는 데이터를 가져와
 									// 생성자 호출(매개변수가 2개인 생성자)
 									// new PageDTO(cdto, 190));
 		model.addAttribute("paging", new PageDTO(cd, total));
+				
 		return "order";
 	}
 	
@@ -50,15 +55,6 @@ public class OrderController {
 	@RequestMapping("product_select.json")
 	public ResponseEntity<?> product_select(InventoryDTO id, Model model, HttpSession session) {		
 		return new ResponseEntity<>(os.product_select(),HttpStatus.OK);
-	}
-	
-	
-	// 수주내역 날짜 검색
-	@RequestMapping("search_day")
-	public String search_day (OrderDTO od, Model model, HttpSession session) {
-		model.addAttribute("baljulist", os.daysearch(od));
-		session.setAttribute("searchday", os.daysearch(od));
-		return "order";
 	}
 	
 	

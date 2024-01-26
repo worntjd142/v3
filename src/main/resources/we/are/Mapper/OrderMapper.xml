@@ -29,9 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select @rownum:=@rownum+1 rownum, b.*
 			from orderr b, (select @rownum:=0) as tmp
 			order by ono desc
-		)	as orderr
+		)	as orderr 
 		<![CDATA[
- 			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+ 			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount} 
+ 			and oday BETWEEN #{startday} AND #{endday};
 			]]>
 	</select>
 	
@@ -40,14 +41,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{bno};
 	</update>
 	
-	<!-- 수주내역 날짜별 검색 -->
+	<!-- 수주내역 날짜별 검색 
 	<select id="daysearch" resultType="we.are.Model.OrderDTO">
-	SELECT * FROM orders WHERE baljuday BETWEEN #{startday} AND #{endday};
-	</select>
+	select * from orderr WHERE oday BETWEEN #{startday} AND #{endday};
+	</select>-->
 	
 	<!-- total을 위한 select -->
 	<select id="total" resultType="int">
-	SELECT COUNT(*) FROM orderr;
+	SELECT COUNT(*) FROM orderr;	
 	</select>
 	
 	<select id="sujuletter_select" resultType="we.are.Model.OrderDTO">
