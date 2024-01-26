@@ -14,6 +14,7 @@
 <body>
 <div id="map" style="width:400px;height:350px;"></div>
 <div>예상소요시간:<label id="time"></label></div>
+<input type="button" id="ss" value="등록">
 		
 	<!-- 지도 기본 위치 받아오는 키값 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e53e51300b84c3acadbd93d20d9fea8"></script>

@@ -48,6 +48,8 @@
 		
 	</table>
 	<input type="submit" value="거래처 등록">
+	<input type="hidden" value="" name="y" id="latitude"> <!-- y 위도 latitude -->
+	<input type="hidden" value="" name="x" id="longitude"> <!-- x 경도 longitude -->
 	</form>
 <table border="1" id="table">
 <tr>
@@ -73,5 +75,48 @@
 </c:forEach>
 </table>
 
+<script>
+$(function(){
+		
+	//주소창에 주소를 입력 후
+	$("#caddress").on("blur", function(){
+		// 주소값을 addres에 저장
+	let addres =$("#caddress").val()
+	
+	let Search= {"query":addres} // json 타입으로 변경
+		
+		// 카카오 디벨로퍼스에서 발급받은 API 키
+		var REST_API_KEY = "80f1edf0f84195c4ef77e3ea50b5c0c8";
+
+		// Ajax 요청
+		$.ajax({
+		    type: "GET", // method 방식
+		    url: "https://dapi.kakao.com/v2/local/search/address", // 카카오 주소 검색 api
+		    data: Search, // 쿼리문의 데이트를 이용해서 위도, 경도값을 구함.
+		    headers: {
+		        "Authorization": "KakaoAK " + REST_API_KEY, // 보안 토큰
+		        "content-type": "application/json"
+		    },
+		    success: function (data) {
+		    	console.log(data.documents[0].x); //위도
+		    	$("#longitude").val(data.documents[0].x)
+		    	console.log(data.documents[0].y); //경도
+		    	$("#latitude").val(data.documents[0].y)
+		    	
+		    },
+		  	error: function (error){
+		  		alert("검색 불가");
+		  	}
+	
+	
+		})
+		    	
+		    	
+		    	
+		    	
+})
+
+})
+</script>
 </body>
 </html>
