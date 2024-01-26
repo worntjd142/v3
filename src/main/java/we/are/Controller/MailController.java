@@ -1,11 +1,8 @@
 package we.are.Controller;
 
-import java.io.File;
-
 import javax.activation.FileDataSource;
 import javax.mail.internet.MimeMessage;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +10,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import we.are.Model.MailDTO;
 import we.are.Service.OrderServiceImpl;
 
 @Controller
@@ -73,7 +66,7 @@ public class MailController {
 	
 	//메일 작성 패치 형식으로 받음.
 	@GetMapping("mailsend")
-	public ResponseEntity<?> mailSend(MailDTO md, @RequestParam("uuid") String uuid, @RequestParam("bname") String bname, @RequestParam("text") String text) {
+	public ResponseEntity<?> mailSend(@RequestParam("uuid") String uuid, @RequestParam("bname") String bname, @RequestParam("text") String text) {
 		String image_name = bname +"."+ uuid;  //첨부할 이미지 이름.
 		String title = bname + "  (수주번호) : " + uuid; // 제목
 		System.out.println(title);
