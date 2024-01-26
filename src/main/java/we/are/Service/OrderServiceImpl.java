@@ -37,8 +37,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	// 날짜 검색
-	public ArrayList<OrderDTO> daysearch(OrderDTO od) {
-		return om.daysearch(od);
+	public ArrayList<OrderDTO> daysearch(CriteriaDTO cd) {
+		return om.daysearch(cd);
 	};
 	
 	public OrderDTO sujuletter_select(OrderDTO od) {

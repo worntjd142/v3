@@ -21,7 +21,7 @@ public interface OrderService {
 	public int suju_update(OrderDTO od);
 	
 	//수주내역 날짜 검색
-	public ArrayList<OrderDTO> daysearch(OrderDTO od);
+	public ArrayList<OrderDTO> daysearch(CriteriaDTO cd);
 	
 	// 페이지 전체 건수 total
 	public int total (CriteriaDTO cd);	

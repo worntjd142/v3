@@ -14,6 +14,7 @@ public class CriteriaDTO {
 	private String companyname;
 	
 	
+
 	// pageNum = 1 , amount = 10;
 	public CriteriaDTO() {
 		this (1, 10);
@@ -25,23 +26,23 @@ public class CriteriaDTO {
 		this.amount = amount;
 	}
 
-	
-	
+		
 	// getter + setter
 	public int getPageNum() {
 		return pageNum;
 	}
+
 	public void setPageNum(int pageNum) {
 		this.pageNum = pageNum;
 	}
+
 	public int getAmount() {
 		return amount;
 	}
+
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
-	
 
 	public String getStartday() {
 		return startday;
@@ -72,7 +73,6 @@ public class CriteriaDTO {
 		return "CriteriaDTO [pageNum=" + pageNum + ", amount=" + amount + ", startday=" + startday + ", endday="
 				+ endday + ", companyname=" + companyname + "]";
 	}
-	
 	
 	
 
