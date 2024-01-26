@@ -85,13 +85,13 @@
 	</div>
 
 	<div>
-	<button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
-	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button>
+	<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
+	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
 	
 	<table class="table table-striped table-hover table-bordered table-responsive">
 		<thead>
 			<tr>
-				<td><input type="checkbox" id="check_all"></td>
+				<th scope="col" class="table-dark"><input type="checkbox" id="check_all"></th>
 				<th scope="col" class="table-dark">수주번호</th>
 				<!-- 발주 데이터 -->
 				<th scope="col" class="table-dark">수주일자</th>
@@ -111,6 +111,7 @@
 		<tbody>
 			<c:forEach items="${olist}" var="orderlist" varStatus="a">
 				<tr>
+					<td><input type="checkbox"></td>
 					<td>${orderlist.uuid}</td>
 					<td>${orderlist.oday}</td>
 					<td>${orderlist.cname}</td>
