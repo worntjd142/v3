@@ -8,7 +8,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- 외부 JS -->
-<script type="text/javascript" src="/resources/js/connection.js"></script>
 <meta charset="UTF-8">
 <title>거래처 목록</title>
 </head>
