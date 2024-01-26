@@ -45,16 +45,6 @@ public class OrderController {
 		model.addAttribute("paging", new PageDTO(cd, total));
 		return "order";
 	}
-		
-	
-	// 발주 페이지
-	@RequestMapping("balju")
-	public String balju(Model model) {
-		//거래처 목록가져오기
-		model.addAttribute("company", os.company_select());
-		return "balju";
-	}
-	
 	
 	// 발주 등록 제품 ajax !
 	@RequestMapping("product_select.json")
