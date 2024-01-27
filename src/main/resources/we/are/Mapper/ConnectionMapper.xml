@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace = "we.are.Mapper.ConnectionMapper">
 
 	<insert id = "connection_insert">
-		insert into connection values(#{cname}, #{cno}, #{ceo}, #{caddress}, #{cnumber}, #{cemail}, #{cmi})
+		insert into connection values(#{cname}, #{cno}, #{ceo}, #{caddress}, #{cnumber}, #{cemail}, #{cmi}, #{y}, #{x})
 	</insert>
 
 	<select id = "connection_list" resultType = "we.are.Model.ConnectionDTO">

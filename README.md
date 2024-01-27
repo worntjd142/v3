@@ -4,7 +4,7 @@ use v3;
 
 
 
--- 사용자 등록 (회원가입)
+-- 사용자등록 (회원가입)
 create table usejoin ( 
 useid varchar(20) primary key, -- 아이디
 usepassword varchar(30) not null, -- 패스워드
@@ -13,27 +13,7 @@ usenum varchar(30) not null, -- 나이
 usetel varchar(30) not null -- 전화번호
 );
 
-
--- order 테이블 (수주 + 발주 통합)
-create table orders (
-bno int primary key auto_increment,
-uuid binary(18), -- 주문번호 //
-bnumber varchar(50) not null, -- 사업자 번호 //
-bname varchar(50) not null, -- 거래처 이름 //
-baljuday DATE DEFAULT (current_date) not null, -- 발주일 //
-sujuday varchar(20) default '-',  -- 수주일
-bproduct varchar(50) not null, -- 제품 이름//
-bcount int not null, -- 제품 갯수//
-pprice int not null, -- 단 가//
-bsum int, -- 합 계 //
-spayment varchar(10) default "미결제" not null, -- 결제 상태 (미결제 or 결제)
-sdelivery varchar(10)  default "-" not null, -- 배송 상태 (- or 배송 중 or 배송 준비) 
-sujubox varchar(10)  default "미발행" not null,
-pcode varchar(10) not null
-);
-
-
--- 제품 관리 DB
+-- 제품관리
 create table product(
 pcode varchar(10) not null, -- 제품 코드
 pname varchar(40) not null, -- 제품 이름
@@ -43,25 +23,46 @@ pstock int,                 -- 재고 수
 pmi varchar(500)   -- 제품 설명
 );
 
--- 거래처
-create table company(
+-- 거래처관리
+create table connection(
 cname varchar(50) not null, -- 거래처 이름
-cnumber varchar(50) not null, -- 사업자번호
-caddress varchar(100)not null, -- 주 소
-ctel varchar(15)not null, -- 전화번호
-cfax varchar(15) -- 팩스
- );
+cno varchar(50) not null, -- 사업자번호
+ceo varchar(20) not null, -- 대표자 이름
+caddress varchar(100) not null, -- 거래처 주소
+cnumber varchar(20) not null, -- 거래처 번호
+cemail varchar (100) not null, -- 거래처 이메일
+cmi varchar(100), -- 비고
+y varchar(100),
+x varchar(100) 
+);
 
--- 거래처 등록
-insert into company(cname, cnumber, caddress, ctel) value('속편한내과','120-86-10499','울산광역시 삼산로 281','052-256-6336');
-insert into company(cname, cnumber, caddress, ctel, cfax) value('마마파파&베이비','520-16-52491','울산광역시 남구 삼산로 247 마마파파앤베이비 빌딩','052-258-6006','052-258-6026');
-insert into company(cname, cnumber, caddress, ctel) value('프라우메디병원','235-11-670219','울산광역시 삼산중로 94','052-226-7114');
-insert into company(cname, cnumber, caddress, ctel) value('마더스병원','510-21-23541','울산광역시 화합로 107','052-270-7000');
-insert into company(cname, cnumber, caddress, ctel) value('울산엘리야병원','111-23-34562','울산광역시 호계로 285','052-290-2100');
-insert into company(cname, cnumber, caddress, ctel) value('울산대학교병원','123-24-13451','울산광역시  방어진순환도로 877','052-250-7000');
-insert into company(cname, cnumber, caddress, ctel) value('대한의원','433-21-12347','울산광역시 월봉6길','052-232-7582');
-insert into company(cname, cnumber, caddress, ctel) value('시티병원','122-23-45607','울산광역시 연암동 1261-6','052-280-9000');
-insert into company(cname, cnumber, caddress, ctel) value('동강병원','886-22-12345','울산광역시 태화로 239','052-241-1114');
-insert into company(cname, cnumber, caddress, ctel) value('보람병원','610-82-05735','울산광역시 돋질로336번길 10','052-278-0114');
-insert into company(cname, cnumber, caddress, ctel) value('황만근내과','987-28-11234','울산광역시 울주군 범서읍 천상리 317-2','052-248-7760');
-insert into company(cname, cnumber, caddress, ctel) value('엔젤리내과','555-11-19997','경상남도 양산시 물금읍 범어로 62','055-388-1475');
+-- 수주관리
+create table orderr (
+ono int primary key auto_increment, -- 글번호
+uuid binary(18), -- 수주번호
+oday date DEFAULT (current_date) not null, -- 수주일자
+cname varchar(50) not null, -- 거래처명
+pproduct varchar(50) not null, -- 제품이름
+pprice int not null, -- 제품단가
+ocount int not null, -- 수주수량
+recount int not null, -- 요청수량
+iocount int not null, -- 수주잔량
+osum int not null, -- 수주금액
+osuju varchar(10) default "-" not null, -- 수주상태 (출고요청완료) or (출고요청보류)
+omanager varchar(10) not null, -- 수주담당자
+otext text -- 비고
+);
+
+-- 출고관리
+create table store(
+sdate date not null, -- 출고날짜
+uuid binary(18) not null, -- 수주번호
+cname varchar(50) not null, -- 거래처명
+pname varchar(50) not null, -- 제품명
+recount int not null, -- 요청수량
+pstock int, -- 재고수량
+scount int not null, -- 출고수량
+submit varchar(10) default '-' -- 마감상태
+)
+
+
