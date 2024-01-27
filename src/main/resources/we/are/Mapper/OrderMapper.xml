@@ -7,14 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 수주 등록 insert -->
 	<insert id="order_insert">
-	<!-- INSERT 
-	INTO orderr (uuid, ocount, recount, iocount, otext) 
-	VALUE (#{uuid_short()}, #{ocount}, #{recount}, #{iocount}, #{otext}); -->
-		
-	INSERT 
-	INTO orderr (uuid, cname, pproduct, pprice, ocount, recount, iocount, osum, omanager, otext)
-	VALUE (uuid_short(),#{cname}, #{pproduct}, #{pprice}, #{ocount}, #{recount}, #{iocount}, #{osum}, #{omanager}, #{otext});
+		<!-- INSERT INTO orderr (uuid, ocount, recount, iocount, otext) VALUE (#{uuid_short()}, 
+			#{ocount}, #{recount}, #{iocount}, #{otext}); -->
+
+		INSERT INTO
+		orderr (uuid, cname, pproduct, pprice, ocount, recount, iocount, osum,
+		omanager, otext)
+		VALUE (uuid_short(),#{cname}, #{pproduct}, #{pprice},
+		#{ocount}, #{recount}, #{iocount}, #{osum}, #{omanager}, #{otext});
 	</insert>
+
 
 	<!--제품 리스트 -->
 	<select id="product_select"
@@ -22,37 +24,65 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product;
 	</select>
 
-	<!-- 발주 목록 리스트 -->
+
+	<!-- 수주 목록 리스트 + 날짜 기간 조회 select -->
 	<select id="order_select" resultType="we.are.Model.OrderDTO">
-		select * 
+		select *
 		from (
-			select @rownum:=@rownum+1 rownum, b.*
-			from orderr b, (select @rownum:=0) as tmp
-			order by ono desc
-		)	as orderr 
+		select @rownum:=@rownum+1 rownum, b.*
+		from orderr b,
+		(select @rownum:=0) as tmp
+		<if test="search != null">
+			<!-- search(input버튼) null이 아니면 -->
+			<choose>
+				<!-- startday값이 null값이 아니고 '빈값'이 아니고 endday값이 null값이 아니고 '빈값'이 아니면 -->
+				<!-- oday에서 startday부터 endday까지 select 해라 -->
+				<when
+					test="startday != null and startday != '' and endday != null and endday != '' "> 
+	       	 <![CDATA[	           
+	           where oday BETWEEN #{startday} AND #{endday}
+	        	]]>
+				</when>
+				<!-- startday값이 null값이 아니고 '빈값'이 아닌 endday값이 null이거나 '빈값'이면 -->
+				<!-- oday에서 시작 날짜 이후 목록 select 해라 -->
+				<when
+					test="startday != null and startday != '' and endday == null or endday == '' ">
+      	 	<![CDATA[      	 		
+      	 		where oday >= #{startday}
+      	 	 ]]>
+				</when>
+				<!-- startday값이 null이거나 '빈값'이고 endday값이 null값이 아니고 '빈값'이 아니면 -->
+				<!-- oday에서 종료날짜 이전 목록 select 해라 -->
+				<when
+					test="startday == null or startday == '' and endday != null and endday != '' ">
+      	 	<![CDATA[      	 		
+      	 		where oday <= #{endday}
+      	 	 ]]>
+				</when>
+			</choose>
+		</if>
+		order by oday desc
+		) as orderr			 
 		<![CDATA[
  			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount} 
- 			and oday BETWEEN #{startday} AND #{endday};
 			]]>
 	</select>
-	
+
 	<update id="suju_update">
-		update orders set sujuday = current_date(), sujubox = "발 행" where bno =
+		update orders set sujuday = current_date(), sujubox =
+		"발 행" where bno =
 		#{bno};
 	</update>
-	
-	<!-- 수주내역 날짜별 검색 
-	<select id="daysearch" resultType="we.are.Model.OrderDTO">
-	select * from orderr WHERE oday BETWEEN #{startday} AND #{endday};
-	</select>-->
-	
+
 	<!-- total을 위한 select -->
 	<select id="total" resultType="int">
-	SELECT COUNT(*) FROM orderr;	
+		SELECT COUNT(*) FROM orderr;
 	</select>
-	
-	<select id="sujuletter_select" resultType="we.are.Model.OrderDTO">
-	SELECT * FROM orders WHERE bno = #{bno};
+
+
+	<select id="sujuletter_select"
+		resultType="we.are.Model.OrderDTO">
+		SELECT * FROM orders WHERE bno = #{bno};
 	</select>
 
 
