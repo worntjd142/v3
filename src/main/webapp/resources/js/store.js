@@ -71,5 +71,16 @@ function insert_company(name, number){
 	$("#bnumber").val(number); // 인수 값을 id="bnumber의 value에 저장
 }
 
+	
+	
+function del(x,y,name){
+	
+	
+		   let url = "release?x=" + x +"&y="+ y +"&name=" + name +"";
 
+		   let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no, menubar=no, ';
+
+		   window.open(url, name, option);
+
+}
 
