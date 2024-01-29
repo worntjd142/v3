@@ -78,7 +78,7 @@ function del(x,y,name){
 	
 		   let url = "release?x=" + x +"&y="+ y +"&name=" + name +"";
 
-		   let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no, menubar=no, ';
+		   let option = 'width=500, height=500, left=1000, scrollbars=no, resizeable=no, menubar=no, ';
 
 		   window.open(url, name, option);
 
