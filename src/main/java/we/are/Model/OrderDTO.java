@@ -10,15 +10,10 @@ public class OrderDTO {
 	private String oday;
 	// 수주수량
 	private int ocount;
-	// 요청수량
-	private int recount;
-	// 수주잔량
-	private int iocount;
 	// 수주상태
 	private String osuju;
 	// 요청사항
 	private String otext;
-	
 	// 거래처명
 	private String cname;
 	// 제품명
@@ -29,11 +24,26 @@ public class OrderDTO {
 	private int osum;
 	// 수주담당자
 	private String omanager;
+	//출고 수량
+	private int scount;  
+	//출고 날짜
+	private String sdate;
 	
 	
-
 	// getter + setter
 	
+	public int getScount() {
+		return scount;
+	}
+	public void setScount(int scount) {
+		this.scount = scount;
+	}
+	public String getSdate() {
+		return sdate;
+	}
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
 	public int getOno() {
 		return ono;
 	}
@@ -58,18 +68,7 @@ public class OrderDTO {
 	public void setOcount(int ocount) {
 		this.ocount = ocount;
 	}
-	public int getRecount() {
-		return recount;
-	}
-	public void setRecount(int recount) {
-		this.recount = recount;
-	}
-	public int getIocount() {
-		return iocount;
-	}
-	public void setIocount(int iocount) {
-		this.iocount = iocount;
-	}
+	
 	public String getOsuju() {
 		return osuju;
 	}
@@ -113,12 +112,4 @@ public class OrderDTO {
 		this.omanager = omanager;
 	}	
 
-	@Override
-	public String toString() {
-		return "OrderDTO [ono=" + ono + ", uuid=" + uuid + ", oday=" + oday + ", ocount=" + ocount + ", recount="
-				+ recount + ", iocount=" + iocount + ", osuju=" + osuju + ", otext=" + otext + ", cname=" + cname
-				+ ", pproduct=" + pproduct + ", pprice=" + pprice + ", osum=" + osum + ", omanager=" + omanager + "]";
-	}
-
-	
 }

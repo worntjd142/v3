@@ -1,6 +1,8 @@
 package we.are.Controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
@@ -37,7 +41,6 @@ public class OrderController {
 	@RequestMapping("order")
 	public String order_list (OrderDTO od, CriteriaDTO cd, Model model, JoinDTO jd) {
 
-		System.out.println(cd);
 
 		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
 		model.addAttribute("olist", os.order_select(cd));
@@ -83,6 +86,24 @@ public class OrderController {
 		//bno값으로 업데이트. 
 		return new ResponseEntity<>(os.suju_update(od),HttpStatus.OK);
 	}*/
+	
+	
+	//일괄 수주 
+	 @GetMapping("all_issuance")
+     public ResponseEntity<?> issuance(@RequestParam(value="ono[]") List<Integer> ono) {  //배열값을 받고
+		 	
+		 int result = 0; // 업데이트가 되면 1 아니면 0
+		 
+		 //* size() == length
+		 for(int i=0; i < ono.size(); i++) { //ono 배열의 길이만큼 반복
+			 
+			result = os.suju_update(ono.get(i)); // 반복하면서 하나씩 업데이트.
+			
+		 }
+		 
+		 // 결과값 반환 ('0' or '1')
+        return new ResponseEntity<>(result,HttpStatus.OK);
+        }
 
 
 }
