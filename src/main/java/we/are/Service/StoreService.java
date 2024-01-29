@@ -1,12 +1,11 @@
-package we.are.Mapper;
+package we.are.Service;
 
 import java.util.ArrayList;
 
 import we.are.Model.OrderDTO;
 
-public interface StoreMapper {
+public interface StoreService {
 
-	//출고 목록 가져오기
 	public ArrayList<OrderDTO> store_select();
 	
 }

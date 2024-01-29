@@ -42,7 +42,7 @@
 						style="pointer-events: none"></a></li>
 					<li><a href="order" class="nav-link px-2 text-white">수주관리</a></li>
 					<li><a href="connection" class="nav-link px-2 text-white">거래처관리</a></li>
-					<li><a href="release" class="nav-link px-2 text-white">출고관리</a></li>					
+					<li><a href="store" class="nav-link px-2 text-white">출고관리</a></li>					
 					<li><a href="p_manage" class="nav-link px-2 text-white">제품관리</a></li>
 				</ul>
 

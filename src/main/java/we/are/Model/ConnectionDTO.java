@@ -22,8 +22,18 @@ public class ConnectionDTO {
 	
 	private String y; // 거래처 y 값
 	
+	private int un; // 거래처 고유번호
 	
 	
+	
+	public int getUn() {
+		return un;
+	}
+
+	public void setUn(int un) {
+		this.un = un;
+	}
+
 	public String getCnum() {
 		return cnum;
 	}

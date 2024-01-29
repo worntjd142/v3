@@ -45,15 +45,13 @@
 						<th scope="col">제품명</th>
 						<td><input type="text" name="pproduct"></td>
 						<th scope="col">제품단가</th>
-						<td><input type="text" name="pprice"></td>
+						<td><input type="text" name="pprice" id="pprice"></td>
 					</tr>
 					<tr>
 						<th scope="col">수주수량</th>
-						<td><input type="number" name="ocount"></td>
-						<th scope="col">요청수량</th>
-						<td><input type="number" name="recount"></td>
+						<td><input type="number" name="ocount"id="ocount"> </td>
 						<th scope="col">합계금액</th>
-						<td><input type="text" name="osum"></td>
+						<td><input type="text" name="osum" id="total"></td>
 					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
@@ -85,6 +83,7 @@
 					<tr>
 						<th scope="col">수주번호</th>
 						<td><input type="text" name="companyname">수주번호로 조회</td>
+						<td><input type="button" name="companyname" value="일괄등록" onclick="update()"></td>
 					</tr>
 					<tr>
 						<td><input type="submit" value="조회" name="search"
@@ -103,8 +102,7 @@
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
-					<th scope="col" class="table-dark"><input type="checkbox"
-						id="check_all"></th>
+					<th scope="col" class="table-dark"><input type="checkbox" id="check_all"></th>
 					<th scope="col" class="table-dark">수주번호</th>
 					<!-- 발주 데이터 -->
 					<th scope="col" class="table-dark">수주일자</th>
@@ -112,8 +110,6 @@
 					<th scope="col" class="table-dark">제품명</th>
 					<th scope="col" class="table-dark" hidden="">제품단가</th>
 					<th scope="col" class="table-dark">수주수량</th>
-					<th scope="col" class="table-dark">요청수량</th>
-					<th scope="col" class="table-dark">수주잔량</th>
 					<th scope="col" class="table-dark">수주합계금액</th>
 					<!-- 수주 데이터 -->
 					<th scope="col" class="table-dark">수주상태</th>
@@ -124,15 +120,13 @@
 			<tbody>
 				<c:forEach items="${olist}" var="orderlist" varStatus="a">
 					<tr>
-						<td><input type="checkbox"></td>
+						<td><c:if test="${orderlist.osuju == '-'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
-						<td>${orderlist.cname}</td>
+						<td>${orderlist.cname}</td> 
 						<td>${orderlist.pproduct}</td>
 						<td hidden="">${orderlist.pprice}</td>
 						<td>${orderlist.ocount}</td>
-						<td>${orderlist.recount}</td>
-						<td>${orderlist.iocount}</td>
 						<td>${orderlist.osum}</td>
 						<td>${orderlist.osuju}</td>
 						<td>${orderlist.omanager}</td>

@@ -11,10 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{ocount}, #{recount}, #{iocount}, #{otext}); -->
 
 		INSERT INTO
-		orderr (uuid, cname, pproduct, pprice, ocount, recount, iocount, osum,
-		omanager, otext)
+		orderr (uuid, cname, pproduct, pprice, ocount, osum, omanager, otext)
 		VALUE (uuid_short(),#{cname}, #{pproduct}, #{pprice},
-		#{ocount}, #{recount}, #{iocount}, #{osum}, #{omanager}, #{otext});
+		#{ocount}, #{osum}, #{omanager}, #{otext});
 	</insert>
 
 
@@ -64,14 +63,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by oday desc
 		) as orderr			 
 		<![CDATA[
- 			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount} 
-			]]>
+ 			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+			]]> 
 	</select>
 
 	<update id="suju_update">
-		update orders set sujuday = current_date(), sujubox =
-		"발 행" where bno =
-		#{bno};
+		update orderr set osuju  = '수주확인' where ono = #{ono}
 	</update>
 
 	<!-- total을 위한 select -->
@@ -85,34 +82,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM orders WHERE bno = #{bno};
 	</select>
 
-
-	<!-- DTO 2개를 합쳐서 JOIN으로 검색된 값을 넣기 위한 쿼리문. -->
-	<!-- <resultMap type="we.are.Model.SujuDTO" id="SujuDTO"> 4. resultMap="SujuDTO"로 
-		검색된 id="SujuDTO"에 연결 "we.are.Model.SujuDTO" 위치에 값을 저장함. -->
-	<!-- <result column="spayment" property="spayment" /> -->
-	<!-- <result column="sdelivery" property="sdelivery" /> -->
-	<!-- </resultMap> -->
-
-	<!-- <resultMap type="we.are.Model.BaljuDTO" id="Balju">2. resultMap="Balju"로 
-		검색된 id="balju"에 연결 "we.are.Model.BaljuDTO" 위치에 값을 저장함 -->
-	<!-- <result column="bno" property="bno" /> -->
-	<!-- <result column="baljuday" property="baljuday" /> -->
-	<!-- <result column="bnumber" property="bnumber" /> -->
-	<!-- <result column="bname" property="bname" /> -->
-	<!-- <result column="bproduct" property="bproduct" /> -->
-	<!-- <result column="bcount" property="bcount" /> -->
-	<!-- <result column="bsum" property="bsum" /> -->
-	<!-- <result column="pprice" property="pprice" /> -->
-	<!-- <collection property="SujuDTO" resultMap="SujuDTO" /> 3. collection을 
-		이용하여 더 할 값을 검색 resultMap="SujuDTO"로 이동 -->
-	<!-- </resultMap> -->
-
-
-	<!-- <select id="balju_select" parameterType="String" resultMap="Balju"> 
-		1. db의 select 값을 parameterType string타입으로 전송 > resultMap="Balju"으로 이동 -->
-	<!-- select a.bno, a.baljuday, a.bnumber, a.bname, a.bproduct, a.bcount, 
-		a.bsum, b.sdelivery, b.spayment, a.pprice from balju a left join suju b on 
-		a.bno = b.bno; -->
-	<!-- </select> -->
 
 </mapper>
