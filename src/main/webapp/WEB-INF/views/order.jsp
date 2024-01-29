@@ -9,8 +9,9 @@
 <!-- CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- 외부 JS -->
+<!-- 외부 JS, CSS -->
 <script type="text/javascript" src="/resources/js/order.js"></script>
+<link href="../resources/css/order.css" rel="stylesheet">
 
 <meta charset="UTF-8">
 <title>수주</title>
@@ -32,9 +33,15 @@
 					<tr class="table-dark">
 						<th colspan="6" class="title_th">수주 등록</th>
 					</tr>
-					<tr>
+					<tr>					
 						<th scope="col">거래처명</th>
-						<td><input type="text" name="cname"></td>
+						
+						<form action="#" method="#">						
+						<td><input type="text" name="cname" class="cname">
+						<a href="#" class="a_1"><img src="/resources/image/search_icon.png" class="imgsize"></a>
+						</td>						
+						</form>						
+						
 						<th scope="col">제품명</th>
 						<td><input type="text" name="pproduct"></td>
 						<th scope="col">제품단가</th>
@@ -52,7 +59,7 @@
 						<th scope="col">수주 담당자</th>
 						<td><input type="text" hidden="" name="omanager"><span>${sessionScope.login.usename}</span></td>
 						<th scope="col">요청사항</th>
-						<td colspan="3"><textarea rows="2" cols="89" name="otext"></textarea></td>
+						<td colspan="3"><textarea rows="2" cols="52" name="otext"></textarea></td>
 					</tr>
 				</thead>
 			</table>
@@ -69,9 +76,9 @@
 					<tr>
 						<th scope="col">수주일</th>
 															<!-- 컨트롤 "paging" 변수에 저장된 cdto모델에 있는 startday  -->
-						<td><input type="date" name="startday" value="${paging.cd.startday}"> 
+						<td><input type="date" name="startday" id="startday" value="${paging.cd.startday}"> 
 							<label> ~ </label> 
-						<input type="date" name="endday" value="${paging.cd.endday}"></td>
+						<input type="date" name="endday" id="endday" value="${paging.cd.endday}"></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -80,7 +87,7 @@
 						<td><input type="text" name="companyname">수주번호로 조회</td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="조회" 
+						<td><input type="submit" value="조회" name="search"
 							class="btn btn-outline-secondary btn-sm"></td>
 					</tr>
 				</tbody>

@@ -4,7 +4,7 @@ use v3;
 
 
 
--- 사용자 등록 (회원가입)
+-- 사용자등록 (회원가입)
 create table usejoin ( 
 useid varchar(20) primary key, -- 아이디
 usepassword varchar(30) not null, -- 패스워드
@@ -13,7 +13,7 @@ usenum varchar(30) not null, -- 나이
 usetel varchar(30) not null -- 전화번호
 );
 
--- 제품 관리 DB
+-- 제품관리
 create table product(
 pcode varchar(10) not null, -- 제품 코드
 pname varchar(40) not null, -- 제품 이름
@@ -23,7 +23,7 @@ pstock int,                 -- 재고 수
 pmi varchar(500)   -- 제품 설명
 );
 
--- 거래처
+-- 거래처관리
 create table connection(
 cname varchar(50) not null, -- 거래처 이름
 cno varchar(50) not null, -- 사업자번호
@@ -36,7 +36,7 @@ y varchar(100),
 x varchar(100) 
 );
 
--- 수주등록
+-- 수주관리
 create table orderr (
 ono int primary key auto_increment, -- 글번호
 uuid binary(18), -- 수주번호
@@ -53,7 +53,7 @@ omanager varchar(10) not null, -- 수주담당자
 otext text -- 비고
 );
 
--- 출고페이지
+-- 출고관리
 create table store(
 sdate date not null, -- 출고날짜
 uuid binary(18) not null, -- 수주번호
