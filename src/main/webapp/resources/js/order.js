@@ -60,16 +60,6 @@ $("#ocount").on("blur", function(){
    
 })
 
-function sujuletter(bno) {
-
-   let url = "sujuletter1?bno=" + bno +"";
-
-   let option = 'width=800, height=1000, left=1000, scrollbars=no, resizeable=no, menubar=no, ';
-
-   window.open(url, name, option);
-
-}
-
 function update(){
 
    

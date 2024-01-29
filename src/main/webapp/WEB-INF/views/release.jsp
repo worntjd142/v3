@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>출고 내역</title>
+<title>배송 중</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <link rel = "stylesheet" href = "resources/css/release.css">
 <script src="../resources/js/release.js"></script>
@@ -14,28 +14,25 @@
 <body>
 <div id="map" style="width:400px;height:350px;"></div>
 <div>예상소요시간:<label id="time"></label></div>
-<input type="button" id="ss" value="등록">
-		
+	
 	<!-- 지도 기본 위치 받아오는 키값 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e53e51300b84c3acadbd93d20d9fea8"></script>
 	<script>
 	
 	let Delivery_latitude; //위도
 	let Delivery_longitude; //경도
-	
+	let name;
+	let x;
+	console.log(x)
+	let y;
 	$(function(){
-		
-		
-		navigator.geolocation.getCurrentPosition(function(position) { //gps 정보를 불러옴.
-	    console.log(position)
+		navigator.geolocation.getCurrentPosition(function(position) { //위치정보를 불러옴.
 	    
 	      Delivery_latitude = position.coords.latitude; //위도
-	      console.log(Delivery_latitude)//위도
 	      
 	      Delivery_longitude = position.coords.longitude; //경도 
-	      console.log(Delivery_longitude) //경도 
 	      
-	      maqload()
+	      //maqload()
 		})
 	});
 		function maqload(){
@@ -44,7 +41,7 @@
 
 		// 출발지 및 목적지 좌표
 		var origin = ""+Delivery_longitude+"," +Delivery_latitude+",name=배달원";
-		var destination ="129.3123047, 35.5071869,name=대한의원"; // 목적지 위치 
+		var destination =""+ x +"," + y +",name="+name+"; // 목적지 위치 
 		// Ajax 요청
 		$.ajax({
 		    type: "GET", // method 방식
