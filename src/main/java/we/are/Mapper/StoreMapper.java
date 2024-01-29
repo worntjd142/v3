@@ -1,12 +1,11 @@
 package we.are.Mapper;
 
 import java.util.ArrayList;
-
-import we.are.Model.OrderDTO;
+import java.util.HashMap;
 
 public interface StoreMapper {
 
 	//출고 목록 가져오기
-	public ArrayList<OrderDTO> store_select();
+	public ArrayList<HashMap<String, Object>> store_select();
 	
 }

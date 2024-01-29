@@ -1,11 +1,10 @@
 package we.are.Service;
 
 import java.util.ArrayList;
-
-import we.are.Model.OrderDTO;
+import java.util.HashMap;
 
 public interface StoreService {
 
-	public ArrayList<OrderDTO> store_select();
+	ArrayList<HashMap<String, Object>> store_select();
 	
 }

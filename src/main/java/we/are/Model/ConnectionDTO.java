@@ -22,17 +22,6 @@ public class ConnectionDTO {
 	
 	private String y; // 거래처 y 값
 	
-	private int un; // 거래처 고유번호
-	
-	
-	
-	public int getUn() {
-		return un;
-	}
-
-	public void setUn(int un) {
-		this.un = un;
-	}
 
 	public String getCnum() {
 		return cnum;
@@ -47,6 +36,7 @@ public class ConnectionDTO {
 	}
 
 	public void setX(String x) {
+		System.out.println(x);
 		this.x = x;
 	}
 
@@ -113,5 +103,14 @@ public class ConnectionDTO {
 	public void setCmi(String cmi) {
 		this.cmi = cmi;
 	}
+
+	@Override
+	public String toString() {
+		return "ConnectionDTO [cnum=" + cnum + ", cname=" + cname + ", cno=" + cno + ", ceo=" + ceo + ", caddress="
+				+ caddress + ", cnumber=" + cnumber + ", cemail=" + cemail + ", cmi=" + cmi + ", x=" + x + ", y=" + y
+				+ "]";
+	}
+	
+	
 
 }

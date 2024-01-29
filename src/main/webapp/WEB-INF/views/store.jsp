@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- 외부 JS, CSS -->
-<script type="text/javascript" src="/resources/js/order.js"></script>
+<script type="text/javascript" src="/resources/js/store.js"></script>
 <link href="../resources/css/order.css" rel="stylesheet">
 
 <meta charset="UTF-8">
@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 
@@ -88,7 +87,27 @@
 						<td></td>
 						<td>${stroeList.osuju}</td>
 						<td></td>
-						  <td></td> 
+					 	<td>
+					 	<c:choose>
+					 	<c:when test="${stroeList.sdel  ==  '-'}">
+							-					 	
+					 	</c:when>
+					 	
+					 	<c:when test="${stroeList.sdel  ==  '출고 중'}">
+							<img alt="출고 중" src="../../resources/image/적재.png">
+							<label>출고 중</label>				 	
+					 	</c:when>
+					 	
+					 	<c:when test="${stroeList.sdel  ==  '배송 중'}">
+							<img alt="배달 중" src="../../resources/image/배달.png" onclick="del('${stroeList.x}','${stroeList.y}','${stroeList.cname}')">
+							<label>배송 중</label>
+					 	</c:when>
+					 	
+					 	<c:when test="${stroeList.sdel  ==  '배달완료'}">
+					 	배달 완료
+					 	</c:when>
+					 	</c:choose>
+					 	</td>
 					</tr>
 					<!-- /반복문으로 데이터 가져오기 -->
 				</c:forEach>
