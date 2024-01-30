@@ -9,6 +9,7 @@ public class CriteriaDTO {
 	private int amount;
 	
 	//검색
+	private String keyword;
 	private String search;
 	private String startday;
 	private String endday;
@@ -31,6 +32,14 @@ public class CriteriaDTO {
 	
 
 	// getter + setter
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
 	public int getPageNum() {
 		return pageNum;
 	}

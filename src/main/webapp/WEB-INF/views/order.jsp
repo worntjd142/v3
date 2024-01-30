@@ -8,9 +8,14 @@
 <head>
 <!-- CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <!-- 외부 JS, CSS -->
 <script type="text/javascript" src="/resources/js/order.js"></script>
+<script type="text/javascript" src="/resources/js/balju.js"></script>
 <link href="../resources/css/order.css" rel="stylesheet">
 
 <meta charset="UTF-8">
@@ -36,11 +41,11 @@
 					<tr>					
 						<th scope="col">거래처명</th>
 						
-						<form action="#" method="#">						
-						<td><input type="text" name="cname" class="cname">
+												
+						<td><input type="text" name="cname" id="auto_search" class="cname">
 						<a href="#" class="a_1"><img src="/resources/image/search_icon.png" class="imgsize"></a>
 						</td>						
-						</form>						
+											
 						
 						<th scope="col">제품명</th>
 						<td><input type="text" name="pproduct"></td>

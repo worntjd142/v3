@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import we.are.Mapper.OrderMapper;
+import we.are.Model.ConnectionDTO;
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
@@ -15,6 +16,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	OrderMapper om;
+		
 	
 	// 수주 등록
 	public void order_insert(OrderDTO od) {
@@ -26,12 +28,18 @@ public class OrderServiceImpl implements OrderService {
 		return om.order_select(cd);
 	}
 	
+	// 거래처명 자동완성
+	public ArrayList<ConnectionDTO> autocomplete (ConnectionDTO cdt){
+		return om.autocomplete(cdt);
+	}
+	
+	
 	//상품 목록 리스트
 	public ArrayList<InventoryDTO> product_select() {		
 		return om.product_select();
 	}
 		
-	//수주서 발행
+	// 수주서 발행
 	public int suju_update(int ono) {
 		 return om.suju_update(ono);
 	}
@@ -49,5 +57,6 @@ public class OrderServiceImpl implements OrderService {
 	public int total(CriteriaDTO cd) {
 		return om.total(cd);
 	}
+
 	
 }
