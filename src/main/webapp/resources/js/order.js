@@ -3,7 +3,7 @@ let ono = Array(); // ono 전역변수 선언
 $(function() {
    
 	
-	// 일괄 수주 등록 js 
+	// 일괄 수주 등록 
 	
 	
    $("#check_all").on("click", function() {  // 메인 체크박스를 클릭 시.
