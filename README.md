@@ -45,8 +45,6 @@ cname varchar(50) not null, -- 거래처명
 pproduct varchar(50) not null, -- 제품이름
 pprice int not null, -- 제품단가
 ocount int not null, -- 수주수량
-recount int not null, -- 요청수량
-iocount int not null, -- 수주잔량
 osum int not null, -- 수주금액
 osuju varchar(10) default "-" not null, -- 수주상태 (출고요청완료) or (출고요청보류)
 omanager varchar(10) not null, -- 수주담당자
