@@ -83,7 +83,7 @@
 					<tr>
 						<th scope="col">수주번호</th>
 						<td><input type="text" name="companyname">수주번호로 조회</td>
-						<td><input type="button" name="companyname" value="일괄등록" onclick="update()"></td>
+						
 					</tr>
 					<tr>
 						<td><input type="submit" value="조회" name="search"
@@ -97,7 +97,8 @@
 	<div>
 		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
-
+		<input type="button" name="companyname" value="일괄체크" onclick=>
+		<input type="button" name="companyname" value="일괄등록" onclick="update()">
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
