@@ -1,60 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<link rel = "stylesheet" href = "resources/css/p_manage.css">
-<link rel = "stylesheet" href = "resources/css/p_detail.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<!-- CDN -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- 외부 JS, CSS -->
 <script type="text/javascript" src = "resources/js/p_manage.js"></script>
+<link rel = "stylesheet" href = "resources/css/p_manage.css">
+
 <meta charset="UTF-8">
-<title>제품 관리</title>
+<title>거래처 목록</title>
 </head>
+
 <body>
- <!--전체 div-->
-<div class = main_container>
-<!--등록창 div -->
-	<div class = col-md-8>
-		<div class = "comment"><h4>신규 제품 등록</h4></div>
-		<form action = "p_insert" method = "post">
+
+	<!-- 헤더 -->
+	<jsp:include page="include/header.jsp"></jsp:include>
+
+	<div>
+		<form action="p_insert" method="post">
 		<input type = "hidden" name = "pcode" id = "randomcode">
-		<div>
-		<table id = "p_insertt">
-		<tr>
-			<th>제품명</th>
-			<td><input type = "text" name = "pname"></td>
-			<th>제품단가</th>
-			<td><input type = "text" name = "pprice"></td>
-		</tr>
-		<tr>
-			<th>제조사</th>
-			<td><input type = "text" name = "pmc"></td>
-			<th>입고수량</th>
-			<td><input type = "text" name = "pstock"></td>
-		</tr>
-		<tr>
-			<th>제품설명</th>
-			<td><input type = "text" name = "pmi"></td>
-		</tr>
-		</table>
-		</div>
-		<input type = "submit">
+			<table
+				class="table table-striped table-secondary table-hover table-bordered table-responsive">
+				<thead>
+					<tr>
+						<td colspan="6"><input type="submit" value="등록"></td>
+					</tr>
+					<tr class="table-dark">
+						<th colspan="6" class="title_th">제품 등록</th>
+					</tr>
+					<tr>					
+						<th scope="col">제품명</th>
+						<td><input type="text" name="pname"></td>								
+						<th scope="col">제품단가</th>
+						<td><input type="text" name="pprice"></td>
+						<th scope="col">제조사</th>
+						<td><input type="text" name="pmc"></td>
+					</tr>
+					<tr>
+						<th scope="col">입고수량</th>
+						<td><input type="text" name="pstock"> </td>
+						<th scope="col">제품설명</th>
+						<td colspan = "4"><input type="text" name="pmi"></td>
+					</tr>
+				</thead>
+			</table>
 		</form>
 	</div>
 <!-- 제품 리스트 div -->
-	<div class = "col-md-8">
-		<div class = "comment"><h4>제품목록</h4></div>
-		<table id = "p_list">
+	<div>
+		<table class = "table table-striped table-hover table-bordered table-responsive">
 		<caption id = temple>제품창고 온도 :<label id = wtemple></label>℃ </caption>
 			<thead>
 				<tr>
-					<th>제품코드</th>
-					<th>제품명</th>
-					<th>제품단가</th>
-					<th>재고 수</th>
+					<th scope="col" class="table-dark">제품코드</th>
+					<th scope="col" class="table-dark">제품명</th>
+					<th scope="col" class="table-dark">제품단가</th>
+					<th scope="col" class="table-dark">재고 수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -68,35 +75,36 @@
 		</c:forEach>
 			</tbody>
 		</table>
-		
 	</div>
 <!-- 상세내역 div -->
 	<div class = "col-md-8">
-		<div class = "comment"><h4>제품 상세 정보</h4></div>
-		<table id = "p_detail" >
-			<tr>
-				<th>제품 코드</th>
-				<td id = "pcodei"></td>
-			</tr>
-			<tr>
-				<th>제품명</th>
-				<td id = "pnamei"></td>
-				<th>제품단가</th>
-				<td id = "ppricei"></td>
-			</tr>
-			<tr>
-				<th>제조사</th>
-				<td id = "pmci"></td>
-				<th>재고수량</th>
-				<td id = "pstocki"></td>
-			</tr>
-			<tr>
-				<th>제품설명</th>
-				<td id = "pmii"></td>
-			</tr>
+		<table class="table table-striped table-secondary table-hover table-bordered table-responsive" >
+			<thead>
+				<tr class="table-dark">
+						<th colspan="6" class="title_th">제품 상세 정보</th>
+				</tr>
+				<tr>
+					<th>제품 코드</th>
+					<td id = "pcodei"></td>
+				</tr>
+				<tr>
+					<th>제품명</th>
+					<td id = "pnamei"></td>
+					<th>제품단가</th>
+					<td id = "ppricei"></td>
+				</tr>
+				<tr>
+					<th>제조사</th>
+					<td id = "pmci"></td>
+					<th>재고수량</th>
+					<td id = "pstocki"></td>
+				</tr>
+				<tr>
+					<th>제품설명</th>
+					<td id = "pmii"></td>
+				</tr>
+			<thead>
 		</table>
 	</div>
-
-</div>
 </body>
 </html>

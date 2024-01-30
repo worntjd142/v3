@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import we.are.Model.JoinDTO;
-import we.are.Service.ConnectionService;
 import we.are.Service.JoinService;
 
 @Controller
@@ -17,8 +16,6 @@ public class MainController {
 	@Autowired
 	JoinService joins;
 	
-	@Autowired
-	ConnectionService cs;
 	
 	@RequestMapping("/")
 	public String mainLogin() {		
@@ -60,12 +57,9 @@ public class MainController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("test")
-	public String test (Model model) {
-		model.addAttribute("c_list", cs.connection_list());
-		return "test";
+
+		
 	}
 
 	
-}
 	
