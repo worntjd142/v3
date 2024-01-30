@@ -97,7 +97,7 @@
 	<div>
 		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
-		<input type="button" name="companyname" value="일괄체크">
+		<input type="button" name="companyname" value="일괄체크" id="check_button">
 		<input type="button" name="companyname" value="일괄등록" onclick="update()">
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
