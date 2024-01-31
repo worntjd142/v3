@@ -16,7 +16,7 @@ public interface OrderService {
 	public ArrayList<OrderDTO> order_select (CriteriaDTO cd);
 	
 	// 거래처명 자동완성
-	public ArrayList<ConnectionDTO> autocomplete (ConnectionDTO cdt);
+	public ArrayList<ConnectionDTO> autocomplete (String cname);
 	
 	//제품 리스트
 	public ArrayList<InventoryDTO> product_select();

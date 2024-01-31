@@ -16,9 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{ocount}, #{osum}, #{omanager}, #{otext});
 	</insert>
 	
-	<!-- 거래처 리스트 -->
+	<!-- 거래처 자동완성을 위한 쿼리 -->
 	<select id="autocomplete" resultType="we.are.Model.ConnectionDTO">
-	select * from connection;
+	SELECT cname FROM connection WHERE cname LIKE concat('%', #{cname} ,'%');
 	</select>
 
 
