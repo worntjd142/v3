@@ -28,7 +28,7 @@
 	<jsp:include page="include/header.jsp"></jsp:include>
 
 	<div>
-		<form action="order_insert" method="post">
+		<form action="order_insert" method="post" id="autosearch">
 			<table
 				class="table table-striped table-secondary table-hover table-bordered table-responsive">
 				<thead>
@@ -41,11 +41,9 @@
 					<tr>					
 						<th scope="col">거래처명</th>
 						
-												
-						<td><input type="text" name="cname" id="auto_search" class="cname">
+						<td><input type="text" name="cname" id="auto"><label for="auto"></label>
 						<a href="#" class="a_1"><img src="/resources/image/search_icon.png" class="imgsize"></a>
-						</td>						
-											
+						</td>										
 						
 						<th scope="col">제품명</th>
 						<td><input type="text" name="pproduct"></td>

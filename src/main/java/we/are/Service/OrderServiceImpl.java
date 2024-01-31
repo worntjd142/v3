@@ -29,8 +29,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	// 거래처명 자동완성
-	public ArrayList<ConnectionDTO> autocomplete (ConnectionDTO cdt){
-		return om.autocomplete(cdt);
+	public ArrayList<ConnectionDTO> autocomplete (String cname){
+		return om.autocomplete(cname);
 	}
 	
 	
