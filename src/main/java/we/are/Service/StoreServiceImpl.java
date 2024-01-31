@@ -29,4 +29,9 @@ public class StoreServiceImpl implements StoreService {
 		return sm.balju_update(od);
 	}
 	
+	//출고일 등록
+		public String balju_check(int ono) {
+		return sm.balju_check(ono);
+		}
 }
+		

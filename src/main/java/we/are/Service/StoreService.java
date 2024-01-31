@@ -16,5 +16,7 @@ public interface StoreService {
 	//출고일 등록
 	public int balju_update(OrderDTO od);
 	
+	//발주 확인
+	public String balju_check(int ono);
 	
 }
