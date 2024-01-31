@@ -14,8 +14,9 @@ public interface StoreMapper {
 	public int product_select(String pstock);
 	
 	//출고일 등록
-	public int baljuday_update(String uuid);
+	public int balju_update(OrderDTO od);
 	
-	
-	public int product_update(OrderDTO od);
+	//발주 확인
+	public String balju_check(int ono);
+
 }

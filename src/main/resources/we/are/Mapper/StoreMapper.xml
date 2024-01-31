@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="store_select" resultMap="store_select"> 
 select  a.ono, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
 from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
-where osuju="수주확인" order by a.ono asc; 
+where osuju != "수주 대기" order by a.ono asc; 
 </select>
 
 <!-- 재고량 확인 -->
@@ -31,14 +31,15 @@ select pstock from product where pcode = #{pstock}
 </select>
 
 <!-- 출고일 등록 -->
-<update id="baljuday_update">
-update orderr set sdate = now() where uuid= #{uuid}
+<update id="balju_update">
+update product pro, orderr ord  set pstock = (select (pstock - #{ocount}) as total from product where pcode = #{oday}), ord.sdate = now(), ord.scount = #{ocount}, ord.osuju = '출고 확인', ord.sdel ='출고 중' where ord.ono = ${ono} and pcode= #{oday};
 </update>
 
-<!-- 재고량 조정 -->
-<update id="product_update">
-update product set pstock =(select  (pstock -  #{ocount}) as total from product where pcode = #{osuju}) where pcode = #{osuju} ;
-</update>
+<!-- 발주 체크 -->
+<select id="balju_check" resultType="String">
+select sdate from orderr where ono = #{ono};
+</select>
+
 
 
 </mapper>

@@ -30,27 +30,27 @@ public class StoreController {
 			return "store";
 		}
 		
-		//재고 수량 파악
+		//재고 수량 및 발주 확인
 		@GetMapping("pstock")
-		public ResponseEntity<?> pstock(@RequestParam("pstock") String pstock){
-			return new ResponseEntity<>(ssi.product_select(pstock),HttpStatus.OK);
+		public ResponseEntity<?> pstock(@RequestParam("pstock") String pstock,@RequestParam("ono") int ono,OrderDTO od){
+			od.setOcount(ssi.product_select(pstock));// 재고 수량
+		
+			od.setSdate(ssi.balju_check(ono)); // 발주 확인
+			od.getSdate();
+			return new ResponseEntity<>(od,HttpStatus.OK);
 		}
 		
 		//재고 수량 업데이트
 		@GetMapping("pstock_update")
-		public ResponseEntity<?> pstock_update(@RequestParam("uuid") String uuid,
+		public ResponseEntity<?> pstock_update(@RequestParam("ono") int ono,
 											   @RequestParam("ocount") int ocount,
 											   @RequestParam("pcode") String pcode,
 											   OrderDTO od){
 			
-			System.out.println(uuid);
-			
-			int result = ssi.baljuday_update(uuid);//출고일 등록
+			od.setOno(ono);//주문 번호
 			od.setOcount(ocount); //수주 수량
-			
-			od.setOsuju(pcode); // *제품코드 (담을 DTO가 맞땅히 없어서 Osuju에 담음)
-			
-			result = ssi.product_update(od);
+			od.setOday(pcode); // *제품코드 (담을 DTO안에 pcode 변수가없어서 oday에 담음)
+			int result = ssi.balju_update(od);
 			
 			return new ResponseEntity<>(result,HttpStatus.OK);
 		}

@@ -124,7 +124,7 @@
 			<tbody>
 				<c:forEach items="${olist}" var="orderlist" varStatus="a">
 					<tr>
-						<td><c:if test="${orderlist.osuju == '-'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
+						<td><c:if test="${orderlist.osuju == '수주 대기'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
 						<td>${orderlist.cname}</td> 

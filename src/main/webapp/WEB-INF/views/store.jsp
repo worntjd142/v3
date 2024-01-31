@@ -48,9 +48,9 @@
 				</tbody>
 			</table>
 	</div>
+	
 
 	<div id="balju_button"></div>
-
 <h5>* 주문 순서대로 정렬됩니다.</h5>
 	<div>
 		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
@@ -76,18 +76,18 @@
 			
 				<c:forEach items="${stroe}" var="stroeList" varStatus="a">
 					<tr>
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.sdate}</td>
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.uuid}</td>
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.cname}</td> 
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.pproduct}</td>
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.ocount}</td>
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;"></td>
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.osuju}</td>
-						<td onclick="balju('${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.otext}</td>
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.sdate}</td>
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.uuid}</td>
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.cname}</td> 
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.pproduct}</td>
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.ocount}</td>
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.scount}</td>
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.osuju}</td>
+						<td onclick="balju('${stroeList.ono}','${stroeList.uuid}','${stroeList.cname}','${stroeList.pproduct}','${stroeList.ocount}','${stroeList.pcode}')" style="cursor: pointer;">${stroeList.otext}</td>
 					 	<td>
 					 	<c:choose>
-					 	<c:when test="${stroeList.sdel  ==  '-'}">
-							-					 	
+					 	<c:when test="${stroeList.sdel  ==  '수주 대기'}">
+							수주대기					 	
 					 	</c:when>
 					 	
 					 	<c:when test="${stroeList.sdel  ==  '출고 중'}">
@@ -100,7 +100,7 @@
 							<label  style="cursor: pointer;" onclick="del('${stroeList.x}','${stroeList.y}','${stroeList.cname}')">배송 중</label>
 					 	</c:when>
 					 	
-					 	<c:when test="${stroeList.sdel  ==  '배달완료'}">
+					 	<c:when test="${stroeList.sdel  ==  '배달 완료'}">
 					 	배달 완료
 					 	</c:when>
 					 	</c:choose>

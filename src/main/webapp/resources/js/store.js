@@ -85,16 +85,14 @@ function del(x,y,name){
 }
 
 //출고 리스트 출력하기
-function balju(uuid, cname, pproduct, ocount, pcode){
-	
-	alert(uuid)
+function balju(ono, uuid, cname, pproduct, ocount, pcode){
 	
 	$("#uuid").text(uuid); 
 	$("#cname").text(cname); 
 	$("#pproduct").text(pproduct); 
 	$("#ocount").text(ocount); 
 	
-	pstock = {'pstock':pcode};
+	pstock = {'pstock':pcode, 'ono':ono};
 	
 	$.ajax({
 		type : "get",
@@ -103,46 +101,49 @@ function balju(uuid, cname, pproduct, ocount, pcode){
 		dataType : 'json',
 		success : function(data) {
 			
-			$("#pstock").text(data);
+			console.log(data.sdate);
 			
-			if(data - ocount < 0){ // 재고 수량이 적을 때.
-				$("#balju_count").text(ocount); 
+			$("#pstock").text(data.ocount);
+			
+			if(data.ocount - ocount < 0){ // 재고 수량이 적을 때.
+				$("#balju_count").text("수주 보류"); 
 				$("#balju_count").css("color", "red");
 				$("#balju").text('출고 보류, 재고 부족, 수량이 부족합니다.');
 				$("#balju_button *").remove()
 				
 				
-			}else if(data - ocount == 0){ // 재고 수량이 0이 될 때
+			}else if(data.ocount - ocount == 0){ // 재고 수량이 0이 될 때
 				$("#balju_button *").remove() 
-				$("#balju_count").text(ocount); 
-				$("#balju_count").append('(수주 가능)');
+				$("#balju_count").text("수주 가능"); 
 				$("#balju_count").css("color", "green");	
 				$("#balju").text('출고 가능');	
 				$("#balju").append('재고 소진, 수량 파악해주세요');
 				
-				let funcbal="<input type='button' value='출고' onclick='main_balju("+uuid+","+ocount+","+pcode+")' id='main_balju'>"
+				if(data.sdate == null){
+				let funcbal="<input type='button' value='출고' onclick='main_balju("+ono+","+ocount+","+pcode+")' id='main_balju'>"
 					$("#balju_button").append(funcbal);
+				}
 					
-			}else if(data - ocount > 0){ // 재고수량이 넉넉할 때
+			}else if(data.ocount - ocount > 0){ // 재고수량이 넉넉할 때
 				$("#balju_button *").remove()
-				$("#balju_count").text(ocount); 
-				$("#balju_count").append('(수주 가능)');
+				$("#balju_count").text("수주 가능"); 
 				$("#balju_count").css("color", "green");					
 				$("#balju").text('출고 가능');	
 				
-				let funcbal="<input type='button' value='출고' onclick='main_balju("+uuid+","+ocount+","+'"'+pcode+'"'+")' id='main_balju'>"
+				console.log(data.ono);
+				if(data.sdate == null){
+				let funcbal="<input type='button' value='출고' onclick='main_balju("+ono+","+ocount+","+'"'+pcode+'"'+")' id='main_balju'>"
 					$("#balju_button").append(funcbal);
+				}
 			}
 			
 		}
-	
 		});
 }
 
-function main_balju(uuid,ocount,pcode){
+function main_balju(ono,ocount,pcode){
 	
-	let update ={'uuid':uuid,'ocount':ocount, 'pcode':pcode };
-	console.log(update);
+	let update ={'ono':ono,'ocount':ocount, 'pcode':pcode };
 	$.ajax({
 		type : "get",
 		url : "pstock_update",
