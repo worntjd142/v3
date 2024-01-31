@@ -25,11 +25,8 @@ public class StoreServiceImpl implements StoreService {
 	}
 	
 	//출고일 등록
-	public int baljuday_update(String uuid) {
-		return sm.baljuday_update(uuid);
+	public int balju_update(OrderDTO od) {
+		return sm.balju_update(od);
 	}
 	
-	public int product_update(OrderDTO od) {
-		return sm.product_update(od);
-	}
 }

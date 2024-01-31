@@ -38,19 +38,17 @@ public class StoreController {
 		
 		//재고 수량 업데이트
 		@GetMapping("pstock_update")
-		public ResponseEntity<?> pstock_update(@RequestParam("uuid") String uuid,
+		public ResponseEntity<?> pstock_update(@RequestParam("ono") int ono,
 											   @RequestParam("ocount") int ocount,
 											   @RequestParam("pcode") String pcode,
 											   OrderDTO od){
 			
-			System.out.println(uuid);
-			
-			int result = ssi.baljuday_update(uuid);//출고일 등록
+			od.setOno(ono);//주문 번호
 			od.setOcount(ocount); //수주 수량
+			od.setOday(pcode); // *제품코드 (담을 DTO안에 pcode 변수가없어서 oday에 담음)
+			System.out.println(od);
+			int result = ssi.balju_update(od);
 			
-			od.setOsuju(pcode); // *제품코드 (담을 DTO가 맞땅히 없어서 Osuju에 담음)
-			
-			result = ssi.product_update(od);
 			
 			return new ResponseEntity<>(result,HttpStatus.OK);
 		}
