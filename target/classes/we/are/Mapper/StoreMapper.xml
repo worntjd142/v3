@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "we.are.Mapper.StoreMapper">
+<!--  해시맵을 이용해서 join값을 알맞게 넘기기 -->
+<resultMap type="java.util.HashMap" id="store_select"> 
+		<result column="uuid" property="uuid" />
+		<result column="cname" property="cname" />
+		<result column="pproduct" property="pproduct" />
+		<result column="ocount" property="ocount" />
+		<result column="scount" property="scount" />
+		<result column="osuju" property="osuju" />
+		<result column="otext" property="otext" />
+		<result column="x" property="x" />
+		<result column="y" property="y" />	
+		<result column="sdel" property="sdel" />	
+</resultMap>
+		<!-- resultMap ='store_select' 같은 resultMap을 찾아서 실행  -->
+<select id="store_select" resultMap="store_select"> 
+select  sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
+from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
+where osuju="수주확인";
+</select>
+
+</mapper>
