@@ -17,7 +17,7 @@ public interface OrderMapper {
 	public ArrayList<OrderDTO> order_select (CriteriaDTO cd);
 	
 	// 거래처명 자동완성
-	public ArrayList<ConnectionDTO> autocomplete (ConnectionDTO cdt);
+	public ArrayList<ConnectionDTO> autocomplete (String cname);
 	
 	//제품 목록 데이터 가져오기
 	public ArrayList<InventoryDTO> product_select ();
