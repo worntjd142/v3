@@ -53,7 +53,7 @@
 		</form>
 	</div>
 <!-- 제품 리스트 div -->
-	<div>
+	<div class = "pro_list">
 		<table class = "table table-striped table-hover table-bordered table-responsive">
 		<caption id = temple>제품창고 온도 :<label id = wtemple></label>℃ </caption>
 			<thead>
@@ -84,24 +84,22 @@
 						<th colspan="6" class="title_th">제품 상세 정보</th>
 				</tr>
 				<tr>
-					<th>제품 코드</th>
-					<td id = "pcodei"></td>
+					<th class = "p_width">제품명</th>
+					<td style = "background-color : white;" class = "p_width" id = "pnamei"></td>
+					<th class = "p_width">제품 코드</th>
+					<td style = "background-color : white;" class = "p_width" id = "pcodei"></td>
 				</tr>
 				<tr>
-					<th>제품명</th>
-					<td id = "pnamei"></td>
-					<th>제품단가</th>
-					<td id = "ppricei"></td>
+					<th class = "p_width">제품단가</th>
+					<td style = "background-color : white;" class = "p_width" id = "ppricei"></td>
+					<th class = "p_width">재고수량</th>
+					<td style = "background-color : white;" class = "p_width" id = "pstocki"></td>
 				</tr>
 				<tr>
-					<th>제조사</th>
-					<td id = "pmci"></td>
-					<th>재고수량</th>
-					<td id = "pstocki"></td>
-				</tr>
-				<tr>
-					<th>제품설명</th>
-					<td id = "pmii"></td>
+					<th class = "p_width">제조사</th>
+					<td style = "background-color : white;" class = "p_width" id = "pmci"></td>
+					<th class = "p_width">제품설명</th>
+					<td style = "background-color : white;" class = "p_width" id = "pmii"></td>
 				</tr>
 			<thead>
 		</table>

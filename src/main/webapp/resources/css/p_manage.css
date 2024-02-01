@@ -1,9 +1,21 @@
 @charset "UTF-8";
 
 
+.table.table-striped.table-hover.table-bordered.table-responsive{
+}
+
+.table.table-striped.table-hover.table-bordered.table-responsive thead{
+}
 
 .table.table-striped.table-hover.table-bordered.table-responsive tbody {
-    height : 150px;
-    overflow:auto;
-    
+    height : 250px;
+	overflow:auto;
+}
+
+.p_width{
+	width : 150px; 
+}
+
+.pro_list{
+	
 }
