@@ -1,6 +1,29 @@
 @charset "UTF-8";
 
-#main_balju{
-position: absolute;
-    left: 95%;
+#release_check, #change ,#buttons, #detailed{
+	position: absolute;
+	width: 49%;
+}
+
+
+#change{
+	top:350px;
+	left: 51%;
+}
+
+#buttons{
+	left:51%;
+	border-bottom: 1px solid;
+    padding-bottom: 20px;
+}
+
+#detailed{
+	top:205px;
+	left: 51%;
+}
+
+#ment{
+	position: absolute;
+    left: 15%;
+    top: -10px;
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import we.are.Mapper.StoreMapper;
+import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
 
 @Service
@@ -20,8 +21,8 @@ public class StoreServiceImpl implements StoreService {
 		return sm.store_select();
 	}
 	//재고량 확인
-	public int product_select(String pstock) {
-		return sm.product_select(pstock);
+	public InventoryDTO product_select(String pcode) {
+		return sm.product_select(pcode);
 	}
 	
 	//출고일 등록
