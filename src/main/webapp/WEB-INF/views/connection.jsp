@@ -11,7 +11,6 @@
 
 <!-- 외부 JS, CSS -->
 <script type="text/javascript" src="/resources/js/order.js"></script>
-<link href="../resources/css/order.css" rel="stylesheet">
 
 <meta charset="UTF-8">
 <title>거래처 목록</title>

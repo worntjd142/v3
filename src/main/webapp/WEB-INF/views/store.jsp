@@ -11,7 +11,6 @@
 
 <!-- 외부 JS, CSS -->
 <script type="text/javascript" src="/resources/js/store.js"></script>
-<link href="../resources/css/order.css" rel="stylesheet">
 <link rel = "stylesheet" href = "resources/css/store.css" />
 <meta charset="UTF-8">
 <title>출고</title>
