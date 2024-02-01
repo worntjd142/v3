@@ -6,8 +6,23 @@ $(function() {
 		// pselect() 실행
 		pselect();
 	})
+	
+	calender = document.getElementById("balju_day");
+	
+	const nowDate = new Date();
+
+	let currentYear = nowDate.getFullYear();
+	let currentMonth = String((nowDate.getMonth()+1)).padStart(2,"0")
+	let currentDate = String(nowDate.getDate()).padStart(2,"0")
+
+	// 새로고침했을 때 오늘 날짜를 자동으로 세팅
+	calender.value = `${currentYear}-${currentMonth}-${currentDate}`;
+
+
 		
 });
+
+	
 function pselect() {
 	
 	//전역변수
@@ -84,14 +99,36 @@ function del(x,y,name){
 
 }
 
+
+$("#scount").on("click", function(){
+	console.log("aaa");
+	
+})
+
 //출고 리스트 출력하기
-function balju(ono, uuid, cname, pproduct, ocount, pcode){
+function balju(cname, ocount,pcode){
 	
-	$("#uuid").text(uuid); 
-	$("#cname").text(cname); 
-	$("#pproduct").text(pproduct); 
-	$("#ocount").text(ocount); 
+	$("#cname").text(cname);
+	$("#ocount").text(ocount);
+	$(".scount").val(ocount);
 	
+	$.ajax({
+		type : "get",
+		url : "pcode",
+		data : {'pcode':pcode},
+		dataType : 'json',
+		success : function(data) {
+			
+			$("#checkbox *").remove()
+			$("#ea").text("EA");
+			$("#pname").text(data.pname);
+			$("#pstock").text(data.pstock);
+			$("#checkbox").append("<input type='checkbox'>")
+			
+			}
+		})
+}
+	/*
 	pstock = {'pstock':pcode, 'ono':ono};
 	
 	$.ajax({
@@ -154,6 +191,6 @@ function main_balju(ono,ocount,pcode){
 		}
 	
 		});
-}
+}*/
 
 
