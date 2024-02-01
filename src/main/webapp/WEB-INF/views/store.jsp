@@ -77,12 +77,12 @@
 					 	<td><input type="date" id="balju_day" value="2024-01-03"></td>
 					 	<td>출하수량</td>
 					 	<td class="scount"></td>
-					 	<td colspan="2"><input type="button" value="제품출하"></td>
+					 	<td></td>
 					 	</tr>
 				</tbody>
 			</table>
 			</div>
-		
+			<input type="button" value="제품출하">
 	<div id="change">
 		<h3>창고 재고</h3>
 		<table
@@ -93,6 +93,7 @@
 					<th scope="col" class="table-dark">기준단위</th>
 					<th scope="col" class="table-dark">재고량</th>
 					<th scope="col" class="table-dark">출하수량</th>
+					<th scope="col" class="table-dark">단가</th>
 					<th scope="col" class="table-dark">출하대상</th>
 				</tr>
 			</thead>
@@ -102,9 +103,15 @@
 						<td id="ea"></td>
 						<td id="pstock"></td>
 						<td class="scount"></td>
-						<td id="checkbox"></td>
+						<td  id="pprice"></td>
+						<td id="checkbox" ></td>
 					</tr>
-					<!-- /반복문으로 데이터 가져오기 -->
+					
+					<tr>
+					<td colspan="4" style="text-align: center;">합 계</td>
+					<td id="total"></td>
+					<td id="shipment"></td>
+					</tr>
 			</tbody>
 		</table>
 	</div>
