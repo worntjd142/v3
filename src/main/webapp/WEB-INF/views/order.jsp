@@ -42,17 +42,17 @@
 						<th scope="col">거래처명</th>
 						
 						<td><input type="text" name="cname" id="auto"><label for="auto"></label>
-						<a href="#" class="a_1"><img src="/resources/image/search_icon.png" class="imgsize"></a>
+						<a href="#" class="a_1" id="searchclick"><img src="/resources/image/search_icon.png" class="imgsize"></a>
 						</td>										
 						
 						<th scope="col">제품명</th>
-						<td><input type="text" name="pproduct"></td>
+						<td><input type="text" name="pproduct" id="auto_product"></td>
 						<th scope="col">제품단가</th>
 						<td><input type="text" name="pprice" id="pprice"></td>
 					</tr>
 					<tr>
 						<th scope="col">수주수량</th>
-						<td><input type="number" name="ocount"id="ocount"> </td>
+						<td><input type="number" name="ocount" id="ocount" onkeyup="prod_sum()"> </td>
 						<th scope="col">합계금액</th>
 						<td><input type="text" name="osum" id="total"></td>
 					</tr>

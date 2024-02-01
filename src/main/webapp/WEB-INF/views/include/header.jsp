@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link href="../resources/css/main.css" rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -31,7 +32,7 @@
 				<a href="/"
 					class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
 					<img src="../resources/image/m_logo.png"
-					style="width: 65px; height: 65px;"> <use
+					style="width: 120px; height: 70px;"> <use
 						xlink:href="#bootstrap"></use>
 				</a>
 

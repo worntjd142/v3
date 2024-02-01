@@ -56,14 +56,18 @@ public class OrderController {
 	
 
 	// 발주 등록 제품 ajax
-	@RequestMapping("product_select.json")
-	public ResponseEntity<?> product_select (InventoryDTO id, Model model, HttpSession session) {		
-		return new ResponseEntity<>(os.product_select(),HttpStatus.OK);
+	@RequestMapping("/autoproduct")
+	public ResponseEntity<?> product_select(@RequestParam (value="pname") String pname, 											
+											InventoryDTO id, Model model, HttpSession session) {
+		
+		id.setPname(pname); // DTO에 저장하는 방식
+		
+		return new ResponseEntity<>(os.product_select(id),HttpStatus.OK);
 	}
 	
 	
 	// 거래처명 자동완성 ajax
-	@RequestMapping("/autocomplete") //@RequestParam(value="변수명" 데이터타입 데이터담을변수명)
+	@RequestMapping("/autocomplete") //@RequestParam(value="변수명" 데이터타입 데이터변수명)
 	public ResponseEntity<?> auto (@RequestParam(value="cname") String cname, ConnectionDTO cdt, Model model, HttpSession session) {
 		
 		return new ResponseEntity<>(os.autocomplete(cname), HttpStatus.OK);
