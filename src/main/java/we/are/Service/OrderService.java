@@ -19,7 +19,7 @@ public interface OrderService {
 	public ArrayList<ConnectionDTO> autocomplete (String cname);
 	
 	//제품 리스트
-	public ArrayList<InventoryDTO> product_select();
+	public ArrayList<InventoryDTO> product_select(InventoryDTO idt);
 	
 	//수주서 발행
 	public int suju_update (int ono);
@@ -28,6 +28,7 @@ public interface OrderService {
 	public ArrayList<OrderDTO> daysearch (CriteriaDTO cd);
 	
 	// 페이지 전체 건수 total
-	public int total (CriteriaDTO cd);	
+	public int total (CriteriaDTO cd);
+
 	
 }

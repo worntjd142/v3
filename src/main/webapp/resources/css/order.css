@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .cname {
 	width: 160px;
 }
@@ -15,4 +22,8 @@
 
 table.table.table-striped.table-secondary.table-hover.table-bordered.table-responsive {
     width: auto;
+}
+
+table {
+	font-family: 'GowunDodum-Regular';
 }

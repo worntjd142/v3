@@ -1,3 +1,13 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
@@ -9,6 +19,22 @@
 	}
 }
 
+/* 로그인창 폰트 */
+.card-body {
+    font-family: 'GowunDodum-Regular';
+}
+
+ul {
+	font-family: 'GowunDodum-Regular';
+}
+
+button.btn.btn-outline-light.me-2 {
+    font-family: 'GowunDodum-Regular';
+}
+
+button.btn.btn-warning {
+	font-family: 'GowunDodum-Regular';
+}
 
 th.title_th {
     background-color: black;
@@ -29,8 +55,9 @@ p.login {
 }
 
 .imagebox {
-	margin-left: 465px;
-	margin-top: 100px;
+    margin-left: 420px;
+    margin-top: 100px;
+    margin-bottom: 32px;
 }
 
 input#input_join {
