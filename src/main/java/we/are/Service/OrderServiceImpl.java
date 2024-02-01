@@ -35,8 +35,8 @@ public class OrderServiceImpl implements OrderService {
 	
 	
 	//상품 목록 리스트
-	public ArrayList<InventoryDTO> product_select() {		
-		return om.product_select();
+	public ArrayList<InventoryDTO> product_select(InventoryDTO idt) {		
+		return om.product_select(idt);
 	}
 		
 	// 수주서 발행
