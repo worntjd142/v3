@@ -31,14 +31,14 @@ public class StoreController {
 		}
 		
 		//재고 수량 및 발주 확인
-		@GetMapping("pstock")
+		/*@GetMapping("pstock")
 		public ResponseEntity<?> pstock(@RequestParam("pstock") String pstock,@RequestParam("ono") int ono,OrderDTO od){
 			od.setOcount(ssi.product_select(pstock));// 재고 수량
 		
 			od.setSdate(ssi.balju_check(ono)); // 발주 확인
 			od.getSdate();
 			return new ResponseEntity<>(od,HttpStatus.OK);
-		}
+		}*/
 		
 		//재고 수량 업데이트
 		@GetMapping("pstock_update")
@@ -53,5 +53,10 @@ public class StoreController {
 			int result = ssi.balju_update(od);
 			
 			return new ResponseEntity<>(result,HttpStatus.OK);
+		}
+		
+		@GetMapping("pcode")
+		public ResponseEntity<?> pcode(@RequestParam("pcode") String pcode){
+			return new ResponseEntity<>(ssi.product_select(pcode),HttpStatus.OK);
 		}
 }		
