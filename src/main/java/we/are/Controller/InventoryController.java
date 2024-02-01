@@ -61,6 +61,18 @@ public class InventoryController {
 		return new ResponseEntity<>(ts.w_temple(), HttpStatus.OK);
 	}
 	
+	//입고 팝업창
+	@GetMapping("house")
+	public String house(InventoryDTO id, Model model) {
+		model.addAttribute("house", is.house(id));
+		return "house";
+	}
 	
+	//추가입고 버튼
+	@GetMapping("housing")
+	public String housing(InventoryDTO id) {
+		is.housing(id);
+		return "close";
+	}
 	
 }

@@ -14,9 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product;
 	</select>
 	
-	<select id = "p_detail" resultType = "we.are.Model.InventoryDTO">
-		select * from product where pcode = ${pcode};
+	<select id = "house" resultType = "we.are.Model.InventoryDTO">
+		select * from product where pcode = #{pcode};
 	</select>
-	
+
+	<update id = "housing">
+		update product set pstock = #{pstock} + #{stockplus} where pcode =#{pcode};
+	</update>
 
 </mapper>

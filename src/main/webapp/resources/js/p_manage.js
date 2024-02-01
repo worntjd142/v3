@@ -38,3 +38,18 @@ $(document).ready(function(){
 	}
 	setInterval(getData, 5000);
 })
+
+
+
+function ss(pcode){
+	
+	var url = "house?pcode=" +pcode+"";
+	
+	var option = 'width=300, height=150, top=50, left=550, scrollbars=no, resizeable=no'; 
+	
+	var name = '입고'
+	
+	window.open(url, option, name);
+	
+	
+}

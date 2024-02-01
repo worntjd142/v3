@@ -11,4 +11,8 @@ public interface InventoryMapper {
 	public ArrayList<InventoryDTO> p_list(InventoryDTO id);
 
 	public ArrayList<InventoryDTO> p_detail(String pcode);
+
+	public InventoryDTO house(InventoryDTO id);
+
+	public void housing(InventoryDTO id);
 }

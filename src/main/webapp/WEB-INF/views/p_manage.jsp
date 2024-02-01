@@ -41,6 +41,7 @@
 						<td><input type="text" name="pprice"></td>
 						<th scope="col">제조사</th>
 						<td><input type="text" name="pmc"></td>
+						
 					</tr>
 					<tr>
 						<th scope="col">입고수량</th>
@@ -62,6 +63,7 @@
 					<th scope="col" class="table-dark">제품명</th>
 					<th scope="col" class="table-dark">제품단가</th>
 					<th scope="col" class="table-dark">재고 수</th>
+					<th scope="col" class="table-dark">제품 관리</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -71,6 +73,7 @@
 					<td>${pro.pname}</td>
 					<td>${pro.pprice}</td>
 					<td>${pro.pstock}</td>
+					<td><button onclick="ss('${pro.pcode}')">추가입고</button>
 				</tr>
 		</c:forEach>
 			</tbody>
@@ -78,10 +81,10 @@
 	</div>
 <!-- 상세내역 div -->
 	<div class = "col-md-8">
-		<table class="table table-striped table-secondary table-hover table-bordered table-responsive" >
+		<table class="table table-striped table-secondary table-hover table-bordered table-responsive">
 			<thead>
 				<tr class="table-dark">
-						<th colspan="6" class="title_th">제품 상세 정보</th>
+					<th colspan="4" class="title_th">제품 상세 정보</th>
 				</tr>
 				<tr>
 					<th class = "p_width">제품명</th>

@@ -28,4 +28,15 @@ public class InventoryServiceImpl implements InventoryService {
 	public ArrayList<InventoryDTO> p_detail(String pcode) {
 		return im.p_detail(pcode);
 	}
+
+	@Override
+	public InventoryDTO house(InventoryDTO id) {
+		return im.house(id);
+	}
+
+	@Override
+	public void housing(InventoryDTO id) {
+		im.housing(id);
+		
+	}
 }
