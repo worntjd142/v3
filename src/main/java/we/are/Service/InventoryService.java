@@ -15,6 +15,10 @@ public interface InventoryService {
 	
 	//제픔
 	public ArrayList<InventoryDTO> p_detail(String pcode);
+
+	public InventoryDTO house(InventoryDTO id);
+
+	public void housing(InventoryDTO id);
 	
 	
 }
