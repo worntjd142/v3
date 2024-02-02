@@ -42,7 +42,7 @@ public class OrderController {
 
 	// 수주 목록 select
 	@RequestMapping("order")
-	public String order_list (OrderDTO od, CriteriaDTO cd, Model model, JoinDTO jd) {
+	public String order_list (CriteriaDTO cd, Model model) {
 		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
 		model.addAttribute("olist", os.order_select(cd));
 		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
@@ -53,6 +53,8 @@ public class OrderController {
 		model.addAttribute("paging", new PageDTO(cd, total));
 		return "order";
 	}
+	
+	
 	
 
 	// 발주 등록 제품 ajax
