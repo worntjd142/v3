@@ -41,9 +41,7 @@
 					<tr>					
 						<th scope="col">거래처명</th>
 						
-						<td><input type="text" name="cname" id="auto"><label for="auto"></label>
-						<a href="#" class="a_1" id="searchclick"><img src="/resources/image/search_icon.png" class="imgsize"></a>
-						</td>										
+						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>										
 						
 						<th scope="col">제품명</th>
 						<td><input type="text" name="pproduct" id="auto_product"></td>
@@ -58,7 +56,7 @@
 					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
-						<td><input type="text" hidden="" name="omanager"><span>${sessionScope.login.usename}</span></td>
+						<td><input type="text" hidden="" name="omanager" value="${sessionScope.login.usename}"><span>${sessionScope.login.usename}</span></td>
 						<th scope="col">요청사항</th>
 						<td colspan="3"><textarea rows="2" cols="52" name="otext"></textarea></td>
 					</tr>

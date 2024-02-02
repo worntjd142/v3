@@ -2,13 +2,7 @@
 
 $(function() { //화면 다 뜨면 시작
 
-	//$("#autosearch").serialize()
-	
-	var sum = '';
-	var num1 = 0;
-	
-
-	$("#auto").autocomplete({
+		$("#auto").autocomplete({
 
 		// source 는 자동 완성 대상
 		source : function(request, response) {
@@ -62,13 +56,15 @@ $(function() { //화면 다 뜨면 시작
 });
 
 
+
 /* 제품리스트 자동완성 */
 
 $(function() { //화면 다 뜨면 시작
+	
+	var sum = '';
+	var num1 = 0;
 
 	//$("#autosearch").serialize()
-	
-	
 
 	$("#auto_product").autocomplete({
 
@@ -134,6 +130,7 @@ $(function() { //화면 다 뜨면 시작
 	}).click(function() {$(this).autocomplete("search", ""); }); //input입력창을 클릭하면 전체데이터를 호출	
 	
 });
+
 
 function prod_sum() {
 	
