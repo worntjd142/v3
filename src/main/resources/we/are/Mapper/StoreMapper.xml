@@ -28,7 +28,7 @@ where osuju != "수주 대기" order by a.ono asc;
 
 <!-- 재고량 확인 -->
 <select id="product_select" resultType="we.are.Model.InventoryDTO">
-select * from product where pcode = #{pcode}
+select pcode,pstock,pname,pprice from product where pcode = #{pcode}
 </select>
 
 <!-- 출고일 등록 -->
