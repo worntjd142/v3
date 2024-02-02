@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import we.are.Model.InventoryDTO;
 import we.are.Model.TempleDTO;
@@ -61,18 +62,18 @@ public class InventoryController {
 		return new ResponseEntity<>(ts.w_temple(), HttpStatus.OK);
 	}
 	
-	//입고 팝업창
-	@GetMapping("house")
-	public String house(InventoryDTO id, Model model) {
-		model.addAttribute("house", is.house(id));
-		return "house";
-	}
+//	//입고 팝업창
+//	@GetMapping("house")
+//	public String house(InventoryDTO id, Model model) {
+//		model.addAttribute("house", is.house(id));
+//		return "house";
+//	}
 	
-	//추가입고 버튼
-	@GetMapping("housing")
-	public String housing(InventoryDTO id) {
-		is.housing(id);
-		return "close";
-	}
+//	//추가입고 버튼
+//	@RequestMapping(value = "housing", method = RequestMethod.GET)
+//	public ResponseEntity<?> housing(InventoryDTO id, Model model, HttpSession session, @RequestParam(value = "dlstn")String dlstn) {
+//		
+//		return new ResponseEntity<>(is.housing(id), HttpStatus.OK);
+//	}
 	
 }
