@@ -15,7 +15,6 @@
 
 <!-- 외부 JS, CSS -->
 <script type="text/javascript" src="/resources/js/order.js"></script>
-<script type="text/javascript" src="/resources/js/balju.js"></script>
 <link href="../resources/css/order.css" rel="stylesheet">
 
 <meta charset="UTF-8">
@@ -27,10 +26,10 @@
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 
-	<div>
+	<div class="main1">
 		<form action="order_insert" method="post" id="autosearch">
 			<table
-				class="table table-striped table-secondary table-hover table-bordered table-responsive">
+				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr>
 						<td colspan="6"><input type="submit" value="등록"></td>
@@ -41,9 +40,7 @@
 					<tr>					
 						<th scope="col">거래처명</th>
 						
-						<td><input type="text" name="cname" id="auto"><label for="auto"></label>
-						<a href="#" class="a_1" id="searchclick"><img src="/resources/image/search_icon.png" class="imgsize"></a>
-						</td>										
+						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>										
 						
 						<th scope="col">제품명</th>
 						<td><input type="text" name="pproduct" id="auto_product"></td>
@@ -52,21 +49,52 @@
 					</tr>
 					<tr>
 						<th scope="col">수주수량</th>
-						<td><input type="number" name="ocount" id="ocount" onkeyup="prod_sum()"> </td>
+						<td><input type="text" name="ocount" id="ocount" onkeyup="count()"> </td>
 						<th scope="col">합계금액</th>
 						<td><input type="text" name="osum" id="total"></td>
 					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
-						<td><input type="text" hidden="" name="omanager"><span>${sessionScope.login.usename}</span></td>
+						<td><input type="text" hidden="" name="omanager" value="${sessionScope.login.usename}"><span>${sessionScope.login.usename}</span></td>
 						<th scope="col">요청사항</th>
 						<td colspan="3"><textarea rows="2" cols="52" name="otext"></textarea></td>
 					</tr>
 				</thead>
 			</table>
-		</form>
+		</form>	
 	</div>
-	<div>
+	
+	<div class="main2">
+	<h4>장바구니 만드는 중</h4>
+		<table class="table table-striped  table-hover table-bordered table-responsive">
+			<thead>
+			  <tr class="table-dark">				
+				<th scope="col">제품명</th>
+				<th scope="col">제품수량</th>
+				<th scope="col">제품합계</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>		
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			  </tr>
+			  <tr>		
+				<td class="table-dark" colspan="2"> 총 품목 </td>
+				<td> </td>
+			  </tr>
+			  	<tr>		
+				<td class="table-dark" colspan="2"> 총 합계 </td>
+				<td> </td>
+			  </tr>
+			</tbody>
+		  </table>
+	</div>
+	
+	
+	
+	<div class="main3">
 		<form action="order" method="get">
 			<table
 				class="table table-striped table-hover table-bordered table-responsive">
@@ -97,7 +125,7 @@
 		</form>
 	</div>
 
-	<div>
+	<div class="main4">
 		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
 		<input type="button" name="companyname" value="일괄체크" id="check_button">
@@ -111,10 +139,10 @@
 					<!-- 발주 데이터 -->
 					<th scope="col" class="table-dark">수주일자</th>
 					<th scope="col" class="table-dark">거래처명</th>
-					<th scope="col" class="table-dark">제품명</th>
+					<th scope="col" class="table-dark">품목수</th>
 					<th scope="col" class="table-dark" hidden="">제품단가</th>
-					<th scope="col" class="table-dark">수주수량</th>
-					<th scope="col" class="table-dark">수주합계금액</th>
+					
+					<th scope="col" class="table-dark">합계</th>
 					<!-- 수주 데이터 -->
 					<th scope="col" class="table-dark">수주상태</th>
 					<th scope="col" class="table-dark">수주담당자</th>
@@ -128,9 +156,9 @@
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
 						<td>${orderlist.cname}</td> 
-						<td>${orderlist.pproduct}</td>
+						<td> 품목수 </td>
 						<td hidden="">${orderlist.pprice}</td>
-						<td>${orderlist.ocount}</td>
+						
 						<td>${orderlist.osum}</td>
 						<td>${orderlist.osuju}</td>
 						<td>${orderlist.omanager}</td>

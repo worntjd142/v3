@@ -7,6 +7,14 @@
     font-style: normal;
 }
 
+.main1 {
+    display: inline-flex;
+}
+
+.main2 {
+    display: inline-block;
+}
+
 .cname {
 	width: 160px;
 }
