@@ -73,7 +73,13 @@
 					<td>${pro.pname}</td>
 					<td>${pro.pprice}</td>
 					<td>${pro.pstock}</td>
-					<td><button onclick="ss('${pro.pcode}')">추가입고</button>
+<%-- 					<td><button onclick="ss('${pro.pcode}')">추가입고</button> --%>
+					<td><button onclick="togb('${a.index}')">추가입고</button>
+					<div class = "pluss" id = "pluss${a.index}">
+						<input type = "number" name = "stockplus" id = "plus5${a.index}">
+						<button onclick = "stockplus('${pro.pcode}','${pro.pstock}','${a.index})">확인</button>
+					</div>
+					</td>
 				</tr>
 		</c:forEach>
 			</tbody>

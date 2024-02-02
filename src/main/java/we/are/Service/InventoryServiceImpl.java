@@ -35,8 +35,8 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public void housing(InventoryDTO id) {
-		im.housing(id);
+	public int housing(InventoryDTO id) {
+		return im.housing(id);
 		
 	}
 }
