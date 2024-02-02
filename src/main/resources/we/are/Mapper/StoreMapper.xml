@@ -23,17 +23,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="store_select" resultMap="store_select"> 
 select  a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
 from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
-where osuju != "수주 대기" order by a.ono asc; 
+where osuju = "수주 확인" order by a.ono asc; 
 </select>
+
+<select id="storerelease_select" resultMap="store_select"> 
+select  a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
+from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
+where osuju = "출고 확인" order by a.ono asc; 
+</select>
+
+<select id="management_select" resultMap="store_select"> 
+select  a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
+from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
+where osuju = "견적서 발행" order by a.ono asc; 
+</select>
+
 
 <!-- 재고량 확인 -->
 <select id="product_select" resultType="we.are.Model.InventoryDTO">
 select pcode,pstock,pname,pprice from product where pcode = #{pcode}
 </select>
 
-<!-- 출고일 등록 -->
+<!-- 출고일 등록, 수주상태 변경 -> '출고 확인' -->
 <update id="balju_update">
-update product pro, orderr ord  set pstock = (select (pstock - #{ocount}) as total from product where pcode = #{oday}), ord.sdate = now(), ord.scount = #{ocount}, ord.osuju = '출고 확인', ord.sdel ='출고 중' where ord.ono = ${ono} and pcode= #{oday};
+update product pro, orderr ord  set pstock = (select (pstock - #{ocount}) as total from product where pcode = #{oday}), ord.sdate = now(), ord.scount = #{ocount}, ord.osuju = '출고 확인' where ord.ono = ${ono} and pcode= #{oday};
 </update>
 
 <!-- 발주 체크 -->
@@ -41,6 +54,15 @@ update product pro, orderr ord  set pstock = (select (pstock - #{ocount}) as tot
 select sdate from orderr where ono = #{ono};
 </select>
 
+<!-- 수주상태 변경 -> '견적서 발행' -->
+<update id="osuju_update">
+update orderr set osuju = "견적서 발행" where ono =#{ono};
+</update>
+
+<select id="check" resultMap="store_select"> 
+select  a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
+from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname order by a.ono asc; 
+</select>
 
 
 </mapper>
