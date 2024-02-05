@@ -69,11 +69,11 @@ public class InventoryController {
 //		return "house";
 //	}
 	
-//	//추가입고 버튼
-//	@RequestMapping(value = "housing", method = RequestMethod.GET)
-//	public ResponseEntity<?> housing(InventoryDTO id, Model model, HttpSession session, @RequestParam(value = "dlstn")String dlstn) {
-//		
-//		return new ResponseEntity<>(is.housing(id), HttpStatus.OK);
-//	}
+	//추가입고 버튼
+	@RequestMapping(value = "housing", method = RequestMethod.POST)
+	public ResponseEntity<?> housing(InventoryDTO id, Model model, HttpSession session, @RequestParam(value = "pcode")String pcode, @RequestParam(value = "pstock")int pstock, @RequestParam(value = "plus5")int plus5) {
+		
+		return new ResponseEntity<>(is.housing(id), HttpStatus.OK);
+	}
 	
 }
