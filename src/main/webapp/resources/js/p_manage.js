@@ -78,14 +78,14 @@ function togb(number){
 	 console.log(plus5);
 	 
 	  $.ajax({
-	    url: 'stockplus',
+	    url: 'housing',
 	    dataType: 'json',
-	    data : {'dlstn': dlstn}
-	    type: 'get',
+	    data : {'pcode': pcode, 'pstock' : pstock, 'plus5' : plus5},
+	    type: 'post',
 	    async : false, 
 	    success: function(data) {
 	    	console.log(data)
-
+	    	location.reload()
 	    }
 	  })
 

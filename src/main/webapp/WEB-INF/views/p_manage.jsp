@@ -77,7 +77,7 @@
 					<td><button onclick="togb('${a.index}')">추가입고</button>
 					<div class = "pluss" id = "pluss${a.index}">
 						<input type = "number" name = "stockplus" id = "plus5${a.index}">
-						<button onclick = "stockplus('${pro.pcode}','${pro.pstock}','${a.index})">확인</button>
+						<button onclick = "stockplus('${pro.pcode}','${pro.pstock}','${a.index}')">확인</button>
 					</div>
 					</td>
 				</tr>
