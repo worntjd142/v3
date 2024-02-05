@@ -24,7 +24,8 @@
    						console.log(item);// json[i] 번째 에 있는게 item 임.
    						return {
    							label : item.cname,
-   							value : item.cno
+   							value : item.cno,
+   							ceo : item.ceo
    						// UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
    						// 그냥 사용자 설정값?
    						}
@@ -42,6 +43,7 @@
    			$(this).val(ui.item.label);
    			$("#auto").val(ui.item.label);
    			$("#cno").val(ui.item.value); //id="cno"에 표시
+   			$("#ceo").val(ui.item.ceo); //id="cno"에 표시
    			return false;
    		},
 
@@ -282,6 +284,71 @@ function update(){
           	}
         })   
 };
+
+
+/*  */
+
+$(function(){
+
+// pcode 배열선언
+var pcode = Array();
+
+$('.check_Box').on('click', function(){0
+	
+	if(pcode.includes($(this).val())) {
+		
+		pcode = pcode.filter((element) => element !== $(this).val());
+		//console.log(pcode);		
+		
+	} else {
+		
+		pcode.push($(this).val());		
+		
+	} 
+	
+});
+});
+
+
+
+// 체크된 항목을 담기 위한 checklist 배열 선언; 
+var checklist = new Array();
+
+$(function(){
+	
+	/* 체크박스 일괄체크+체크해제 */
+	// 전체체크박스를 클릭했을때
+	$("#all_Check").click(function(){ 
+		
+		// .is(선택한 Element와 일치하는 확인)
+		if ($("#all_Check").is(":checked")) 
+			// input[name=choice_Check]인 체크박스 true
+			$("input[name=choice_Check]").prop("checked", true);
+			
+			// input[name=choice_Check]인 체크박스 false
+		else $("input[name=choice_Check]").prop("checked", false);
+		
+	});		
+	
+	
+	$("input[name=choice_Check]").each(function(){
+		var chk = $(this).val();
+		
+		checklist.push(chk);
+		console.log(chk);
+	});
+	
+	
+}); // putCheckList end
+
+
+		
+	
+	
+	
+
+ 
+
 
 
 	
