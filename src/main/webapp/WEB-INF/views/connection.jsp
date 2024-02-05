@@ -11,6 +11,7 @@
 
 <!-- 외부 JS, CSS -->
 <script type="text/javascript" src="/resources/js/order.js"></script>
+<script type="text/javascript" src="/resources/js/connection.js"></script>
 
 <meta charset="UTF-8">
 <title>거래처 목록</title>
@@ -36,7 +37,7 @@
 						<th scope="col">거래처 이름</th>
 						<td><input type="text" name="cname" class="cname"></td>								
 						<th scope="col">사업자 번호</th>
-						<td><input type="text" name="cno"></td>
+						<td><input type="text" name="cno" id="cno" maxlength="12"></td>
 						<th scope="col">대표자 이름</th>
 						<td><input type="text" name="ceo"></td>
 					</tr>
@@ -44,7 +45,7 @@
 						<th scope="col">거래처 주소</th>
 						<td><input type="text" name="caddress" id = "caddress"> </td>
 						<th scope="col">거래처 번호</th>
-						<td><input type="text" name="cnumber"></td>
+						<td><input type="text" name="cnumber" id="cnumber" maxlength="12"></td>
 					</tr>
 					<tr>
 						<th scope="col">거래처 이메일</th>

@@ -32,7 +32,7 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">회원가입</h5>
 
-						<form action="join_insert" method="POST" class="form-signin">
+						<form action="login_insert" method="POST" class="form-signin">
 
 							<div class="form-label-group">
 								<input type="text" id="useid" name="useid" class="form-control"
@@ -53,7 +53,7 @@
 							</div>
 
 							<div class="form-label-group">
-								<input type="text" id="usenum" name="usenum" class="form-control"
+								<input type="text" id="usenum" name="usenumber" class="form-control"
 									placeholder="사업자번호" required autofocus> <label
 									for="usenum">사업자번호</label>
 							</div>
