@@ -3,14 +3,13 @@ create database v3;
 use v3;
 
 
-
--- 사용자등록 (회원가입)
-create table usejoin ( 
-useid varchar(20) primary key, -- 아이디
-usepassword varchar(30) not null, -- 패스워드
-usename varchar(10) not null, -- 이름
-usenum varchar(30) not null, -- 나이
-usetel varchar(30) not null -- 전화번호
+-- 프로그램 사용자 회원가입
+CREATE TABLE LOGIN (
+USEID VARCHAR(20) PRIMARY KEY, -- 사용자 아이디
+USEPASSWORD VARCHAR(20) NOT NULL, -- 사용자 비밀번호
+USENAME VARCHAR(20) NOT NULL, -- 사용자 회사이름
+USENUMBER VARCHAR(12) NOT NULL, -- 사용자 사업자번호
+USETEL VARCHAR(20) NOT NULL -- 사용자 회사 연락처
 );
 
 -- 제품관리

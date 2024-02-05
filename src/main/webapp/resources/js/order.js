@@ -23,7 +23,8 @@
    					response($.map(data, function(item) {
    						console.log(item);// json[i] 번째 에 있는게 item 임.
    						return {
-   							label : item.cname
+   							label : item.cname,
+   							value : item.cno
    						// UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
    						// 그냥 사용자 설정값?
    						}
@@ -34,7 +35,15 @@
    		
    		focus : function(event, ui) { // 포커스
    			return false;
-   		},		
+   		},	
+   		
+   		select: function(event, ui) {
+   			// 항목을 선택하면 HTML페이지에 전달/표시
+   			$(this).val(ui.item.label);
+   			$("#auto").val(ui.item.label);
+   			$("#cno").val(ui.item.value); //id="cno"에 표시
+   			return false;
+   		},
 
    		minLength : 0, // 조회를 위한 최소 글자수
    		autoFocus : true, // 첫번째 항목 자동 포커스 기본값 false
@@ -133,11 +142,10 @@
    	
    });    
    
-   
+   /* 제품단가*수량=합계 */
    function count(){
 
-  		var num1 = $("#pprice").val();
-  		
+  		var num1 = $("#pprice").val();  		
   	   	console.log(num1);
   	   	
 	   	var num2 = $("#ocount").val();	   	
@@ -149,10 +157,7 @@
   	   	
 	   	$("#total").val(total.toLocaleString('ko-KR'));
 
-  	};
-   
-   
-   
+  	};   
    
 
 let ono = Array(); // ono 전역변수 선언

@@ -35,3 +35,7 @@ table.table.table-striped.table-secondary.table-hover.table-bordered.table-respo
 table {
 	font-family: 'GowunDodum-Regular';
 }
+
+th.title_th {
+    text-align: center;
+}

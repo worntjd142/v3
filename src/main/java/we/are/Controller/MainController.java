@@ -7,14 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import we.are.Model.JoinDTO;
-import we.are.Service.JoinService;
+import we.are.Model.LoginDTO;
+import we.are.Service.LoginService;
 
 @Controller
 public class MainController {
 	
 	@Autowired
-	JoinService joins;
+	LoginService joins;
 	
 	
 	@RequestMapping("/")
@@ -24,14 +24,14 @@ public class MainController {
 	
 	// 로그인버튼 누르면 로그인창으로 이동
 	@RequestMapping("main")
-	public String loginpage(JoinDTO joindto, Model model, HttpSession session) {	
+	public String loginpage(LoginDTO joindto, Model model, HttpSession session) {	
 		
 		return "main";
 	}
 	
 	// 로그인하면 수주관리 페이지로 이동
 	@RequestMapping("login")
-	public String login(JoinDTO joindto, Model model, HttpSession session) {	
+	public String login(LoginDTO joindto, Model model, HttpSession session) {	
 		joins.login(joindto); // 로그인을 하면 DB에 있는 값과 입력한 값 비교해서 일치하면
 		session.setAttribute("login", joins.login(joindto)); // session객체 변수login에 저장
 		return "redirect:/order";
@@ -44,9 +44,9 @@ public class MainController {
 	}
 	
 	// 회원가입 INSERT
-	@RequestMapping("join_insert")
-	public String join_insert(JoinDTO joindto) {
-		joins.join_insert(joindto);
+	@RequestMapping("login_insert")
+	public String login_insert(LoginDTO logindto) {
+		joins.login_insert(logindto);
 		return "main";
 	}
 	

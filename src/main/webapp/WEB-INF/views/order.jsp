@@ -28,8 +28,7 @@
 
 	<div class="main1">
 		<form action="order_insert" method="post" id="autosearch">
-			<table
-				class="table table-striped table-hover table-bordered table-responsive">
+			<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr>
 						<td colspan="6"><input type="submit" value="등록"></td>
@@ -38,21 +37,11 @@
 						<th colspan="6" class="title_th">수주 등록</th>
 					</tr>
 					<tr>					
-						<th scope="col">거래처명</th>
-						
-						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>										
-						
-						<th scope="col">제품명</th>
-						<td><input type="text" name="pproduct" id="auto_product"></td>
-						<th scope="col">제품단가</th>
-						<td><input type="text" name="pprice" id="pprice"></td>
-					</tr>
-					<tr>
-						<th scope="col">수주수량</th>
-						<td><input type="text" name="ocount" id="ocount" onkeyup="count()"> </td>
-						<th scope="col">합계금액</th>
-						<td><input type="text" name="osum" id="total"></td>
-					</tr>
+						<th scope="col">거래처명</th>						
+						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>
+						<th scope="col">사업자번호</th>						
+						<td><input type="text" name="cno" id="cno"><label for="cno"></label></td>
+					</tr>																				
 					<tr>
 						<th scope="col">수주 담당자</th>
 						<td><input type="text" hidden="" name="omanager" value="${sessionScope.login.usename}"><span>${sessionScope.login.usename}</span></td>
@@ -66,38 +55,34 @@
 	
 	<div class="main2">
 	<h4>장바구니 만드는 중</h4>
-		<table class="table table-striped  table-hover table-bordered table-responsive">
-			<thead>
-			  <tr class="table-dark">				
-				<th scope="col">제품명</th>
-				<th scope="col">제품수량</th>
-				<th scope="col">제품합계</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  <tr>		
-				<td> </td>
-				<td> </td>
-				<td> </td>
-			  </tr>
-			  <tr>		
-				<td class="table-dark" colspan="2"> 총 품목 </td>
-				<td> </td>
-			  </tr>
-			  	<tr>		
-				<td class="table-dark" colspan="2"> 총 합계 </td>
-				<td> </td>
-			  </tr>
-			</tbody>
-		  </table>
-	</div>
-	
-	
+		<table class="table table-striped table-hover table-bordered table-responsive">
+		  <thead class="table-dark">
+		    <tr>
+		      <th scope="col">제품명</th>
+		      <th scope="col">제품단가</th>
+		      <th scope="col">주문수량</th>
+		      <th scope="col">합계</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td><input type="text" name="pproduct" id="auto_product"></td>
+		      <td><input type="text" name="pprice" id="pprice"></td>
+		      <td><input type="text" name="ocount" id="ocount" onkeyup="count()"> </td>
+		      <td><input type="text" name="osum" id="total"></td>
+		    </tr>
+		  </tbody>
+			<tr>
+				<td colspan="4"><input type="submit" value="추가"></td>
+			</tr>
+		</table>
+		
+	</div>	
 	
 	<div class="main3">
 		<form action="order" method="get">
-			<table
-				class="table table-striped table-hover table-bordered table-responsive">
+			<table class="table table-striped table-hover table-bordered table-responsive"
+					 id="search_table">
 				<thead>
 					<tr class="table-dark">
 						<th colspan="6" class="title_th">검색</th>

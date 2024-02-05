@@ -30,10 +30,18 @@ public class OrderDTO {
 	private String sdate;
 	//배달 상황
 	private String sdel; 
+	//구분자
+	private int sb;
 	
 	
 	// getter + setter
 	
+	public int getSb() {
+		return sb;
+	}
+	public void setSb(int sb) {
+		this.sb = sb;
+	}
 	public String getSdel() {
 		return sdel;
 	}
