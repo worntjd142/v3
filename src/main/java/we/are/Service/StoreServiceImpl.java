@@ -54,6 +54,10 @@ public class StoreServiceImpl implements StoreService {
 	public OrderDTO check(int ono) {
 		return sm.check(ono);
 	}
+	
+	public ArrayList<HashMap<String, Object>> issuance_select(int ono){
+		return sm.issuance_select(ono);
+	}
 
 }
 

@@ -31,16 +31,16 @@ public class OrderDTO {
 	//배달 상황
 	private String sdel; 
 	//구분자
-	private int sb;
+	private int amount;
 	
 	
 	// getter + setter
 	
-	public int getSb() {
-		return sb;
+	public int getAmount() {
+		return amount;
 	}
-	public void setSb(int sb) {
-		this.sb = sb;
+	public void setAamount(int amount) {
+		this.amount = amount;
 	}
 	public String getSdel() {
 		return sdel;

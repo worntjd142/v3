@@ -30,5 +30,9 @@ public interface StoreService {
 	//견적서 발행하기
 	public OrderDTO check(int ono);
 	
+	public ArrayList<HashMap<String, Object>> issuance_select(int ono);
+	
+	
+	
 	
 }

@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{ocount}, #{recount}, #{iocount}, #{otext}); -->
 
 		INSERT INTO
-		orderr (uuid, cname, pproduct, pprice, ocount, osum, omanager, otext)
-		VALUE (uuid_short(),#{cname}, #{pproduct}, #{pprice},
+		orderr (uuid, cnum, cname, pproduct, pprice, ocount, osum, omanager, otext)
+		VALUE (uuid_short(), #{cnum}, #{cname}, #{pproduct}, #{pprice},
 		#{ocount}, #{osum}, #{omanager}, #{otext});
 	</insert>
 	
