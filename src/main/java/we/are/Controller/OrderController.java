@@ -42,8 +42,9 @@ public class OrderController {
 
 	// 수주 목록 select
 	@RequestMapping("order")
-	public String order_list (CriteriaDTO cd, Model model) {
+	public String order_list (CriteriaDTO cd, Model model, InventoryDTO id) {
 		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
+		model.addAttribute("plist", os.product_select());
 		model.addAttribute("olist", os.order_select(cd));
 		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
 		int total = os.total(cd);
@@ -54,17 +55,14 @@ public class OrderController {
 		return "order";
 	}
 	
-	
-	
 
 	// 발주 등록 제품 ajax
 	@RequestMapping("/autoproduct")
-	public ResponseEntity<?> product_select(@RequestParam (value="pname") String pname, 											
+	public ResponseEntity<?> product(@RequestParam (value="pname") String pname, 											
 											InventoryDTO id, Model model, HttpSession session) {
 		
-		id.setPname(pname); // DTO에 저장하는 방식
-		
-		return new ResponseEntity<>(os.product_select(id),HttpStatus.OK);
+		id.setPname(pname); // DTO에 저장하는 방식		
+		return new ResponseEntity<>(os.product_select(),HttpStatus.OK);
 	}
 	
 	
@@ -73,8 +71,7 @@ public class OrderController {
 	public ResponseEntity<?> auto (@RequestParam(value="cname") String cname, ConnectionDTO cdt, Model model, HttpSession session) {
 		
 		return new ResponseEntity<>(os.autocomplete(cname), HttpStatus.OK);
-	}
-	
+	}	
 
 	
 	// 일괄 수주 

@@ -2,11 +2,12 @@
 
 
 @font-face {
-    font-family: 'GowunDodum-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
-    font-weight: normal;
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
 }
+
 
 :root {
   --input-padding-x: 1.5rem;
@@ -21,19 +22,19 @@
 
 /* 로그인창 폰트 */
 .card-body {
-    font-family: 'GowunDodum-Regular';
+    font-family: 'Pretendard-Regular';
 }
 
 ul {
-	font-family: 'GowunDodum-Regular';
+	font-family: 'Pretendard-Regular';
 }
 
 button.btn.btn-outline-light.me-2 {
-    font-family: 'GowunDodum-Regular';
+    font-family: 'Pretendard-Regular';
 }
 
 button.btn.btn-warning {
-	font-family: 'GowunDodum-Regular';
+	font-family: 'Pretendard-Regular';
 }
 
 th.title_th {

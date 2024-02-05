@@ -20,7 +20,7 @@ public interface OrderMapper {
 	public ArrayList<ConnectionDTO> autocomplete (String cname);
 	
 	//제품 목록 데이터 가져오기
-	public ArrayList<InventoryDTO> product_select (InventoryDTO idt);
+	public ArrayList<InventoryDTO> product_select ();
 	
 	//수주서 발행
 	public int suju_update (int ono);

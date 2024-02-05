@@ -1,18 +1,18 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'GowunDodum-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
-    font-weight: normal;
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
 }
 
 .main1 {
-    display: inline-flex;
+	display: inline-flex;
 }
 
 .main2 {
-    display: inline-block;
+	display: inline-block;
 }
 
 .cname {
@@ -28,14 +28,82 @@
 	float: right;
 }
 
-table.table.table-striped.table-secondary.table-hover.table-bordered.table-responsive {
-    width: auto;
+table.table.table-striped.table-secondary.table-hover.table-bordered.table-responsive
+	{
+	width: auto;
 }
 
 table {
-	font-family: 'GowunDodum-Regular';
+	font-family: 'Pretendard-Regular';
 }
 
 th.title_th {
-    text-align: center;
+	text-align: center;
+}
+
+#countBox {
+    width: 85px;
+}
+
+.tableBox {
+	display: inline-flex;
+	width: 35%;
+	height: 288px;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+.tableData {
+	border-collapse: collapse;
+	min-width: 70px;
+}
+
+.tableData thead tr th {
+	position: sticky;
+	top: 0;
+	height: 50px;
+	border-bottom: 2px solid dodgerblue;
+	border-right: 1px solid #aaa;
+}
+
+.tableData tbody tr td {
+	border-bottom: 1px solid #dedede;
+}
+
+.sticky_wrap {
+	position: relative;
+}
+
+.sticky_wrap::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 52px;
+	background: lightgray;
+	border-bottom: 2px solid dodgerblue;
+	z-index: 10;
+}
+
+.sticky_wrap .sticky_box {
+	overflow-y: auto;
+}
+
+table.sticky {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.sticky thead th {
+	position: sticky;
+	top: 0;
+	background: lightgray;
+	height: 50px;
+	border-bottom: 2px solid dodgerblue;
+	z-index: 10;
+}
+
+table.sticky tbody td {
+	padding: 15px 10px;
+	border-bottom: 1px solid #dedede;
 }
