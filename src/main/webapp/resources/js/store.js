@@ -10,7 +10,7 @@ function del(x,y,name){
 
 }
 */
-
+let requested_math = 0;
 $(function(){
 
  calender = document.getElementById("balju_day");
@@ -23,10 +23,10 @@ $(function(){
 
 	// 새로고침했을 때 오늘 날짜를 자동으로 세팅
 	calender.value = `${currentYear}-${currentMonth}-${currentDate}`;
+	
 })
 //출고 리스트 출력하기
 function balju(cname, ocount, pcode, ono, otext){
-	
 	$("#cname").text(cname);
 	$("#ocount").text(ocount);
 	$(".scount").val(ocount);
@@ -43,11 +43,16 @@ function balju(cname, ocount, pcode, ono, otext){
 			$("#pstock").text(data.pstock); 		// 재고량
 			$("#pprice").text(data.pprice.toLocaleString('ko-KR')); // 3자리마다 콤마
 			
-			if(data.pstock > 0){	//재고량이 0보다 많으면
-				
+				if(data.pstock < 0){
+					alert("재고가 없습니다.")
+					
+				}else{
 				if(data.pstock - ocount < 0){//재고량 - 요청수량 > 0 보다 작으면 
+					
 				let requested  = data.pstock - ocount ; 
-					$("#requested").html(Math.abs(requested));
+				requested_math =  Math.abs(requested)
+				
+					$("#requested").html(requested_math);
 					$("#total").html(" ");
 					$(".scount").html("재고 부족")
 					$("#checkbox").html("출하 보류")
@@ -56,8 +61,11 @@ function balju(cname, ocount, pcode, ono, otext){
 					let total = ocount * data.pprice;
 					$("#total").html(total.toLocaleString('ko-KR'));
 					$("#shipment").html("<input type='button' value='출하' onclick='main_balju(" + ono + "," + ocount + ", \"" + pcode + "\")'>");
+					$("#Warning").html("※출고 후, 재고량 확인 부탁드립니다.")
+					$("#Warning").css("color", "red");
 				}
-				else if(data.pstock - ocount > 0){//재고량 - 요청수량 < 0 보다 많으면
+				else if(data.pstock - ocount > 0  || data.pstock - ocount == 0 ){//재고량 - 요청수량 < 0 보다 많거나 같으면
+					
 					$("#requested").html(0)
 					$(".scount").html(ocount);
 					
@@ -66,10 +74,13 @@ function balju(cname, ocount, pcode, ono, otext){
 					let total = ocount * data.pprice;
 					
 					$("#total").html(total.toLocaleString('ko-KR'));
-					//합계
+					
+						if(data.pstock - ocount == 0){
+							$("#Warning").text("※출고 후, 재고량 확인 부탁드립니다.");
+							$("#Warning").css("color", "red");
 				}}
 			
-			
+				}
 			
 			
 			}
@@ -78,20 +89,20 @@ function balju(cname, ocount, pcode, ono, otext){
 
 function main_balju(ono,ocount,pcode){
 	
-	console.log(ono,ocount,pcode);
+	let amount = requested_math;
+	console.log(amount);
+	console.log(requested_math);
 	
-	let update ={'ono':ono,'ocount':ocount, 'pcode':pcode };
+	let update ={'ono':ono,'ocount':ocount, 'pcode':pcode, 'amount':amount};
 	$.ajax({
 		type : "get",
 		url : "pstock_update",
 		data : update,
 		dataType : 'json',
 		success : function(data) {
-				console.log(data);
 				location.reload();
 		}
 	
 		});
 }
-
-
+	
