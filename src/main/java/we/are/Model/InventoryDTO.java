@@ -13,15 +13,15 @@ public class InventoryDTO {
 	
 	private String pmi;
 	
-	private int stockplus;
+	private int plus5;
 	
 
-	public int getStockplus() {
-		return stockplus;
+	public int getPlus5() {
+		return plus5;
 	}
 
-	public void setStockplus(int stockplus) {
-		this.stockplus = stockplus;
+	public void setPlus5(int plus5) {
+		this.plus5 = plus5;
 	}
 
 	public String getPcode() {
