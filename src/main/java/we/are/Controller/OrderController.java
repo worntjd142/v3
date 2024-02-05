@@ -43,8 +43,10 @@ public class OrderController {
 	// 수주 목록 select
 	@RequestMapping("order")
 	public String order_list (CriteriaDTO cd, Model model, InventoryDTO id) {
-		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
+		// order.jsp 실행할때 제품리스트(product) select결과를 "plist"에 저장해서 가져와
 		model.addAttribute("plist", os.product_select());
+		//System.out.println(os.product_select());
+		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
 		model.addAttribute("olist", os.order_select(cd));
 		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
 		int total = os.total(cd);
