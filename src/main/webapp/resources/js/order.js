@@ -140,15 +140,12 @@
    		}
    	}).click(function() {$(this).autocomplete("search", ""); }); // input입력창을 클릭하면 전체데이터를 호출
    	
-   }); 
+   });    
    
-   
-   
-   
+   /* 제품단가*수량=합계 */
    function count(){
 
-  		var num1 = $("#pprice").val();
-  		
+  		var num1 = $("#pprice").val();  		
   	   	console.log(num1);
   	   	
 	   	var num2 = $("#ocount").val();	   	

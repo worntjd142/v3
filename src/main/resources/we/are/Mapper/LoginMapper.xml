@@ -7,13 +7,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원가입 INSERT 쿼리문 -->
 	<insert id="login_insert">
-		INSERT INTO LOGIN (useid, usepassword, usename, usenumber, usetel) VALUE
+		INSERT INTO login (useid, usepassword, usename, usenumber, usetel) VALUE
 		(#{useid}, #{usepassword}, #{usename}, #{usenumber}, #{usetel});
 	</insert>
 
 	<!-- 사용자 아이디 조회 -->
 	<select id="login" resultType="we.are.Model.LoginDTO">
-		SELECT * FROM LOGIN WHERE useid= #{useid} and usepassword = #{usepassword};
+		SELECT * FROM login WHERE useid= #{useid} and usepassword = #{usepassword};
 	</select>
 	
 </mapper>
