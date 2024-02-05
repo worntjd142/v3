@@ -13,6 +13,10 @@ public class InventoryDTO {
 	
 	private String pmi;
 	
+	
+
+	private String pimage;
+	
 	private int plus5;
 	
 
@@ -55,7 +59,15 @@ public class InventoryDTO {
 	public void setPmc(String pmc) {
 		this.pmc = pmc;
 	}
+	
+	public String getPimage() {
+		return pimage;
+	}
 
+	public void setPimage(String pimage) {
+		this.pimage = pimage;
+	}
+	
 	public int getPstock() {
 		return pstock;
 	}

@@ -25,9 +25,9 @@
 
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
-
-	<div class="main1">
-		<form action="order_insert" method="post" id="autosearch">
+	
+	<form action="order_insert" method="post" id="autosearch">
+		<div class="main1">		
 			<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr>
@@ -37,11 +37,17 @@
 						<th colspan="6" class="title_th">수주 등록</th>
 					</tr>
 					<tr>					
-						<th scope="col">거래처명</th>						
-						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>
 						<th scope="col">사업자번호</th>						
 						<td><input type="text" name="cno" id="cno"><label for="cno"></label></td>
-					</tr>																				
+						<th scope="col">거래처명</th>						
+						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>
+						<th scope="col">대표자</th>						
+						<td><input type="text" name="ceo" id="ceo"><label for="auto"></label></td>
+					</tr>
+					<tr>
+						<th scope="col">수주제품</th>
+						<td colspan="6"><textarea rows="2" cols="52" name="check_List"></textarea></td>
+					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
 						<td><input type="text" hidden="" name="omanager" value="${sessionScope.login.usename}"><span>${sessionScope.login.usename}</span></td>
@@ -50,34 +56,44 @@
 					</tr>
 				</thead>
 			</table>
-		</form>	
+
 	</div>
 	
-	<div class="main2">
-	<h4>장바구니 만드는 중</h4>
-		<table class="table table-striped table-hover table-bordered table-responsive">
+	<div class="tableBox" id="product_list">
+		<table class="table table-striped table-hover table-bordered table-responsive tableData">
 		  <thead class="table-dark">
 		    <tr>
-		      <th scope="col">제품명</th>
-		      <th scope="col">제품단가</th>
-		      <th scope="col">주문수량</th>
-		      <th scope="col">합계</th>
+				<th scope="col" class="stiky"><input type="checkbox" id="all_Check" name="all_Check"></th>
+				<th scope="col" class="stiky">제품명</th>
+				<th scope="col" class="stiky">제품단가</th>
+				<th scope="col" class="stiky">주문수량</th>	      
 		    </tr>
-		  </thead>
-		  <tbody>
+		  </thead>		  
+		  <tbody>			  
+		  <c:forEach items="${plist}" var="prolist" >
 		    <tr>
-		      <td><input type="text" name="pproduct" id="auto_product"></td>
-		      <td><input type="text" name="pprice" id="pprice"></td>
-		      <td><input type="text" name="ocount" id="ocount" onkeyup="count()"> </td>
-		      <td><input type="text" name="osum" id="total"></td>
+				<td><input type="checkbox" value="${prolist.pcode}" 
+				class="choice_Check" name="choice_Check"></td>
+		      	<!-- 제품명 -->
+		      	<td><input type="hidden" value="${prolist.pname}">${prolist.pname}</td>
+		      	<!-- 제품단가 -->
+		      	<td>${prolist.pprice}</td> 
+		      	<!-- 수주수량 -->
+		      	<td><input type="text" name="ocount" id="countBox"> 
+		      		<button>-</button>
+		      		<button>+</button>
+		      	</td>
 		    </tr>
+		   </c:forEach>
 		  </tbody>
-			<tr>
-				<td colspan="4"><input type="submit" value="추가"></td>
-			</tr>
-		</table>
+		  	<tr>
+		  	<th scope="col" colspan="4" id="table_sticky">합계</th>
+		  	</tr>
+		</table>		
+	</div>
+		<input type="button" id="btn_Chklist" name="btn_Chklist" value="리스트 확인용">
+	</form>	
 		
-	</div>	
 	
 	<div class="main3">
 		<form action="order" method="get">

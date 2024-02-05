@@ -22,7 +22,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 
-	<div>
+	<div class = "left1">
 		<form action="p_insert" method="post">
 		<input type = "hidden" name = "pcode" id = "randomcode">
 			<table
@@ -47,17 +47,22 @@
 						<th scope="col">입고수량</th>
 						<td><input type="text" name="pstock"> </td>
 						<th scope="col">제품설명</th>
-						<td colspan = "4"><input type="text" name="pmi"></td>
+						<td><input type="text" name="pmi"></td>
+						<th scope="col">제품이미지</th>
+						<td><input type="file" name="pimage"></td>
 					</tr>
 				</thead>
 			</table>
 		</form>
 	</div>
 <!-- 제품 리스트 div -->
-	<div class = "pro_list">
+	<div class = "right">
 		<table class = "table table-striped table-hover table-bordered table-responsive">
 		<caption id = temple>제품창고 온도 :<label id = wtemple></label>℃ </caption>
 			<thead>
+				<tr>
+					<th class = "table-dark" colspan = "5">제품목록</th>
+				</tr>
 				<tr>
 					<th scope="col" class="table-dark">제품코드</th>
 					<th scope="col" class="table-dark">제품명</th>
@@ -70,7 +75,8 @@
 		<c:forEach items = "${p_list}" var = "pro" varStatus="a">
 				<tr onclick = "insert_info('${pro.pcode}','${pro.pname}','${pro.pprice}','${pro.pmc}','${pro.pstock}','${pro.pmi}')">
 					<td>${pro.pcode}</td>
-					<td>${pro.pname}</td>
+<%-- 					<td><span  class = "hovertext" data-html = "true" data-hover = "제조사 : ${pro.pmc} <br/> 제품설명 : ${pro.pmi}">${pro.pname}</span></td> --%>
+					<td><span  class = "hovertext" data-html = "true" data-hover = "resources/image/product/${pro.pimage}">${pro.pname}</span></td>
 					<td>${pro.pprice}</td>
 					<td>${pro.pstock}</td>
 <%-- 					<td><button onclick="ss('${pro.pcode}')">추가입고</button> --%>
@@ -86,7 +92,7 @@
 		</table>
 	</div>
 <!-- 상세내역 div -->
-	<div class = "col-md-8">
+	<div class = "left2">
 		<table class="table table-striped table-secondary table-hover table-bordered table-responsive">
 			<thead>
 				<tr class="table-dark">

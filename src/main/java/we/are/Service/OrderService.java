@@ -19,7 +19,7 @@ public interface OrderService {
 	public ArrayList<ConnectionDTO> autocomplete (String cname);
 	
 	//제품 리스트
-	public ArrayList<InventoryDTO> product_select(InventoryDTO idt);
+	public ArrayList<InventoryDTO> product_select();
 	
 	//수주서 발행
 	public int suju_update (int ono);
