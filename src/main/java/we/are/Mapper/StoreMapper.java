@@ -8,8 +8,14 @@ import we.are.Model.OrderDTO;
 
 public interface StoreMapper {
 
-	//'수주확인'된 거래처 리스트
+	//'수주 확인'된 거래처 리스트
 	public ArrayList<HashMap<String, Object>> store_select();
+	//'출고 확인' 된 거래처 리스트
+	public ArrayList<HashMap<String, Object>> storerelease_select();
+	//'견적서 발행' 된 거래처 리스트  
+	public ArrayList<HashMap<String, Object>> management_select();
+	
+	
 	
 	//재고량 확인
 	public InventoryDTO product_select(String pcode);
@@ -19,5 +25,11 @@ public interface StoreMapper {
 	
 	//발주 확인
 	public String balju_check(int ono);
+	
+	//수주상태 변경 - > '견적서 발행'
+	public int osuju_update(int ono);
+	
+	//견적서 발행
+	public OrderDTO check(int ono);
 
 }

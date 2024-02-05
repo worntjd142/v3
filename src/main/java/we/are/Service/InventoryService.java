@@ -18,7 +18,7 @@ public interface InventoryService {
 
 	public InventoryDTO house(InventoryDTO id);
 
-	public void housing(InventoryDTO id);
+	public int housing(InventoryDTO id);
 	
 	
 }

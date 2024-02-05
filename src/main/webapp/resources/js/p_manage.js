@@ -1,3 +1,9 @@
+$(function(){
+	$(".pluss").css("opacity","0");
+	$(".pluss").css("display","inline-block");
+})
+
+
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 let result = "";
 const charactersLength = characters.length;
@@ -19,6 +25,7 @@ function insert_info(code, name, price, pmc, pstock, pmi){
 
 //제이쿼리 시작구문
 $(document).ready(function(){
+	
 	$("#randomcode").val(result);
 	
 	var getData = function() {
@@ -37,6 +44,9 @@ $(document).ready(function(){
 
 	}
 	setInterval(getData, 5000);
+
+
+	
 })
 
 
@@ -53,3 +63,33 @@ function ss(pcode){
 	
 	
 }
+
+
+function togb(number){
+	
+	
+	$("#pluss"+number).css("opacity","1");
+}
+
+ function stockplus(pcode, pstock, index) {
+	 
+	 let plus5 = document.querySelector('#plus5'+index).value;
+	 
+	 console.log(plus5);
+	 
+	  $.ajax({
+	    url: 'stockplus',
+	    dataType: 'json',
+	    data : {'dlstn': dlstn}
+	    type: 'get',
+	    async : false, 
+	    success: function(data) {
+	    	console.log(data)
+
+	    }
+	  })
+
+
+}
+
+

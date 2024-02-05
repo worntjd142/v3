@@ -10,11 +10,11 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- 외부 JS, CSS -->
-<script type="text/javascript" src="/resources/js/store.js"></script>
+<script type="text/javascript" src="/resources/js/store_release.js"></script>
 <link href="../resources/css/order.css" rel="stylesheet">
-<link rel = "stylesheet" href = "resources/css/store.css" />
+<link rel = "stylesheet" href = "resources/css/store_release.css" />
 <meta charset="UTF-8">
-<title>출하</title>
+<title>출고</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 	<jsp:include page="include/header.jsp"></jsp:include>
 
 	<div id="release">
-		<h3>출하 요청</h3>
+		<h3>출고 요청</h3>
 		<div id="release_check">
 			<table
 				class="table table-striped table-hover table-bordered table-responsive">
@@ -57,15 +57,11 @@
 	<a href = "store_release"><input type="button" value="출고"></a>
 		</div>
 		<div id="detailed" >
-		<h3>출하 상세</h3>
-		<ul id= "ment" style="list-style: none;">
-		<li style="color:red;">※ 출하일의 기본값은 현재일로 지정되어있습니다.</li>
-		<li style="color:red;">※ 출하수량은 요청수량을 초과 할 수 없습니다.</li>
-		</ul>
+		<h3>견적서 발행</h3>
 		<table class="table table-striped table-hover table-bordered table-responsive">
 			<tbody>
 					<tr>
-						<td>거래처</td>
+						<td >거래처<input type="hidden" id="ono"></td>
 					 	<td id="cname"></td>
 					 	<td>요청수량</td>
 					 	<td id="ocount"></td>
@@ -78,41 +74,50 @@
 					 	</tr>
 				</tbody>
 			</table>
+			<input type="button" value="발행" id="send">
 			</div>
-			<input type="button" value="제품출하">
 	<div id="change">
-		<h3>창고 재고</h3>
+		<h3>관리</h3>
+		${Management}
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
-					<th scope="col" class="table-dark">상품명</th>
+					<th scope="col" class="table-dark">출하일자</th>
+					<th scope="col" class="table-dark">진행상태</th>
+					<th scope="col" class="table-dark">품목코드</th>
+					<th scope="col" class="table-dark">품목명</th>
 					<th scope="col" class="table-dark">기준단위</th>
-					<th scope="col" class="table-dark">재고량</th>
+					<th scope="col" class="table-dark">요청수량</th>
 					<th scope="col" class="table-dark">출하수량</th>
-					<th scope="col" class="table-dark">단가</th>
 					<th scope="col" class="table-dark">요청잔량</th>
-					<th scope="col" class="table-dark">비고</th>
+					<th scope="col" class="table-dark">마감일자</th>
+					<th scope="col" class="table-dark">비고<th>
 				</tr>
 			</thead>
+			<c:forEach items="${Management}" var="ManagementList" varStatus="a">
 			<tbody>
+			
 					<tr>
-						<td id="pname"></td>
-						<td id="ea"></td>
-						<td id="pstock"></td>
-						<td class="scount"></td>
-						<td id="pprice"></td>
-						<td id="requested"></td>
-						<td id="otext"></td>
+						<td></td>
+						<td>${ManagementList.osuju}</td>
+						<td>${ManagementList.pcode}</td>
+						<td>${ManagementList.pproduct}</td>
+						<td>EA</td>
+						<td>${ManagementList.ocount}</td>
+						<td>${ManagementList.scount}</td>
+						<td></td>
+						<td></td>
+						<td>${ManagementList.otext}</td>
 					</tr>
 					
 					<tr>
 					<td colspan="4" style="text-align: center;">합 계</td>
 					<td id="total"></td>
-					<td ></td>
 					<td id="shipment"></td>
 					</tr>
 			</tbody>
+			</c:forEach>
 		</table>
 	</div>
 </div>
