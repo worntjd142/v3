@@ -20,7 +20,6 @@
 <body>
  	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
-
 	<div id="release">
 		<h3>출하 요청</h3>
 		<div id="release_check">
@@ -39,7 +38,7 @@
 				</thead>
 				<tbody>
 				<c:forEach items="${stroe}" var="stroeList" varStatus="a">
-					<tr style="cursor: pointer;" onclick="balju('${stroeList.cname}', '${stroeList.ocount}','${stroeList.pcode}','${stroeList.ono}','${stroeList.otext}')">
+					<tr id="ch"  style="cursor: pointer;" onclick="balju('${stroeList.cname}', '${stroeList.ocount}','${stroeList.pcode}','${stroeList.ono}','${stroeList.otext}')">
 					<td>${stroeList.oday}</td>
 					<td>${stroeList.uuid}</td>
 					<td>${stroeList.osuju}</td>
@@ -114,6 +113,7 @@
 					</tr>
 			</tbody>
 		</table>
+			<div id="Warning"></div>
 	</div>
 </div>
 

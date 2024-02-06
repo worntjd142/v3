@@ -2,9 +2,11 @@ package we.are.Controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,11 +49,13 @@ public class StoreController {
 		public ResponseEntity<?> pstock_update(@RequestParam("ono") int ono,
 											   @RequestParam("ocount") int ocount,
 											   @RequestParam("pcode") String pcode,
+											   @RequestParam("amount") int amount,
 											   OrderDTO od){
 			
 			od.setOno(ono);//주문 번호
 			od.setOcount(ocount); //수주 수량
 			od.setOday(pcode); // *제품코드 (담을 DTO안에 pcode 변수가없어서 oday에 담음)
+			od.setAamount(amount);
 			int result = ssi.balju_update(od);
 			
 			return new ResponseEntity<>(result,HttpStatus.OK);
@@ -74,19 +78,29 @@ public class StoreController {
 			model.addAttribute("company", os.sujucom_select(cd.getCnumber())); // 저장받은 number값을 이용해서 DB company에서 결과값을 model 객체 "company"에 저장
 		}
 
-
 			*/
 		//견적서 발행
 		@GetMapping("issuance")
 		public ResponseEntity<?> issuance(OrderDTO od, Model model, HttpSession session,@RequestParam("ono") int ono) {		
 			
 			int result = ssi.osuju_update(ono); //수주상태 업데이트 - > '견적서 발행'
-			System.out.println(result);
 			if(result == 1) {
 				od = ssi.check(ono);
 			}
 			
 			return new ResponseEntity<>(od,HttpStatus.OK);
+		}
+		
+		@GetMapping("issuance_select")
+		public ResponseEntity<?> issuance_select(@RequestParam("ono[]") List<Integer> ono) {		
+			
+			ArrayList<HashMap<String, Object>>  issuance_select= ssi.store_select();
+			System.out.println(ono);
+			for(int i = 0; i < ono.size(); i++) {
+				issuance_select = ssi.issuance_select(ono.get(i));
+			}
+			
+			return new ResponseEntity<>(issuance_select,HttpStatus.OK);
 		}
 		
 }		

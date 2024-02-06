@@ -63,11 +63,77 @@
    		close : function(event) { // 자동완성창 닫아질때 호출
    			console.log(event);
    		}
-   	}).click(function() {$(this).autocomplete("search", ""); }); // input입력창을
-																	// 클릭하면
-																	// 전체데이터를 호출
+   	}).click(function() {$(this).autocomplete("search", ""); }); 
+   		// input 입력창을 클릭하면 전체데이터를 호출
+																	 
    });
+   
+   
+   
+   /* 제품목록 체크박스 일괄체크+체크해제 */
+   $(function(){   	
+   	// 전체체크박스를 클릭했을때
+   	$("#all_Check").click(function(){ 
+   		
+   		// .is(선택한 Element와 일치하는 확인)
+   		if ($("#all_Check").is(":checked")) 
+   			// input[name=choice_Check]인 체크박스 true
+   			$("input[name=choice_Check]").prop("checked", true);
+   			
+   			// input[name=choice_Check]인 체크박스 false
+   		else $("input[name=choice_Check]").prop("checked", false);
+   		
+   	});   	
+   }); 
+   
+   
+   	
+   $(function(){
+	   // btn_Chklist 버튼 클릭시 체크된 Row의 값을 가져온다.
+		$("#btn_Chklist").click(function(){ 
+			
+			// 체크한 테이블의 전체 데이터를 담을 배열 선언;
+			var rowData = new Array();
+			// 체크한 테이블의 행 데이터를 담을 배열 선언;
+			var tdArr = new Array();
+			// 체크된 박스;
+			var checkbox = $("input[class='choice_Check']:checked");
+			
+			// 체크된 체크박스 값을 가져온다
+			checkbox.each(function(i) {
 
+				// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+				// tr.children() : <tr>의 자식은 <td>이다.
+				// td.children() : <td>의 자식은 <input>이다.
+				var tr = checkbox.parent().parent().eq(i);
+				var td = tr.children();
+				var input = td.children();
+				
+				// 체크된 row의 모든 값을 배열에 담는다.
+				// rowData.push(tr.text());
+				// console.log(tr.text());
+				
+				// td.eq(0)=checkbox, td.eq(1)=pname, td.eq(2)=pprice, td.eq(3)=ocount
+				// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+				var pname = td.eq(1).text()+", "
+				var pprice = td.eq(2).text()+"원, ";
+				var ocount = input.eq(3).val()+"EA ";
+				
+				// 가져온 값을 배열에 담는다.
+				tdArr.push(pname);
+				tdArr.push(pprice);
+				tdArr.push(ocount);
+				
+				console.log("pname : " + pname);
+				console.log("pprice : " + pprice);
+				console.log("ocount : " + ocount);
+
+			});
+			
+			//$("#check_List").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
+			$("#check_List").html(tdArr);	
+		});
+	   });	
 
 
    /* 제품리스트 자동완성 */
@@ -144,6 +210,7 @@
    	
    });    
    
+   
    /* 제품단가*수량=합계 */
    function count(){
 
@@ -218,20 +285,19 @@ $(function() {
          ono.length = 0; // ono 배열 안의 값을 모두 삭제
          
          	} // chk이 ture라면 모든 체크박스의 체크를 해제
-      else {
-    	  
-         $("input:checkbox[class='check_all']").prop("checked", true); 
-         // 하위 체크박스 모두를 체크
+      
+      else { $("input:checkbox[class='check_all']").prop("checked", true); // 하위 체크박스 모두를 체크
+         
          $("#check_all").prop("checked", true); // 메인 체크박스 체크
          
          for(i = 0; i < 10; i++){ // 화면에 출력할 페이지 갯수만큼 반복 (10개)
         	 
-             od.push($("#check_val"+i).is(":checked")); // 반복하면서 #check_val의 값을
-														// 배열 od에 저장. (들어가는 값은
-														// 'false' or 'true')
+             od.push($("#check_val"+i).is(":checked")); 
+             // 반복하면서 #check_val의 값을
+             // 배열 od에 저장. (들어가는 값은 'false' or 'true')															 
              
-             if(od[i] == true){// od의 인덱스를 이용하여 true인 값만 지정하여 ono의 값을 배열ono에
-								// 저장.
+             if(od[i] == true){ // od의 인덱스를 이용하여 true인 값만 지정하여 ono의 값을 배열 ono에 저장.
+
                 ono.push($("#check_val"+[i]).val());
                 }
           }
@@ -246,9 +312,9 @@ $(function() {
    
    $(".check_all").on("click",function(){ // 개별 체크 박스가 클릭 되면
 	   
-	   			if(ono.includes($(this).val())){	// 개별 체크 박스 클릭 시 ono배열에
-													// 개별체크박스의 값이 있는지 확인. 있으면
-													// 'true' 없으면 'false'
+	   			if(ono.includes($(this).val())){	
+	   				// 개별 체크 박스 클릭 시 ono배열에 개별체크박스의 값이 있는지 확인. 
+	   				// 있으면 'true' 없으면 'false'
 	   					
 	   				ono = ono.filter((element) => element !== $(this).val());
 	   				// 필터	함수를 통해 중복된 값을	제거하고 다시 ono 배열에 저장
@@ -286,9 +352,7 @@ function update(){
 };
 
 
-/*  */
-
-$(function(){
+/*$(function(){
 
 // pcode 배열선언
 var pcode = Array();
@@ -308,38 +372,11 @@ $('.check_Box').on('click', function(){0
 	
 });
 });
+*/
 
 
 
-// 체크된 항목을 담기 위한 checklist 배열 선언; 
-var checklist = new Array();
 
-$(function(){
-	
-	/* 체크박스 일괄체크+체크해제 */
-	// 전체체크박스를 클릭했을때
-	$("#all_Check").click(function(){ 
-		
-		// .is(선택한 Element와 일치하는 확인)
-		if ($("#all_Check").is(":checked")) 
-			// input[name=choice_Check]인 체크박스 true
-			$("input[name=choice_Check]").prop("checked", true);
-			
-			// input[name=choice_Check]인 체크박스 false
-		else $("input[name=choice_Check]").prop("checked", false);
-		
-	});		
-	
-	
-	$("input[name=choice_Check]").each(function(){
-		var chk = $(this).val();
-		
-		checklist.push(chk);
-		console.log(chk);
-	});
-	
-	
-}); // putCheckList end
 
 
 		

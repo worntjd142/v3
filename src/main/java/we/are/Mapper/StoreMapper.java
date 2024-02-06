@@ -14,6 +14,8 @@ public interface StoreMapper {
 	public ArrayList<HashMap<String, Object>> storerelease_select();
 	//'견적서 발행' 된 거래처 리스트  
 	public ArrayList<HashMap<String, Object>> management_select();
+	//'출고 확인'된 거래처 리스트 세부
+	public ArrayList<HashMap<String, Object>> issuance_select(int ono);
 	
 	
 	
