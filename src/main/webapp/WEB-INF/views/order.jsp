@@ -74,7 +74,7 @@
 		    </tr>
 		  </thead>		  
 		  <tbody>			  
-			  <c:forEach items="${plist}" var="prolist" varStatus="cin">
+			  <c:forEach items="${plist}" var="prolist" varStatus="count">
 			    <tr>
 					<td><input type="checkbox" 
 								class="choice_Check" id="choice_Check" name="choice_Check"></td>
@@ -84,8 +84,8 @@
 			      	<td><input type="hidden" id="pprice" name="pprice">${prolist.pprice}</td> 
 			      	<!-- 수주수량 -->
 			  		<td><input type="text" name="ocount" id="countBox" > 
-			      		<button id="minus"> - </button>
-			      		<button id="plus"> + </button>
+			      		<button onclick = "plus(${count.index})"> - </button>
+			      		<button onclick = "minus(${count.index})"> + </button>
 			      	</td>
 			    </tr>
 			   </c:forEach>
