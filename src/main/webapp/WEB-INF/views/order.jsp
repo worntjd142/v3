@@ -38,17 +38,17 @@
 					</tr>
 					<tr>					
 						<th scope="col">사업자번호</th>						
-						<td><input type="text" name="cno" id="cno"><label for="cno"></label></td>
+						<td><input type="text" name="cno" id="cno" readonly><label for="cno"></label></td>
 						<th scope="col">거래처명</th>						
 						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>
 						<th scope="col">대표자</th>						
-						<td><input type="text" name="ceo" id="ceo"><label for="ceo"></label></td>
+						<td><input type="text" name="ceo" id="ceo" readonly><label for="ceo"></label></td>
 					</tr>
 					<tr>
 						<th scope="col">수주제품</th>
-						<td colspan="3"><textarea rows="2" cols="52" id="check_List" name="odetail"></textarea></td>
+						<td colspan="3"><textarea rows="2" cols="52" id="check_List" name="odetail" readonly></textarea></td>
 						<th scope="col">총 합계</th>
-						<td><input type="text" name="osum" id="osum"><label for="osum"></label></td>
+						<td><input type="text" name="osum" id="osum" readonly><label for="osum"></label></td>
 					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
