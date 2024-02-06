@@ -47,8 +47,6 @@
 					<tr>
 						<th scope="col">수주제품</th>
 						<td colspan="3"><textarea rows="2" cols="52" id="check_List" name="odetail"></textarea></td>
-						<!-- 제품 품목 수 -->
-						<td><input type="hidden" name="pcount" id="pcount"></td>
 						<th scope="col">총 합계</th>
 						<td><input type="text" name="osum" id="osum"><label for="osum"></label></td>
 					</tr>
@@ -60,6 +58,8 @@
 					</tr>
 				</thead>
 			</table>
+			<!-- 제품 품목 수 -->
+			<input type="hidden" name="pcount" id="pcount">
 		</div>
 	</form>	
 	
