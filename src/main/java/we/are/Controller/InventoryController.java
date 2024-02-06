@@ -71,7 +71,8 @@ public class InventoryController {
 	
 	//추가입고 버튼
 	@RequestMapping(value = "housing", method = RequestMethod.POST)
-	public ResponseEntity<?> housing(InventoryDTO id, Model model, HttpSession session, @RequestParam(value = "pcode")String pcode, @RequestParam(value = "pstock")int pstock, @RequestParam(value = "plus5")int plus5) {
+	public ResponseEntity<?> housing(InventoryDTO id, Model model, HttpSession session, @RequestParam(value = "pcode")String pcode, @RequestParam(value = "pstock")int pstock, 
+			@RequestParam(value = "plus5")int plus5, @RequestParam(value = "houseld")String houseld) {
 		
 		return new ResponseEntity<>(is.housing(id), HttpStatus.OK);
 	}
