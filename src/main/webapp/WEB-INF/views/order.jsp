@@ -9,7 +9,7 @@
 <!-- CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
@@ -46,7 +46,7 @@
 					</tr>
 					<tr>
 						<th scope="col">수주제품</th>
-						<td colspan="6"><textarea rows="2" cols="52" name="check_List"></textarea></td>
+						<td colspan="6"><textarea rows="2" cols="52" id="check_List"></textarea></td>
 					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
@@ -70,21 +70,21 @@
 		    </tr>
 		  </thead>		  
 		  <tbody>			  
-		  <c:forEach items="${plist}" var="prolist" >
-		    <tr>
-				<td><input type="checkbox" value="${prolist.pcode}" 
-				class="choice_Check" name="choice_Check"></td>
-		      	<!-- 제품명 -->
-		      	<td><input type="hidden" value="${prolist.pname}">${prolist.pname}</td>
-		      	<!-- 제품단가 -->
-		      	<td>${prolist.pprice}</td> 
-		      	<!-- 수주수량 -->
-		      	<td><input type="text" name="ocount" id="countBox"> 
-		      		<button>-</button>
-		      		<button>+</button>
-		      	</td>
-		    </tr>
-		   </c:forEach>
+			  <c:forEach items="${plist}" var="prolist" >
+			    <tr>
+					<td><input type="checkbox" 
+								class="choice_Check" id="choice_Check" name="choice_Check"></td>
+			      	<!-- 제품명 -->
+			      	<td><input type="hidden">${prolist.pname}</td>
+			      	<!-- 제품단가 -->
+			      	<td><input type="hidden">${prolist.pprice}</td> 
+			      	<!-- 수주수량 -->
+			  		<td><input type="text" name="ocount" id="countBox"> 
+			      		<button>-</button>
+			      		<button>+</button>
+			      	</td>
+			    </tr>
+			   </c:forEach>
 		  </tbody>
 		  	<tr>
 		  	<th scope="col" colspan="4" id="table_sticky">합계</th>

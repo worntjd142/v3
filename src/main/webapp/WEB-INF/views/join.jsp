@@ -13,7 +13,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- 외부 JS -->
-<script type="text/javascript" src="/resources/js/join.js"></script>
+<script type="text/javascript" src="../resources/js/main.js"></script>
 <link href="../resources/css/join.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>변수제약회사 | 회원가입</title>
@@ -23,7 +23,7 @@
 	<div class="container">
 
 		<div class="imagebox">
-			<img src="../../resources/image/logo.png">
+			<img src="../../resources/image/main_logo.png" style="width: 320px;">
 		</div>
 
 		<div class="row">
@@ -54,13 +54,13 @@
 
 							<div class="form-label-group">
 								<input type="text" id="usenum" name="usenumber" class="form-control"
-									placeholder="사업자번호" required autofocus> <label
+									placeholder="사업자번호" required autofocus maxlength="12"> <label
 									for="usenum">사업자번호</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usetel" name="usetel" class="form-control"
-									placeholder="연락처" required autofocus> <label
+									placeholder="연락처" required autofocus maxlength="12"> <label
 									for="usetel">연락처</label>
 							</div>
 

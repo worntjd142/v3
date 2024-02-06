@@ -24,7 +24,7 @@
 	<div class="container">
 
 		<div class="imagebox">
-			<img src="../../resources/image/logo.png" style="width: 260px;">
+			<img src="../../resources/image/main_logo.png" style="width: 320px;">
 		</div>
 
 		<div class="row">
