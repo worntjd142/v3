@@ -172,24 +172,20 @@
 		});
 		});	
    
-   $(function(){
-	   
+   $(function(){	   
 	   
 	   var plus_count = 0;
 	   
 	   $("#plus").click(function(){
 		   
-		   plus_count += 1;
-		   for (var i = 0; i < array.length; i++) {
-			   $("input[name=ocount]").val(plus_count);
-		}
-		   
+		   plus_count += 1;	
+		   $("input[name=ocount]").val(plus_count);
 		   
 	   }); //plus function end
 	   
 	   $("#minus").click(function(){
 		   
-		   plus_count += 1;
+		   plus_count -= 1;
 		   $("input[name=ocount]").val(plus_count);
 		   
 	   }); //plus function end
