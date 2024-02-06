@@ -67,8 +67,7 @@
    		// input 입력창을 클릭하면 전체데이터를 호출
 																	 
    });
-   
-   
+     
    
    /* 제품목록 체크박스 일괄체크+체크해제 */
    $(function(){   	
@@ -87,10 +86,6 @@
    }); 
    
    
-   
-   
-   
-   	
    $(function(){
 	   // btn_Chklist 버튼 클릭시 체크된 Row의 값을 가져온다.
 		$("#btn_Chklist").click(function(){ 
@@ -125,7 +120,7 @@
 				// td.eq(0)=checkbox, td.eq(1)=pname, td.eq(2)=pprice, td.eq(3)=ocount
 				// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
 				var pname = " [ "+ td.eq(1).text() + " ] : "
-				var pprice = td.eq(2).text()+"원, ";
+				var pprice = td.eq(2).text()+"원 ";
 				var ocount = input.eq(3).val()+"EA " + "\n";
 				
 				// 총합계를 위한 제품단가*주문수량 변수;
@@ -163,7 +158,7 @@
 					}
 				
 				//$("#check_List").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-				$("#check_List").html(tdArr);
+				$("#check_List").val(tdArr);
 				$("input[name=osum]").val(psumtotal);
 				$("input[name=pcount]").val(checkcount);
 				
