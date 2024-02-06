@@ -78,7 +78,7 @@
 		<c:forEach items = "${p_list}" var = "pro" varStatus="a">
 				<tr onclick = "insert_info('${pro.pimage}','${pro.pmc}','${pro.pmi}','${pro.pname}','${pro.exd}','${pro.houseld}','${pro.housed}')">
 					<td>${pro.pcode}</td>
-					<td><span  class = "hovertext" data-html = "true" data-hover = "resources/image/product/${pro.pimage}">${pro.pname}</span></td>
+					<td>${pro.pname}</td>
 					<td>${pro.pprice}</td>
 					<td>${pro.pstock}</td>
 					<td><button onclick="togb('${a.index}')">추가입고</button>
@@ -96,35 +96,41 @@
 	<div class = "left2">
 		<table class="table table-striped table-secondary table-hover table-bordered table-responsive">
 			<thead>
-				<tr class="table-dark">
-					<th colspan="5" class="title_th">제품 상세 정보</th>
-				</tr>
-				<tr class = "imagetr">
-					<td style = "background-color : white;" class = "imagetd" colspan = "3" rowspan = "6" id = "pimagei"></td>
-					<th class = "p_width">제품 이름</th>
-					<td class = "p_width2" style = "background-color : #FFFFFF" id = "pnamei"></td>
+				<tr id = detail_thead class="table-dark">
+					<th colspan="5">제품 상세 정보</th>
 				</tr>
 				<tr>
-					<th class = "p_width">입고날짜</th>
-					<td class = "p_width2" style = "background-color : #FFFFFF" id = "housedi"></td>
+					<td style = "background-color : white;" class = "imagetd" colspan = "3" rowspan = "12" id = "pimagei"></td>
+					<th rowspan = "2" class = "p_width">제품 이름</th>
+					<td rowspan = "2" class = "p_width2" style = "background-color : #FFFFFF" id = "pnamei"></td>
 				</tr>
+				<tr></tr>
 				<tr>
-					<th class = "p_width">유통기한</th>
-					<td class = "p_width2" style = "background-color : #FFFFFF" id = "exdi"></td>
+					<th rowspan = "2" class = "p_width">입고날짜</th>
+					<td rowspan = "2" class = "p_width2" style = "background-color : #FFFFFF" id = "housedi"></td>
 				</tr>
+				<tr></tr>
 				<tr>
-					<th class = "p_width">제조사</th>
-					<td class = "p_width2" style = "background-color : #FFFFFF" id = "pmci"></td>
+					<th rowspan = "2" class = "p_width">유통기한</th>
+					<td rowspan = "2" class = "p_width2" style = "background-color : #FFFFFF" id = "exdi"></td>
 				</tr>
+				<tr></tr>
 				<tr>
-					<th class = "p_width">제품설명</th>
-					<td class = "p_width2" style = "background-color : #FFFFFF" id = "pmii"></td>
+					<th rowspan = "2" class = "p_width">제조사</th>
+					<td rowspan = "2" class = "p_width2" style = "background-color : #FFFFFF" id = "pmci"></td>
 				</tr>
+				<tr></tr>
 				<tr>
-					<th class = "p_width">최종입고</th>
-					<td class = "p_width2" style = "background-color : #FFFFFF" id = "houseldi"></td>
+					<th rowspan = "2" class = "p_width">제품설명</th>
+					<td rowspan = "2" class = "p_width2" style = "background-color : #FFFFFF" id = "pmii"></td>
 				</tr>
-			<thead>
+				<tr></tr>
+				<tr>
+					<th rowspan = "2" class = "p_width">최종입고</th>
+					<td rowspan = "2" class = "p_width2" style = "background-color : #FFFFFF" id = "houseldi"></td>
+				</tr>
+				<tr></tr>
+			</thead>
 		</table>
 	</div>
 </body>
