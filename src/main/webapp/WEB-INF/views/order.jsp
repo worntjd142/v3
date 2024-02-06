@@ -63,7 +63,8 @@
 		</div>
 	</form>	
 	
-	<div class="tableBox" id="product_list">
+	<input type="button" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+	<div class="tableBox" id="product_list">	
 		<table class="table table-striped table-hover table-bordered table-responsive tableData">
 		  <thead class="table-dark">
 		    <tr>
@@ -94,10 +95,7 @@
 		  	<th scope="col" colspan="4" id="table_sticky">합계</th>
 		  	</tr>
 		</table>		
-	</div>
-		<input type="button" id="btn_Chklist" name="btn_Chklist" value="제품추가">
-	
-		
+	</div>	
 	
 	<div class="main3">
 		<form action="order" method="get">
