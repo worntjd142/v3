@@ -87,6 +87,9 @@
    }); 
    
    
+   
+   
+   
    	
    $(function(){
 	   // btn_Chklist 버튼 클릭시 체크된 Row의 값을 가져온다.
@@ -96,8 +99,13 @@
 			var rowData = new Array();
 			// 체크한 테이블의 행 데이터를 담을 배열 선언;
 			var tdArr = new Array();
+			// 체크한 테이블의 pprice 데이터를 담을 배열 선언;
+			var pArr = new Array();
 			// 체크된 박스;
 			var checkbox = $("input[class='choice_Check']:checked");
+			// 체크된 박스 갯수;
+			var checkcount = $("input[class='choice_Check']:checked").length;
+		
 			
 			// 체크된 체크박스 값을 가져온다
 			checkbox.each(function(i) {
@@ -108,6 +116,7 @@
 				var tr = checkbox.parent().parent().eq(i);
 				var td = tr.children();
 				var input = td.children();
+
 				
 				// 체크된 row의 모든 값을 배열에 담는다.
 				// rowData.push(tr.text());
@@ -115,26 +124,75 @@
 				
 				// td.eq(0)=checkbox, td.eq(1)=pname, td.eq(2)=pprice, td.eq(3)=ocount
 				// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-				var pname = td.eq(1).text()+", "
+				var pname = " [ "+ td.eq(1).text() + " ] : "
 				var pprice = td.eq(2).text()+"원, ";
-				var ocount = input.eq(3).val()+"EA ";
+				var ocount = input.eq(3).val()+"EA " + "\n";
+				
+				// 총합계를 위한 제품단가*주문수량 변수;
+				var psum = td.eq(2).text() * input.eq(3).val();
+				//console.log(psum);
 				
 				// 가져온 값을 배열에 담는다.
 				tdArr.push(pname);
 				tdArr.push(pprice);
-				tdArr.push(ocount);
+				tdArr.push(ocount);	
 				
-				console.log("pname : " + pname);
-				console.log("pprice : " + pprice);
-				console.log("ocount : " + ocount);
-
-			});
-			
-			//$("#check_List").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-			$("#check_List").html(tdArr);	
+				//console.log(tdArr);
+				
+				//console.log("제품명 : " + pname);
+				//console.log("제품단가 : " + pprice);
+				//console.log("제품 수 : " + ocount);
+				//console.log("품목 수: " + checkcount);
+				//console.log("합계:" + psum);
+				
+				// 총합계
+				var psumtotal = 0;
+				
+				// String타입 int타입으로 변환해서 number변수에 담음.
+				number = parseInt(psum);
+				
+				// 가져온 number값(parseInt(psum))을 배열에 담는다.
+				pArr.push(number);
+				
+				// pArr데이터 길이만큼 반복
+				for (let i = 0; i < pArr.length; i++ ) {
+						 
+						// 총합계 = pArr[i] + pArr[i];
+						psumtotal += pArr[i];
+						console.log(psumtotal);
+					}
+				
+				//$("#check_List").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
+				$("#check_List").html(tdArr);
+				$("input[name=osum]").val(psumtotal);
+				$("input[name=pcount]").val(checkcount);
+				
+				console.log(checkcount);
+			});			
 		});
-	   });	
-
+		});	
+   
+   $(function(){	   
+	   
+	   var plus_count = 0;
+	   
+	   $("#plus").click(function(){
+		   
+		   plus_count += 1;	
+		   $("input[name=ocount]").val(plus_count);
+		   
+	   }); //plus function end
+	   
+	   $("#minus").click(function(){
+		   
+		   plus_count -= 1;
+		   $("input[name=ocount]").val(plus_count);
+		   
+	   }); //plus function end
+	   
+   });
+   
+   
 
    /* 제품리스트 자동완성 */
 
