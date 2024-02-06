@@ -172,26 +172,55 @@
 		});
 		});	
    
-   $(function(){	   
-	   
-	   var plus_count = 0;
-	   
-	   $("#plus").click(function(){
-		   
-		   plus_count += 1;	
-		   $("input[name=ocount]").val(plus_count);
-		   
-	   }); //plus function end
-	   
-	   $("#minus").click(function(){
-		   
-		   plus_count -= 1;
-		   $("input[name=ocount]").val(plus_count);
-		   
-	   }); //plus function end
-	   
-   });
+//   $(function(){	   
+//	   
+//	   var plus_count = 0;
+//	   
+//	   $("#plus").click(function(){
+//		   
+//		   plus_count += 1;	
+//		   $("input[name=ocount]").val(plus_count);
+//		   
+//	   }); //plus function end
+//	   
+//	   $("#minus").click(function(){
+//		   
+//		   plus_count -= 1;
+//		   $("input[name=ocount]").val(plus_count);
+//		   
+//	   }); //plus function end
+//	   
+//   });
    
+   
+   //주문수량 +
+   function plus(count){
+	   // cnt변수에 카운트박스 value값 저장
+	   let cnt = document.getElementById("countBox"+count).value;
+	   
+	   // cnt 값이 50일 경우 +버튼 눌러도
+	   if(cnt == 50){
+		   //false값 반환
+		   return false;
+	   }else{
+	   // plus 버튼 누르면 cnt 증가
+	   cnt++;
+	   }
+	   // 증가된 cnt 값 다시 카운트박스 value에 저장
+	   document.getElementById("countBox"+count).value = cnt;
+   }
+   //주문수량-
+   function minus(count){
+	   let cnt = document.getElementById("countBox"+count).value;
+	   
+	   if(cnt == 0){
+		   return false;
+	   }else{
+	   cnt--;
+	   }
+	   document.getElementById("countBox"+count).value = cnt;
+	  
+   }
    
 
    /* 제품리스트 자동완성 */
