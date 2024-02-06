@@ -42,11 +42,15 @@
 						<th scope="col">거래처명</th>						
 						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>
 						<th scope="col">대표자</th>						
-						<td><input type="text" name="ceo" id="ceo"><label for="auto"></label></td>
+						<td><input type="text" name="ceo" id="ceo"><label for="ceo"></label></td>
 					</tr>
 					<tr>
 						<th scope="col">수주제품</th>
-						<td colspan="6"><textarea rows="2" cols="52" id="check_List"></textarea></td>
+						<td colspan="3"><textarea rows="2" cols="52" id="check_List" name="odetail"></textarea></td>
+						<!-- 제품 품목 수 -->
+						<td><input type="hidden" name="pcount" id="pcount"></td>
+						<th scope="col">총 합계</th>
+						<td><input type="text" name="osum" id="osum"><label for="osum"></label></td>
 					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
@@ -56,8 +60,8 @@
 					</tr>
 				</thead>
 			</table>
-
-	</div>
+		</div>
+	</form>	
 	
 	<div class="tableBox" id="product_list">
 		<table class="table table-striped table-hover table-bordered table-responsive tableData">
@@ -70,18 +74,18 @@
 		    </tr>
 		  </thead>		  
 		  <tbody>			  
-			  <c:forEach items="${plist}" var="prolist" >
+			  <c:forEach items="${plist}" var="prolist" varStatus="cin">
 			    <tr>
 					<td><input type="checkbox" 
 								class="choice_Check" id="choice_Check" name="choice_Check"></td>
 			      	<!-- 제품명 -->
-			      	<td><input type="hidden">${prolist.pname}</td>
+			      	<td><input type="hidden" name="pname">${prolist.pname}</td>
 			      	<!-- 제품단가 -->
-			      	<td><input type="hidden">${prolist.pprice}</td> 
+			      	<td><input type="hidden" id="pprice" name="pprice">${prolist.pprice}</td> 
 			      	<!-- 수주수량 -->
-			  		<td><input type="text" name="ocount" id="countBox"> 
-			      		<button>-</button>
-			      		<button>+</button>
+			  		<td><input type="text" name="ocount" id="countBox" > 
+			      		<button id="minus"> - </button>
+			      		<button id="plus"> + </button>
 			      	</td>
 			    </tr>
 			   </c:forEach>
@@ -91,8 +95,8 @@
 		  	</tr>
 		</table>		
 	</div>
-		<input type="button" id="btn_Chklist" name="btn_Chklist" value="리스트 확인용">
-	</form>	
+		<input type="button" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+	
 		
 	
 	<div class="main3">
@@ -157,9 +161,8 @@
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
 						<td>${orderlist.cname}</td> 
-						<td> 품목수 </td>
-						<td hidden="">${orderlist.pprice}</td>
-						
+						<td>${orderlist.pcount} </td>
+						<td hidden="">${orderlist.pprice}</td>						
 						<td>${orderlist.osum}</td>
 						<td>${orderlist.osuju}</td>
 						<td>${orderlist.omanager}</td>
