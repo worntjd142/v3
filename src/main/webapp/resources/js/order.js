@@ -157,35 +157,22 @@
 						console.log(psumtotal);
 					}
 				
+				
+				
 				//$("#check_List").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
 				$("#check_List").val(tdArr);
 				$("input[name=osum]").val(psumtotal);
 				$("input[name=pcount]").val(checkcount);
 				
 				console.log(checkcount);
+				console.log("합계"+psumtotal);
+				
+				
+				
 			});			
 		});
 		});	
    
-//   $(function(){	   
-//	   
-//	   var plus_count = 0;
-//	   
-//	   $("#plus").click(function(){
-//		   
-//		   plus_count += 1;	
-//		   $("input[name=ocount]").val(plus_count);
-//		   
-//	   }); //plus function end
-//	   
-//	   $("#minus").click(function(){
-//		   
-//		   plus_count -= 1;
-//		   $("input[name=ocount]").val(plus_count);
-//		   
-//	   }); //plus function end
-//	   
-//   });
    
    
    //주문수량 +
