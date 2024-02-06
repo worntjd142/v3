@@ -15,6 +15,11 @@
 	width : 150px; 
 }
 
+.p_width2{
+	width : 250px; 
+	background-color : #FFFFFF;
+}
+
 .hovertext {
     position: relative;
 }
@@ -37,12 +42,31 @@
     top: 110%;
 }
 
+input[type="text"] {
+    width: 160px;
+}
+
 .left1, .right, .left2{
-	width: 49%;
-	display : inline-block;
+	width : 49%;
+	position : absolute;
 	
 }
 
+.left1{
+	top : 102px;
+	left : 10px;
+}
+
+.left2{
+	left : 10px;
+	top : 310px;
+}
+
+.right{
+	top : 101px;
+	float : right;
+	right : 10px;
+}
 
 
 .hovertext:hover:before {

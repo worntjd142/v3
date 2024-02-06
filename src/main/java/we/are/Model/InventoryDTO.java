@@ -1,22 +1,37 @@
 package we.are.Model;
 
 public class InventoryDTO {
+	// 제품코드
 	private String pcode;
 	
+	// 제품이름	
 	private String pname;
 	
+	// 입고날짜
+	private String housed;
+	
+	// 유통기한
+	private String exd;
+	
+	// 최종입고날짜	
+	private String houseld;
+	
+	// 제품가격
 	private int pprice;
 	
+	// 제조사
 	private String pmc;
 	
+	// 재고수
 	private int pstock;
 	
+	// 제품설명
 	private String pmi;
 	
-	
-
+	// 제품이미지
 	private String pimage;
 	
+	// 추가수량
 	private int plus5;
 	
 
@@ -84,6 +99,28 @@ public class InventoryDTO {
 		this.pmi = pmi;
 	}
 
-	
+	public String getHoused() {
+		return housed;
+	}
+
+	public void setHoused(String housed) {
+		this.housed = housed;
+	}
+
+	public String getExd() {
+		return exd;
+	}
+
+	public void setExd(String exd) {
+		this.exd = exd;
+	}
+
+	public String getHouseld() {
+		return houseld;
+	}
+
+	public void setHouseld(String houseld) {
+		this.houseld = houseld;
+	}
 	
 }
