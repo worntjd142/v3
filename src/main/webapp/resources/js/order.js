@@ -100,11 +100,10 @@
 			var checkbox = $("input[class='choice_Check']:checked");
 			// 체크된 박스 갯수;
 			var checkcount = $("input[class='choice_Check']:checked").length;
-		
+			
 			
 			// 체크된 체크박스 값을 가져온다
 			checkbox.each(function(i) {
-
 				// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
 				// tr.children() : <tr>의 자식은 <td>이다.
 				// td.children() : <td>의 자식은 <input>이다.
@@ -114,23 +113,34 @@
 
 				
 				// 체크된 row의 모든 값을 배열에 담는다.
-				// rowData.push(tr.text());
+				rowData.push();
+				console.log(rowData);
 				// console.log(tr.text());
 				
 				// td.eq(0)=checkbox, td.eq(1)=pname, td.eq(2)=pprice, td.eq(3)=ocount
 				// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-				var pname = " [ "+ td.eq(1).text() + " ] : "
-				var pprice = td.eq(2).text()+"원 ";
-				var ocount = input.eq(3).val()+"EA " + "\n";
+				var pname = td.eq(1).text();
+				var pprice = td.eq(2).text();
+				var ocount = input.eq(3).val();
 				
 				// 총합계를 위한 제품단가*주문수량 변수;
 				var psum = td.eq(2).text() * input.eq(3).val();
 				//console.log(psum);
 				
+				
+				/*
 				// 가져온 값을 배열에 담는다.
 				tdArr.push(pname);
 				tdArr.push(pprice);
 				tdArr.push(ocount);	
+				*/
+				
+				/* 
+				var ttt = pname + "," + pprice + "," + ocount;
+				console.log(ttt);
+				tdArr.push(ttt);
+				*/
+				
 				
 				//console.log(tdArr);
 				
@@ -157,15 +167,33 @@
 						console.log(psumtotal);
 					}
 				
+
 				
+				// 체크한 박스만큼 반복 후 행 추가
+				var html = '';
 				
+				for (var i = 0; i < checkcount; i++) {
+					
+					html += tdArr[i];
+						
+				}
+				
+					
 				//$("#check_List").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-				$("#check_List").val(tdArr);
+				//$("#check_List").val(tdArr);
+				$("#pnamesum").empty();
+				$("#pnamesum").val(html);
 				$("input[name=osum]").val(psumtotal);
 				$("input[name=pcount]").val(checkcount);
+				$("#pnames").val(pnames);
+				$("#pprices").val(pprices);
+
+				$("#ocounts").val(ocounts);
 				
-				console.log(checkcount);
-				console.log("합계"+psumtotal);
+				//console.log(html);
+				
+				//console.log(checkcount);
+				//console.log("합계"+psumtotal);
 				
 				
 				

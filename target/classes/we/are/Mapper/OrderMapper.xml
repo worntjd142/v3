@@ -11,8 +11,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{ocount}, #{recount}, #{iocount}, #{otext}); -->
 
 		INSERT INTO
-		orderr (uuid, cno, cname, ceo, pcount, odetail, osum, omanager, otext) 
-		VALUE (uuid_short(), #{cno}, #{cname}, #{ceo}, #{pcount}, #{odetail}, #{osum}, #{omanager}, #{otext});
+		orderr (uuid, cno, cname, ceo, pproduct, pprice, pcount, osum, omanager, otext, pnamesum) 
+		VALUE (uuid_short(), #{cno}, #{cname}, #{ceo}, #{pproduct}, #{pprice},  #{pcount}, #{osum}, #{omanager}, #{otext}, #{pnamesum});
+	</insert>
+	
+	<!-- 제품 INSERT -->
+	<insert id="cart_insert">
+		INSERT INTO cart (pnamesum, osum, ono) 
+			VALUE (#{pnamesum}, #{osum}, #{ono});
 	</insert>
 
 

@@ -2,6 +2,7 @@ package we.are.Service;
 
 import java.util.ArrayList;
 
+import we.are.Model.CartDTO;
 import we.are.Model.ConnectionDTO;
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
@@ -10,7 +11,10 @@ import we.are.Model.OrderDTO;
 public interface OrderService {
 	
 	// 수주 등록
-	public void order_insert (OrderDTO od);
+	public void order_insert (OrderDTO[] od);
+	
+	// 제품 등록
+	public void cart_insert (CartDTO[] cdt);
 	
 	// 수주 목록 리스트
 	public ArrayList<OrderDTO> order_select (CriteriaDTO cd);

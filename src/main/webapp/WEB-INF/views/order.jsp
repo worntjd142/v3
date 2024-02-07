@@ -54,8 +54,10 @@
 						<td><input type="text" name="ceo" id="ceo" readonly><label for="ceo"></label></td>
 					</tr>
 					<tr>
-						<th scope="col">수주제품</th>
-						<td colspan="3"><textarea rows="2" cols="52" id="check_List" name="odetail" readonly></textarea></td>
+						<th scope="col" id="product_append">수주제품</th>
+						<td colspan="3">
+						<input type="text" id="pnamesum">
+						</td>
 						<th scope="col">총 합계</th>
 						<td><input type="text" name="osum" id="osum" readonly><label for="osum"></label></td>
 					</tr>
@@ -69,8 +71,11 @@
 			</table>
 			<!-- 제품 품목 수 -->
 			<input type="hidden" name="pcount" id="pcount">
+			<input type="text" name="pname" id="pnames">
+			<input type="text" name="pprice" id="pprices">
+			<input type="text" name="ocount" id="ocounts">
 		</div>
-	</form>	
+		</form>
 	
 	<input type="button" id="btn_Chklist" name="btn_Chklist" value="제품추가">
 	<div class="tableBox" id="product_list">	
@@ -83,11 +88,11 @@
 				<th scope="col" class="stiky">주문수량</th>	      
 		    </tr>
 		  </thead>		  
-		  <tbody>			  
+		  <tbody>			
+		    
 			  <c:forEach items="${plist}" var="prolist" varStatus="count">
 			    <tr>
-					<td><input type="checkbox" 
-								class="choice_Check" id="choice_Check" name="choice_Check"></td>
+					<td><input type="checkbox" class="choice_Check" id="choice_Check" name="choice_Check" value="${prolist.pname}"></td>
 			      	<!-- 제품명 -->
 			      	<td><input type="hidden" name="pname">${prolist.pname}</td>
 			      	<!-- 제품단가 -->
@@ -99,6 +104,7 @@
 			      	</td>
 			    </tr>
 			   </c:forEach>
+			   
 		  </tbody>
 		  	<tr>
 		  	<th scope="col" colspan="4" id="table_sticky">합계</th>
@@ -167,7 +173,7 @@
 						<td><c:if test="${orderlist.osuju == '수주 대기'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
-						<td><a>${orderlist.cname}</a></td> 
+						<td><a href="/order/order_detail_popup?uuid${orderlist.uuid}">${orderlist.cname}</a></td> 
 						<td>${orderlist.pcount} </td>
 						<td hidden="">${orderlist.pprice}</td>						
 						<td>${orderlist.osum}</td>
