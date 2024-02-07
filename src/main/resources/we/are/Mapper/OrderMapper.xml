@@ -14,17 +14,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		orderr (uuid, cno, cname, ceo, pcount, odetail, osum, omanager, otext) 
 		VALUE (uuid_short(), #{cno}, #{cname}, #{ceo}, #{pcount}, #{odetail}, #{osum}, #{omanager}, #{otext});
 	</insert>
-	
-	<!-- 거래처 자동완성을 위한 쿼리 -->
-	<select id="autocomplete" resultType="we.are.Model.ConnectionDTO">
-	SELECT * FROM connection WHERE cname LIKE concat('%', #{cname} ,'%');
-	</select>
-
-
-	<!--제품 리스트 -->
-	<select id="product_select" resultType="we.are.Model.InventoryDTO">
-		select * from product;
-	</select>
 
 
 	<!-- 수주 목록 리스트 + 날짜 기간 조회 select -->
@@ -66,16 +55,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
 			]]> 
 	</select>
+	
+	
+	<!-- 수주 상세정보 -->
+	<select id="order_detail" resultType="we.are.Model.OrderDTO">
+	SELECT * FROM orderr WHERE uuid = #{uuid};
+	</select>
 
 	<update id="suju_update">
 		update orderr set osuju  = '수주 확인' where ono = #{ono}
 	</update>
+
 
 	<!-- total을 위한 select -->
 	<select id="total" resultType="int">
 		SELECT COUNT(*) FROM orderr;
 	</select>
 
+
+	<!-- 거래처 자동완성을 위한 쿼리 -->
+	<select id="autocomplete" resultType="we.are.Model.ConnectionDTO">
+	SELECT * FROM connection WHERE cname LIKE concat('%', #{cname} ,'%');
+	</select>
+
+
+	<!--제품 리스트 -->
+	<select id="product_select" resultType="we.are.Model.InventoryDTO">
+		select * from product;
+	</select>
+	
 
 	<select id="sujuletter_select"
 		resultType="we.are.Model.OrderDTO">
