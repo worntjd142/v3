@@ -14,7 +14,7 @@
 <link rel = "stylesheet" href = "resources/css/p_manage.css">
 
 <meta charset="UTF-8">
-<title>거래처 목록</title>
+<title>제품관리</title>
 </head>
 
 <body>
