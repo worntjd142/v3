@@ -20,7 +20,7 @@ function insert_info(pimage, pmc, pmi, pname, exd, houseld, housed){
 	
 	let img;
 	
-	img = "<img src='../resources/image/product/"+pimage+"' width ='530px' height = '250px'>"
+	img = "<img src='../resources/image/product/"+pimage+"' width ='500px' height = '500px'>"
 	
 	$("#pimagei").append(img);
 	$("#pmci").text(pmc);

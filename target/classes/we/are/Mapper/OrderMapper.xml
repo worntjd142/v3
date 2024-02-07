@@ -39,24 +39,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<choose>
 				<!-- startday값이 null값이 아니고 '빈값'이 아니고 endday값이 null값이 아니고 '빈값'이 아니면 -->
 				<!-- oday에서 startday부터 endday까지 select 해라 -->
-				<when
-					test="startday != null and startday != '' and endday != null and endday != '' "> 
+				<when test="startday != null and startday != '' and endday != null and endday != '' "> 
 	       	 <![CDATA[	           
 	           where oday BETWEEN #{startday} AND #{endday}
 	        	]]>
 				</when>
 				<!-- startday값이 null값이 아니고 '빈값'이 아닌 endday값이 null이거나 '빈값'이면 -->
 				<!-- oday에서 시작 날짜 이후 목록 select 해라 -->
-				<when
-					test="startday != null and startday != '' and endday == null or endday == '' ">
+				<when test="startday != null and startday != '' and endday == null or endday == '' ">
       	 	<![CDATA[      	 		
       	 		where oday >= #{startday}
       	 	 ]]>
 				</when>
 				<!-- startday값이 null이거나 '빈값'이고 endday값이 null값이 아니고 '빈값'이 아니면 -->
 				<!-- oday에서 종료날짜 이전 목록 select 해라 -->
-				<when
-					test="startday == null or startday == '' and endday != null and endday != '' ">
+				<when test="startday == null or startday == '' and endday != null and endday != '' ">
       	 	<![CDATA[      	 		
       	 		where oday <= #{endday}
       	 	 ]]>
