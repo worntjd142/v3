@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import we.are.Mapper.OrderMapper;
+import we.are.Model.CartDTO;
 import we.are.Model.ConnectionDTO;
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
@@ -19,8 +20,13 @@ public class OrderServiceImpl implements OrderService {
 		
 	
 	// 수주 등록
-	public void order_insert(OrderDTO od) {
+	public void order_insert(OrderDTO[] od) {
 		om.order_insert(od);		
+	}
+	
+	// 제품 등록
+	public void cart_insert (CartDTO[] cdt) {
+		om.cart_insert(cdt);
 	}
 	
 	// 수주 목록 리스트

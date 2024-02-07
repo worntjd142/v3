@@ -14,11 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import we.are.Model.CartDTO;
 import we.are.Model.ConnectionDTO;
 import we.are.Model.CriteriaDTO;
 import we.are.Model.InventoryDTO;
-import we.are.Model.LoginDTO;
 import we.are.Model.OrderDTO;
 import we.are.Model.PageDTO;
 import we.are.Service.OrderService;
@@ -35,7 +36,7 @@ public class OrderController {
 	// 수주등록 버튼을 누르면
 	@RequestMapping("order_insert")
 	public String order_insert(OrderDTO od) {
-		os.order_insert(od);
+		System.out.println(od);
 		return "redirect:/order";
 	}
 
