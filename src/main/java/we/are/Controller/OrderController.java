@@ -57,6 +57,13 @@ public class OrderController {
 		return "order";
 	}
 	
+	// 수주 상세정보
+	@RequestMapping("order/order_detail_popup")
+	public String order_detail (OrderDTO od, Model model) {
+		model.addAttribute("orderdetail", os.order_detail(od));
+		return "order/order_detail_popup";
+	}
+	
 
 	// 발주 등록 제품 ajax
 	@RequestMapping("/autoproduct")

@@ -13,6 +13,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="generator" content="Hugo 0.115.4">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- 외부 JS, CSS -->
 <script type="text/javascript" src="/resources/js/order.js"></script>
 <link href="../resources/css/order.css" rel="stylesheet">
@@ -158,7 +167,7 @@
 						<td><c:if test="${orderlist.osuju == '수주 대기'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
-						<td>${orderlist.cname}</td> 
+						<td><a>${orderlist.cname}</a></td> 
 						<td>${orderlist.pcount} </td>
 						<td hidden="">${orderlist.pprice}</td>						
 						<td>${orderlist.osum}</td>

@@ -28,6 +28,11 @@ public class OrderServiceImpl implements OrderService {
 		return om.order_select(cd);
 	}
 	
+	// 수주 상세정보
+	public OrderDTO order_detail (OrderDTO od) {
+		return om.order_detail(od);
+	};
+	
 	// 거래처명 자동완성
 	public ArrayList<ConnectionDTO> autocomplete (String cname){
 		return om.autocomplete(cname);
