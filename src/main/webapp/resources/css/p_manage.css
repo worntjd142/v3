@@ -7,8 +7,10 @@
 .table.table-striped.table-hover.table-bordered.table-responsive thead{
 }
 
-.table.table-striped.table-hover.table-bordered.table-responsive tbody {
-	overflow:auto;
+.p_width, .p_width2{
+	height : 80px; 
+	text-align : center;
+	line-height : 75px;
 }
 
 .p_width{
@@ -16,7 +18,7 @@
 }
 
 .p_width2{
-	width : 250px; 
+	width : 250px;
 	background-color : #FFFFFF;
 }
 
@@ -58,6 +60,7 @@ input[type="text"] {
 }
 
 .left2{
+	height : 590px;
 	left : 10px;
 	top : 310px;
 }
