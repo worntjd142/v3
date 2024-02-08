@@ -31,7 +31,7 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">회원가입</h5>
 
-						<form action="login_insert" method="POST" class="form-signin">
+						<form action="login_insert" method="POST" class="form-signin" onSubmit="return chkForm(this)">
 
 							<div class="form-label-group">
 								<input type="text" id="useid" name="useid" class="form-control"
@@ -40,27 +40,27 @@
 							</div>
 
 							<div class="form-label-group">
-								<input type="password" id="usePassword" name="usepassword" class="form-control"
-									placeholder="비밀번호" required> <label
-									for="usePassword">비밀번호</label>
+								<input type="text" id="usePassword" name="usepassword" class="form-control"
+									placeholder="비밀번호" required> 
+									<label for="usePassword">비밀번호</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usename" name="usename" class="form-control"
-									placeholder="사용자 이름" required autofocus> <label
-									for="usename">사용자 이름</label>
+									placeholder="사용자 이름" required autofocus> 
+									<label for="usename">사용자 이름</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usenum" name="usenumber" class="form-control"
-									placeholder="사업자번호" required autofocus maxlength="12"> <label
-									for="usenum">사업자번호</label>
+									placeholder="사업자번호" required autofocus maxlength="12"> 
+									<label for="usenum">사업자번호</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usetel" name="usetel" class="form-control"
-									placeholder="연락처" required autofocus maxlength="13"> <label
-									for="usetel">연락처</label>
+									placeholder="연락처" required autofocus maxlength="13"> 
+									<label for="usetel">연락처</label>
 							</div>
 
 							<input type="submit" value="가입하기"
