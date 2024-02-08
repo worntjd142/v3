@@ -95,7 +95,7 @@
 			      	<!-- 제품명 -->
 			      	<td><input type="hidden" name="pname">${prolist.pname}</td>
 			      	<!-- 제품단가 -->
-			      	<td><input type="hidden" id="pprice" name="pprice">${prolist.pprice}</td> 
+			      	<td><input type="hidden" id="pprice${count.index}" name="pprice">${prolist.pprice}</td> 
 			      	<!-- 수주수량 -->
 			  		<td><input type="text" class = "count2box" name="ocount" id="countBox${count.index}" value = 0> 
 			      		<button onclick = "minus(${count.index})"> - </button>

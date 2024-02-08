@@ -5,22 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="we.are.Mapper.OrderMapper">
 
-	<!-- 수주 등록 insert -->
-	<insert id="order_insert">
-		<!-- INSERT INTO orderr (uuid, ocount, recount, iocount, otext) VALUE (#{uuid_short()}, 
-			#{ocount}, #{recount}, #{iocount}, #{otext}); -->
-
-		INSERT INTO
-		orderr (uuid, cno, cname, ceo, pproduct, pprice, pcount, osum, omanager, otext, pnamesum) 
-		VALUE (uuid_short(), #{cno}, #{cname}, #{ceo}, #{pproduct}, #{pprice},  #{pcount}, #{osum}, #{omanager}, #{otext}, #{pnamesum});
-	</insert>
-	
-	<!-- 제품 INSERT -->
-	<insert id="cart_insert">
-		INSERT INTO cart (pnamesum, osum, ono) 
-			VALUE (#{pnamesum}, #{osum}, #{ono});
-	</insert>
-
+<!-- 수주 등록 insert -->
+   <insert id="order_insert">
+      INSERT INTO
+         orderr (uuid, cno, ceo, cname, pcount, omanager) 
+            VALUE (uuid_short(), #{cno}, #{ceo}, #{cname}, #{pcount}, #{omanager});
+   </insert>
+   
+   <!-- 제품 INSERT -->
+   <insert id="cart_insert">
+      INSERT INTO cart (pproduct, pprice, ocount, osum, ono) 
+         VALUE (#{pproduct}, #{pprice}, #{ocount}, #{osum}, #{ono});
+   </insert>
 
 	<!-- 수주 목록 리스트 + 날짜 기간 조회 select -->
 	<select id="order_select" resultType="we.are.Model.OrderDTO">
@@ -94,6 +90,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="sujuletter_select"
 		resultType="we.are.Model.OrderDTO">
 		SELECT * FROM orders WHERE bno = #{bno};
+	</select>
+	
+	<select id="ono_select" resultType="int">
+	select ono from orderr where pcount = #{pcount} and osuju="수주 대기" and  cname = #{cname} order by ono desc limit 1;
 	</select>
 
 

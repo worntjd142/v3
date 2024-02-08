@@ -27,3 +27,8 @@
     left: 15%;
     top: -10px;
 }
+
+#culha, #culgo {
+	color: black;
+	border: 1px solid;
+}

@@ -1,7 +1,5 @@
 package we.are.Model;
 
-import java.util.Arrays;
-
 public class OrderDTO {
 
 	// 글번호
@@ -11,7 +9,7 @@ public class OrderDTO {
 	// 수주일자
 	private String oday;
 	// 수주수량
-	private int ocount[];
+	private int ocount;
 	// 수주상태
 	private String osuju;
 	// 요청사항
@@ -19,9 +17,9 @@ public class OrderDTO {
 	// 거래처명
 	private String cname;
 	// 제품명
-	private String pproduct[];
+	private String pproduct;
 	// 제품단가
-	private int pprice[];
+	private int pprice;
 	// 합계
 	private int osum;
 	// 수주담당자
@@ -45,15 +43,25 @@ public class OrderDTO {
 	
 	// getter + setter
 	
-	public void setOcount(int[] ocount) {
+	public int getOcount() {
+		return ocount;
+	}
+	public void setOcount(int ocount) {
 		this.ocount = ocount;
 	}
-	public void setPproduct(String[] pproduct) {
+	public String getPproduct() {
+		return pproduct;
+	}
+	public void setPproduct(String pproduct) {
 		this.pproduct = pproduct;
 	}
-	public void setPprice(int[] pprice) {
+	public int getPprice() {
+		return pprice;
+	}
+	public void setPprice(int pprice) {
 		this.pprice = pprice;
 	}
+	
 	public String getCeo() {
 		return ceo;
 	}
@@ -156,18 +164,18 @@ public class OrderDTO {
 	
 	@Override
 	public String toString() {
-		return "OrderDTO [ono=" + ono + ", uuid=" + uuid + ", oday=" + oday + ", ocount=" + Arrays.toString(ocount)
-				+ ", osuju=" + osuju + ", otext=" + otext + ", cname=" + cname + ", pproduct="
-				+ Arrays.toString(pproduct) + ", pprice=" + Arrays.toString(pprice) + ", osum=" + osum + ", omanager="
-				+ omanager + ", scount=" + scount + ", sdate=" + sdate + ", sdel=" + sdel + ", amount=" + amount
-				+ ", pcount=" + pcount + ", cno=" + cno + ", odetail=" + odetail + ", ceo=" + ceo + ", getCeo()="
-				+ getCeo() + ", getOdetail()=" + getOdetail() + ", getCno()=" + getCno() + ", getPcount()="
-				+ getPcount() + ", getAmount()=" + getAmount() + ", getSdel()=" + getSdel() + ", getScount()="
-				+ getScount() + ", getSdate()=" + getSdate() + ", getOno()=" + getOno() + ", getUuid()=" + getUuid()
-				+ ", getOday()=" + getOday() + ", getOsuju()=" + getOsuju() + ", getOtext()=" + getOtext()
-				+ ", getCname()=" + getCname() + ", getOsum()=" + getOsum() + ", getOmanager()=" + getOmanager()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+		return "OrderDTO [ono=" + ono + ", uuid=" + uuid + ", oday=" + oday + ", ocount=" + ocount + ", osuju=" + osuju
+				+ ", otext=" + otext + ", cname=" + cname + ", pproduct=" + pproduct + ", pprice=" + pprice + ", osum="
+				+ osum + ", omanager=" + omanager + ", scount=" + scount + ", sdate=" + sdate + ", sdel=" + sdel
+				+ ", amount=" + amount + ", pcount=" + pcount + ", cno=" + cno + ", odetail=" + odetail + ", ceo=" + ceo
+				+ ", getOcount()=" + getOcount() + ", getPproduct()=" + getPproduct() + ", getPprice()=" + getPprice()
+				+ ", getCeo()=" + getCeo() + ", getOdetail()=" + getOdetail() + ", getCno()=" + getCno()
+				+ ", getPcount()=" + getPcount() + ", getAmount()=" + getAmount() + ", getSdel()=" + getSdel()
+				+ ", getScount()=" + getScount() + ", getSdate()=" + getSdate() + ", getOno()=" + getOno()
+				+ ", getUuid()=" + getUuid() + ", getOday()=" + getOday() + ", getOsuju()=" + getOsuju()
+				+ ", getOtext()=" + getOtext() + ", getCname()=" + getCname() + ", getOsum()=" + getOsum()
+				+ ", getOmanager()=" + getOmanager() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
 
 }

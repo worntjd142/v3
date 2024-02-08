@@ -58,6 +58,10 @@ public class StoreServiceImpl implements StoreService {
 	public ArrayList<HashMap<String, Object>> issuance_select(int ono){
 		return sm.issuance_select(ono);
 	}
+	
+	public int storerelease_count() {
+		return sm.storerelease_count();
+	}
 
 }
 

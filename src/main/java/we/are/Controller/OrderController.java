@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import we.are.Model.CartDTO;
 import we.are.Model.ConnectionDTO;
@@ -35,8 +34,40 @@ public class OrderController {
 
 	// 수주등록 버튼을 누르면
 	@RequestMapping("order_insert")
-	public String order_insert(OrderDTO od) {
-		System.out.println(od);
+	public String order_insert(@RequestParam("cno") String cno, @RequestParam("cname") String cname,
+							   @RequestParam("ceo") String ceo, @RequestParam("pcount") int pcount,
+							   @RequestParam("pproduct") String pproduct[], @RequestParam("pprice") String pprice[],
+							   @RequestParam("ocount") int ocount[], @RequestParam("osum") String osum,
+							   @RequestParam("omanager") String omanager, @RequestParam("otext") String otext
+			) {
+		OrderDTO od = new OrderDTO();
+		CartDTO cd = new CartDTO();
+		
+		od.setCno(cno);
+		od.setCname(cname);
+		od.setCeo(ceo);
+		od.setPcount(pcount);
+		od.setOmanager(omanager);
+		od.setOtext(otext);
+		
+		cd.setOsum(osum);
+		
+		os.order_insert(od); // 거래처 입력 하고 ono 값이 DB에 생성
+		int oono = os.ono_select(od); // 생성한 ono값을 가져와서 int oono에 초기화
+	
+		cd.setOno(oono); // oono를 cd의 ono값에 저장
+		
+		for(int i = 0; i < pcount; i++) { //PCOUNT의 갯수만큼 반복
+			
+			cd.setPproduct(pproduct[i]); //배열
+			cd.setPprice(pprice[i]); //배열
+			cd.setOcount(ocount[i]); // 배열
+			
+			os.cart_insert(cd); // 장바구니에 인서트
+		}
+		
+		
+		
 		return "redirect:/order";
 	}
 

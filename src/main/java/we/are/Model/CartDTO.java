@@ -7,9 +7,9 @@ public class CartDTO {
 	// 제품명
 	private String pproduct;
 	// 제품단가
-	private int pprice;
+	private String pprice;
 	// 제품합계
-	private int osum;
+	private String osum;
 	// 제품 주문 수량
 	private int ocount;
 	// 제품 합체
@@ -18,8 +18,29 @@ public class CartDTO {
 	
 	// getter + setter
 	
+	
+	
+	
 	public String getPnamesum() {
 		return pnamesum;
+	}
+	public String getPproduct() {
+		return pproduct;
+	}
+	public void setPproduct(String pproduct) {
+		this.pproduct = pproduct;
+	}
+	public String getPprice() {
+		return pprice;
+	}
+	public void setPprice(String pprice) {
+		this.pprice = pprice;
+	}
+	public int getOcount() {
+		return ocount;
+	}
+	public void setOcount(int ocount) {
+		this.ocount = ocount;
 	}
 	public void setPnamesum(String pnamesum) {
 		this.pnamesum = pnamesum;
@@ -31,31 +52,12 @@ public class CartDTO {
 		this.ono = ono;
 	}
 	
-	public String getPproduct() {
-		return pproduct;
-	}
-	public void setPproduct(String pproduct) {
-		this.pproduct = pproduct;
-	}
-	public int getPprice() {
-		return pprice;
-	}
-	public void setPprice(int pprice) {
-		this.pprice = pprice;
-	}
-	public int getOsum() {
+	public String getOsum() {
 		return osum;
 	}
-	public void setOsum(int osum) {
+	public void setOsum(String osum) {
 		this.osum = osum;
 	}
-	public int getOcount() {
-		return ocount;
-	}
-	public void setOcount(int ocount) {
-		this.ocount = ocount;
-	}
-	
 	@Override
 	public String toString() {
 		return "CartDTO [ono=" + ono + ", pproduct=" + pproduct + ", pprice=" + pprice + ", osum=" + osum + ", ocount="

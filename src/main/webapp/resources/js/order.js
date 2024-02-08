@@ -85,11 +85,15 @@
    	});   	
    }); 
    
+   var pcount = 0;
    
    $(function(){
 	    $("#btn_Chklist").click(function(){ 
 	        var rowData = []; // 체크한 테이블의 값을 담을 배열
 	        var totalSum = 0; // 총합을 저장할 변수
+	        var pproducts = [];
+			var pprices = [];
+			var ocounts = [];
 	        
 	        // 체크된 체크박스 값을 가져와서 각 필드의 값을 추출하여 rowData에 저장
 	        $("input[class='choice_Check']:checked").each(function() {
@@ -103,24 +107,21 @@
 	            // 필드가 존재할 때에만 값을 추출하여 배열에 저장
 	            if (pproductElement.length && ppriceElement.length && ocountElement.length) {
 	                var pproduct = pproductElement.text().trim(); // 제품명(td:eq(1))
-	                var pprice = parseInt(ppriceElement.text().trim()).toLocaleString(); // 제품가격(td:eq(2))
+	                var pprice = parseInt(ppriceElement.text().trim()); // 제품가격(td:eq(2))
 	                var ocount = ocountElement.val().trim(); // 수량(input[type='number'])
 	                
 	                // 제품 가격과 수량을 곱하여 가격을 계산
-	                var totalPrice = parseInt(pprice.replace(/,/g, "")) * parseInt(ocount);
+	                var totalPrice = parseInt(pprice * parseInt(ocount));
+	                pproducts.push(pproduct)
+	    			pprices.push(pprice)
+	    			ocounts.push(ocount)
+	    	        
 
-
-	                // 각 체크된 박스의 정보를 객체로 만들어 rowData 배열에 추가
-	                rowData.push({
-	                	pproduct: pproduct,
-	                    pprice: pprice,
-	                    ocount: ocount
-	                });
-
-	                // pname, pprice, ocount 요소에 값을 넣어줌
-	                tr.find("#pname").val(pproduct);
-	                tr.find("#pprice").val(pprice);
-	                tr.find("#ocount").val(ocount);	 
+	                // pproduct, pprice, ocount 요소에 값을 넣어줌
+	                $("#pproduct").val(pproducts);
+	                $("#pprice").val(pprices);
+	                $("#ocount").val(ocounts);	 
+	                $("#pcount").val(pproducts.length);
 	                
 	                console.log(pproduct)
 	                console.log(pprice)
@@ -138,7 +139,7 @@
 	        $("#pnamesum").val(pnames);
 
 	        // 총합을 총합 요소에 넣기
-	        $("#osum").val(totalSum.toLocaleString());
+	        $("#osum").val(totalSum);
 	        
 	        
 	        console.log(pnames);
@@ -416,18 +417,3 @@ $('.check_Box').on('click', function(){0
 });
 */
 
-
-
-
-
-
-		
-	
-	
-	
-
- 
-
-
-
-	
