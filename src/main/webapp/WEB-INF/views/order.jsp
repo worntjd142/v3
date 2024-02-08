@@ -40,7 +40,7 @@
 			<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr>
-						<td colspan="6"><input type="submit" value="등록"></td>
+						<td colspan="6"><input class = "allbtn" type="submit" value="등록"></td>
 					</tr>
 					<tr class="table-dark">
 						<th colspan="6" class="title_th">수주 등록</th>
@@ -76,7 +76,7 @@
 		</div>
 		</form>
 	
-	<input type="button" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+	<input type="button" class = "allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
 	<div class="tableBox" id="product_list">	
 		<table class="table table-striped table-hover table-bordered table-responsive tableData">
 		  <thead class="table-dark">
@@ -98,8 +98,8 @@
 			      	<td><input type="hidden" id="pprice${count.index}" name="pprice">${prolist.pprice}</td> 
 			      	<!-- 수주수량 -->
 			  		<td><input type="text" class = "count2box" name="ocount" id="countBox${count.index}" value = 0> 
-			      		<button onclick = "minus(${count.index})"> - </button>
-			      		<button onclick = "plus(${count.index})"> + </button>
+			      		<button class = "allbtn" onclick = "minus(${count.index})"> - </button>
+			      		<button class = "allbtn" onclick = "plus(${count.index})"> + </button>
 			      	</td>
 			    </tr>
 			   </c:forEach>
@@ -145,8 +145,8 @@
 	<div class="main4">
 		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
-		<input type="button" name="companyname" value="일괄체크" id="check_button">
-		<input type="button" name="companyname" value="일괄등록" onclick="update()">
+		<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
+		<input type="button" class = "allbtn" name="companyname" value="일괄등록" onclick="update()">
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>

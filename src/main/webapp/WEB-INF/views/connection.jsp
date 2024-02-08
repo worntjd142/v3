@@ -29,7 +29,7 @@
 				class="table table-striped table-secondary table-hover table-bordered table-responsive">
 				<thead>
 					<tr>
-						<td colspan="6"><input type="submit" value="등록"></td>
+						<td colspan="6"><input class = "allbtn" type="submit" value="등록"></td>
 					</tr>
 					<tr class="table-dark">
 						<th colspan="6" class="title_th">거래처 등록</th>
