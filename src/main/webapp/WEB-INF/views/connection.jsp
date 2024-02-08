@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <!-- 외부 JS, CSS -->
+<link rel = "stylesheet" href = "resources/css/connection.css">
 <script type="text/javascript" src="/resources/js/order.js"></script>
 <script type="text/javascript" src="/resources/js/connection.js"></script>
 

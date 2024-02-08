@@ -27,7 +27,7 @@ $('input[name=usetel]').keydown(function(event) {
         if ($text.val().length === 3) { //지역번호
             $text.val($text.val() + '-');
         }
-        if ($text.val().length === 7) { //전화번호뒷자리
+        if ($text.val().length === 8) { //전화번호뒷자리
             $text.val($text.val() + '-');
         }
     }
