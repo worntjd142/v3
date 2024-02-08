@@ -35,7 +35,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 	
-	<form action="order_insert" method="post" id="autosearch">
+	<form action="order_insert" id="orderForm" method="post" id="autosearch">
 		<div class="main1">		
 			<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
@@ -54,9 +54,13 @@
 						<td><input type="text" name="ceo" id="ceo" readonly><label for="ceo"></label></td>
 					</tr>
 					<tr>
-						<th scope="col" id="product_append">수주제품</th>
+						<th scope="col">수주제품</th>
 						<td colspan="3">
-						<input type="text" id="pnamesum">
+							<input type="text" name="pcount" id="pcount">
+							<input type="text" name="pproduct" id="pproduct">
+							<input type="text" name="pprice" id="pprice">
+							<input type="text" name="ocount" id="ocount">
+						<input type="text" id="pnamesum" name="pnamesum">
 						</td>
 						<th scope="col">총 합계</th>
 						<td><input type="text" name="osum" id="osum" readonly><label for="osum"></label></td>
@@ -69,11 +73,6 @@
 					</tr>
 				</thead>
 			</table>
-			<!-- 제품 품목 수 -->
-			<input type="hidden" name="pcount" id="pcount">
-			<input type="text" name="pname" id="pnames">
-			<input type="text" name="pprice" id="pprices">
-			<input type="text" name="ocount" id="ocounts">
 		</div>
 		</form>
 	
@@ -175,7 +174,7 @@
 						<td>${orderlist.oday}</td>
 						<td><a href="/order/order_detail_popup?uuid${orderlist.uuid}">${orderlist.cname}</a></td> 
 						<td>${orderlist.pcount} </td>
-						<td hidden="">${orderlist.pprice}</td>						
+						
 						<td>${orderlist.osum}</td>
 						<td>${orderlist.osuju}</td>
 						<td>${orderlist.omanager}</td>

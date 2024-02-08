@@ -87,151 +87,96 @@
    
    
    $(function(){
-	   // btn_Chklist 버튼 클릭시 체크된 Row의 값을 가져온다.
-		$("#btn_Chklist").click(function(){ 
-			
-			// 체크한 테이블의 전체 데이터를 담을 배열 선언;
-			var rowData = new Array();
-			// 체크한 테이블의 행 데이터를 담을 배열 선언;
-			var tdArr = new Array();
-			// 체크한 테이블의 pprice 데이터를 담을 배열 선언;
-			var pArr = new Array();
-			// 체크된 박스;
-			var checkbox = $("input[class='choice_Check']:checked");
-			// 체크된 박스 갯수;
-			var checkcount = $("input[class='choice_Check']:checked").length;
-			
-			
-			// 체크된 체크박스 값을 가져온다
-			checkbox.each(function(i) {
-				// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
-				// tr.children() : <tr>의 자식은 <td>이다.
-				// td.children() : <td>의 자식은 <input>이다.
-				var tr = checkbox.parent().parent().eq(i);
-				var td = tr.children();
-				var input = td.children();
+	    $("#btn_Chklist").click(function(){ 
+	        var rowData = []; // 체크한 테이블의 값을 담을 배열
+	        var totalSum = 0; // 총합을 저장할 변수
+	        
+	        // 체크된 체크박스 값을 가져와서 각 필드의 값을 추출하여 rowData에 저장
+	        $("input[class='choice_Check']:checked").each(function() {
+	            var tr = $(this).closest("tr"); // 현재 체크박스가 속한 행(tr)을 찾음
 
-				
-				// 체크된 row의 모든 값을 배열에 담는다.
-				rowData.push();
-				console.log(rowData);
-				// console.log(tr.text());
-				
-				// td.eq(0)=checkbox, td.eq(1)=pname, td.eq(2)=pprice, td.eq(3)=ocount
-				// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-				var pname = td.eq(1).text();
-				var pprice = td.eq(2).text();
-				var ocount = input.eq(3).val();
-				
-				// 총합계를 위한 제품단가*주문수량 변수;
-				var psum = td.eq(2).text() * input.eq(3).val();
-				//console.log(psum);
-				
-				
-				/*
-				// 가져온 값을 배열에 담는다.
-				tdArr.push(pname);
-				tdArr.push(pprice);
-				tdArr.push(ocount);	
-				*/
-				
-				/* 
-				var ttt = pname + "," + pprice + "," + ocount;
-				console.log(ttt);
-				tdArr.push(ttt);
-				*/
-				
-				
-				//console.log(tdArr);
-				
-				//console.log("제품명 : " + pname);
-				//console.log("제품단가 : " + pprice);
-				//console.log("제품 수 : " + ocount);
-				//console.log("품목 수: " + checkcount);
-				//console.log("합계:" + psum);
-				
-				// 총합계
-				var psumtotal = 0;
-				
-				// String타입 int타입으로 변환해서 number변수에 담음.
-				number = parseInt(psum);
-				
-				// 가져온 number값(parseInt(psum))을 배열에 담는다.
-				pArr.push(number);
-				
-				// pArr데이터 길이만큼 반복
-				for (let i = 0; i < pArr.length; i++ ) {
-						 
-						// 총합계 = pArr[i] + pArr[i];
-						psumtotal += pArr[i];
-						console.log(psumtotal);
-					}
-				
+	            // 필드가 존재하는지 확인하고 값을 추출하여 rowData에 저장
+	            var pproductElement = tr.find("td:eq(1)");
+	            var ppriceElement = tr.find("td:eq(2)");
+	            var ocountElement = tr.find("input[name=ocount]");
 
-				
-				// 체크한 박스만큼 반복 후 행 추가
-				var html = '';
-				
-				for (var i = 0; i < checkcount; i++) {
-					
-					html += tdArr[i];
-						
-				}
-				
-					
-				//$("#check_List").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-				//$("#check_List").val(tdArr);
-				$("#pnamesum").empty();
-				$("#pnamesum").val(html);
-				$("input[name=osum]").val(psumtotal);
-				$("input[name=pcount]").val(checkcount);
-				$("#pnames").val(pnames);
-				$("#pprices").val(pprices);
+	            // 필드가 존재할 때에만 값을 추출하여 배열에 저장
+	            if (pproductElement.length && ppriceElement.length && ocountElement.length) {
+	                var pproduct = pproductElement.text().trim(); // 제품명(td:eq(1))
+	                var pprice = parseInt(ppriceElement.text().trim()).toLocaleString(); // 제품가격(td:eq(2))
+	                var ocount = ocountElement.val().trim(); // 수량(input[type='number'])
+	                
+	                // 제품 가격과 수량을 곱하여 가격을 계산
+	                var totalPrice = parseInt(pprice.replace(/,/g, "")) * parseInt(ocount);
 
-				$("#ocounts").val(ocounts);
-				
-				//console.log(html);
-				
-				//console.log(checkcount);
-				//console.log("합계"+psumtotal);
-				
-				
-				
-			});			
-		});
-		});	
+
+	                // 각 체크된 박스의 정보를 객체로 만들어 rowData 배열에 추가
+	                rowData.push({
+	                	pproduct: pproduct,
+	                    pprice: pprice,
+	                    ocount: ocount
+	                });
+
+	                // pname, pprice, ocount 요소에 값을 넣어줌
+	                tr.find("#pname").val(pproduct);
+	                tr.find("#pprice").val(pprice);
+	                tr.find("#ocount").val(ocount);	 
+	                
+	                console.log(pproduct)
+	                console.log(pprice)
+	                console.log(ocount)
+	                
+	                // 총합을 계산
+	                totalSum += totalPrice;
+	            }
+	        });
+
+	        // pnamesum 요소에 배열 값을 넣기
+	        var pnames = rowData.map(function(item) {
+	            return item.pproduct + " / " + item.pprice + "원 / " + item.ocount + "BOX"; // 제품명 - 제품가격원 x 수량개 형식으로 문자열 생성
+	        }).join(", "); // 배열 요소를 쉼표와 공백으로 연결하여 문자열로 만듦
+	        $("#pnamesum").val(pnames);
+
+	        // 총합을 총합 요소에 넣기
+	        $("#osum").val(totalSum.toLocaleString());
+	        
+	        
+	        console.log(pnames);
+	        
+	    });
+	});	
    
    
    
-   //주문수량 +
-   function plus(count){
-	   // cnt변수에 카운트박스 value값 저장
-	   let cnt = document.getElementById("countBox"+count).value;
-	   
-	   // cnt 값이 50일 경우 +버튼 눌러도
-	   if(cnt == 50){
-		   //false값 반환
-		   return false;
-	   }else{
-	   // plus 버튼 누르면 cnt 증가
-	   cnt++;
+	   // 주문수량 +
+	   function plus(count){
+		   // cnt변수에 카운트박스 value값 저장
+		   let cnt = document.getElementById("countBox"+count).value;
+		   
+		   // cnt 값이 50일 경우 +버튼 눌러도
+		   if(cnt == 50){
+			   //false값 반환
+			   return false;
+		   }else{
+		   // plus 버튼 누르면 cnt 증가
+		   cnt++;
+		   }
+		   // 증가된 cnt 값 다시 카운트박스 value에 저장
+		   document.getElementById("countBox"+count).value = cnt;
 	   }
-	   // 증가된 cnt 값 다시 카운트박스 value에 저장
-	   document.getElementById("countBox"+count).value = cnt;
-   }
-   //주문수량-
-   function minus(count){
-	   let cnt = document.getElementById("countBox"+count).value;
-	   
-	   if(cnt == 0){
-		   return false;
-	   }else{
-	   cnt--;
+	   // 주문수량-
+	   function minus(count){
+		   let cnt = document.getElementById("countBox"+count).value;
+		   
+		   if(cnt == 0){
+			   return false;
+		   }else{
+		   cnt--;
+		   }
+		   document.getElementById("countBox"+count).value = cnt;
+		  
 	   }
-	   document.getElementById("countBox"+count).value = cnt;
-	  
-   }
-   
+	   
 
    /* 제품리스트 자동완성 */
 
