@@ -32,9 +32,13 @@ public class MainController {
 	// 로그인하면 수주관리 페이지로 이동
 	@RequestMapping("login")
 	public String login(LoginDTO joindto, Model model, HttpSession session) {	
-		joins.login(joindto); // 로그인을 하면 DB에 있는 값과 입력한 값 비교해서 일치하면
-		session.setAttribute("login", joins.login(joindto)); // session객체 변수login에 저장
+		if(joins.login(joindto) != null) { // 로그인을 하면 DB에 있는 값과 입력한 값 비교해서 일치하면
+		session.setAttribute("login", joins.login(joindto));
 		return "redirect:/order";
+		}else {
+			System.out.println("fail");// session객체 변수login에 저장
+			return "main";
+		}
 	}	
 	
 	// 회원가입 페이지

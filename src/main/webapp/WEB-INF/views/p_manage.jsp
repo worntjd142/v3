@@ -63,8 +63,8 @@
 		<table class = "table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
-					<th class = "table-dark" colspan = "4">제품목록</th>
-					<th class = "table-dark" id = temple>제품창고 온도 :<label id = wtemple></label>℃</th>
+					<th class = "table-dark" colspan = "4">제품 목록</th>
+					<th class = "table-dark" id = temple>제품창고 온도 : <label id = wtemple></label>℃</th>
 				</tr>
 				<tr>
 					<th scope="col" class="table-dark">제품코드</th>
