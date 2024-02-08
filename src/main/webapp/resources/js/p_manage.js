@@ -1,8 +1,3 @@
-// 입고 창 숨기기
-$(function(){
-	$(".pluss").css("opacity","0");
-	$(".pluss").css("display","inline-block");
-})
 
 // 제품 코드 랜덤값 중복뜨면 오류 중복뜰확률 로또 당첨확률의 1/266
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -31,7 +26,7 @@ function insert_info(pimage, pmc, pmi, pname, exd, houseld, housed){
 	$("#housedi").text(housed);
 }
 
-//제이쿼리 시작구문
+//창고온도 ajax
 $(document).ready(function(){
 	
 	$("#randomcode").val(result);
@@ -56,6 +51,13 @@ $(document).ready(function(){
 
 	
 })
+
+// 입고 창 숨기기
+$(function(){
+	$(".pluss").css("opacity","0");
+	$(".pluss").css("display","inline-block");
+})
+
 
 
 // 입고 창 보이게
