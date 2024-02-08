@@ -27,6 +27,14 @@ from orderr a join connection b join product c on  a.cname = b.cname and a.pprod
 where osuju = "수주 확인" order by a.ono asc; 
 </select>
 
+<!-- 수주상태가 '출고 요청 확인'인 것 리스트의 갯수 -->
+<select id="storerelease_count" resultType="int"> 
+select  count(*) 
+from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
+where osuju = "출고 요청 확인" order by a.ono asc; 
+</select>
+
+<!-- 수주상태가 '출고 요청 확인'인 것만 셀렉 -->
 <select id="storerelease_select" resultMap="store_select"> 
 select  amount,a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
 from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
@@ -70,6 +78,9 @@ select  amount,a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,o
 from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
 where osuju = "출고 요청 확인" and ono = #{ono} order by a.ono asc; 
 </select>
+
+
+
 
 
 </mapper>

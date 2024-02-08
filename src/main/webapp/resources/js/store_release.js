@@ -82,9 +82,6 @@ $(function(){
 	
 	//발행 클릭 시 실행
 	$("#send").on("click", function(){
-		
-		let ono = $("#ono").val(); // 주문번호 거래처
-		
 		//함수 tissuance_close 호출
 		issuance(ono)
 	
@@ -126,7 +123,7 @@ function issuance(ono){
 	$.ajax({
 		type : "GET", // method 타입 get
 		url : "issuance", // url value
-		data : onos, //  jsno 타입의 bnos를 컨트롤러로 값을 전달
+		data : onos, //  jsno 타입의 onos를 컨트롤러로 값을 전달
 		dataType: 'json',
 		async : false,
 		success : function(data) {
@@ -134,8 +131,7 @@ function issuance(ono){
 			// 업데이트가 성공해서 1의 값이 반환되면 
 			if(data == 1){
 			//알림 문구
-				alert("ㅁ");
-				
+					console.log(data);
 					//pdf파일 함수 호출
 					dopdf(bname, uuid, text)
 			//부모 페이지 화면을 새로고침 (order 화면)		
@@ -217,6 +213,11 @@ $(function() {
 	
 	
    $("#check_all").on("click", function() {  // 메인 체크박스를 클릭 시.
+	   
+	  ono.length = 0;
+	   
+	  let count = $("#count").val();
+	  
       let od = Array(); // od. 지역변수 선언
       
       let chk = $(this).is(":checked"); // 메인 체크박스의 값을 확인. ('false' or 'true')
@@ -225,8 +226,7 @@ $(function() {
     	  
          $("input:checkbox[class='check_all']").prop("checked", true); 
          // class = "check_all"의 체크박스를 모두 체크 = 모두 true값으로 만듬.
-         
-         for(i = 0; i < 10; i++){ // 화면에 출력할 페이지 갯수만큼 반복 (10개)
+         for(i = 0; i < count; i++){ // 화면에 출력할 페이지 갯수만큼 반복 (10개)
         	 
          od.push($("#check_val"+i).is(":checked")); 
          // 반복하면서 #check_val의 값을 배열 od에 저장. (들어가는 값은 'false' or 'true')
@@ -249,69 +249,11 @@ $(function() {
          ono.length = 0; // ono 배열 안의 값을 모두 삭제
          }
       
-      $.ajax({
-          url: 'issuance_select',
-          data: {'ono':ono},
-          dataType: 'json',
-          contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
-          type: 'get',
-          success: function(data) {
-        	  
-        	  for(let i = 0; i < data.length; i++){
-        		  html += '<tr>'
-        		  html += '<td>'+data[i].cname+'</td>';
-        		  html += '<td>'+data[i].ocount+'</td>';
-        		  html += '<td>'+data[i].scount+'</td>';
-        		  html += '<td>'+data[i].amount+'</td>';
-        		  html += '</tr>'
-        		  $("#in").append(html);
-        	  }
-	    	   	
-        	  	} 
-        })  
+      	a = 0;
+      list();
       
    })
 
-   $("#check_button").on("click", function() {// 일괄체크버튼을
-	   
-	   let od = Array(); // od. 지역변수 선언
-	   
-      let chk = $("#check_all").is(":checked"); // check_all의 체크여부를 chk에 저장
-      
-      if (chk) { // 메인 체크박스의 값을 확인. ('false' or 'true')
-    	  
-         $("input:checkbox[class='check_all']").prop("checked", false);
-         // 하위 체크박스 모두를 체크해제
-         $("#check_all").prop("checked", false);  // 메인 체크박스 체크해제
-         
-         let c = $("input:checkbox[class='check_all']").is(":checked");
-         
-         ono.length = 0; // ono 배열 안의 값을 모두 삭제
-         
-         	} // chk이 ture라면 모든 체크박스의 체크를 해제
-      else {
-    	  
-         $("input:checkbox[class='check_all']").prop("checked", true); 
-         // 하위 체크박스 모두를 체크
-         $("#check_all").prop("checked", true); // 메인 체크박스 체크
-         
-         for(i = 0; i < 10; i++){ // 화면에 출력할 페이지 갯수만큼 반복 (10개)
-        	 
-             od.push($("#check_val"+i).is(":checked")); // 반복하면서 #check_val의 값을
-														// 배열 od에 저장. (들어가는 값은
-														// 'false' or 'true')
-             
-             if(od[i] == true){// od의 인덱스를 이용하여 true인 값만 지정하여 ono의 값을 배열ono에
-								// 저장.
-                ono.push($("#check_val"+[i]).val());
-                }
-          }
-      }
-      
-   })
-   
-   
-   
    
    // 개별 수주 등록
    
@@ -322,46 +264,52 @@ $(function() {
 													// 'true' 없으면 'false'
 	   					
 	   				ono = ono.filter((element) => element !== $(this).val());// 필터 함수를 통해 중복된 값을 제거하고 다시 ono 배열에 저장
-	   				
-	   			 $("#in *").remove(); // id ="in"의 append 삭제
-	   	         html = ""; // html에 초기화된 값 삭제
+	   				$("#in *").remove(); // id ="in"의 append 삭제
+		   	         html = ""; // html에 초기화된 값 삭제
 	   	         
 	   				
 	   			}else{ // 체크박스의 값이 ono에 없다면
 	   				ono.push($(this).val()); // 개별체크박스의 값을 ono배열에 저장
-	   				
+	   			 $("#in *").remove(); // id ="in"의 append 삭제
+	   	         html = ""; // html에 초기화된 값 삭제
 	   			}
 	   			
-	   		  $.ajax({
-	   	       url: 'issuance_select',
-	   	       data: {'ono':ono},
-	   	       dataType: 'json',
-	   	       contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
-	   	       type: 'get',
-	   	       success: function(data) {
-	         	  for(let i = 0; i < data.length; i++){
-	         		  html += '<tr>'
-	         		  html += '<td>'+data[i].cname+'</td>';
-	         		  html += '<td>'+data[i].ocount+'</td>';
-	         		  html += '<td>'+data[i].scount+'</td>';
-	         		  html += '<td>'+data[i].amount+'</td>';
-	         		  html += '</tr>'
-	         		  $("#in").append(html);
-	         	  }
-
-	   	    	   	
-	   	     	  	} 
-	   	     })  
-	   			
-	   			
-	   			
+	   			list();
 	   });   
    
 });
+
+//동적 테이블
+function list(){
+	$("#in *").remove(); // id ="in"의 append 삭제
+       html = ""; // html에 초기화된 값 삭제
+$.ajax({
+    url: 'issuance_select',
+    data: {'ono':ono},
+    dataType: 'json',
+    contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
+    type: 'get',
+    success: function(data) {
+  	  let no = 1;
+  	  let oc = Array();
+  	  for(let i = 0; i < data.length; i++){
+  		  oc.push(data[i].scount - data[i].amount); //출하수량
+  		  
+  		  html += '<tr>'
+  		  html += '<td>'+ no++ +'</td>';
+  		  html += '<td>'+data[i].uuid+'</td>';
+  		  html += '<td>'+data[i].cname+'</td>';
+  		  html += '<td>'+data[i].ocount+'</td>';
+  		  html += '<td>'+oc[i]+'</td>';
+  		  html += '<td>'+data[i].amount+'</td>';
+  		  html += '</tr>'
+  	  }
+  	  $("#in").append(html);
+  	   	
+  	  	} 
+  })  
    
    
    
-
-
-
+}
 

@@ -1,24 +1,78 @@
- @charset "UTF-8";
+@charset "UTF-8";
 
-#release_check, #buttons, #detailed{
+#release_check, #buttons, #detailed {
 	position: absolute;
 	width: 49%;
 }
 
-
-#change{
-	top:350px;
-	position:relative;
+#aa {
+	position: relative;
+	top: 315px;
 }
 
-#buttons{
-	left:51%;
-	border-bottom: 1px solid;
-    padding-bottom: 20px;
+#change {
+	top: 310px;
+	position: relative;
+	overflow: scroll;
+	height: 370px;
 }
 
-#detailed{
-	top:205px;
+#buttons {
 	left: 51%;
+	border-bottom: 1px solid;
+	padding-bottom: 20px;
 }
 
+#detailed {
+	top: 240px;
+	left: 51%;
+	overflow: scroll;
+	height: 206px;
+}
+
+#release_check {
+	overflow: scroll;
+	height: 329px;
+}
+
+#hip_hap {
+	position: fixed;
+	top: 463px;
+	width: 856px;
+	text-align: center;
+	border: 1px solid #ced4da;
+}
+
+#hip_hap_ea {
+	position: fixed;
+	top: 463px;
+	width: 85px;
+	left: 856px;
+	height: 42px;
+	border: 1px solid #ced4da;
+}
+
+#culha, #culgo, #send {
+	color: black;
+	border: 1px solid;
+}
+
+#send {
+	position: relative;
+	left: 51%;
+	top: 290px;
+}
+
+#hh {
+	position: relative;
+	left: 51%;
+	top: 65px;
+}
+
+.tableData thead tr th {
+	position: sticky;
+	top: 0;
+	height: 50px;
+	border-bottom: 2px solid dodgerblue;
+	border-right: 1px solid #aaa;
+}

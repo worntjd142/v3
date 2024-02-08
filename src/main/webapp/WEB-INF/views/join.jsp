@@ -19,7 +19,6 @@
 <title>변수제약회사 | 회원가입</title>
 </head>
 <body>
-
 	<div class="container">
 
 		<div class="imagebox">

@@ -36,10 +36,12 @@ public class StoreController {
 		}
 		
 		@RequestMapping("store_release")
-		public String store_release(Model model) {
+		public String store_release(Model model,OrderDTO od) {
+			model.addAttribute("count", ssi.storerelease_count()); //셀렉트 된 리스트의 갯수 
+			
 			ArrayList<HashMap<String, Object>> store = ssi.storerelease_select(); // 조인된 결과값을 해시맵에 저장
 			model.addAttribute("stroe", store);// 변경 후 모델에 담아서 전달
-			
+
 			model.addAttribute("Management" ,ssi.management_select());
 			return "store_release";
 		}
@@ -66,40 +68,26 @@ public class StoreController {
 			return new ResponseEntity<>(ssi.product_select(pcode),HttpStatus.OK);
 		}
 		
-		/*	//임시등록 수주서1
-		@GetMapping("sujuletter1")
-		public void sujuletter1(OrderDTO od, CompanyDTO cd, HttpSession session, @RequestParam("bno") int bno, Model model) {
-
-			OrderDTO ood = new OrderDTO();//다른 주소의 OrderDTO타입 ood변수 생성		
-			od.setOno(bno);	//parameter로 bno값을 받고 OrderDTO od bno변수에 저장		
-			ood = os.sujuletter_select(od); // od변수에 있는 값을 이용해서 DB의 orders 테이블에서 셀렉하고 결과값을 ood에 저장
-			model.addAttribute("sujuletter", os.sujuletter_select(od)); //셀렉한 값을 model 객체 "sujuletter"변수에 저장
-			cd.setCnumber(ood.getOnumber()); // ood의 저장된 값중 bnumber를 CompanyDTO cd변수 안의 number에 저장
-			model.addAttribute("company", os.sujucom_select(cd.getCnumber())); // 저장받은 number값을 이용해서 DB company에서 결과값을 model 객체 "company"에 저장
-		}
-
-			*/
 		//견적서 발행
 		@GetMapping("issuance")
-		public ResponseEntity<?> issuance(OrderDTO od, Model model, HttpSession session,@RequestParam("ono") int ono) {		
+		public ResponseEntity<?> issuance(@RequestParam("ono[]") List<Integer> ono) {	
 			
-			int result = ssi.osuju_update(ono); //수주상태 업데이트 - > '견적서 발행'
-			if(result == 1) {
-				od = ssi.check(ono);
+			int rusult = 0;
+			for(int i = 0; i < ono.size(); i++) {
+				
+				rusult = ssi.osuju_update(ono.get(i));
+				
 			}
-			
-			return new ResponseEntity<>(od,HttpStatus.OK);
+			return new ResponseEntity<>(rusult,HttpStatus.OK);
 		}
 		
+		//견적서 발행 하기전 리스트 출력
 		@GetMapping("issuance_select")
 		public ResponseEntity<?> issuance_select(@RequestParam("ono[]") List<Integer> ono) {		
-			
-			ArrayList<HashMap<String, Object>>  issuance_select= ssi.store_select();
-			System.out.println(ono);
+			ArrayList<HashMap<String, Object>>  issuance_select = ssi.store_select();
 			for(int i = 0; i < ono.size(); i++) {
-				issuance_select = ssi.issuance_select(ono.get(i));
+				issuance_select.addAll(ssi.issuance_select(ono.get(i)));
 			}
-			
 			return new ResponseEntity<>(issuance_select,HttpStatus.OK);
 		}
 		
