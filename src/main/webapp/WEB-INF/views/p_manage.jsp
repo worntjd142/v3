@@ -52,7 +52,7 @@
 					<tr>
 						<th scope="col" class = "pppp">제품 이미지</th>
 						<td colspan = "3" class = "pppp2"><input type="file" name="pimage"></td>
-						<td colspan = "2"><input type="submit" value="등록"></td>
+						<td colspan = "2"><input type="submit" class="allbtn" value="등록"></td>
 					</tr>
 				</thead>
 			</table>
@@ -76,15 +76,15 @@
 			</thead>
 			<tbody>
 		<c:forEach items = "${p_list}" var = "pro" varStatus="a">
-				<tr onclick = "insert_info('${pro.pimage}','${pro.pmc}','${pro.pmi}','${pro.pname}','${pro.exd}','${pro.houseld}','${pro.housed}')">
-					<td>${pro.pcode}</td>
-					<td>${pro.pname}</td>
-					<td>${pro.pprice}</td>
-					<td>${pro.pstock}</td>
-					<td><button onclick="togb('${a.index}')">추가입고</button>
+				<tr class = "prodlist" onclick = "insert_info('${pro.pimage}','${pro.pmc}','${pro.pmi}','${pro.pname}','${pro.exd}','${pro.houseld}','${pro.housed}')">
+					<td class = "prodlist1">${pro.pcode}</td>	
+					<td class = "prodlist1">${pro.pname}</td>
+					<td class = "prodlist1">${pro.pprice}</td>
+					<td class = "prodlist1">${pro.pstock}</td>
+					<td><button class="allbtn" onclick="togb('${a.index}')">추가입고</button>
 					<div class = "pluss" id = "pluss${a.index}">
 						<input type = "number" name = "stockplus" id = "plus5${a.index}">
-						<button onclick = "stockplus('${pro.pcode}','${pro.pstock}','${a.index}','<fmt:formatDate value="${now}" pattern = 'yyyy-MM-dd'/>')">확인</button>
+						<button class="allbtn" onclick = "stockplus('${pro.pcode}','${pro.pstock}','${a.index}','<fmt:formatDate value="${now}" pattern = 'yyyy-MM-dd'/>')">확인</button>
 					</div>
 					</td>
 				</tr>

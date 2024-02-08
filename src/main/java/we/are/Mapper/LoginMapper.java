@@ -8,5 +8,5 @@ public interface LoginMapper {
 	public void login_insert(LoginDTO logindto);
 	
 	// 로그인
-	public LoginDTO login(LoginDTO logindto);
+	public LoginDTO login(LoginDTO ld);
 }
