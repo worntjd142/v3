@@ -15,6 +15,8 @@ public interface StoreService {
 	//
 	public ArrayList<HashMap<String, Object>> management_select();
 	
+	public int storerelease_count();
+	
 	//재고량 확인
 	public InventoryDTO product_select(String pcode);
 	

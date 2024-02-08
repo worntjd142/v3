@@ -19,15 +19,17 @@
 
 <body>
  	<!-- 헤더 -->
-	<jsp:include page="include/header.jsp"></jsp:include>
+ 	<input type="hidden" value="${count}" id="count">
+ 	<jsp:include page="include/header.jsp"></jsp:include>
 
 	<div id="release">
 		<h3>출고 요청</h3>
-		<div id="release_check">
+		<div id="release_check" class="tableData thead tr th">
 			<table
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark">
+						<th class="title_th">No.</th>
 						<th class="title_th"><input type="checkbox" id="check_all"></th>
 						<th class="title_th">요청일자</th>
 						<th class="title_th">수주번호</th>
@@ -41,6 +43,7 @@
 				<tbody>
 				<c:forEach items="${stroe}" var="stroeList" varStatus="a">
 					<tr>
+					<td>${a.count}</td>
 					<td><input type="checkbox" class="check_all" id="check_val${a.index}" value="${stroeList.ono}"></td>
 					<td>${stroeList.oday}</td>
 					<td>${stroeList.uuid}</td>
@@ -51,52 +54,57 @@
 					<td>${stroeList.ocount}</td>
 					</tr>
 					</c:forEach>
+					<tr>
+					<td id="hip_hap">합 계</td>
+					<td id="hip_hap_ea"></td>
+					</tr>
 				</tbody>
 			</table>
 			</div>
 				<div id="buttons">
-	<a href = "store"><input type="button" value="출하"></a>
-	<a href = "store_release"><input type="button" value="출고"></a>
+	<a href = "store"><input type="button" value="출하" class="btn btn-outline-light me-2" id="culha"></a>
+	<a href = "store_release"><input type="button" value="출고" class="btn btn-outline-light me-2" id="culgo"></a>
 		</div>
-		<div id="detailed" >
-		<h3>견적서 발행</h3>
+		<h3 id="hh">견적서 발행</h3>
+		<div id="detailed" class="tableData thead tr th">
 		<table class="table table-striped table-hover table-bordered table-responsive">
 			<thead >
 					<tr class="table-dark">
-						<td class="title_th">거래처<input type="hidden" id="ono"></td>
-					 	<td class="title_th">요청수량</td>
-					 	<td class="title_th">출하수량</td>
-					 	<td class="title_th">요청잔량</td>
+						<th class="title_th">No.</th>
+						<th class="title_th">수주번호</th>
+						<th class="title_th">거래처<input type="hidden" id="ono"></th>
+					 	<th class="title_th">요청수량</th>
+					 	<th class="title_th">출하수량</th>
+					 	<th class="title_th">요청잔량</th>
 					 	</tr>
 				</thead>
 				<tbody id="in">
-				
 				</tbody>
 			</table>
-			<input type="button" value="발행" id="send">
 			</div>
-	<div id="change">
-		<h3>관리</h3>
-		${Management[0]}
-		<table
-			class="table table-striped table-hover table-bordered table-responsive">
+			<input type="button" value="발행" id="send" class="btn btn-outline-light me-2">
+			<h3 id="aa">관리</h3>
+		<div id="change" class="tableData thead tr th">
+		<table class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
+					<th scope="col" class="table-dark">No.</th>
 					<th scope="col" class="table-dark">출하일자</th>
 					<th scope="col" class="table-dark">진행상태</th>
 					<th scope="col" class="table-dark">품목코드</th>
-					<th scope="col" class="table-dark">품목명</th>
+					<th scope="col" class="table-dark"> 품목명 </th>
 					<th scope="col" class="table-dark">기준단위</th>
 					<th scope="col" class="table-dark">요청수량</th>
 					<th scope="col" class="table-dark">출하수량</th>
 					<th scope="col" class="table-dark">요청잔량</th>
 					<th scope="col" class="table-dark">마감일자</th>
-					<th scope="col" class="table-dark">비고<th>
+					<th scope="col" class="table-dark">	비고   </th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach items="${Management}" var="ManagementList" varStatus="a">
 					<tr>
+						<td>${a.count}</td>
 						<td></td>
 						<td>${ManagementList.osuju}</td>
 						<td>${ManagementList.pcode}</td>
@@ -129,6 +137,7 @@
 						
 						
 						<td>${ManagementList.otext}</td>
+						
 					</tr>
 					</c:forEach>
 			</tbody>

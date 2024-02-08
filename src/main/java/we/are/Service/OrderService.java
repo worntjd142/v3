@@ -11,10 +11,10 @@ import we.are.Model.OrderDTO;
 public interface OrderService {
 	
 	// 수주 등록
-	public void order_insert (OrderDTO[] od);
+	public void order_insert (OrderDTO od);
 	
 	// 제품 등록
-	public void cart_insert (CartDTO[] cdt);
+	public void cart_insert (CartDTO cd);
 	
 	// 수주 목록 리스트
 	public ArrayList<OrderDTO> order_select (CriteriaDTO cd);
@@ -36,6 +36,9 @@ public interface OrderService {
 	
 	// 페이지 전체 건수 total
 	public int total (CriteriaDTO cd);
+	
+	//장바구니로 넣을 ono 검색
+	public int ono_select(OrderDTO od);
 
 	
 }

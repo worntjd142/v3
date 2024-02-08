@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 

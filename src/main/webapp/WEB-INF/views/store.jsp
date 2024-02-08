@@ -52,8 +52,8 @@
 			</table>
 			</div>
 				<div id="buttons">
-	<a href = "store"><input type="button" value="출하"></a>
-	<a href = "store_release"><input type="button" value="출고"></a>
+	<a href = "store"><input type="button" value="출하" class="btn btn-outline-light me-2" id="culha"></a>
+	<a href = "store_release"><input type="button" value="출고" class="btn btn-outline-light me-2" id="culgo"></a>
 		</div>
 		<div id="detailed" >
 		<h3>출하 상세</h3>
@@ -80,7 +80,7 @@
 			</div>
 			<input type="button" value="제품출하">
 	<div id="change">
-		<h3>창고 재고</h3>
+		<h3>재고</h3>
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
