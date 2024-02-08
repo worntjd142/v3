@@ -26,19 +26,17 @@ $(function(){
 	
 })
 //출고 리스트 출력하기
-function balju(cname, ocount, pcode, ono, otext){
-	$("#cname").text(cname);
-	$("#ocount").text(ocount);
-	$(".scount").val(ocount);
-	$("#otext").text(otext);
+function balju(ono){
 	
 	$.ajax({
 		type : "get",
 		url : "pcode",
-		data : {'pcode':pcode},
+		data : {'ono':ono},
 		dataType : 'json',
 		success : function(data) {
-			$("#ea").text("EA");
+			
+			
+			/*$("#ea").text("EA");
 			$("#pname").text(data.pname); 	// 상품명
 			$("#pstock").text(data.pstock); 		// 재고량
 			$("#pprice").text(data.pprice.toLocaleString('ko-KR')); // 3자리마다 콤마
@@ -78,7 +76,7 @@ function balju(cname, ocount, pcode, ono, otext){
 						if(data.pstock - ocount == 0){
 							$("#Warning").text("※출고 후, 재고량 확인 부탁드립니다.");
 							$("#Warning").css("color", "red");
-				}}
+				}}*/
 			
 				}
 			

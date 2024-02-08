@@ -19,12 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="pcode" property="pcode" />	
 		<result column="oday" property="oday" />	
 		<result column="pstock" property="pstock" />	
+		<result column="pcount" property="pcount" />	
 </resultMap>
 		<!-- resultMap ='store_select' 같은 resultMap을 찾아서 실행  -->
 <select id="store_select" resultMap="store_select"> 
-select  amount,a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel,pstock   
-from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
-where osuju = "수주 확인" order by a.ono asc; 
+select uuid, a.cname,pcount,osuju,otext,x,y,oday 
+from orderr a join connection b on a.cname = b.cname 
+where osuju = "수주 대기" order by a.ono asc;
 </select>
 
 <!-- 수주상태가 '출고 요청 확인'인 것 리스트의 갯수 -->
