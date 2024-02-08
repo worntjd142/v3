@@ -31,21 +31,17 @@
 						<th class="title_th">수주번호</th>
 						<th class="title_th">진행상태</th>
 						<th class="title_th">거래처</th>
-						<th class="title_th">품목코드</th>
-						<th class="title_th">품목명</th>
-						<th class="title_th">요청수량</th>
+						<th class="title_th">품목수</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach items="${stroe}" var="stroeList" varStatus="a">
-					<tr id="ch"  style="cursor: pointer;" onclick="balju('${stroeList.cname}', '${stroeList.ocount}','${stroeList.pcode}','${stroeList.ono}','${stroeList.otext}')">
+					<tr id="ch"  style="cursor: pointer;" onclick="balju('${stroeList.ono}')">
 					<td>${stroeList.oday}</td>
 					<td>${stroeList.uuid}</td>
 					<td>${stroeList.osuju}</td>
 					<td>${stroeList.cname}</td>
-					<td>${stroeList.pcode}</td>
-					<td>${stroeList.pproduct}</td>
-					<td>${stroeList.ocount}</td>
+					<td>${stroeList.pcount}</td>
 					</tr>
 					</c:forEach>
 				</tbody>
