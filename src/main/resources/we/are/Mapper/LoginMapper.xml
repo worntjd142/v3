@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 사용자 아이디 조회 -->
 	<select id="login" resultType="we.are.Model.LoginDTO">
-		SELECT * FROM login WHERE useid= #{useid} and usepassword = #{usepassword};
+		SELECT * FROM login WHERE useid=#{useid} and usepassword=#{usepassword};
 	</select>
 	
 </mapper>

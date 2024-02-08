@@ -19,8 +19,8 @@ public class LoginServiceImpl implements LoginService {
 		
 
 	// 로그인
-	public LoginDTO login(LoginDTO logindto) {
-		return lm.login(logindto);
+	public LoginDTO login(LoginDTO ld) {
+		return lm.login(ld);
 		
 	}
 	

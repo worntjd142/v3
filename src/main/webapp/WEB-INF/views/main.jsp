@@ -23,7 +23,7 @@
 
 	<div class="container">
 
-		<div class="imagebox">
+		<div class="imagebox col-sm-9 col-md-7 col-lg-5 mx-auto">
 			<img src="../../resources/image/main_logo.png" style="width: 320px;">
 		</div>
 
@@ -33,29 +33,26 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">로그인</h5>
 
+						
 						<form action="login" method="post" class="form-signin">
-
 							<div class="form-label-group">
 								<input type="text" id="inputid" class="form-control"
 									placeholder="아이디" name="useid" required autofocus> <label
 									for="inputid">아이디</label>
 							</div>
-
 							<div class="form-label-group">
 								<input type="password" id="inputPassword" class="form-control"
 									placeholder="비밀번호" name="usepassword" required> <label
 									for="inputPassword">비밀번호</label>
 							</div>
-
 							<div class="custom-control custom-checkbox mb-3">
 								<input type="checkbox" class="custom-control-input"
-									id="customCheck1"> <label class="custom-control-label"
-									for="customCheck1">로그인 상태 유지하기</label>
+									id="customCheck1" name="login_Cookie" value="checked"> 
+							<label class="custom-control-label" for="customCheck1">로그인 상태 유지하기</label>
 							</div>
-
 							<input type="submit" value="로그인" class="btn btn-lg btn-primary btn-block text-uppercase">
-							
 						</form>
+												
 						
 						<a href="join"><input type="submit" id="input_join" value="회원가입" class="btn btn-lg btn-primary btn-block text-uppercase"></a>
 
