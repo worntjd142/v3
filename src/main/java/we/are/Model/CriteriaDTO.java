@@ -7,15 +7,14 @@ public class CriteriaDTO {
 	private int pageNum;
 	// 한 페이지당 게시물 갯수
 	private int amount;
-	
+
 	//검색
-	private String keyword;
+	private String orderno;
 	private String search;
 	private String startday;
-	private String endday;
-	private String companyname;
-	private String type;
-	
+	private String endday;	
+
+
 
 
 	// pageNum = 1 , amount = 10;
@@ -32,12 +31,13 @@ public class CriteriaDTO {
 	
 
 	// getter + setter
-	public String getKeyword() {
-		return keyword;
+	
+	public String getOrderno() {
+		return orderno;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+	public void setOrderno(String orderno) {
+		this.orderno = orderno;
 	}
 	
 	public int getPageNum() {
@@ -71,14 +71,6 @@ public class CriteriaDTO {
 	public void setEndday(String endday) {
 		this.endday = endday;
 	}
-
-	public String getCompanyname() {
-		return companyname;
-	}
-
-	public void setCompanyname(String companyname) {
-		this.companyname = companyname;
-	}
 	
 	public String getSearch() {
 		return search;
@@ -88,20 +80,15 @@ public class CriteriaDTO {
 		this.search = search;
 	}	
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-	
 	
 
 	@Override
 	public String toString() {
-		return "CriteriaDTO [pageNum=" + pageNum + ", amount=" + amount + ", search=" + search + ", startday="
-				+ startday + ", endday=" + endday + ", companyname=" + companyname + ", type=" + type + "]";
+		return "CriteriaDTO [pageNum=" + pageNum + ", amount=" + amount + ", orderno=" + orderno + ", search=" + search
+				+ ", startday=" + startday + ", endday=" + endday + ", getOrderno()=" + getOrderno() + ", getPageNum()="
+				+ getPageNum() + ", getAmount()=" + getAmount() + ", getStartday()=" + getStartday() + ", getEndday()="
+				+ getEndday() + ", getSearch()=" + getSearch() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 }

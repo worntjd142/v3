@@ -85,15 +85,18 @@
    	});   	
    }); 
    
+   
+   
    var pcount = 0;
    
    $(function(){
+	   
 	    $("#btn_Chklist").click(function(){ 
 	        var rowData = []; // 체크한 테이블의 값을 담을 배열
 	        var totalSum = 0; // 총합을 저장할 변수
-	        var pproducts = [];
-			var pprices = [];
-			var ocounts = [];
+	        var pproducts = []; // 체크한 제품명 값을 담을 배열
+			var pprices = []; // 체크한 제품단가 값을 담을 배열
+			var ocounts = []; // 체크한 품목수 값을 담을 배열
 	        
 	        // 체크된 체크박스 값을 가져와서 각 필드의 값을 추출하여 rowData에 저장
 	        $("input[class='choice_Check']:checked").each(function() {
@@ -112,10 +115,11 @@
 	                
 	                // 제품 가격과 수량을 곱하여 가격을 계산
 	                var totalPrice = parseInt(pprice * parseInt(ocount));
+	                
+	                // 배열에 담은 값들을 배열에 담는다?
 	                pproducts.push(pproduct)
 	    			pprices.push(pprice)
-	    			ocounts.push(ocount)
-	    	        
+	    			ocounts.push(ocount)	    	        
 
 	                // pproduct, pprice, ocount 요소에 값을 넣어줌
 	                $("#pproduct").val(pproducts);
@@ -132,17 +136,16 @@
 	            }
 	        });
 
+	        /*	
 	        // pnamesum 요소에 배열 값을 넣기
 	        var pnames = rowData.map(function(item) {
 	            return item.pproduct + " / " + item.pprice + "원 / " + item.ocount + "BOX"; // 제품명 - 제품가격원 x 수량개 형식으로 문자열 생성
 	        }).join(", "); // 배열 요소를 쉼표와 공백으로 연결하여 문자열로 만듦
 	        $("#pnamesum").val(pnames);
+	        */
 
-	        // 총합을 총합 요소에 넣기
+	        // 총합을 총합 요소에 넣기 // .toLocaleString('ko-KR') 콤마넣는 메소드
 	        $("#osum").val(totalSum);
-	        
-	        
-	        console.log(pnames);
 	        
 	    });
 	});	

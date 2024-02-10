@@ -16,10 +16,7 @@ public class CartDTO {
 	private String pnamesum;	
 	
 	
-	// getter + setter
-	
-	
-	
+	// getter + setter	
 	
 	public String getPnamesum() {
 		return pnamesum;
