@@ -16,13 +16,13 @@ public interface StoreMapper {
 	public ArrayList<HashMap<String, Object>> management_select();
 	//'출고 확인'된 거래처 리스트 세부
 	public ArrayList<HashMap<String, Object>> issuance_select(int ono);
+	
+	public ArrayList<HashMap<String, Object>> product_List(String ono);
 
 	public int storerelease_count();
 	
-	
-	
-	//재고량 확인
-	public InventoryDTO product_select(String pcode);
+	//장바구니 조인
+	public ArrayList<HashMap<String, Object>> product_select(String ono);
 	
 	//출고일 등록
 	public int balju_update(OrderDTO od);

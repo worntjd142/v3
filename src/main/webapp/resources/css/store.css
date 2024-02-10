@@ -9,6 +9,8 @@
 #change{
 	top:350px;
 	left: 51%;
+	position: relative;
+	width: 49%;
 }
 
 #buttons{
@@ -28,7 +30,17 @@
     top: -10px;
 }
 
-#culha, #culgo {
+#culha, #culgo, #culha_sinho {
 	color: black;
 	border: 1px solid;
+}
+#culha_sinho{
+position: absolute;
+    left: 91.6%;
+    top: 510px;
+}
+#title_psock{
+	position: relative;
+    top: 350px;
+    left: 51%;
 }

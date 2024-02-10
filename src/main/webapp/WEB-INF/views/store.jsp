@@ -27,21 +27,33 @@
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark">
+						<th class="title_th"></th>
 						<th class="title_th">요청일자</th>
-						<th class="title_th">수주번호</th>
-						<th class="title_th">진행상태</th>
 						<th class="title_th">거래처</th>
-						<th class="title_th">품목수</th>
+						<th class="title_th">수주번호</th>
+						<th class="title_th">품목명</th>
+						<th class="title_th">진행상태</th>
+						<th class="title_th">비고</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach items="${stroe}" var="stroeList" varStatus="a">
 					<tr id="ch"  style="cursor: pointer;" onclick="balju('${stroeList.ono}')">
+					<td>${a.count}</td>
 					<td>${stroeList.oday}</td>
-					<td>${stroeList.uuid}</td>
-					<td>${stroeList.osuju}</td>
 					<td>${stroeList.cname}</td>
-					<td>${stroeList.pcount}</td>
+					<td>${stroeList.uuid}</td>
+					<td>
+					<c:choose>
+					<c:when test="${stroeList.pcount ge 2 }">
+					${stroeList.pproduct} 외  ${stroeList.pcount - 1}개
+					</c:when>
+					<c:otherwise>
+					${stroeList.pproduct}
+					</c:otherwise>
+					</c:choose></td>
+					<td>${stroeList.osuju}</td>
+					<td>${stroeList.otext}</td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -58,59 +70,56 @@
 		<li style="color:red;">※ 출하수량은 요청수량을 초과 할 수 없습니다.</li>
 		</ul>
 		<table class="table table-striped table-hover table-bordered table-responsive">
-			<tbody>
+				<thead>
+					<tr class="table-dark">
+						<th class="title_th"></th>
+						<th class="title_th">거래처</th>
+						<th class="title_th">품목명</th>
+						<th class="title_th">품목코드</th>
+						<th class="title_th">수주수량</th>
+						<th class="title_th">출하수량</th>
+						<th class="title_th">단가</th>
+						<th class="title_th">합계</th>
+					</tr>
+					<tbody Id="table_culha">
+				</tbody >
 					<tr>
-						<td>거래처</td>
-					 	<td id="cname"></td>
-					 	<td>요청수량</td>
-					 	<td id="ocount"></td>
-					 	</tr>
-					 	<tr>
-					 	<td>출하일</td>
-					 	<td><input type="date" id="balju_day"></td>
-					 	<td>출하수량</td>
-					 	<td class="scount"></td>
-					 	</tr>
-				</tbody>
+					<td colspan="4" style="text-alzign: center;">합 계</td>
+					<td id="ocount_total"></td>
+					<td id="scount_total" ></td>
+					<td id="sum_price"> </td>
+					<td id="total_price"> </td>
+					</tr>
 			</table>
 			</div>
-			<input type="button" value="제품출하">
+			<h3 id="title_psock">재고</h3>
 	<div id="change">
-		<h3>재고</h3>
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
-					<th scope="col" class="table-dark">상품명</th>
-					<th scope="col" class="table-dark">기준단위</th>
+					<th scope="col" class="table-dark"></th>
+					<th scope="col" class="table-dark">품목명</th>
+					<th scope="col" class="table-dark">품목코드</th>
 					<th scope="col" class="table-dark">재고량</th>
+					<th scope="col" class="table-dark">수주수량</th>
 					<th scope="col" class="table-dark">출하수량</th>
-					<th scope="col" class="table-dark">단가</th>
 					<th scope="col" class="table-dark">요청잔량</th>
-					<th scope="col" class="table-dark">비고</th>
 				</tr>
 			</thead>
-			<tbody>
-					<tr>
-						<td id="pname"></td>
-						<td id="ea"></td>
-						<td id="pstock"></td>
-						<td class="scount"></td>
-						<td id="pprice"></td>
-						<td id="requested"></td>
-						<td id="otext"></td>
-					</tr>
-					
-					<tr>
-					<td colspan="4" style="text-align: center;">합 계</td>
-					<td id="total"></td>
-					<td ></td>
-					<td id="shipment"></td>
-					</tr>
+			<tbody id="stock">
 			</tbody>
+			<tr>
+					<td colspan="3" style="text-align: center;">합 계</td>
+					<td id="total_psock"></td>
+					<td id="total_ocount"></td>
+					<td id="total_scount"></td> 
+					<td id="total_amount"></td> 
+					</tr>
 		</table>
 			<div id="Warning"></div>
 	</div>
+	<div><input type="button" value="출하요청" class="btn btn-outline-light me-2" id="culha_sinho" onclick="culha()"></div>
 </div>
 
 

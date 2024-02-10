@@ -30,9 +30,13 @@ public class StoreServiceImpl implements StoreService {
 		return sm.management_select();
 	}
 
-	//재고량 확인
-	public InventoryDTO product_select(String pcode) {
-		return sm.product_select(pcode);
+	//장바구니 조인
+	public ArrayList<HashMap<String, Object>> product_select(String ono) {
+		return sm.product_select(ono);
+	}
+	
+	public ArrayList<HashMap<String, Object>> product_List(String ono){
+		return sm.product_List(ono);
 	}
 
 	//수주상태 변경 - > '견적서 발행'
