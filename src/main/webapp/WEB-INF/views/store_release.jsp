@@ -29,7 +29,7 @@
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark">
-						<th class="title_th">No.</th>
+						<th class="title_th"></th>
 						<th class="title_th"><input type="checkbox" id="check_all"></th>
 						<th class="title_th">요청일자</th>
 						<th class="title_th">수주번호</th>
@@ -50,8 +50,17 @@
 					<td>${stroeList.osuju}</td>
 					<td>${stroeList.cname}</td>
 					<td>${stroeList.pcode}</td>
-					<td>${stroeList.pproduct}</td>
-					<td>${stroeList.ocount}</td>
+					<td>
+					<c:choose>
+					<c:when test="${stroeList.pcount ge 2 }">
+					${stroeList.pproduct} 외  ${stroeList.pcount - 1}개
+					</c:when>
+					<c:otherwise>
+					${stroeList.pproduct}
+					</c:otherwise>
+					</c:choose>
+					</td>
+					<td>${stroeList.tcount}</td>
 					</tr>
 					</c:forEach>
 					<tr>
@@ -88,7 +97,7 @@
 		<table class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
-					<th scope="col" class="table-dark">No.</th>
+					<th scope="col" class="table-dark"></th>
 					<th scope="col" class="table-dark">출하일자</th>
 					<th scope="col" class="table-dark">진행상태</th>
 					<th scope="col" class="table-dark">품목코드</th>
@@ -97,8 +106,9 @@
 					<th scope="col" class="table-dark">요청수량</th>
 					<th scope="col" class="table-dark">출하수량</th>
 					<th scope="col" class="table-dark">요청잔량</th>
-					<th scope="col" class="table-dark">마감일자</th>
-					<th scope="col" class="table-dark">	비고   </th>
+					<th scope="col" class="table-dark">마감상황</th>
+					<th scope="col" class="table-dark">출고서</th>
+					<th scope="col" class="table-dark">비고</th>
 				</tr>
 			</thead>
 			<tbody>

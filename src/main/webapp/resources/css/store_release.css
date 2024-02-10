@@ -15,6 +15,7 @@
 	position: relative;
 	overflow: scroll;
 	height: 370px;
+	scrollbar-width: none;
 }
 
 #buttons {
@@ -28,11 +29,13 @@
 	left: 51%;
 	overflow: scroll;
 	height: 206px;
+	scrollbar-width: none;
 }
 
 #release_check {
 	overflow: scroll;
 	height: 329px;
+	scrollbar-width: none;
 }
 
 #hip_hap {

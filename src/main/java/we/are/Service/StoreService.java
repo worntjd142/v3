@@ -15,10 +15,12 @@ public interface StoreService {
 	//
 	public ArrayList<HashMap<String, Object>> management_select();
 	
+	public ArrayList<HashMap<String, Object>> product_List(String ono);
+	
 	public int storerelease_count();
 	
-	//재고량 확인
-	public InventoryDTO product_select(String pcode);
+	//장바구니 조인
+	public ArrayList<HashMap<String, Object>> product_select(String ono);
 	
 	//출고일 등록
 	public int balju_update(OrderDTO od);

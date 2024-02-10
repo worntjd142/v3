@@ -213,7 +213,7 @@ $(function() {
 	
 	
    $("#check_all").on("click", function() {  // 메인 체크박스를 클릭 시.
-	   
+	   console.log("aaa")
 	  ono.length = 0;
 	   
 	  let count = $("#count").val();
