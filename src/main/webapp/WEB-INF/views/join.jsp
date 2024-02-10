@@ -31,36 +31,37 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">회원가입</h5>
 
-						<form action="login_insert" method="POST" class="form-signin" onSubmit="return chkForm(this)">
+						<form action="login_insert" method="POST" class="form-signin"
+								onsubmit="return checkForm()">
 
 							<div class="form-label-group">
 								<input type="text" id="useid" name="useid" class="form-control"
 									placeholder="아이디" required autofocus> <label
-									for="useid">아이디</label>
+									for="useid" class="id">아이디</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usePassword" name="usepassword" class="form-control"
 									placeholder="비밀번호" required> 
-									<label for="usePassword">비밀번호</label>
+									<label for="usePassword" class="pw">비밀번호</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usename" name="usename" class="form-control"
 									placeholder="사용자 이름" required autofocus> 
-									<label for="usename">사용자 이름</label>
+									<label for="usename" class="name">사용자 이름</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usenum" name="usenumber" class="form-control"
 									placeholder="사업자번호" required autofocus maxlength="12"> 
-									<label for="usenum">사업자번호</label>
+									<label for="usenum" class="number">사업자번호</label>
 							</div>
 
 							<div class="form-label-group">
 								<input type="text" id="usetel" name="usetel" class="form-control"
 									placeholder="연락처" required autofocus maxlength="13"> 
-									<label for="usetel">연락처</label>
+									<label for="usetel" class="tel">연락처</label>
 							</div>
 
 							<input type="submit" value="가입하기"
