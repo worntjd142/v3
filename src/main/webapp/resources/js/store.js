@@ -23,6 +23,7 @@ function balju(ono){
 	 update_ocount.length=0;
 	 update_pcode.length=0;
 	 update_amount.length=0;
+	 update_pname.length = 0;
 	
 	update_ono = ono;
 	$("#update_ono").val(update_ono);
@@ -153,9 +154,13 @@ function balju(ono){
 		}
 
 function culha(){
-	
+/*	console.log(update_ocount);
+	console.log (update_pcode);
+	console.log(update_amount);
+	console.log(update_pname);*/
+	console.log(update_ono);
 	if(update_amount.length == 0){
-		alert("제품을 확인 후 출하를 해주세요")
+		alert("수주내용이 없습니다. ")
 	}
 	
 	$.ajax({

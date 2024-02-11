@@ -130,14 +130,6 @@
 
 
 <script>
-$(function(){
-	
-	$("#cname").on("click", function(){
-		
-		location.href= 'search.naver.com'
-	})
-	
-		
 	//주소창에 주소를 입력 후
 	$("#caddress").on("blur", function(){
 		// 주소값을 addres에 저장

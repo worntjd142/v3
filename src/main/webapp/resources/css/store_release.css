@@ -1,17 +1,23 @@
 @charset "UTF-8";
 
-#release_check, #buttons, #detailed {
-	position: absolute;
-	width: 49%;
+#Breleased_Request{
+	position: relative;
+	top: 110px;
+	left: 2%;
+	
+}
+
+#release{
+	margin: 0px 40px;
 }
 
 #aa {
 	position: relative;
-	top: 315px;
+	top: 85px;
 }
 
 #change {
-	top: 310px;
+	top: 90px;
 	position: relative;
 	overflow: scroll;
 	height: 370px;
@@ -19,9 +25,11 @@
 }
 
 #buttons {
-	left: 51%;
 	border-bottom: 1px solid;
 	padding-bottom: 20px;
+	position: absolute;
+	top: 130px;
+	width: 47%;
 }
 
 #detailed {
@@ -34,8 +42,10 @@
 
 #release_check {
 	overflow: scroll;
-	height: 329px;
-	scrollbar-width: none;
+    height: 329px;
+    scrollbar-width: none;
+    top: 115px;
+    position: relative;
 }
 
 #hip_hap {
