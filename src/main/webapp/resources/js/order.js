@@ -85,15 +85,19 @@
    	});   	
    }); 
    
-   var pcount = 0;
+   
+   
+var pcount = 0;
+   
+var rowData = []; // 체크한 테이블의 값을 담을 배열
+var totalSum = 0; // 총합을 저장할 변수
+var pproducts = []; // 체크한 제품명 값을 담을 배열
+var pprices = []; // 체크한 제품단가 값을 담을 배열
+var ocounts = []; // 체크한 품목수 값을 담을 배열
    
    $(function(){
+	   
 	    $("#btn_Chklist").click(function(){ 
-	        var rowData = []; // 체크한 테이블의 값을 담을 배열
-	        var totalSum = 0; // 총합을 저장할 변수
-	        var pproducts = [];
-			var pprices = [];
-			var ocounts = [];
 	        
 	        // 체크된 체크박스 값을 가져와서 각 필드의 값을 추출하여 rowData에 저장
 	        $("input[class='choice_Check']:checked").each(function() {
@@ -112,10 +116,11 @@
 	                
 	                // 제품 가격과 수량을 곱하여 가격을 계산
 	                var totalPrice = parseInt(pprice * parseInt(ocount));
+	                
+	                // 배열에 담은 값들을 배열에 담는다?
 	                pproducts.push(pproduct)
 	    			pprices.push(pprice)
-	    			ocounts.push(ocount)
-	    	        
+	    			ocounts.push(ocount)	    	        
 
 	                // pproduct, pprice, ocount 요소에 값을 넣어줌
 	                $("#pproduct").val(pproducts);
@@ -123,31 +128,64 @@
 	                $("#ocount").val(ocounts);	 
 	                $("#pcount").val(pproducts.length);
 	                
-	                console.log(pproduct)
-	                console.log(pprice)
-	                console.log(ocount)
+	                console.log(pproducts)
+	                console.log(pprices)
+	                console.log(ocounts)
 	                
 	                // 총합을 계산
 	                totalSum += totalPrice;
 	            }
 	        });
 
+	        /*	
 	        // pnamesum 요소에 배열 값을 넣기
 	        var pnames = rowData.map(function(item) {
 	            return item.pproduct + " / " + item.pprice + "원 / " + item.ocount + "BOX"; // 제품명 - 제품가격원 x 수량개 형식으로 문자열 생성
 	        }).join(", "); // 배열 요소를 쉼표와 공백으로 연결하여 문자열로 만듦
 	        $("#pnamesum").val(pnames);
+	        */
 
-	        // 총합을 총합 요소에 넣기
+	        // 총합을 총합 요소에 넣기 // .toLocaleString('ko-KR') 콤마넣는 메소드
 	        $("#osum").val(totalSum);
 	        
-	        
-	        console.log(pnames);
-	        
 	    });
-	});	
+	    
+	    // "제품삭제" 버튼을 클릭하면
+	    $("#delete_Btn").click(function() {
+	    	
+	    	// 체크된 박스를 checkedCheckboxes 변수에 저장한다.
+	        var checkedCheckboxes = $("input[class='choice_Check']:checked");
+	        
+	        // 체크된 checkedCheckboxes변수를 반복해서
+	        checkedCheckboxes.each(function() {	
+	        	// 현재 클릭된 체크박스(this)가 속한 행(tr)을 찾아서 tr 변수에 저장한다.
+	            var tr = $(this).closest("tr");
+	            
+	            // 테이블 행(tr)에서 각 제품명, 제품단가, 수량을 가져온다
+	            var pproductElement = tr.find("td:eq(1)").text().trim();
+	            var ppriceElement = tr.find("td:eq(2)").text().trim();
+	            var ocountElement = tr.find("input[name=ocount]").val().trim();
+
+	            var index = pproducts.indexOf(pproductElement); // 해당 제품의 인덱스 찾기
+
+	            if (index > -1) {
+	                pproducts.splice(index, 1); // 해당 제품 제거
+	                pprices.splice(index, 1); // 해당 제품의 가격 제거
+	                ocounts.splice(index, 1); // 해당 제품의 수량 제거
+	            }
+	        });
+
+	        // 업데이트된 배열을 다시 화면에 표시
+	        $("#pproduct").val(pproducts);
+	        $("#pprice").val(pprices);
+	        $("#ocount").val(ocounts);
+	        $("#pcount").val(pproducts.length);
+	    });
+	    
+	});
    
-   
+	       
+    
    
 	   // 주문수량 +
 	   function plus(count){

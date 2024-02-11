@@ -1,6 +1,7 @@
 package we.are.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	// 수주 목록 리스트
-	public ArrayList<OrderDTO> order_select(CriteriaDTO cd){
+	public ArrayList<HashMap<String, Object>> order_select (CriteriaDTO cd){		
 		return om.order_select(cd);
 	}
 	

@@ -2,6 +2,8 @@ package we.are.Controller;
 
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -38,9 +40,9 @@ public class OrderController {
 							   @RequestParam("ceo") String ceo, @RequestParam("pcount") int pcount,
 							   @RequestParam("pproduct") String pproduct[], @RequestParam("pprice") String pprice[],
 							   @RequestParam("ocount") int ocount[], @RequestParam("osum") String osum,
-							   @RequestParam("omanager") String omanager, @RequestParam("otext") String otext
-			) {
+							   @RequestParam("omanager") String omanager, @RequestParam("otext") String otext) {
 		
+		// OrderDTO = 새로운 OrderDTO 배열선언;
 		OrderDTO od = new OrderDTO();
 		CartDTO cd = new CartDTO();
 		
@@ -49,8 +51,7 @@ public class OrderController {
 		od.setCeo(ceo);
 		od.setPcount(pcount);
 		od.setOmanager(omanager);
-		od.setOtext(otext);
-		
+		od.setOtext(otext);		
 		cd.setOsum(osum);
 		
 		os.order_insert(od); // 거래처 입력 하고 ono 값이 DB에 생성
@@ -65,10 +66,8 @@ public class OrderController {
 			cd.setOcount(ocount[i]); // 배열
 			
 			os.cart_insert(cd); // 장바구니에 인서트
-		}
-		
-		
-		
+		}	
+
 		return "redirect:/order";
 	}
 
@@ -76,19 +75,24 @@ public class OrderController {
 	// 수주 목록 select
 	@RequestMapping("order")
 	public String order_list (CriteriaDTO cd, Model model, InventoryDTO id) {
+		
+		// Join된 결과 값 select
+		ArrayList<HashMap<String, Object>> olist = os.order_select(cd);		
+		
 		// order.jsp 실행할때 제품리스트(product) select결과를 "plist"에 저장해서 가져와
 		model.addAttribute("plist", os.product_select());
-		//System.out.println(os.product_select());
 		// order.jsp 실행할때 select된 결과를 "olist"에 저장해서 가져와
-		model.addAttribute("olist", os.order_select(cd));
+		model.addAttribute("olist", olist);
 		// 수주 테이블에 전체 건수(total select해서)를 아래 190대신 대입
 		int total = os.total(cd);
 		// order.jsp 실행할때 PageDTO에 저장되있는 데이터를 가져와
 									// 생성자 호출(매개변수가 2개인 생성자)
 									// new PageDTO(cdto, 190));
 		model.addAttribute("paging", new PageDTO(cd, total));
+		System.out.println(cd.getOrderno());
 		return "order";
 	}
+	
 	
 	// 수주 상세정보
 	@RequestMapping("order/order_detail_popup")

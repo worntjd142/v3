@@ -5,7 +5,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="we.are.Mapper.OrderMapper">
 
-<!-- 수주 등록 insert -->
+<resultMap type="java.util.HashMap" id="order_select">
+	<id property="ono" column="ono" />
+	<result column="uuid" property="uuid" />
+	<result column="oday" property="oday" />
+	<result column="cno" property="cno" />
+	<result column="ceo" property="ceo" />
+	<result column="cname" property="cname" />
+	<result column="pcount" property="pcount" />
+	<result column="osuju" property="osuju" />
+	<result column="omanager" property="omanager" />
+	<result column="otext" property="otext" />
+	<result column="scount" property="scount" />
+	<result column="sdate" property="sdate" />
+	<result column="sdel" property="sdel" />
+	<result column="amount" property="amount" />
+	<result column="pproduct" property="pproduct" />
+	<result column="pprice" property="pprice" />
+	<result column="ocount" property="ocount" />
+	<result column="osum" property="osum" />
+	<result column="ono" property="ono" />	
+</resultMap>
+
+	<!-- 수주 등록 insert -->
    <insert id="order_insert">
       INSERT INTO
          orderr (uuid, cno, ceo, cname, pcount, omanager) 
@@ -17,45 +39,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       INSERT INTO cart (pproduct, pprice, ocount, osum, ono) 
          VALUE (#{pproduct}, #{pprice}, #{ocount}, #{osum}, #{ono});
    </insert>
+   
+   <select id="cart_select" resultType="we.are.Model.CartDTO">
+   		select * from cart;
+   </select>
+
 
 	<!-- 수주 목록 리스트 + 날짜 기간 조회 select -->
-	<select id="order_select" resultType="we.are.Model.OrderDTO">
-		select *
-		from (
-		select @rownum:=@rownum+1 rownum, b.*
-		from orderr b,
-		(select @rownum:=0) as tmp
+	<select id="order_select" resultMap="order_select">
+	 
+	 <!-- orderr에서 중복제거할 컬럼 -->
+		SELECT DISTINCT a.ono, a.uuid, a.oday, a.cno, a.ceo, a.cname, a.pcount, a.osuju, a.omanager, a.otext, a.scount, a.sdate, a.sdel, a.amount,
+		<!-- cart에서 중복제거할 컬럼 -->
+		( SELECT osum FROM cart limit 1) AS osum 
+		FROM
+		( SELECT @rownum:=@rownum+1 rownum, b.*
+		  FROM orderr b,
+		( SELECT @rownum:=0 ) AS tmp
 		<if test="search != null">
-			<!-- search(input버튼) null이 아니면 -->
+		<!-- search(input버튼) null이 아니면 -->
 			<choose>
-				<!-- startday값이 null값이 아니고 '빈값'이 아니고 endday값이 null값이 아니고 '빈값'이 아니면 -->
-				<!-- oday에서 startday부터 endday까지 select 해라 -->
+			<!-- startday값이 null값이 아니고 '빈값'이 아니고 endday값이 null값이 아니고 '빈값'이 아니면 -->
+			<!-- oday에서 startday부터 endday까지 select 해라 -->
 				<when test="startday != null and startday != '' and endday != null and endday != '' "> 
-	       	 <![CDATA[	           
-	           where oday BETWEEN #{startday} AND #{endday}
-	        	]]>
+				<![CDATA[	           
+				WHERE oday BETWEEN #{startday} AND #{endday}
+				]]>
 				</when>
 				<!-- startday값이 null값이 아니고 '빈값'이 아닌 endday값이 null이거나 '빈값'이면 -->
 				<!-- oday에서 시작 날짜 이후 목록 select 해라 -->
 				<when test="startday != null and startday != '' and endday == null or endday == '' ">
-      	 	<![CDATA[      	 		
-      	 		where oday >= #{startday}
-      	 	 ]]>
+				<![CDATA[      	 		
+				WHERE oday >= #{startday}
+				]]>
 				</when>
 				<!-- startday값이 null이거나 '빈값'이고 endday값이 null값이 아니고 '빈값'이 아니면 -->
 				<!-- oday에서 종료날짜 이전 목록 select 해라 -->
 				<when test="startday == null or startday == '' and endday != null and endday != '' ">
-      	 	<![CDATA[      	 		
-      	 		where oday <= #{endday}
-      	 	 ]]>
-				</when>
+				<![CDATA[      	 		
+				WHERE oday <= #{endday}
+				]]>
+			</when>
 			</choose>
 		</if>
-		order by oday desc
-		) as orderr			 
-		<![CDATA[
- 			where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
-			]]> 
+				) AS a 
+		INNER JOIN cart AS c ON a.ono = c.ono			
+		 <![CDATA[
+          WHERE rownum > (#{pageNum}-1)*#{amount} AND rownum <= #{pageNum}*#{amount}          
+         ]]>
+         ORDER BY uuid DESC;
 	</select>
 	
 	
@@ -91,6 +123,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="we.are.Model.OrderDTO">
 		SELECT * FROM orders WHERE bno = #{bno};
 	</select>
+	
 	
 	<select id="ono_select" resultType="int">
 	select ono from orderr where pcount = #{pcount} and osuju="수주 대기" and  cname = #{cname} order by ono desc limit 1;
