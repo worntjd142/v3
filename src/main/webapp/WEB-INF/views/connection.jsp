@@ -151,7 +151,9 @@
 		    },
 		    success: function (data) {
 		    	$("#longitude").val(data.documents[0].x) //위도
+		    	console.log(data.documents[0].x)
 		    	$("#latitude").val(data.documents[0].y)//경도
+		    	console.log(data.documents[0].y)
 		    	
 		    },
 		  	error: function (error){
@@ -166,7 +168,6 @@
 		    	
 })
 
-})
 </script>
 </body>
 </html>

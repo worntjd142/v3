@@ -108,8 +108,10 @@ select uuid, a.cname, ono, cemail  from orderr a join connection b on a.cname = 
 </select>
 
 <select id="management_select" resultMap="store_select">
-select distinct oday,osuju, (select pcode from product limit 1)as pcode, (select pname from product limit 1)as pproduct, tcount, scount, uuid, amount, sdel,pcount, a.ono 
-from  orderr a join product b join cart c on c.pproduct = b.pname and a.ono = c.ono 
+select distinct oday,osuju, 
+						(select pcode from product limit 1)as pcode, 
+						(select pname from product limit 1)as pproduct, tcount, scount, uuid, amount, sdel,pcount, a.ono,x,y,a.cname 
+from  orderr a join product b join cart c join connection d on c.pproduct = b.pname and a.ono = c.ono and a.cname = d.cname
 where osuju="견적서 발행";
 </select>
 
@@ -131,7 +133,7 @@ update shipment set snumber = #{ceo} where ono =#{ono}
 </update>
 
 <update id="shipment_delivery">
-update orderr set sdel = "배달 중" where ono = #{ono};
+update orderr set sdel = "배송 중" where ono = #{ono};
 </update>
 
 <select id="shipment_select" resultMap="store_select">

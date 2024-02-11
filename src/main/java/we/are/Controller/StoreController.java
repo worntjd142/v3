@@ -110,7 +110,6 @@ public class StoreController {
 		public ResponseEntity<?> Shipment_insert(@RequestParam("ono")int ono , @RequestParam("result")String snumber) {
 			
 			OrderDTO od = new OrderDTO();
-			
 			int val = 0; //
 				val =	 ssi.shipment_cselect(ono); // shipment db에 ono의 값이 저장되어있는지 확인 있으면 1이상 없으면 0
 			if(val == 0) {// 정보가 없다면

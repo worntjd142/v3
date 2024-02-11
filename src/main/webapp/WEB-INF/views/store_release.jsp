@@ -78,6 +78,7 @@
 					<th scope="col" class="table-dark"></th>
 					<th scope="col" class="table-dark">출하일자</th>
 					<th scope="col" class="table-dark">수주번호</th>
+					<th scope="col" class="table-dark">거래처</th>
 					<th scope="col" class="table-dark">진행상태</th>
 					<th scope="col" class="table-dark">품목코드</th>
 					<th scope="col" class="table-dark"> 품목명 </th>
@@ -96,6 +97,7 @@
 						<td>${a.count}</td>
 						<td>${ManagementList.oday}</td>
 						<td>${ManagementList.uuid}</td>
+						<td>${ManagementList.cname}</td>
 						<td>${ManagementList.osuju}</td>
 						<td>${ManagementList.pcode}</td>
 						<td>
@@ -113,22 +115,21 @@
 						<td>${ManagementList.scount}</td>
 						<td>${ManagementList.amount}</td>
 						
-						<td id="sdel${a.index}">
+						<td class="sdel${a.index}">
 						<c:choose>
 						
 						<c:when test="${ManagementList.sdel == '출고 중'}">
-						<img src="resources/image/적재.png">
-						 <script>
-						 $("#sdel" + ${a.index}).append("출고 중");
-						 </script>		
+						<img src="resources/image/적재.png"> <label>출고 중</label>
 						 </c:when> 
 						
 						<c:when test="${ManagementList.sdel == '배송 중'}">
-						<img src ="resources/image/배달.png">
+						<img src ="resources/image/배달.png"> <label class="sdel${a.index}"> 배송 중</label>
 						<script>
-						$("#sdel" + ${a.index}).append("배송 중");.
+						$(".sdel${a.index}").css("cursor", "pointer");
+						$(".sdel${a.index}").on("click", function(){
+							del(${ManagementList.x},${ManagementList.y},'${ManagementList.cname}');
+						})
 						</script>
-						 		
 						</c:when>	
 						</c:choose>
 						</td>
@@ -140,6 +141,20 @@
 					</c:forEach>
 			</tbody>
 		</table>
+	</div>
+		<div class="time">도착시간:<label id="time"></label></div>
+	<h3 id="po">위치</h3>
+	<div id = map>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e53e51300b84c3acadbd93d20d9fea8"></script>
+	<script>
+	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	var options = { //지도를 생성할 때 필요한 기본 옵션
+		center: new kakao.maps.LatLng(35.5421094, 129.3382413), //지도의 중심좌표.
+		level: 1 //지도의 레벨(확대, 축소 정도)
+	};
+
+	var map = new kakao.maps.Map(container, options); 
+	</script>
 	</div>
 </div>
 
