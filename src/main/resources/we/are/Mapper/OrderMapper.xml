@@ -47,52 +47,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 수주 목록 리스트 + 날짜 기간 조회 select -->
 	<select id="order_select" resultMap="order_select">
-		SELECT DISTINCT o.ono, o.uuid, o.oday, o.cno, o.ceo, o.cname, o.pcount, o.osuju, o.omanager, o.otext, o.scount, o.sdate, o.sdel, o.pp.product, o.pp.price, o.pp.ocount, o.pp.osum
-		FROM (
-			SELECT @rownum:=@rownum+1 rownum, b.*
-			FROM (
-				SELECT orderr.ono, orderr.uuid, orderr.oday, orderr.cno, orderr.ceo, orderr.cname, orderr.pcount, orderr.osuju, orderr.omanager, orderr.otext, orderr.scount, orderr.sdate, orderr.sdel, orderr.amount, cart.pproduct AS product, cart.pprice AS price, cart.ocount, cart.osum, ROW_NUMBER() OVER(PARTITION BY orderr.ono) AS rn
-				FROM orderr
-				LEFT JOIN cart ON orderr.ono = cart.ono
-				<if test="search != null">
-				<!-- search(input버튼) null이 아니면 -->
-					<choose>
-					<!-- startday값이 null값이 아니고 '빈값'이 아니고 endday값이 null값이 아니고 '빈값'이 아니면 -->
-					<!-- oday에서 startday부터 endday까지 select 해라 -->
-						<when test="startday != null and startday != '' and endday != null and endday != '' "> 
-						<![CDATA[	           
-						WHERE oday BETWEEN #{startday} AND #{endday}
-						]]>
-						</when>
-						<!-- startday값이 null값이 아니고 '빈값'이 아닌 endday값이 null이거나 '빈값'이면 -->
-						<!-- oday에서 시작 날짜 이후 목록 select 해라 -->
-						<when test="startday != null and startday != '' and endday == null or endday == '' ">
-						<![CDATA[      	 		
-						WHERE oday >= #{startday}
-						]]>
-						</when>
-						<!-- startday값이 null이거나 '빈값'이고 endday값이 null값이 아니고 '빈값'이 아니면 -->
-						<!-- oday에서 종료날짜 이전 목록 select 해라 -->
-						<when test="startday == null or startday == '' and endday != null and endday != '' ">
-						<![CDATA[      	 		
-						WHERE oday <= #{endday}
-						]]>
-					</when>
-					</choose>
-				</if>
-			) b,
-				(SELECT @rownum:=0) AS tmp
-			) AS o
-				LEFT JOIN (
-			SELECT c.ono, c.pproduct AS product, c.pprice AS price, c.ocount, c.osum
-			FROM (
-				SELECT ono, pproduct, pprice, ocount, osum, ROW_NUMBER() OVER(PARTITION BY ono) AS rn
-				FROM cart
-				) c
-					WHERE c.rn = 1
-				) AS pp ON o.ono = pp.ono
-			ORDER BY o.uuid DESC
-				limit #{amount} offset #{pageNum};
+	 
+	 <!-- orderr에서 중복제거할 컬럼 -->
+		SELECT DISTINCT a.ono, a.uuid, a.oday, a.cno, a.ceo, a.cname, a.pcount, a.osuju, a.omanager, a.otext, a.scount, a.sdate, a.sdel, a.amount,
+		<!-- cart에서 중복제거할 컬럼 -->
+		( SELECT osum FROM cart limit 1) AS osum 
+		FROM
+		( SELECT @rownum:=@rownum+1 rownum, b.*
+		  FROM orderr b,
+		( SELECT @rownum:=0 ) AS tmp
+		<if test="search != null">
+		<!-- search(input버튼) null이 아니면 -->
+			<choose>
+			<!-- startday값이 null값이 아니고 '빈값'이 아니고 endday값이 null값이 아니고 '빈값'이 아니면 -->
+			<!-- oday에서 startday부터 endday까지 select 해라 -->
+				<when test="startday != null and startday != '' and endday != null and endday != '' "> 
+				<![CDATA[	           
+				WHERE oday BETWEEN #{startday} AND #{endday}
+				]]>
+				</when>
+				<!-- startday값이 null값이 아니고 '빈값'이 아닌 endday값이 null이거나 '빈값'이면 -->
+				<!-- oday에서 시작 날짜 이후 목록 select 해라 -->
+				<when test="startday != null and startday != '' and endday == null or endday == '' ">
+				<![CDATA[      	 		
+				WHERE oday >= #{startday}
+				]]>
+				</when>
+				<!-- startday값이 null이거나 '빈값'이고 endday값이 null값이 아니고 '빈값'이 아니면 -->
+				<!-- oday에서 종료날짜 이전 목록 select 해라 -->
+				<when test="startday == null or startday == '' and endday != null and endday != '' ">
+				<![CDATA[      	 		
+				WHERE oday <= #{endday}
+				]]>
+			</when>
+			</choose>
+		</if>
+				) AS a 
+		INNER JOIN cart AS c ON a.ono = c.ono			
+		 <![CDATA[
+          WHERE rownum > (#{pageNum}-1)*#{amount} AND rownum <= #{pageNum}*#{amount}          
+         ]]>
+         ORDER BY uuid DESC;
 	</select>
 	
 	

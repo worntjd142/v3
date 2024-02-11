@@ -89,6 +89,7 @@ public class OrderController {
 									// 생성자 호출(매개변수가 2개인 생성자)
 									// new PageDTO(cdto, 190));
 		model.addAttribute("paging", new PageDTO(cd, total));
+		System.out.println(cd.getOrderno());
 		return "order";
 	}
 	

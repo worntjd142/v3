@@ -25,7 +25,7 @@ table {
 /* 테이블 스크롤 */
 tbody.scroll {
     display: block;
-    max-height: 202px;
+    max-height: 220px;
     overflow-y: scroll;
     width: 26%;
 }

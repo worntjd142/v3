@@ -87,16 +87,17 @@
    
    
    
-   var pcount = 0;
+var pcount = 0;
+   
+var rowData = []; // 체크한 테이블의 값을 담을 배열
+var totalSum = 0; // 총합을 저장할 변수
+var pproducts = []; // 체크한 제품명 값을 담을 배열
+var pprices = []; // 체크한 제품단가 값을 담을 배열
+var ocounts = []; // 체크한 품목수 값을 담을 배열
    
    $(function(){
 	   
 	    $("#btn_Chklist").click(function(){ 
-	        var rowData = []; // 체크한 테이블의 값을 담을 배열
-	        var totalSum = 0; // 총합을 저장할 변수
-	        var pproducts = []; // 체크한 제품명 값을 담을 배열
-			var pprices = []; // 체크한 제품단가 값을 담을 배열
-			var ocounts = []; // 체크한 품목수 값을 담을 배열
 	        
 	        // 체크된 체크박스 값을 가져와서 각 필드의 값을 추출하여 rowData에 저장
 	        $("input[class='choice_Check']:checked").each(function() {
@@ -127,9 +128,9 @@
 	                $("#ocount").val(ocounts);	 
 	                $("#pcount").val(pproducts.length);
 	                
-	                console.log(pproduct)
-	                console.log(pprice)
-	                console.log(ocount)
+	                console.log(pproducts)
+	                console.log(pprices)
+	                console.log(ocounts)
 	                
 	                // 총합을 계산
 	                totalSum += totalPrice;
@@ -148,9 +149,43 @@
 	        $("#osum").val(totalSum);
 	        
 	    });
-	});	
+	    
+	    // "제품삭제" 버튼을 클릭하면
+	    $("#delete_Btn").click(function() {
+	    	
+	    	// 체크된 박스를 checkedCheckboxes 변수에 저장한다.
+	        var checkedCheckboxes = $("input[class='choice_Check']:checked");
+	        
+	        // 체크된 checkedCheckboxes변수를 반복해서
+	        checkedCheckboxes.each(function() {	
+	        	// 현재 클릭된 체크박스(this)가 속한 행(tr)을 찾아서 tr 변수에 저장한다.
+	            var tr = $(this).closest("tr");
+	            
+	            // 테이블 행(tr)에서 각 제품명, 제품단가, 수량을 가져온다
+	            var pproductElement = tr.find("td:eq(1)").text().trim();
+	            var ppriceElement = tr.find("td:eq(2)").text().trim();
+	            var ocountElement = tr.find("input[name=ocount]").val().trim();
+
+	            var index = pproducts.indexOf(pproductElement); // 해당 제품의 인덱스 찾기
+
+	            if (index > -1) {
+	                pproducts.splice(index, 1); // 해당 제품 제거
+	                pprices.splice(index, 1); // 해당 제품의 가격 제거
+	                ocounts.splice(index, 1); // 해당 제품의 수량 제거
+	            }
+	        });
+
+	        // 업데이트된 배열을 다시 화면에 표시
+	        $("#pproduct").val(pproducts);
+	        $("#pprice").val(pprices);
+	        $("#ocount").val(ocounts);
+	        $("#pcount").val(pproducts.length);
+	    });
+	    
+	});
    
-   
+	       
+    
    
 	   // 주문수량 +
 	   function plus(count){

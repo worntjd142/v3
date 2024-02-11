@@ -37,11 +37,9 @@
 	
 	<form action="order_insert" id="orderForm" method="post" id="autosearch">
 		<div class="main1">		
+		<input class = "allbtn" type="submit" value="등록">
 			<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
-					<tr>
-						<td colspan="6"><input class = "allbtn" type="submit" value="등록"></td>
-					</tr>
 					<tr class="table-dark">
 						<th colspan="6" class="title_th">수주 등록</th>
 					</tr>
@@ -78,11 +76,10 @@
 	
 	<div class="tableBox" id="product_list">
 	
+		<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+		<input type="button" id="delete_Btn" name="delete_Btn" value="제품삭제">	
 		<table class="table table-striped table-hover table-bordered table-responsive tableData">
-		  <thead class="table-dark">
-		  	<tr>
-		  		<td colspan="4"><input type="button" class = "allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가"></td>
-			</tr>
+		  <thead class="table-dark">			
 		    <tr>
 				<th scope="col" id="th1"><input type="checkbox" id="all_Check" name="all_Check"></th>
 				<th scope="col" id="th2">제품명</th>
@@ -109,12 +106,14 @@
 		</table>		
 	</div>	
 	
-	<div class="main3">
+
+	<div class="main4">
+		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
+	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
 		<form action="order" method="get">
-			<table class="table table-striped table-hover table-bordered table-responsive"
-					 id="search_table">
-				<thead>
-					<tr class="table-dark">
+		<table class="table table-striped table-hover table-bordered table-responsive" id="mainsujutable">
+			<thead>
+			<tr class="table-dark">
 						<th colspan="6" class="title_th">검색</th>
 					</tr>
 					<tr>
@@ -123,30 +122,9 @@
 						<td><input type="date" name="startday" id="startday" value="${paging.cd.startday}"> 
 							<label> ~ </label> 
 						<input type="date" name="endday" id="endday" value="${paging.cd.endday}"></td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="col">수주번호</th>
-						<td><input type="text" name="orderno">수주번호로 조회</td>
-						
-					</tr>
-					<tr>
 						<td><input type="submit" value="조회" name="search"
 							class="btn btn-outline-secondary btn-sm"></td>
 					</tr>
-				</tbody>
-			</table>
-		</form>
-	</div>
-
-	<div class="main4">
-		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
-	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
-		
-		<table
-			class="table table-striped table-hover table-bordered table-responsive" id="mainsujutable">
-			<thead>
 			<tr>
 				<td>
 				<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
@@ -218,6 +196,7 @@
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</div>
 
 
