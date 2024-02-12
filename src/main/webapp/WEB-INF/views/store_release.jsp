@@ -112,8 +112,8 @@
 					</td>
 						<td>EA</td>
 						<td>${ManagementList.tcount}</td>
-						<td>${ManagementList.scount}</td>
-						<td>${ManagementList.amount}</td>
+						<td>${ManagementList.tscount}</td>
+						<td>${ManagementList.tamount}</td>
 						
 						<td class="sdel${a.index}">
 						<c:choose>

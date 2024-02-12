@@ -41,6 +41,7 @@ public class StoreController {
 		public String store_release(Model model,OrderDTO od) {
 				model.addAttribute("stroe", ssi.storerelease_select());// 발행 전 리스트
 				model.addAttribute("Management",ssi.management_select());// 발행 후 리스트 , osuju = "견적서 발행"
+				//출하수량과 요청잔량 
 			return "store_release";
 		}
 		
@@ -48,20 +49,28 @@ public class StoreController {
 		@GetMapping("pstock_update")
 		public ResponseEntity<?> pstock_update(@RequestParam("update_ono") int ono,
 																			   @RequestParam("update_tcount") int tcount,
+																			   @RequestParam("update_tscount") int tscount,
+																			   @RequestParam("update_tamount") int tamount,
 																			   @RequestParam("update_ocount[]") int ocount[],
 																			   @RequestParam("update_pcode[]") String pcode[],
 																			   @RequestParam("update_amount[]") int amount[],
-																			   @RequestParam("update_pname[]") String pname[]){
+																			   @RequestParam("update_pname[]") String pname[],
+																			   @RequestParam("update_scount[]") int scount[])
+							
+		{
 			OrderDTO od = new OrderDTO();
 			
 			int result = 0;
 			for(int i = 0 ; i < pcode.length; i++ ) { // pcode 배열의 길이만큼 반복 ;
 				od.setOno(ono);
-				od.setScount(tcount);
+				od.setTcount(tcount);
 				od.setOcount(ocount[i]);
-				od.setAamount(amount[i]);
+				od.setAmount(amount[i]);
 				od.setUuid(pcode[i]);
 				od.setPproduct(pname[i]);
+				od.setScount(scount[i]);
+				od.setTscount(tscount);
+				od.setTamount(tamount);
 				result = ssi.balju_update(od);
 			}
 			return new ResponseEntity<>(result,HttpStatus.OK);
@@ -116,9 +125,9 @@ public class StoreController {
 				ssi.shipment_insert(ono); // 정보를 넣어라
 				ssi.shipment_delivery(ono);//마감상태 = "출고 중"에서 "배달 중"으로 변경
 			}
-			val = ssi.snumber_select(ono);	
+			val = ssi.snumber_select(ono);	//shipment db의 컬럼 중 snumber의 값이 저장되어있는지 확인 > 있으면 1 없으면 0
 			
-			if(val == 0) {
+			if(val == 0) { 
 			od.setOno(ono);
 			od.setCeo(snumber);
 			

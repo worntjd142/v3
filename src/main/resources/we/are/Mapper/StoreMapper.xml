@@ -27,6 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="cemail" property="cemail" />	
 		<result column="sumber" property="sumber" />	
 		<result column="dday" property="dday" />	
+		<result column="tscount" property="tscount" />	
+		<result column="tamount" property="tamount" />	
 </resultMap>
 		<!-- resultMap ='store_select' 같은 resultMap을 찾아서 실행  -->
 		
@@ -61,13 +63,17 @@ select pproduct, pcode,pstock,ocount,amount from orderr a join cart b join produ
 
 <update id="balju_update">
 update orderr ord ,cart car , product pro 
-set pro.pstock = (select afpstock from (select (pstock - #{ocount}) afpstock where pcode = #{uuid})as afpstock),
+set pro.pstock = (select afpstock from (select (pstock - #{ocount}) afpstock from product where pcode = #{uuid})as afpstock),
  ord.sdate= now(),
- ord.tcount = #{scount},
+ ord.tcount = #{tcount},
+ car.scount =#{scount},
  ord.osuju = '출고 요청',
  ord.sdel ='출고 중',
+ ord.tscount = #{tscount},
+ ord.tamount = #{tamount},
+ car.scount =#{scount},
  car.amount = (select afamount from(select (amount + #{amount}) afamount from cart where pproduct = #{pproduct} and ono = #{ono})as afamount)
-where ord.ono = #{ono} and pcode = #{uuid};
+where ord.ono = #{ono} and pcode = #{uuid} and pproduct = #{pproduct};
 
 </update>
 <!-- 발주 체크 -->
@@ -109,10 +115,10 @@ select uuid, a.cname, ono, cemail  from orderr a join connection b on a.cname = 
 
 <select id="management_select" resultMap="store_select">
 select distinct oday,osuju, 
-						(select pcode from product limit 1)as pcode, 
-						(select pname from product limit 1)as pproduct, tcount, scount, uuid, amount, sdel,pcount, a.ono,x,y,a.cname 
+						(select pcode from product limit 1)as pcode,  tscount, tamount,
+						(select pname from product limit 1)as pproduct, tcount, uuid, sdel,pcount, a.ono,x,y,a.cname
 from  orderr a join product b join cart c join connection d on c.pproduct = b.pname and a.ono = c.ono and a.cname = d.cname
-where osuju="견적서 발행";
+where osuju="견적서 발행" order by a.ono asc ;
 </select>
 
 <insert id="shipment_insert">
