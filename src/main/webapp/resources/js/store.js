@@ -2,7 +2,10 @@ let update_ocount = [];
 let update_pcode = [];
 let update_amount = [];
 let update_pname = [];
+let update_scount = []
 let update_ono;
+let update_tscount;
+let update_tamount;
 let update_tcount;
 $(function(){
 
@@ -23,6 +26,7 @@ function balju(ono){
 	 update_ocount.length=0;
 	 update_pcode.length=0;
 	 update_amount.length=0;
+	 update_pname.length = 0;
 	
 	update_ono = ono;
 	$("#update_ono").val(update_ono);
@@ -79,6 +83,7 @@ function balju(ono){
 			let amount = 0;
 			let pamount = 0;
 			let total_pstock = 0;
+			let total_scount = 0;
 			let total_count = 0;
 			let spamount = 0;
 			let d;
@@ -88,29 +93,44 @@ function balju(ono){
 				total_count += data[i].ocount;
 				total_pstock += data[i].pstock;
 					
-			 if(data[i].pstock - data[i].ocount < 0){ // 재고량 - 수주량이 ) 보다 낮을 시
+			 if(data[i].pstock - data[i].ocount < 0){ // 재고량 - 수주량이 0보다 낮을 시
 						 amount  = data[i].pstock - data[i].ocount // 요청잔량 =재고량 - 수주수량
 						 pamount = Math.abs(amount); // 음수로 나온 값음 양수로 변경
-						 spamount += Math.abs(amount); //양수로 나온 요청잔량의 합
+						 
+						 	if(data[i].pstock < 0){
+						 		spamount += data[i].ocount;
+						 	}else{
+						 		spamount += Math.abs(amount); //양수로 나온 요청잔량의 합
+						 	}
+						 data[i].scount = data[i].ocount - pamount// 요청잔량이 발생할 경우 출하수량을 재고량과 같게하기.
+						 
+						 if(data[i].pstock < 0){ //재고량이 0보다 낮을 경우
+							 total_scount = data[i].scount = 0; // 출하수량은 0으로 바꿈
+							 pamount = data[i].ocount;// 물품이 나갈수 없으므로 요청잔량의 값은 수주수량과 같음
+						 }
+						 	
 					}else{
 						pamount = 0; // 요청잔량이 발생하지 않으면 0으로 초기화
+						data[i].scount = data[i].ocount// 요청잔량이 발생하지 않을경우 scount의값은 ocount와 같게하라
 					}
-				
+			
 				html += "<tr>"
 				html += "<td>" + num++ +"</td>"; 
 				html += "<td>" +data[i].pproduct+"</td>"; //품목명
 				html += "<td id='dt_pcode'>"+data[i].pcode+"</td>"; // 품목코드
 				html += "<td>"+data[i].pstock+"EA</td>"; //재고량
 				html += "<td id='dt_ocount'>"+data[i].ocount+"EA</td>"; //수주수량
-				html += "<td>"+data[i].ocount+"EA</td>"; //출하수량
+				html += "<td>"+data[i].scount+"EA</td>"; //출하수량
 				html += "<td id='pamount"+i+"'>"+pamount+"EA</td>"; //요청잔량
 				html +="</tr>"
 					
+				total_scount = data[i].scount += data[i].scount;
+				
 				update_ocount.push(data[i].ocount);
 				update_pcode.push(data[i].pcode);
 				update_amount.push(pamount);
 				update_pname.push(data[i].pproduct);
-					
+				update_scount.push(data[i].scount);	
 					
 			}
 			
@@ -130,13 +150,23 @@ function balju(ono){
 				}
 				
 			}
-			update_tcount = total_count
+			
+			update_tcount = total_count;
+			update_tscount = total_scount;
+			update_tamount = spamount;
+			
 			$("#total_psock").html(total_pstock + "EA");
 			$("#total_ocount").html(total_count + "EA");
-			$("#total_scount").html(total_count + "EA");
+			$("#total_scount").html(total_scount + "EA");
+			
+			for(let i = 0; i < data.length; i++){
+				if(data[i].pstock < 0){
+					
+					spamount - data[i].pstock;
+					
+				}
+		}
 			$("#total_amount").html(spamount + "EA");
-			
-			
 			$("#update_ocount").val(update_ocount);
 			$("#update_pcode").val(update_pcode);
 			$("#update_amount").val(update_amount);
@@ -153,16 +183,25 @@ function balju(ono){
 		}
 
 function culha(){
+/*	console.log(update_ocount);
+	console.log (update_pcode);
+	console.log(update_amount);
+	console.log(update_pname);
+	console.log(update_ono);
+	console.log( update_tscount);
+	console.log( update_tamount);
+	console.log(update_scount);*/
 	
 	if(update_amount.length == 0){
-		alert("제품을 확인 후 출하를 해주세요")
+		alert("수주내용이 없습니다. ")
 	}
 	
 	$.ajax({
 		type : "get",
 		url : "pstock_update",
 		data : {'update_ocount':update_ocount, 'update_pcode':update_pcode,'update_amount':update_amount,  
-				   'update_ono':update_ono, 'update_pname':update_pname ,'update_tcount':update_tcount},
+				   'update_ono':update_ono, 'update_pname':update_pname ,'update_tcount':update_tcount, 
+				   'update_scount':update_scount, 'update_tscount':update_tscount,'update_tamount':update_tamount },
 		dataType : 'json',
 		success : function(data) {
 			

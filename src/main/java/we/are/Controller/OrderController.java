@@ -24,6 +24,7 @@ import we.are.Model.InventoryDTO;
 import we.are.Model.OrderDTO;
 import we.are.Model.PageDTO;
 import we.are.Service.OrderService;
+import we.are.Service.StoreServiceImpl;
 
 
 @Controller
@@ -31,8 +32,9 @@ public class OrderController {
 
 	@Autowired
 	OrderService os;
-
-
+	
+	@Autowired
+	StoreServiceImpl ssi;
 
 	// 수주등록 버튼을 누르면
 	@RequestMapping("order_insert")
@@ -133,42 +135,12 @@ public class OrderController {
         return new ResponseEntity<>(result,HttpStatus.OK);
         }
 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-
-
-		/*	//임시등록 수주서1
-		@GetMapping("sujuletter1")
-		public void sujuletter1(OrderDTO od, CompanyDTO cd, HttpSession session, @RequestParam("bno") int bno, Model model) {
-
-			OrderDTO ood = new OrderDTO();//다른 주소의 OrderDTO타입 ood변수 생성		
-			od.setOno(bno);	//parameter로 bno값을 받고 OrderDTO od bno변수에 저장		
-			ood = os.sujuletter_select(od); // od변수에 있는 값을 이용해서 DB의 orders 테이블에서 셀렉하고 결과값을 ood에 저장
-			model.addAttribute("sujuletter", os.sujuletter_select(od)); //셀렉한 값을 model 객체 "sujuletter"변수에 저장
-			cd.setCnumber(ood.getOnumber()); // ood의 저장된 값중 bnumber를 CompanyDTO cd변수 안의 number에 저장
-			model.addAttribute("company", os.sujucom_select(cd.getCnumber())); // 저장받은 number값을 이용해서 DB company에서 결과값을 model 객체 "company"에 저장
-		}
-
-
-
-		//임시등록 수주서 발행
-		@GetMapping("issuance")
-		public ResponseEntity<?> issuance(OrderDTO od, Model model, HttpSession session,@RequestParam("bno") int bno) {		
-			// order dto bno에 bno값을 저장
-			od.setBno(bno); // 반환 값 1 or 0
-			//bno값으로 업데이트. 
-			return new ResponseEntity<>(os.suju_update(od),HttpStatus.OK);
-		}*/
-		
-
+	//임시등록 수주서1
+			@GetMapping("sujuletter1")
+			public String sujuletter1(@RequestParam("ono")int ono, Model model) {
+					
+					model.addAttribute("connection", ssi.sujuletter_select(ono));
+					
+				return  "sujuletter1";
+			}
 }

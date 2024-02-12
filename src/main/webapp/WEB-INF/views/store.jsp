@@ -20,9 +20,10 @@
 <body>
  	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
+	
 	<div id="release">
-		<h3>출하 요청</h3>
-		<div id="release_check">
+		<h3 id="Shipment_Request">출하 요청</h3>
+		<div id="release_check" class="tableData thead tr th">
 			<table
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
@@ -59,16 +60,18 @@
 				</tbody>
 			</table>
 			</div>
-				<div id="buttons">
-	<a href = "store"><input type="button" value="출하" class="btn btn-outline-light me-2" id="culha"></a>
-	<a href = "store_release"><input type="button" value="출고" class="btn btn-outline-light me-2" id="culgo"></a>
-		</div>
-		<div id="detailed" >
-		<h3>출하 상세</h3>
-		<ul id= "ment" style="list-style: none;">
+			
+	<div id="buttons">
+		<a href = "store"><input type="button" value="출하" class="btn btn-outline-light me-2" id="culha"></a>
+		<a href = "store_release"><input type="button" value="출고" class="btn btn-outline-light me-2" id="culgo"></a>
+	</div>
+	
+		<h3  id="Shipment_Details">상세</h3>
+		<ul id= "Shipment_ment" style="list-style: none;">
 		<li style="color:red;">※ 출하일의 기본값은 현재일로 지정되어있습니다.</li>
 		<li style="color:red;">※ 출하수량은 요청수량을 초과 할 수 없습니다.</li>
 		</ul>
+		<div id="detailed" class="tableData thead tr th">
 		<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark">
@@ -83,17 +86,24 @@
 					</tr>
 					<tbody Id="table_culha">
 				</tbody >
-					<tr>
-					<td colspan="4" style="text-alzign: center;">합 계</td>
-					<td id="ocount_total"></td>
-					<td id="scount_total" ></td>
-					<td id="sum_price"> </td>
-					<td id="total_price"> </td>
+			</table>
+			</div>
+			
+			<div id="detailed_total">
+				<table class="table table-striped table-hover table-bordered table-responsive">
+			<tr class="table-dark">
+					<th colspan="4" style="text-alzign: center;">합 계</th>
+					<th id="ocount_total"></th>
+					<th id="scount_total" ></th>
+					<th id="sum_price"> </th>
+					<th id="total_price"> </th>
 					</tr>
 			</table>
 			</div>
+			
+			
 			<h3 id="title_psock">재고</h3>
-	<div id="change">
+	<div id="change" class="tableData thead tr th">
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
@@ -109,16 +119,21 @@
 			</thead>
 			<tbody id="stock">
 			</tbody>
-			<tr>
-					<td colspan="3" style="text-align: center;">합 계</td>
-					<td id="total_psock"></td>
-					<td id="total_ocount"></td>
-					<td id="total_scount"></td> 
-					<td id="total_amount"></td> 
-					</tr>
 		</table>
-			<div id="Warning"></div>
 	</div>
+	
+	<div id="change_total">
+				<table class="table table-striped table-hover table-bordered table-responsive">
+			<tr class="table-dark">
+					<th colspan="4" style="text-alzign: center;" id="to">합 계</th>
+					<th id="total_psock"></th>
+					<th id="total_ocount" ></th>
+					<th id="total_scount"> </th>
+					<th id="total_amount"> </th>
+					</tr>
+			</table>
+			</div>
+	
 	<div><input type="button" value="출하요청" class="btn btn-outline-light me-2" id="culha_sinho" onclick="culha()"></div>
 </div>
 

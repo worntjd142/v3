@@ -130,14 +130,6 @@
 
 
 <script>
-$(function(){
-	
-	$("#cname").on("click", function(){
-		
-		location.href= 'search.naver.com'
-	})
-	
-		
 	//주소창에 주소를 입력 후
 	$("#caddress").on("blur", function(){
 		// 주소값을 addres에 저장
@@ -159,7 +151,9 @@ $(function(){
 		    },
 		    success: function (data) {
 		    	$("#longitude").val(data.documents[0].x) //위도
+		    	console.log(data.documents[0].x)
 		    	$("#latitude").val(data.documents[0].y)//경도
+		    	console.log(data.documents[0].y)
 		    	
 		    },
 		  	error: function (error){
@@ -174,7 +168,6 @@ $(function(){
 		    	
 })
 
-})
 </script>
 </body>
 </html>
