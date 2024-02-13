@@ -57,6 +57,7 @@ public class StoreController {
 																			   @RequestParam("update_scount[]") int scount[])
 							
 		{
+			
 			OrderDTO od = new OrderDTO();
 			
 			int result = 0;

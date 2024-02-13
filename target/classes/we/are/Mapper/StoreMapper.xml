@@ -122,8 +122,8 @@ where osuju="견적서 발행" order by a.ono asc ;
 </select>
 
 <insert id="shipment_insert">
-insert into shipment(ono, sname, sday, product, pcode , tcount, price, osum)
-(select a.ono, a.cname, oday, pproduct, pcode, tcount, c.pprice, osum  from orderr a join cart b join product c on a.ono = b.ono and b.pproduct = c.pname where b.ono = #{ono}); 
+insert into shipment(ono, sname, sday, product, pcode , ocount, price, osum, pcount)
+(select a.ono, a.cname, oday, pproduct, pcode, ocount, c.pprice, osum, pcount  from orderr a join cart b join product c on a.ono = b.ono and b.pproduct = c.pname where b.ono = #{ono}); 
 </insert>
 
 <select id ="shipment_cselect" resultType="int"> 

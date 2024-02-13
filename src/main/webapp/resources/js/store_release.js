@@ -39,7 +39,7 @@ function delivery(ono){
 			console.log(data);
 			 // 수주서 팝업창
 			url ="Shipment?ono="+ono+"";
-			option = "width= 400px, height=400px "
+			option = "width= 100px, height=100px "
 			name ="수주서"
 			window.open(url, option , name)
 			
@@ -76,7 +76,7 @@ function del(x,y,name){
 		// 출발지 및 목적지 좌표
 		var origin = ""+Delivery_longitude+"," +Delivery_latitude+",name=배달원";
 		console.log(origin)
-		var destination =""+ x +"," + y +",name="+name+""; // 목적지 위치 
+		var destination =""+ y +"," + x +",name="+name+""; // 목적지 위치 
 		console.log(destination)
 		// Ajax 요청
 		$.ajax({
@@ -134,7 +134,7 @@ function del(x,y,name){
 				    },
 				    {
 				        title: "도착 : "+name+"",
-				        latlng: new kakao.maps.LatLng(y, x) // 목적지의 값은 받아서 변경.
+				        latlng: new kakao.maps.LatLng(x, y) // 목적지의 값은 받아서 변경.
 				    },
 				   {
 				   	title: '배달원',
