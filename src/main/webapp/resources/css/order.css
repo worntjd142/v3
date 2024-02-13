@@ -13,12 +13,14 @@ table {
 
 .main1 {
     width: fit-content;
-    float: left;
     margin : 10px;
 }
 
 .main4 {
+	position : relative;
     margin : 30px 10px 10px 10px;
+    top : 50px;
+    
     
 }
 
@@ -26,9 +28,9 @@ table {
 	margin : 10px;
 }
 
+
 .table-responsive {
     overflow-x: auto;
-    display: inline;
 }
 
 /* 테이블 스크롤 */
