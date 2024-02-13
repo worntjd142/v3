@@ -1,10 +1,18 @@
 @charset "UTF-8";
 
+.tableData thead tr th {
+    position: sticky;
+    top: 0;
+    height: 50px;
+    border-bottom: 2px solid dodgerblue;
+    border-right: 1px solid #aaa;
+}
+
 #change_total {
 	width: 47%;
 	position: absolute;
-	left: 50.997%;
-	top: 846px;
+	left: 51%;
+	top: 861px;
 }
 
 #Shipment_Request {
@@ -24,10 +32,10 @@
 }
 
 #detailed_total {
-	position: absolute;
-	left: 51%;
-	top: 480px;
-	width: 47%;
+    position: absolute;
+    left: 51%;
+    top: 495px;
+    width: 47%;
 }
 
 #release_check, #change, #detailed {
