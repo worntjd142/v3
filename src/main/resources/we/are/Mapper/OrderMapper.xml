@@ -87,7 +87,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 <![CDATA[
           WHERE rownum > (#{pageNum}-1)*#{amount} AND rownum <= #{pageNum}*#{amount}          
          ]]>
-         ORDER BY uuid DESC;
+         ORDER BY uuid asc;
 	</select>
 	
 	

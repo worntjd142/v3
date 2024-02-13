@@ -28,15 +28,15 @@
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark" style="text-align: center;" >
-						<th class="title_th"></th>
-						<th class="title_th">요청일자</th>
-						<th class="title_th">수주번호</th>
-						<th class="title_th">진행상태</th>
-						<th class="title_th">거래처</th>
-						<th class="title_th">품목코드</th>
-						<th class="title_th">품목명</th>
-						<th class="title_th">요청수량</th>
-						<th class="title_th">발행창</th>
+						<th class="title_th" style="width: 30px;"></th>
+						<th class="title_th" style="width: 115px;">요청일자</th>
+						<th class="title_th" style="width: 180px;">수주번호</th>
+						<th class="title_th" style="width: 80px;">진행상태</th>
+						<th class="title_th" style="width: 200px;">거래처</th>
+						<th class="title_th" style="width: 80px;">품목코드</th>
+						<th class="title_th" style="width: 180px;">품목명</th>
+						<th class="title_th" style="width: 90px;">요청수량</th>
+						<th class="title_th" style="width: 50px;">발행창</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -75,20 +75,20 @@
 		<table class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
-					<th scope="col" class="table-dark"></th>
-					<th scope="col" class="table-dark">출하일자</th>
-					<th scope="col" class="table-dark">수주번호</th>
-					<th scope="col" class="table-dark">거래처</th>
-					<th scope="col" class="table-dark">진행상태</th>
-					<th scope="col" class="table-dark">품목코드</th>
+					<th scope="col" class="table-dark" style="width: 30px;"></th>
+					<th scope="col" class="table-dark" style="width: 115px;">출하일자</th>
+					<th scope="col" class="table-dark" style="width: 180px;">수주번호</th>
+					<th scope="col" class="table-dark" style="width: 200px;">거래처</th>
+					<th scope="col" class="table-dark" style="width: 95px;">진행상태</th>
+					<th scope="col" class="table-dark" style="width: 80px;">품목코드</th>
 					<th scope="col" class="table-dark"> 품목명 </th>
 					<th scope="col" class="table-dark">기준단위</th>
-					<th scope="col" class="table-dark">요청수량</th>
-					<th scope="col" class="table-dark">출하수량</th>
-					<th scope="col" class="table-dark">요청잔량</th>
-					<th scope="col" class="table-dark">마감상황</th>
-					<th scope="col" class="table-dark">출하서</th>
-					<th scope="col" class="table-dark">비고</th>
+					<th scope="col" class="table-dark" style="width: 90px;">요청수량</th>
+					<th scope="col" class="table-dark" style="width: 90px;">출하수량</th>
+					<th scope="col" class="table-dark"style="width: 90px;">요청잔량</th>
+					<th scope="col" class="table-dark" style="width: 110px;">마감상황</th>
+					<th scope="col" class="table-dark" style="width: 90px;">출하서</th>
+					<th scope="col" class="table-dark" style="width: 480px;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -142,9 +142,10 @@
 			</tbody>
 		</table>
 	</div>
-		<div class="time">도착시간:<label id="time"></label></div>
+	
+	<div class="time">도착까지:<label id="time"></label></div>
 	<h3 id="po">위치</h3>
-	<div id = map>
+	<div id = "map">
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e53e51300b84c3acadbd93d20d9fea8"></script>
 	<script>
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -155,7 +156,7 @@
 
 	var map = new kakao.maps.Map(container, options); 
 	</script>
-	</div>
+	</div> 
 </div>
 
 

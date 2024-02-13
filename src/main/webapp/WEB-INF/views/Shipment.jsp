@@ -18,37 +18,39 @@
 <script type="text/javascript" src="/resources/js/Shipment.js"></script>
 <title>출하서</title>
 </head>
-	<body>	
+	<body     style="height: 400px;">	
 	<div>
 		<div id="title" style="text-align: center"> <h1>출 하 서</h1></div>
-		<table class="table table-striped table-hover table-bordered table-responsive">
+		<table class="table table-striped table-hover table-bordered table-responsive" style="width: 550px;">
 		<tr class="table-dark">
-		<th scope="col" class="table-dark">출하번호</th>
+		<th scope="col" class="table-dark" style="width: 90px;">출하번호</th>
+		<th scope="col" class="table-dark" style="width: 70px;">거래처</th>
+		<th scope="col" class="table-dark"style="width: 110px;">발행일</th>
+		<th scope="col" class="table-dark" style="width: 110px;">납품일자</th>
+		</tr>
+		<tr>
 		<td>${shipment[0].snumber}</td>
-		<th scope="col" class="table-dark">거래처</th>
-		<td>${shipment[0].sname}</td>
-		<th scope="col" class="table-dark">발행일</th>
+		<td style="width: 130px;">${shipment[0].sname}</td>
 		<td>${shipment[0].sday}</td>
-		<th scope="col" class="table-dark">납품일자</th>
 		<td>${shipment[0].dday}</td>
 		</tr>
 		<tr> 
-		<th colspan="2" style="text-align: center;">품목명</th>
-		<th colspan="2" style="text-align: center;">품목코드</th>
-		<th colspan="2" style="text-align: center;">수량</th> 
-		<th colspan="2" style="text-align: center;">단가</th>
+		<th  style="text-align: center;">품목명</th>
+		<th style="text-align: center;">품목코드</th>
+		<th  style="text-align: center;">수량</th> 
+		<th  style="text-align: center;">단가</th>
 		</tr>
 		<c:forEach items="${shipment}" var="shipment" varStatus="a" >
 		<tr>
-		<td colspan="2" style="text-align: left;">${shipment.product}</td>
-		<td colspan="2" style="text-align: left;">${shipment.pcode}</td>
-		<td colspan="2" style="text-align: right;"><fmt:formatNumber value="${shipment.ocount}" pattern="#,###" ></fmt:formatNumber><input type="hidden" value="${shipment.ocount}" id="ocount${a.index}"></td>
-		<td colspan="2" style="text-align: right;"><fmt:formatNumber value="${shipment.price}" pattern="#,###" ></fmt:formatNumber></td>
+		<td style="text-align: left;">${shipment.product}</td>
+		<td  style="text-align: left;">${shipment.pcode}</td>
+		<td  style="text-align: right;"><fmt:formatNumber value="${shipment.ocount}" pattern="#,###" ></fmt:formatNumber><input type="hidden" value="${shipment.ocount}" id="ocount${a.index}"></td>
+		<td  style="text-align: right;"><fmt:formatNumber value="${shipment.price}" pattern="#,###" ></fmt:formatNumber></td>
 		</tr>
 		</c:forEach>
 		<tr>
-		<td colspan="4" >합 계</td>
-		<td colspan="2" id="tocount" style="text-align: right;"> 
+		<td colspan="2" >합 계</td>
+		<td id="tocount" style="text-align: right;"> 
 		<script>
 		let osum = 0;
  		for(let i = 0; i < ${shipment[0].pcount}; i++){

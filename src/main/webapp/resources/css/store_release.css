@@ -7,7 +7,8 @@
 }
 
 #time {
-	position: absolute; top : 0px;
+	position: absolute;
+	top: 0px;
 	width: 40px;
 	left: 75px;
 	top: 0px;
@@ -15,23 +16,22 @@
 
 #po {
 	position: absolute;
-	left: 70%;
-	top: 550px;
+	left: 58%;
+	top: 140px;
 }
 
 .time {
 	position: absolute;
-	left: 70%;
-	top: 846px;
+	left: 57%;
+	top: 530px;
 }
 
 #map {
-	border: 1px solid black;
-	height: 250px;
-	width: 500px;
 	position: absolute;
-	left: 70%;
-	top: 595px;
+	top: 190px;
+	left: 56.5%;
+	height: 340px;
+	width: 788px;
 }
 
 #release {
