@@ -36,8 +36,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	// 수주 상세정보
-	public OrderDTO order_detail (OrderDTO od) {
-		return om.order_detail(od);
+	public ArrayList<HashMap<String, Object>> order_detail (int ono) {
+		return om.order_detail(ono);
 	}
 	
 	// 거래처명 자동완성

@@ -22,7 +22,7 @@ public interface OrderMapper {
 	public ArrayList<HashMap<String, Object>> order_select (CriteriaDTO cd);
 	
 	// 수주 상세정보
-	public OrderDTO order_detail (OrderDTO od);
+	public ArrayList<HashMap<String, Object>> order_detail (int ono);
 	
 	// 거래처명 자동완성
 	public ArrayList<ConnectionDTO> autocomplete (String cname);
