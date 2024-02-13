@@ -84,8 +84,6 @@
 	
 	
 	<div class="tableBox" id="product_list">
-					<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
-				<input type="button" id="delete_Btn" name="delete_Btn" value="제품삭제"> 
 			
 		<table class="table table-striped table-hover table-bordered table-responsive tableData">
 		  <thead class="table-dark">
@@ -117,6 +115,10 @@
 			   </c:forEach>			   
 		  </tbody>
 		</table>		
+		 <div class = "pbutton">
+				<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+				<input type="button"  class = "allbtn" id="delete_Btn" name="delete_Btn" value="제품삭제">
+		</div> 
 	</div>	
 	
 

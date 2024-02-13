@@ -7,6 +7,20 @@
     font-style: normal;
 }
 
+.firstd{
+	position : relative;
+	margin : 10px;
+}
+
+.secondd{
+	position : relative;
+	margin : 10px;
+}
+
+/* .lastc{ */
+/* 	border-left : none; */
+/* } */
+
 table {
 	font-family: 'Pretendard-Regular';
 }
