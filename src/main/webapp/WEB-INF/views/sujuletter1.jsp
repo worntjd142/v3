@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>수주처 처리(${connection[0].cname})</title>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/sujuletter.js"></script>
 <link rel = "stylesheet" href = "resources/css/sujuletter1.css" />
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
@@ -17,6 +18,7 @@
 <!-- 프린터해야 할 이미지 숨겨놓음. -->
 	<div id="print_page">
 	<div style="text-align: center;" ><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
+	<input type="hidden" value="${connection[0].ono}" id="pdf_ono">
 	<div>
 	<div  id="aa">
 	<div class="sujuletter">수 주 일 자 :   	 <label>${connection[0].oday}</label></div>
@@ -119,69 +121,7 @@
 	</div>
 </div>
 <script>
-
-	ono = ${connection[0].ono};
-	
-	$.ajax({
-		type : "GET", // method 타입 get
-		url : "issuance", // url value
-		data : {'ono':ono}, //  jsno 타입의 bnos를 컨트롤러로 값을 전달
-		dataType: 'json',
-		async : false,
-		success : function(data) {
-					console.log(data);
-					
-					pdf(data.cname, data.uuid, data.cemail);
-		}
-	})
-			function pdf(cname,uuid,cemail){			
-					//입퇴원 확인서 다운로드
-						const pdf = document.getElementById('print_page');
-						file = cname +'.'+uuid;
-						// 변수 pdf에 div의 경로 지정
-							html2canvas(pdf).then(canvas => {
-							 saveImg(canvas.toDataURL('image/png'), ""+file+".jpg");
-							})
-							
-							const saveImg = (uri, filename) => {
-							    let link = document.createElement('a');
-
-							    document.body.appendChild(link);
-
-							    link.href = uri;
-							    link.download = filename;
-							    link.click();
-
-							    document.body.removeChild(link);
-							}
-							
-							
-							setInterval(Msend(cname,uuid,cemail), 3000)
-					
-	}		
-			
-			function Msend(cname, uuid, cemail){
-						let send = {"cname":cname,"uuid":uuid,"cemail":cemail}
-							
-							
-						$.ajax({
-							type : "GET", // method 타입 get
-							url : "mailsend", // url value
-							data : send, //  jsno 타입의 bnos를 컨트롤러로 값을 전달
-							dataType: 'json',
-							async : false,
-							success : function(data) {
-								
-								// 업데이트가 성공해서 1의 값이 반환되면 
-								if(data == 1){
-								//알림 문구
-								//부모 페이지 화면을 새로고침 (order 화면)		
-							opener.parent.location.reload();
-								window.close();
-					}
-				}
-			}) 
-		}
+issuance()
 </script>
 </body>
 </html>
