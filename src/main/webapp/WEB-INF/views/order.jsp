@@ -167,7 +167,7 @@
 						<td><c:if test="${orderlist.osuju == '수주 대기'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
-						<td><a href="/order/order_detail_popup?uuid${orderlist.uuid}">${orderlist.cname}</a></td> 
+						<td><a href="orderDetail?ono=${orderlist.ono}" onclick="popUp()">${orderlist.cname}</a></td> 
 						<td>${orderlist.pcount} </td>						
 						<td>${orderlist.osum}</td>
 						<td>${orderlist.osuju}</td>

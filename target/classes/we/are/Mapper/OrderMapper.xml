@@ -93,7 +93,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 수주 상세정보 -->
 	<select id="order_detail" resultType="we.are.Model.OrderDTO">
-	SELECT * FROM orderr WHERE uuid = #{uuid};
+		SELECT * FROM orderr JOIN cart ON orderr.ono = cart.ono 
+		WHERE orderr.ono= #{ono};
 	</select>
 
 	<update id="suju_update">

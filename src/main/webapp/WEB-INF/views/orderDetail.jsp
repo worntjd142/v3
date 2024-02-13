@@ -22,34 +22,34 @@
 <body>
 
 <table class="table">
-    <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">수주번호</th>
-        <th scope="col">수주일자</th>
-        <th scope="col">거래처명</th>
+        <th scope="col">상호</th>
+        <td>Mark</td>
         <th scope="col">사업자번호</th>
+        <td>Mark</td>
         <th scope="col">대표자명</th>
-      </tr>
-    </thead>
-    <tbody class="table-group-divider">
-      <tr>
-        <th scope="row"></th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Mark</td>
         <td>Mark</td>
       </tr>
       <tr>
-        <th scope="row">제품 목록</th>
-        <td colspan="5">Jacob</td>
+        <th scope="col" colspan="2">주소</th>
+        <td colspan="2">Mark</td>
+        <th scope="col">연락처</th>
+        <td>Mark</td>
       </tr>
       <tr>
-        <th scope="row">합계</th>
-        <td colspan="5">XXXXXXXX</td>
+        <th scope="col">제품명</th>
+        <td>Mark</td>
+        <th scope="col">수주수량</th>
+        <td>Mark</td>
+        <th scope="col">합계금액</th>
+        <td>Mark</td>
       </tr>
-    </tbody>
+      <tr>
+        <th scope="col">수주담당자</th>
+        <td>Mark</td>
+        <th scope="col" colspan="2" >요청사항</th>
+        <td colspan="2">Mark</td>
+      </tr>
   </table>
 
 
