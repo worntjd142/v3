@@ -95,7 +95,6 @@
 				<th scope="col" id="th2">제품명</th>
 				<th scope="col" id="th3">제품단가</th>
 				<th scope="col" id="th4">주문수량</th>
-				     
 		    </tr>
 		  </thead>		  
 		  <tbody class="scroll">	    
