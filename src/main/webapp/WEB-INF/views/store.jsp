@@ -27,14 +27,14 @@
 			<table
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
-					<tr class="table-dark">
-						<th class="title_th"></th>
-						<th class="title_th">요청일자</th>
-						<th class="title_th">거래처</th>
-						<th class="title_th">수주번호</th>
-						<th class="title_th">품목명</th>
-						<th class="title_th">진행상태</th>
-						<th class="title_th">비고</th>
+					<tr class="table-dark" style="text-align: center;" >
+						<th class="title_th" style="width: 30px;"></th>
+						<th class="title_th" style="width: 115px;">요청일자</th>
+						<th class="title_th" style="width: 200px;">거래처</th>
+						<th class="title_th" style="width: 180px;">수주번호</th>
+						<th class="title_th" style="width: 180px;">품목명</th>
+						<th class="title_th" style="width: 80px;">진행상태</th>
+						<th class="title_th" style="width: 116px;">비고</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -74,15 +74,15 @@
 		<div id="detailed" class="tableData thead tr th">
 		<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
-					<tr class="table-dark">
-						<th class="title_th"></th>
-						<th class="title_th">거래처</th>
-						<th class="title_th">품목명</th>
-						<th class="title_th">품목코드</th>
-						<th class="title_th">수주수량</th>
-						<th class="title_th">출하수량</th>
-						<th class="title_th">단가</th>
-						<th class="title_th">합계</th>
+					<tr class="table-dark" style="text-align: center;" >
+						<th class="title_th" style="width: 30px;"></th>
+						<th class="title_th" style="width: 200px;">거래처</th>
+						<th class="title_th" style="width: 130px;">품목명</th>
+						<th class="title_th" style="width: 80px;">품목코드</th>
+						<th class="title_th" style="width: 90px;">수주수량</th>
+						<th class="title_th" style="width: 90px;">출하수량</th>
+						<th class="title_th" style="width: 100px;">단가</th>
+						<th class="title_th" style="width: 150px;">합계</th>
 					</tr>
 					<tbody Id="table_culha">
 				</tbody >
@@ -91,12 +91,12 @@
 			
 			<div id="detailed_total">
 				<table class="table table-striped table-hover table-bordered table-responsive">
-			<tr class="table-dark">
-					<th colspan="4" style="text-alzign: center;">합 계</th>
-					<th id="ocount_total"></th>
-					<th id="scount_total" ></th>
-					<th id="sum_price"> </th>
-					<th id="total_price"> </th>
+			<tr>
+					<th colspan="4" style="width: 441px;text-align: center;">합 계</th>
+					<th id="ocount_total" style="width: 90px; text-align: right;"></th>
+					<th id="scount_total" style="width: 90px; text-align: right; "></th>
+					<th id="sum_price" style="width: 100px; text-align: right;"> </th>
+					<th id="total_price" style="width: 150px;text-align: right: ;"> </th>
 					</tr>
 			</table>
 			</div>
@@ -107,9 +107,9 @@
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
-				<tr>
-					<th scope="col" class="table-dark"></th>
-					<th scope="col" class="table-dark">품목명</th>
+				<tr style="text-align: center;" >
+					<th scope="col" class="table-dark" style="width: 30;"></th>
+					<th scope="col" class="table-dark" style="width: 180px;">품목명</th>
 					<th scope="col" class="table-dark">품목코드</th>
 					<th scope="col" class="table-dark">재고량</th>
 					<th scope="col" class="table-dark">수주수량</th>
@@ -126,7 +126,7 @@
 				<table class="table table-striped table-hover table-bordered table-responsive">
 			<tr class="table-dark">
 					<th colspan="4" style="text-alzign: center;" id="to">합 계</th>
-					<th id="total_psock"></th>
+					<th id="total_psock" style="width: 30px;"></th>
 					<th id="total_ocount" ></th>
 					<th id="total_scount"> </th>
 					<th id="total_amount"> </th>

@@ -27,7 +27,7 @@
 			<table
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
-					<tr class="table-dark">
+					<tr class="table-dark" style="text-align: center;" >
 						<th class="title_th"></th>
 						<th class="title_th">요청일자</th>
 						<th class="title_th">수주번호</th>

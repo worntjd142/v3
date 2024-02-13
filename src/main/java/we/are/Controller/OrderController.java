@@ -143,7 +143,7 @@ public class OrderController {
 	//임시등록 수주서1
 			@GetMapping("sujuletter1")
 			public String sujuletter1(@RequestParam("ono")int ono, Model model) {
-					
+				
 					model.addAttribute("connection", ssi.sujuletter_select(ono));
 					
 				return  "sujuletter1";

@@ -45,25 +45,29 @@ function balju(ono){
 			let total_count = 0;
 			let total_price = 0;
 			let sum_price = 0;
+			let ssum = 0;
 			for(let i = 0; i < data.length; i++){
 				
 				total_count += data[i].ocount; //합계 갯수
 				total_price += data[i].pprice * data[i].ocount; // 합계 단가
+				ssum = data[i].pprice * data[i].ocount;
 				
 				html += "<tr>"
 				html += "<td>" + num++ +"</td>"; //거래처
-				html += "<td>" +data[0].cname+"</td>"; //거래처
-				html += "<td>"+data[i].pproduct+"</td>"; // 품목명
-				html += "<td>"+data[i].pcode+"</td>"; // 품목코드
-				html += "<td>"+data[i].ocount+"EA</td>"; // 수주수량
-				html += "<td>"+data[i].ocount+"EA</td>"; //출하수량
-				html += "<td>"+data[i].pprice+"원</td>"; //출하수량
-				html += "<td>"+data[i].pprice * data[i].ocount+"원</td>"; //출하수량
+				html += "<td style='text-align: left;'>" +data[0].cname+"</td>"; //거래처
+				html += "<td style='text-align: left;'>"+data[i].pproduct+"</td>"; // 품목명
+				html += "<td style='text-align: left;'>"+data[i].pcode+"</td>"; // 품목코드
+				html += "<td style='text-align: right;'>"+data[i].ocount.toLocaleString("ko-KR")+"EA</td>"; // 수주수량
+				html += "<td style='text-align: right;'>"+data[i].ocount.toLocaleString("ko-KR")+"EA</td>"; //출하수량
+				html += "<td style='text-align: right;'>"+data[i].pprice.toLocaleString("ko-KR")+"</td>"; //출하수량
+				html += "<td style='text-align: right;'>"+ssum.toLocaleString("ko-KR")+"</td>"; //출하수량
 				html += "</tr>"
 			}
+			
+				total_price.toLocaleString("ko-KR")
 				$("#ocount_total").html(total_count + "EA");// 합계 수주수량
 				$("#scount_total").html(total_count + "EA");// 합계 출하수량
-				$("#total_price").html(total_price + "원"); // 합계 단가
+				$("#total_price").html(total_price); // 합계 단가
 				$("#table_culha").append(html); //동적 테이블
 			
 				}

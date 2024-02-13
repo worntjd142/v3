@@ -32,24 +32,34 @@
 		<th scope="col" class="table-dark">납품일자</th>
 		<td>${shipment[0].dday}</td>
 		</tr>
-		<tr>
-		<th colspan="2">품목명</th>
-		<th colspan="2">품목코드</th>
-		<th colspan="2">수량</th> 
-		<th colspan="2">단가</th>
+		<tr> 
+		<th colspan="2" style="text-align: center;">품목명</th>
+		<th colspan="2" style="text-align: center;">품목코드</th>
+		<th colspan="2" style="text-align: center;">수량</th> 
+		<th colspan="2" style="text-align: center;">단가</th>
 		</tr>
-		<c:forEach items="${shipment}" var="shipment" >
+		<c:forEach items="${shipment}" var="shipment" varStatus="a" >
 		<tr>
-		<td colspan="2">${shipment.product}</td>
-		<td colspan="2">${shipment.pcode}</td>
-		<td colspan="2">${shipment.tcount}</td>
-		<td colspan="2">${shipment.price}</td>
+		<td colspan="2" style="text-align: left;">${shipment.product}</td>
+		<td colspan="2" style="text-align: left;">${shipment.pcode}</td>
+		<td colspan="2" style="text-align: right;"><fmt:formatNumber value="${shipment.ocount}" pattern="#,###" ></fmt:formatNumber><input type="hidden" value="${shipment.ocount}" id="ocount${a.index}"></td>
+		<td colspan="2" style="text-align: right;"><fmt:formatNumber value="${shipment.price}" pattern="#,###" ></fmt:formatNumber></td>
 		</tr>
 		</c:forEach>
 		<tr>
-		<td colspan="4">합 계</td>
-		<td colspan="2"> </td>
-		<td colspan="2">${shipment[0].osum}</td>
+		<td colspan="4" >합 계</td>
+		<td colspan="2" id="tocount" style="text-align: right;"> 
+		<script>
+		let osum = 0;
+ 		for(let i = 0; i < ${shipment[0].pcount}; i++){
+		 osum += parseInt($("#ocount"+i).val());
+		}
+ 	
+ 		$("#tocount").html(osum.toLocaleString("ko-KR"));
+ 		</script>
+ 	
+		</td>
+		<td colspan="2" style="text-align: right;"><fmt:formatNumber value="${shipment[0].osum}" pattern="#,###" ></fmt:formatNumber></td>
 		</tr>
 		
 		</table>

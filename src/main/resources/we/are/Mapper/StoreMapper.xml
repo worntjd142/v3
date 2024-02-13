@@ -87,7 +87,7 @@ update orderr set osuju = "견적서 발행", sdel="출고 중" where ono =#{ono
 </update>
 
 <select id="osuju_select" resultMap="store_select">
-select uuid, cname, otext,ono from orderr where osuju = "견적서 발행" and ono = #{ono}; 
+select uuid, a.cname, cemail, ono from orderr a join connection b on a.cname = b.cname where osuju = "견적서 발행" and ono = #{ono}; 
 </select>
 
 <select id="check" resultMap="store_select"> 
@@ -103,7 +103,7 @@ where osuju = "출고 요청" and a.ono = #{ono} order by a.ono asc;
 </select>
 
 <select id="sujuletter_select"  resultMap="store_select">
-select a.ono, oday, a.cno, a.cname, cnumber,uuid, pproduct, d.pcode, ocount, d.pprice, osum, otext   
+select a.ono, oday, a.cno, a.cname, cnumber,uuid, pproduct, d.pcode, ocount, d.pprice, osum, otext, pcount   
 from orderr a join cart b join connection c join product d 
 on a.ono = b.ono and a.cname = c.cname and d.pname = b.pproduct 
 where b.ono =#{ono};
@@ -122,8 +122,8 @@ where osuju="견적서 발행" order by a.ono asc ;
 </select>
 
 <insert id="shipment_insert">
-insert into shipment(ono, sname, sday, product, pcode , tcount, price, osum)
-(select a.ono, a.cname, oday, pproduct, pcode, tcount, c.pprice, osum  from orderr a join cart b join product c on a.ono = b.ono and b.pproduct = c.pname where b.ono = #{ono}); 
+insert into shipment(ono, sname, sday, product, pcode , ocount, price, osum, pcount)
+(select a.ono, a.cname, oday, pproduct, pcode, ocount, c.pprice, osum, pcount  from orderr a join cart b join product c on a.ono = b.ono and b.pproduct = c.pname where b.ono = #{ono}); 
 </insert>
 
 <select id ="shipment_cselect" resultType="int"> 
