@@ -35,7 +35,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 	
-	
+	<div>
 		<div class="main1">	
 		<form action="order_insert" id="orderForm" method="post" id="autosearch">	
 		
@@ -49,26 +49,26 @@
 					</tr>
 					<tr>					
 						<th scope="col">사업자번호</th>						
-						<td><input type="text" name="cno" id="cno" readonly><label for="cno"></label></td>
+						<td><input type="text" name="cno" id="cno" readonly style = "border-width: 0"><label for="cno"></label></td>
 						<th scope="col">거래처명</th>						
 						<td><input type="text" name="cname" id="auto"><label for="auto"></label></td>
 						<th scope="col">대표자</th>						
-						<td><input type="text" name="ceo" id="ceo" readonly><label for="ceo"></label></td>
+						<td><input type="text" name="ceo" id="ceo" readonly style = "border-width: 0"><label for="ceo"></label></td>
 					</tr>
 					<tr>
 						<th scope="col">수주제품</th>
 						<td colspan="3">
 							<label for="pcount">품목 수</label>
-							<input type="text" name="pcount" id="pcount">
+							<input type="text" name="pcount" id="pcount" style = "border-width: 0" readonly>
 							<label for="pproduct">제품명</label>
-							<input type="text" name="pproduct" id="pproduct"><br>
+							<input type="text" name="pproduct" id="pproduct" style = "border-width: 0" readonly><br>
 							<label for="pprice">제품단가</label>
-							<input type="text" name="pprice" id="pprice">
+							<input type="text" name="pprice" id="pprice" style = "border-width: 0" readonly>
 							<label for="ocount">제품수량</label>
-							<input type="text" name="ocount" id="ocount">
+							<input type="text" name="ocount" id="ocount" style = "border-width: 0" readonly>
 						</td>
 						<th scope="col">총 합계</th>
-						<td><input type="text" name="osum" id="osum" readonly><label for="osum"></label></td>
+						<td><input type="text" name="osum" id="osum" readonly style = "border-width: 0"><label for="osum"></label></td>
 					</tr>
 					<tr>
 						<th scope="col">수주 담당자</th>
@@ -84,10 +84,8 @@
 	
 	
 	<div class="tableBox" id="product_list">
-					<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
-				<input type="button" id="delete_Btn" name="delete_Btn" value="제품삭제"> 
 			
-		<table class="table table-striped table-hover table-bordered table-responsive tableData">
+		<table class="table table-striped table-hover table-bordered table-responsive tableData" id = "prodlist">
 		  <thead class="table-dark">
 
 
@@ -97,7 +95,6 @@
 				<th scope="col" id="th2">제품명</th>
 				<th scope="col" id="th3">제품단가</th>
 				<th scope="col" id="th4">주문수량</th>
-				     
 		    </tr>
 		  </thead>		  
 		  <tbody class="scroll">	    
@@ -117,6 +114,10 @@
 			   </c:forEach>			   
 		  </tbody>
 		</table>		
+		 <div class = "pbutton">
+				<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+				<input type="button"  class = "allbtn" id="delete_Btn" name="delete_Btn" value="제품삭제">
+		</div> 
 	</div>	
 	
 
@@ -211,7 +212,7 @@
 		</table>
 		</form>
 	</div>
-
+</div>
 
 
 </body>

@@ -23,16 +23,14 @@
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 
-	<div>
+	<div class = "firstd">
 		<form action="connection_insert" method="post">
 			<table
 				class="table table-striped table-secondary table-hover table-bordered table-responsive">
 				<thead>
-					<tr>
-						<td colspan="6"><input class = "allbtn" type="submit" value="등록"></td>
-					</tr>
 					<tr class="table-dark">
 						<th colspan="6" class="title_th">거래처 등록</th>
+						<th class="title_th"><input class = "allbtn" type="submit" value="등록"></th>
 					</tr>
 					<tr>					
 						<th scope="col">거래처 이름</th>
@@ -40,19 +38,22 @@
 						<th scope="col">사업자 번호</th>
 						<td><input type="text" name="cno" id="cno" maxlength="12"></td>
 						<th scope="col">대표자 이름</th>
-						<td><input type="text" name="ceo"></td>
+						<td style = "border-right : none"><input type="text" name="ceo"></td>
+						<td class = "lastc" style = "border-left : none"></td>
 					</tr>
 					<tr>
 						<th scope="col">거래처 주소</th>
 						<td><input type="text" name="caddress" id = "caddress"> </td>
 						<th scope="col">거래처 번호</th>
-						<td><input type="text" name="cnumber" id="cnumber" maxlength="12"></td>
+						<td style = "border-right : none"><input type="text" name="cnumber" id="cnumber" maxlength="12"></td>
+						<td colspan = "3" class = "lastc" style = "border-left : none"></td>
 					</tr>
 					<tr>
 						<th scope="col">거래처 이메일</th>
 						<td><input type="text" name="cemail"></td>
 						<th scope="col">비고</th>
-						<td colspan="3"><textarea rows="2" cols="52" name="cmi"></textarea></td>
+						<td colspan="3" style = "border-right : none"><textarea rows="2" cols="52" name="cmi"></textarea></td>
+						<td class = "lastc" style = "border-left : none"></td>
 					</tr>
 				</thead>
 			</table>
@@ -61,7 +62,7 @@
 		</form>
 	</div>
 
-	<div>
+	<div class = "secondd">
 		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
 	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
 
