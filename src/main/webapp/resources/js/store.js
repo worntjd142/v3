@@ -124,8 +124,10 @@ function balju(ono){
 				html += "<td id='pamount"+i+"'>"+pamount+"EA</td>"; //요청잔량
 				html +="</tr>"
 					
-				total_scount = data[i].scount += data[i].scount;
-				
+					
+				total_scount += data[i].scount; //total_scount의 값은 data[i].scount 총합
+
+				//배열
 				update_ocount.push(data[i].ocount);
 				update_pcode.push(data[i].pcode);
 				update_amount.push(pamount);
@@ -154,6 +156,8 @@ function balju(ono){
 			update_tcount = total_count;
 			update_tscount = total_scount;
 			update_tamount = spamount;
+			
+			console.log(total_scount);
 			
 			$("#total_psock").html(total_pstock + "EA");
 			$("#total_ocount").html(total_count + "EA");
@@ -192,7 +196,7 @@ function culha(){
 	console.log( update_tamount);
 	console.log(update_scount);*/
 	
-	if(update_amount.length == 0){
+	if(update_amount.length == 0){// 제품을 선택하지 않고 출하요청 시
 		alert("수주내용이 없습니다. ")
 	}
 	
