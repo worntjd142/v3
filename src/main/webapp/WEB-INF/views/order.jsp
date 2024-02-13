@@ -35,13 +35,17 @@
 	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
 	
-	<form action="order_insert" id="orderForm" method="post" id="autosearch">
-		<div class="main1">		
-		<input class = "allbtn" type="submit" value="등록">
+	
+		<div class="main1">	
+		<form action="order_insert" id="orderForm" method="post" id="autosearch">	
+		
 			<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark">
-						<th colspan="6" class="title_th">수주 등록</th>
+						<th colspan="5" class="title_th">수주 등록</th>
+						<th class="title_th">
+						<input class = "allbtn" type="submit" value="등록">
+						</th>
 					</tr>
 					<tr>					
 						<th scope="col">사업자번호</th>						
@@ -54,9 +58,13 @@
 					<tr>
 						<th scope="col">수주제품</th>
 						<td colspan="3">
+							<label for="pcount">품목 수</label>
 							<input type="text" name="pcount" id="pcount">
+							<label for="pproduct">제품명</label>
 							<input type="text" name="pproduct" id="pproduct"><br>
+							<label for="pprice">제품단가</label>
 							<input type="text" name="pprice" id="pprice">
+							<label for="ocount">제품수량</label>
 							<input type="text" name="ocount" id="ocount">
 						</td>
 						<th scope="col">총 합계</th>
@@ -70,21 +78,26 @@
 					</tr>
 				</thead>
 			</table>
+			</form>
 		</div>
-		</form>
+		
 	
 	
 	<div class="tableBox" id="product_list">
-	
-		<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
-		<input type="button" id="delete_Btn" name="delete_Btn" value="제품삭제">	
+					<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+				<input type="button" id="delete_Btn" name="delete_Btn" value="제품삭제"> 
+			
 		<table class="table table-striped table-hover table-bordered table-responsive tableData">
-		  <thead class="table-dark">			
+		  <thead class="table-dark">
+
+
+	
 		    <tr>
 				<th scope="col" id="th1"><input type="checkbox" id="all_Check" name="all_Check"></th>
 				<th scope="col" id="th2">제품명</th>
 				<th scope="col" id="th3">제품단가</th>
-				<th scope="col" id="th4">주문수량</th>	      
+				<th scope="col" id="th4">주문수량</th>
+				     
 		    </tr>
 		  </thead>		  
 		  <tbody class="scroll">	    
