@@ -19,13 +19,21 @@ table {
 .main4 {
 	position : relative;
     margin : 30px 10px 10px 10px;
-    top : 50px;
-    
-    
+    bottom: 250px;
 }
 
 .tableBox{
 	margin : 10px;
+}
+
+#product_list {
+    position: relative;
+    left: 51%;
+    bottom: 258px;
+}
+
+#prodlist{
+	 width : 900px;
 }
 
 
@@ -38,12 +46,12 @@ tbody.scroll {
     display: block;
     max-height: 220px;
     overflow-y: scroll;
-    width: 26%;
+    width: 100%;
 }
 
 thead.table-dark {
     display: table;
-    width: 26%;
+    width: 100%;
 }
 
 .allbtn {
