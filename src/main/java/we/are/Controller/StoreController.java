@@ -23,7 +23,6 @@ import we.are.Service.StoreServiceImpl;
 
 @Controller
 public class StoreController {
-	
 	@Autowired
 	StoreServiceImpl ssi;
 	
