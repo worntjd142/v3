@@ -1,6 +1,7 @@
 package we.are.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import we.are.Model.CartDTO;
 import we.are.Model.ConnectionDTO;
@@ -17,7 +18,7 @@ public interface OrderService {
 	public void cart_insert (CartDTO cd);
 	
 	// 수주 목록 리스트
-	public ArrayList<OrderDTO> order_select (CriteriaDTO cd);
+	public ArrayList<HashMap<String, Object>> order_select (CriteriaDTO cd);
 	
 	// 수주 상세정보
 	public OrderDTO order_detail (OrderDTO od);

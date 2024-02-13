@@ -1,0 +1,1 @@
+opener.parent.location.reload();

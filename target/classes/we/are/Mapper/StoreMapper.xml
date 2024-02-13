@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="cname" property="cname" />
 		<result column="pproduct" property="pproduct" />
 		<result column="ocount" property="ocount" />
-		<result column="scount" property="scount" />
+		<result column="tcount" property="tcount" />
 		<result column="osuju" property="osuju" />
 		<result column="otext" property="otext" />
 		<result column="x" property="x" />
@@ -20,45 +20,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="oday" property="oday" />	
 		<result column="pstock" property="pstock" />	
 		<result column="pcount" property="pcount" />	
+		<result column="ono" property="ono" />	
+		<result column="pprice" property="pprice" />	
+		<result column="cno" property="cno" />	
+		<result column="cnummber" property="cnummber" />	
+		<result column="cemail" property="cemail" />	
+		<result column="sumber" property="sumber" />	
+		<result column="dday" property="dday" />	
+		<result column="tscount" property="tscount" />	
+		<result column="tamount" property="tamount" />	
 </resultMap>
 		<!-- resultMap ='store_select' 같은 resultMap을 찾아서 실행  -->
+		
+<!--  osuju가 "수주 확인"인것만 List 뽑기 -->
 <select id="store_select" resultMap="store_select"> 
-select uuid, a.cname,pcount,osuju,otext,x,y,oday 
-from orderr a join connection b on a.cname = b.cname 
-where osuju = "수주 대기" order by a.ono asc;
+select distinct a.ono,uuid,osuju,a.cname,otext,oday,pcount, (select pproduct from cart limit 1)as pproduct, pcount  
+from orderr a join cart b on a.ono = b.ono 
+where osuju = "수주 확인" order by a.ono asc;
 </select>
 
-<!-- 수주상태가 '출고 요청 확인'인 것 리스트의 갯수 -->
+<!-- 수주상태가 '출고 요청 '인 것 리스트의 갯수 -->
 <select id="storerelease_count" resultType="int"> 
-select  count(*) 
-from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
-where osuju = "출고 요청 확인" order by a.ono asc; 
+select count(*) from orderr a join connection b on a.cname = b.cname  where osuju = "출고 요청" order by a.ono asc;
 </select>
 
-<!-- 수주상태가 '출고 요청 확인'인 것만 셀렉 -->
+<!--  osuju가 "출고 요청"인것만 List 뽑기 -->
 <select id="storerelease_select" resultMap="store_select"> 
-select  amount,a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
-from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
-where osuju = "출고 요청 확인" order by a.ono asc; 
-</select>
-
-<select id="management_select" resultMap="store_select"> 
-select  amount,a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
-from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
-where osuju = "견적서 발행" order by a.ono asc; 
+select distinct a.ono, oday, uuid, osuju, a.cname, (select pname from product limit 1)as pproduct, pcount,(select pcode from product limit 1) pcode , tcount
+from orderr a join cart b on a.ono = b.ono 
+where osuju = "출고 요청" order by a.ono asc;
 </select>
 
 
-<!-- 재고량 확인 -->
-<select id="product_select" resultType="we.are.Model.InventoryDTO">
-select pcode,pstock,pname,pprice from product where pcode = #{pcode}
+<!-- 장바구니 조인 -->
+<select id="product_select" resultMap="store_select">
+select cname, pproduct, pcode,ocount,b.pprice from orderr a join cart b join product c on a.ono = b.ono and  b.pproduct = c.pname where a.ono = #{ono};
 </select>
 
-<!-- 출고일 등록, 수주상태 변경 -> '출고요청 확인' -->
+<select id="product_List" resultMap="store_select">
+select pproduct, pcode,pstock,ocount,amount from orderr a join cart b join product c on a.ono = b.ono and  b.pproduct = c.pname where a.ono = #{ono};
+</select>
+
 <update id="balju_update">
-update product pro, orderr ord  set pstock = (select (pstock - #{ocount}) as total from product where pcode = #{oday}), ord.sdate = now(), ord.scount = #{ocount}, ord.osuju = '출고 요청 확인', ord.sdel ='출고 중', ord.amount =#{amount} where ord.ono = #{ono} and pcode= #{oday};
-</update>
+update orderr ord ,cart car , product pro 
+set pro.pstock = (select afpstock from (select (pstock - #{ocount}) afpstock from product where pcode = #{uuid})as afpstock),
+ ord.sdate= now(),
+ ord.tcount = #{tcount},
+ car.scount =#{scount},
+ ord.osuju = '출고 요청',
+ ord.sdel ='출고 중',
+ ord.tscount = #{tscount},
+ ord.tamount = #{tamount},
+ car.scount =#{scount},
+ car.amount = (select afamount from(select (amount + #{amount}) afamount from cart where pproduct = #{pproduct} and ono = #{ono})as afamount)
+where ord.ono = #{ono} and pcode = #{uuid} and pproduct = #{pproduct};
 
+</update>
 <!-- 발주 체크 -->
 <select id="balju_check" resultType="String">
 select sdate from orderr where ono = #{ono};
@@ -66,8 +83,12 @@ select sdate from orderr where ono = #{ono};
 
 <!-- 수주상태 변경 -> '견적서 발행' -->
 <update id="osuju_update">
-update orderr set osuju = "견적서 발행" where ono =#{ono};
+update orderr set osuju = "견적서 발행", sdel="출고 중" where ono =#{ono};
 </update>
+
+<select id="osuju_select" resultMap="store_select">
+select uuid, cname, otext,ono from orderr where osuju = "견적서 발행" and ono = #{ono}; 
+</select>
 
 <select id="check" resultMap="store_select"> 
 select  amount,a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
@@ -75,13 +96,54 @@ from orderr a join connection b join product c on  a.cname = b.cname and a.pprod
 </select>
 
 <select id="issuance_select" resultMap="store_select"> 
-select  amount,a.ono, oday, pcode, sdate, uuid, a.cname,pproduct,ocount,scount,osuju,otext,x,y,sdel   
-from orderr a join connection b join product c on  a.cname = b.cname and a.pproduct = c.pname
-where osuju = "출고 요청 확인" and ono = #{ono} order by a.ono asc; 
+select distinct a.ono, oday, uuid, osuju, a.cname, (select pname from product limit 1)as pproduct, pcount,(select pcode from product limit 1) pcode , tcount, x, y, sdel
+from orderr a join cart b join product c join connection d 
+on a.ono = b.ono and c.pname = b.pproduct and a.cname = d.cname
+where osuju = "출고 요청" and a.ono = #{ono} order by a.ono asc;
 </select>
 
+<select id="sujuletter_select"  resultMap="store_select">
+select a.ono, oday, a.cno, a.cname, cnumber,uuid, pproduct, d.pcode, ocount, d.pprice, osum, otext   
+from orderr a join cart b join connection c join product d 
+on a.ono = b.ono and a.cname = c.cname and d.pname = b.pproduct 
+where b.ono =#{ono};
+</select>
 
+<select id="issuance_pdf" resultMap="store_select">
+select uuid, a.cname, ono, cemail  from orderr a join connection b on a.cname = b.cname  where osuju = "견적서 발행" and ono = #{ono};
+</select>
 
+<select id="management_select" resultMap="store_select">
+select distinct oday,osuju, 
+						(select pcode from product limit 1)as pcode,  tscount, tamount,
+						(select pname from product limit 1)as pproduct, tcount, uuid, sdel,pcount, a.ono,x,y,a.cname
+from  orderr a join product b join cart c join connection d on c.pproduct = b.pname and a.ono = c.ono and a.cname = d.cname
+where osuju="견적서 발행" order by a.ono asc ;
+</select>
 
+<insert id="shipment_insert">
+insert into shipment(ono, sname, sday, product, pcode , tcount, price, osum)
+(select a.ono, a.cname, oday, pproduct, pcode, tcount, c.pprice, osum  from orderr a join cart b join product c on a.ono = b.ono and b.pproduct = c.pname where b.ono = #{ono}); 
+</insert>
+
+<select id ="shipment_cselect" resultType="int"> 
+select count(*) from shipment where ono = #{ono};
+</select>
+
+<select id ="snumber_select" resultType="int"> 
+select count(snumber) from shipment where ono = #{ono};
+</select>
+
+<update id="snumber_update">
+update shipment set snumber = #{ceo} where ono =#{ono}
+</update>
+
+<update id="shipment_delivery">
+update orderr set sdel = "배송 중" where ono = #{ono};
+</update>
+
+<select id="shipment_select" resultMap="store_select">
+select * from shipment where ono = #{ono}
+</select>
 
 </mapper>

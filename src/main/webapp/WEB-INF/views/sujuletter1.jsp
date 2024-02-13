@@ -13,79 +13,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 </head>
 <body>
-		<div>
-	<div id="prtin_after">
-		<h1>수주서 처리(${sujuletter.sujubox})</h1>
-	<div>입력정보</div>
-	<table border="1">
-	<tr>
-	<td>거래처</td>
-	<td>${sujuletter.bname}</td>
-	<td>현상태</td>
-	<td>${sujuletter.sujubox}</td>
-	<td>변경상태</td>
-	<td></td>
-	</tr>
-	
-	<tr>
-	<td>품목</td>
-	<td colspan="3">${sujuletter.bproduct}</td>
-	<td>합계금액</td>
-	<td style="color:red;"><fmt:formatNumber value="${sujuletter.bsum}" pattern="#,###" ></fmt:formatNumber></td>
-	</tr>
-	
-	<tr>
-	<td>입금통장</td>
-	<td colspan="5"><input type="text"></td>
-	</tr>
-	
-	<tr>
-	<td>택배사</td>
-	<td colspan="2"><input type="text"></td>
-	<td>운송장 번호</td>
-	<td colspan="2"><input type="text"></td>
-	</tr>
-	
-	<tr>
-	<td>전달사항</td>
-	<td colspan="5"><textarea id="texta">안녕하십니까? 변수제약입니다. 귀사의 일익 번창하심을 진심으로 기원합니다. 수주서를 드립니다.</textarea></td>
-	</tr>
-	
-	</table>
-	<h1>발주처 정보</h1>
-	
-	<table border="1">
-	<tr>
-	<td>배송처</td>
-	<td colspan="5">${company.caddress}<input type="hidden" value="${company.caddress}"></td>
-	</tr>
-	
-	<tr>
-	<td>수취인</td>
-	<td>${company.cdoc}<input type="hidden" value="${company.cdoc}"></td>
-	<td>전화번호</td>
-	<td>${company.ctel}</td>
-	</tr>
-
-	<tr>
-	<td>배송메세지</td>
-	<td colspan="5"></td>
-	</tr>
-	</table>
-	
-	<div>
-	<c:if test="${sujuletter.sujubox == '미발행'}">
-	<input type="button" value="전송" id="send"> 
-	</c:if>
-	<input type="button" value="출력" onclick="prints()"> 
-	<input type="button" value="닫기">
-	</div>
-</div>
 
 
 <!-- 프린터해야 할 이미지 숨겨놓음. -->
 	
-	<div id="print_page" style="display: none;">
+	<div id="print_page">
 	<div style="text-align: center;" ><h1 style="letter-spacing: 20px;">수 주 서</h1></div>
 	<input type="hidden" value="${sujuletter.bno}" id="bno">
 	<div>
@@ -162,7 +94,6 @@
 	</table>
 	</div>
 	</div>
-</div>
 </div>
 </body>
 </html>

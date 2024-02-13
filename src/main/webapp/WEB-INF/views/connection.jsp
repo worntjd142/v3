@@ -36,7 +36,7 @@
 					</tr>
 					<tr>					
 						<th scope="col">거래처 이름</th>
-						<td><input type="text" name="cname" class="cname"></td>								
+						<td><input type="text" name="cname" class="cname" id="cname"></td>								
 						<th scope="col">사업자 번호</th>
 						<td><input type="text" name="cno" id="cno" maxlength="12"></td>
 						<th scope="col">대표자 이름</th>
@@ -130,8 +130,6 @@
 
 
 <script>
-$(function(){
-		
 	//주소창에 주소를 입력 후
 	$("#caddress").on("blur", function(){
 		// 주소값을 addres에 저장
@@ -140,7 +138,7 @@ $(function(){
 	let Search= {"query":addres} // json 타입으로 변경
 		
 		// 카카오 디벨로퍼스에서 발급받은 API 키
-		var REST_API_KEY = "80f1edf0f84195c4ef77e3ea50b5c0c8";
+		var Api_Key = "80f1edf0f84195c4ef77e3ea50b5c0c8";
 
 		// Ajax 요청
 		$.ajax({
@@ -148,14 +146,14 @@ $(function(){
 		    url: "https://dapi.kakao.com/v2/local/search/address", // 카카오 주소 검색 api
 		    data: Search, // 쿼리문의 데이트를 이용해서 위도, 경도값을 구함.
 		    headers: {
-		        "Authorization": "KakaoAK " + REST_API_KEY, // 보안 토큰
+		        "Authorization": "KakaoAK " + Api_Key, // 보안 토큰
 		        "content-type": "application/json"
 		    },
 		    success: function (data) {
-		    	console.log(data.documents[0].x); //위도
-		    	$("#longitude").val(data.documents[0].x)
-		    	console.log(data.documents[0].y); //경도
-		    	$("#latitude").val(data.documents[0].y)
+		    	$("#longitude").val(data.documents[0].x) //위도
+		    	console.log(data.documents[0].x)
+		    	$("#latitude").val(data.documents[0].y)//경도
+		    	console.log(data.documents[0].y)
 		    	
 		    },
 		  	error: function (error){
@@ -170,7 +168,6 @@ $(function(){
 		    	
 })
 
-})
 </script>
 </body>
 </html>

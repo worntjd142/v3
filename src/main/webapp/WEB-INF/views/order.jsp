@@ -37,11 +37,9 @@
 	
 	<form action="order_insert" id="orderForm" method="post" id="autosearch">
 		<div class="main1">		
+		<input class = "allbtn" type="submit" value="등록">
 			<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
-					<tr>
-						<td colspan="6"><input class = "allbtn" type="submit" value="등록"></td>
-					</tr>
 					<tr class="table-dark">
 						<th colspan="6" class="title_th">수주 등록</th>
 					</tr>
@@ -57,10 +55,9 @@
 						<th scope="col">수주제품</th>
 						<td colspan="3">
 							<input type="text" name="pcount" id="pcount">
-							<input type="text" name="pproduct" id="pproduct">
+							<input type="text" name="pproduct" id="pproduct"><br>
 							<input type="text" name="pprice" id="pprice">
 							<input type="text" name="ocount" id="ocount">
-						<input type="text" id="pnamesum" name="pnamesum">
 						</td>
 						<th scope="col">총 합계</th>
 						<td><input type="text" name="osum" id="osum" readonly><label for="osum"></label></td>
@@ -76,19 +73,21 @@
 		</div>
 		</form>
 	
-	<input type="button" class = "allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
-	<div class="tableBox" id="product_list">	
+	
+	<div class="tableBox" id="product_list">
+	
+		<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+		<input type="button" id="delete_Btn" name="delete_Btn" value="제품삭제">	
 		<table class="table table-striped table-hover table-bordered table-responsive tableData">
-		  <thead class="table-dark">
+		  <thead class="table-dark">			
 		    <tr>
-				<th scope="col" class="stiky"><input type="checkbox" id="all_Check" name="all_Check"></th>
-				<th scope="col" class="stiky">제품명</th>
-				<th scope="col" class="stiky">제품단가</th>
-				<th scope="col" class="stiky">주문수량</th>	      
+				<th scope="col" id="th1"><input type="checkbox" id="all_Check" name="all_Check"></th>
+				<th scope="col" id="th2">제품명</th>
+				<th scope="col" id="th3">제품단가</th>
+				<th scope="col" id="th4">주문수량</th>	      
 		    </tr>
 		  </thead>		  
-		  <tbody>			
-		    
+		  <tbody class="scroll">	    
 			  <c:forEach items="${plist}" var="prolist" varStatus="count">
 			    <tr>
 					<td><input type="checkbox" class="choice_Check" id="choice_Check" name="choice_Check" value="${prolist.pname}"></td>
@@ -102,21 +101,19 @@
 			      		<button class = "allbtn" onclick = "plus(${count.index})"> + </button>
 			      	</td>
 			    </tr>
-			   </c:forEach>
-			   
+			   </c:forEach>			   
 		  </tbody>
-		  	<tr>
-		  	<th scope="col" colspan="4" id="table_sticky">합계</th>
-		  	</tr>
 		</table>		
 	</div>	
 	
-	<div class="main3">
+
+	<div class="main4">
+		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
+	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
 		<form action="order" method="get">
-			<table class="table table-striped table-hover table-bordered table-responsive"
-					 id="search_table">
-				<thead>
-					<tr class="table-dark">
+		<table class="table table-striped table-hover table-bordered table-responsive" id="mainsujutable">
+			<thead>
+			<tr class="table-dark">
 						<th colspan="6" class="title_th">검색</th>
 					</tr>
 					<tr>
@@ -125,31 +122,14 @@
 						<td><input type="date" name="startday" id="startday" value="${paging.cd.startday}"> 
 							<label> ~ </label> 
 						<input type="date" name="endday" id="endday" value="${paging.cd.endday}"></td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="col">수주번호</th>
-						<td><input type="text" name="companyname">수주번호로 조회</td>
-						
-					</tr>
-					<tr>
 						<td><input type="submit" value="조회" name="search"
 							class="btn btn-outline-secondary btn-sm"></td>
 					</tr>
-				</tbody>
-			</table>
-		</form>
-	</div>
-
-	<div class="main4">
-		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
-	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
-		<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
-		<input type="button" class = "allbtn" name="companyname" value="일괄등록" onclick="update()">
-		<table
-			class="table table-striped table-hover table-bordered table-responsive">
-			<thead>
+			<tr>
+				<td>
+				<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
+				<input type="button" class = "allbtn" name="companyname" value="일괄등록" onclick="update()"></td>
+			</tr>
 				<tr>
 					<th scope="col" class="table-dark"><input type="checkbox" id="check_all"></th>
 					<th scope="col" class="table-dark">수주번호</th>
@@ -173,8 +153,7 @@
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
 						<td><a href="/order/order_detail_popup?uuid${orderlist.uuid}">${orderlist.cname}</a></td> 
-						<td>${orderlist.pcount} </td>
-						
+						<td>${orderlist.pcount} </td>						
 						<td>${orderlist.osum}</td>
 						<td>${orderlist.osuju}</td>
 						<td>${orderlist.omanager}</td>
@@ -217,6 +196,7 @@
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</div>
 
 

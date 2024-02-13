@@ -1,16 +1,12 @@
-/*//배달원의 목적지와의 경로 및 도착시간 
-function del(x,y,name){
-	
-			//윈도우 팝업
-		   let url = "release?x=" + x +"&y="+ y +"&name=" + name +"";
-
-		   let option = 'width=500, height=500, left=1000, scrollbars=no, resizeable=no, menubar=no, ';
-
-		   window.open(url, name, option);
-
-}
-*/
-let requested_math = 0;
+let update_ocount = [];
+let update_pcode = [];
+let update_amount = [];
+let update_pname = [];
+let update_scount = []
+let update_ono;
+let update_tscount;
+let update_tamount;
+let update_tcount;
 $(function(){
 
  calender = document.getElementById("balju_day");
@@ -22,83 +18,205 @@ $(function(){
 	let currentDate = String(nowDate.getDate()).padStart(2,"0")
 
 	// 새로고침했을 때 오늘 날짜를 자동으로 세팅
-	calender.value = `${currentYear}-${currentMonth}-${currentDate}`;
+//	calender.value = `${currentYear}-${currentMonth}-${currentDate}`;
 	
 })
 //출고 리스트 출력하기
 function balju(ono){
+	 update_ocount.length=0;
+	 update_pcode.length=0;
+	 update_amount.length=0;
+	 update_pname.length = 0;
 	
+	update_ono = ono;
+	$("#update_ono").val(update_ono);
+	
+	$("#table_culha *").remove(0)
 	$.ajax({
 		type : "get",
-		url : "pcode",
+		url : "ono_balju",
+		data : {'ono':ono},
+		dataType : 'json',
+		success : function(data) {
+			console.log(data);
+			
+			let html ;
+			let num = 1;
+			let total_count = 0;
+			let total_price = 0;
+			let sum_price = 0;
+			for(let i = 0; i < data.length; i++){
+				
+				total_count += data[i].ocount; //합계 갯수
+				total_price += data[i].pprice * data[i].ocount; // 합계 단가
+				
+				html += "<tr>"
+				html += "<td>" + num++ +"</td>"; //거래처
+				html += "<td>" +data[0].cname+"</td>"; //거래처
+				html += "<td>"+data[i].pproduct+"</td>"; // 품목명
+				html += "<td>"+data[i].pcode+"</td>"; // 품목코드
+				html += "<td>"+data[i].ocount+"EA</td>"; // 수주수량
+				html += "<td>"+data[i].ocount+"EA</td>"; //출하수량
+				html += "<td>"+data[i].pprice+"원</td>"; //출하수량
+				html += "<td>"+data[i].pprice * data[i].ocount+"원</td>"; //출하수량
+				html += "</tr>"
+			}
+				$("#ocount_total").html(total_count + "EA");// 합계 수주수량
+				$("#scount_total").html(total_count + "EA");// 합계 출하수량
+				$("#total_price").html(total_price + "원"); // 합계 단가
+				$("#table_culha").append(html); //동적 테이블
+			
+				}
+			})
+			
+			
+	$.ajax({
+		type : "get",
+		url : "ono_stock",
 		data : {'ono':ono},
 		dataType : 'json',
 		success : function(data) {
 			
+			console.log(data);
+			let html ;
+			let num = 1;
+			let amount = 0;
+			let pamount = 0;
+			let total_pstock = 0;
+			let total_scount = 0;
+			let total_count = 0;
+			let spamount = 0;
+			let d;
 			
-			/*$("#ea").text("EA");
-			$("#pname").text(data.pname); 	// 상품명
-			$("#pstock").text(data.pstock); 		// 재고량
-			$("#pprice").text(data.pprice.toLocaleString('ko-KR')); // 3자리마다 콤마
+			for(let i = 0; i < data.length; i++){
+					
+				total_count += data[i].ocount;
+				total_pstock += data[i].pstock;
+					
+			 if(data[i].pstock - data[i].ocount < 0){ // 재고량 - 수주량이 0보다 낮을 시
+						 amount  = data[i].pstock - data[i].ocount // 요청잔량 =재고량 - 수주수량
+						 pamount = Math.abs(amount); // 음수로 나온 값음 양수로 변경
+						 
+						 	if(data[i].pstock < 0){
+						 		spamount += data[i].ocount;
+						 	}else{
+						 		spamount += Math.abs(amount); //양수로 나온 요청잔량의 합
+						 	}
+						 data[i].scount = data[i].ocount - pamount// 요청잔량이 발생할 경우 출하수량을 재고량과 같게하기.
+						 
+						 if(data[i].pstock < 0){ //재고량이 0보다 낮을 경우
+							 total_scount = data[i].scount = 0; // 출하수량은 0으로 바꿈
+							 pamount = data[i].ocount;// 물품이 나갈수 없으므로 요청잔량의 값은 수주수량과 같음
+						 }
+						 	
+					}else{
+						pamount = 0; // 요청잔량이 발생하지 않으면 0으로 초기화
+						data[i].scount = data[i].ocount// 요청잔량이 발생하지 않을경우 scount의값은 ocount와 같게하라
+					}
 			
-				if(data.pstock < 0){
-					alert("재고가 없습니다.")
+				html += "<tr>"
+				html += "<td>" + num++ +"</td>"; 
+				html += "<td>" +data[i].pproduct+"</td>"; //품목명
+				html += "<td id='dt_pcode'>"+data[i].pcode+"</td>"; // 품목코드
+				html += "<td>"+data[i].pstock+"EA</td>"; //재고량
+				html += "<td id='dt_ocount'>"+data[i].ocount+"EA</td>"; //수주수량
+				html += "<td>"+data[i].scount+"EA</td>"; //출하수량
+				html += "<td id='pamount"+i+"'>"+pamount+"EA</td>"; //요청잔량
+				html +="</tr>"
 					
-				}else{
-				if(data.pstock - ocount < 0){//재고량 - 요청수량 > 0 보다 작으면 
 					
-				let requested  = data.pstock - ocount ; 
-				requested_math =  Math.abs(requested)
-				
-					$("#requested").html(requested_math);
-					$("#total").html(" ");
-					$(".scount").html("재고 부족")
-					$("#checkbox").html("출하 보류")
-					$("#shipment").html(" ");
-					alert("요청 물량이 많습니다, 거래처 확인 후 발주 바랍니다.")
-					let total = ocount * data.pprice;
-					$("#total").html(total.toLocaleString('ko-KR'));
-					$("#shipment").html("<input type='button' value='출하' onclick='main_balju(" + ono + "," + ocount + ", \"" + pcode + "\")'>");
-					$("#Warning").html("※출고 후, 재고량 확인 부탁드립니다.")
-					$("#Warning").css("color", "red");
-				}
-				else if(data.pstock - ocount > 0  || data.pstock - ocount == 0 ){//재고량 - 요청수량 < 0 보다 많거나 같으면
-					
-					$("#requested").html(0)
-					$(".scount").html(ocount);
-					
-					$("#shipment").html("<input type='button' value='출하' onclick='main_balju(" + ono + "," + ocount + ", \"" + pcode + "\")'>");
-			
-					let total = ocount * data.pprice;
-					
-					$("#total").html(total.toLocaleString('ko-KR'));
-					
-						if(data.pstock - ocount == 0){
-							$("#Warning").text("※출고 후, 재고량 확인 부탁드립니다.");
-							$("#Warning").css("color", "red");
-				}}*/
-			
-				}
-			
-			
-			}
-		})
-}
+				total_scount += data[i].scount; //total_scount의 값은 data[i].scount 총합
 
-function main_balju(ono,ocount,pcode){
+				//배열
+				update_ocount.push(data[i].ocount);
+				update_pcode.push(data[i].pcode);
+				update_amount.push(pamount);
+				update_pname.push(data[i].pproduct);
+				update_scount.push(data[i].scount);	
+					
+			}
+			
+			$("#stock").html(html);
+			
+			for (let i = 0; i < data.length; i++){ // data의 길이만큼 반복
+				
+				let text = $("#pamount"+i+"").text(); // pamount의 텍스트를 추출
+				
+				let First_String = text.charAt(0); // pamount의 첫자리 문자를 추출
+				
+				let Int_num = parseInt(First_String); // 추출한 문자를 int형식으로 변경
+				
+				if(Int_num > 0 ){ // int로 변경한 값이 0보다 크면
+					
+					$("#pamount"+i+"").css("color", "red"); //최초 pamount의 텍스트에 red색을 입힘
+				}
+				
+			}
+			
+			update_tcount = total_count;
+			update_tscount = total_scount;
+			update_tamount = spamount;
+			
+			console.log(total_scount);
+			
+			$("#total_psock").html(total_pstock + "EA");
+			$("#total_ocount").html(total_count + "EA");
+			$("#total_scount").html(total_scount + "EA");
+			
+			for(let i = 0; i < data.length; i++){
+				if(data[i].pstock < 0){
+					
+					spamount - data[i].pstock;
+					
+				}
+		}
+			$("#total_amount").html(spamount + "EA");
+			$("#update_ocount").val(update_ocount);
+			$("#update_pcode").val(update_pcode);
+			$("#update_amount").val(update_amount);
+			
+			if(spamount > 0){
+			$("#total_amount").css("color", "red");
+			}else{
+			$("#total_amount").css("color", "black");
+			}
+			
+			
+				}
+			})
+		}
+
+function culha(){
+/*	console.log(update_ocount);
+	console.log (update_pcode);
+	console.log(update_amount);
+	console.log(update_pname);
+	console.log(update_ono);
+	console.log( update_tscount);
+	console.log( update_tamount);
+	console.log(update_scount);*/
 	
-	let amount = requested_math;
-	console.log(amount);
-	console.log(requested_math);
+	if(update_amount.length == 0){// 제품을 선택하지 않고 출하요청 시
+		alert("수주내용이 없습니다. ")
+	}
 	
-	let update ={'ono':ono,'ocount':ocount, 'pcode':pcode, 'amount':amount};
 	$.ajax({
 		type : "get",
 		url : "pstock_update",
-		data : update,
+		data : {'update_ocount':update_ocount, 'update_pcode':update_pcode,'update_amount':update_amount,  
+				   'update_ono':update_ono, 'update_pname':update_pname ,'update_tcount':update_tcount, 
+				   'update_scount':update_scount, 'update_tscount':update_tscount,'update_tamount':update_tamount },
 		dataType : 'json',
 		success : function(data) {
+			
+			if(data  == 0){
+				
+				alert("오류 발생, 새로고침 하겠습니다")
 				location.reload();
+			}else{
+			
+				location.reload();
+			}
 		}
 	
 		});

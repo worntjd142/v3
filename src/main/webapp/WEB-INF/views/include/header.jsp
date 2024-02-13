@@ -44,7 +44,7 @@
 				<div class="text-end">					
 					
 					<c:if test="${login.useid == null}"> <!-- 만약에 로그인을 했을때 값이 null이면 비활성화 -->
-						<a href="main"><button type="button" class="btn btn-outline-light me-2">로그인</button></a>
+						<a href="/"><button type="button" class="btn btn-outline-light me-2">로그인</button></a>
 						<a href="join"><button type="button" class="btn btn-warning">회원가입</button></a>
 					</c:if>
 					

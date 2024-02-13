@@ -20,97 +20,121 @@
 <body>
  	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
+	
 	<div id="release">
-		<h3>출하 요청</h3>
-		<div id="release_check">
+		<h3 id="Shipment_Request">출하 요청</h3>
+		<div id="release_check" class="tableData thead tr th">
 			<table
 				class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark">
+						<th class="title_th"></th>
 						<th class="title_th">요청일자</th>
-						<th class="title_th">수주번호</th>
-						<th class="title_th">진행상태</th>
 						<th class="title_th">거래처</th>
-						<th class="title_th">품목수</th>
+						<th class="title_th">수주번호</th>
+						<th class="title_th">품목명</th>
+						<th class="title_th">진행상태</th>
+						<th class="title_th">비고</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach items="${stroe}" var="stroeList" varStatus="a">
 					<tr id="ch"  style="cursor: pointer;" onclick="balju('${stroeList.ono}')">
+					<td>${a.count}</td>
 					<td>${stroeList.oday}</td>
-					<td>${stroeList.uuid}</td>
-					<td>${stroeList.osuju}</td>
 					<td>${stroeList.cname}</td>
-					<td>${stroeList.pcount}</td>
+					<td>${stroeList.uuid}</td>
+					<td>
+					<c:choose>
+					<c:when test="${stroeList.pcount ge 2 }">
+					${stroeList.pproduct} 외  ${stroeList.pcount - 1}개
+					</c:when>
+					<c:otherwise>
+					${stroeList.pproduct}
+					</c:otherwise>
+					</c:choose></td>
+					<td>${stroeList.osuju}</td>
+					<td>${stroeList.otext}</td>
 					</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			</div>
-				<div id="buttons">
-	<a href = "store"><input type="button" value="출하" class="btn btn-outline-light me-2" id="culha"></a>
-	<a href = "store_release"><input type="button" value="출고" class="btn btn-outline-light me-2" id="culgo"></a>
-		</div>
-		<div id="detailed" >
-		<h3>출하 상세</h3>
-		<ul id= "ment" style="list-style: none;">
+			
+	<div id="buttons">
+		<a href = "store"><input type="button" value="출하" class="btn btn-outline-light me-2" id="culha"></a>
+		<a href = "store_release"><input type="button" value="출고" class="btn btn-outline-light me-2" id="culgo"></a>
+	</div>
+	
+		<h3  id="Shipment_Details">상세</h3>
+		<ul id= "Shipment_ment" style="list-style: none;">
 		<li style="color:red;">※ 출하일의 기본값은 현재일로 지정되어있습니다.</li>
 		<li style="color:red;">※ 출하수량은 요청수량을 초과 할 수 없습니다.</li>
 		</ul>
+		<div id="detailed" class="tableData thead tr th">
 		<table class="table table-striped table-hover table-bordered table-responsive">
-			<tbody>
-					<tr>
-						<td>거래처</td>
-					 	<td id="cname"></td>
-					 	<td>요청수량</td>
-					 	<td id="ocount"></td>
-					 	</tr>
-					 	<tr>
-					 	<td>출하일</td>
-					 	<td><input type="date" id="balju_day"></td>
-					 	<td>출하수량</td>
-					 	<td class="scount"></td>
-					 	</tr>
-				</tbody>
+				<thead>
+					<tr class="table-dark">
+						<th class="title_th"></th>
+						<th class="title_th">거래처</th>
+						<th class="title_th">품목명</th>
+						<th class="title_th">품목코드</th>
+						<th class="title_th">수주수량</th>
+						<th class="title_th">출하수량</th>
+						<th class="title_th">단가</th>
+						<th class="title_th">합계</th>
+					</tr>
+					<tbody Id="table_culha">
+				</tbody >
 			</table>
 			</div>
-			<input type="button" value="제품출하">
-	<div id="change">
-		<h3>재고</h3>
+			
+			<div id="detailed_total">
+				<table class="table table-striped table-hover table-bordered table-responsive">
+			<tr class="table-dark">
+					<th colspan="4" style="text-alzign: center;">합 계</th>
+					<th id="ocount_total"></th>
+					<th id="scount_total" ></th>
+					<th id="sum_price"> </th>
+					<th id="total_price"> </th>
+					</tr>
+			</table>
+			</div>
+			
+			
+			<h3 id="title_psock">재고</h3>
+	<div id="change" class="tableData thead tr th">
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
 				<tr>
-					<th scope="col" class="table-dark">상품명</th>
-					<th scope="col" class="table-dark">기준단위</th>
+					<th scope="col" class="table-dark"></th>
+					<th scope="col" class="table-dark">품목명</th>
+					<th scope="col" class="table-dark">품목코드</th>
 					<th scope="col" class="table-dark">재고량</th>
+					<th scope="col" class="table-dark">수주수량</th>
 					<th scope="col" class="table-dark">출하수량</th>
-					<th scope="col" class="table-dark">단가</th>
 					<th scope="col" class="table-dark">요청잔량</th>
-					<th scope="col" class="table-dark">비고</th>
 				</tr>
 			</thead>
-			<tbody>
-					<tr>
-						<td id="pname"></td>
-						<td id="ea"></td>
-						<td id="pstock"></td>
-						<td class="scount"></td>
-						<td id="pprice"></td>
-						<td id="requested"></td>
-						<td id="otext"></td>
-					</tr>
-					
-					<tr>
-					<td colspan="4" style="text-align: center;">합 계</td>
-					<td id="total"></td>
-					<td ></td>
-					<td id="shipment"></td>
-					</tr>
+			<tbody id="stock">
 			</tbody>
 		</table>
-			<div id="Warning"></div>
 	</div>
+	
+	<div id="change_total">
+				<table class="table table-striped table-hover table-bordered table-responsive">
+			<tr class="table-dark">
+					<th colspan="4" style="text-alzign: center;" id="to">합 계</th>
+					<th id="total_psock"></th>
+					<th id="total_ocount" ></th>
+					<th id="total_scount"> </th>
+					<th id="total_amount"> </th>
+					</tr>
+			</table>
+			</div>
+	
+	<div><input type="button" value="출하요청" class="btn btn-outline-light me-2" id="culha_sinho" onclick="culha()"></div>
 </div>
 
 

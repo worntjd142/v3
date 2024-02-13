@@ -30,14 +30,30 @@ public class StoreServiceImpl implements StoreService {
 		return sm.management_select();
 	}
 
-	//재고량 확인
-	public InventoryDTO product_select(String pcode) {
-		return sm.product_select(pcode);
+	//장바구니 조인
+	public ArrayList<HashMap<String, Object>> product_select(String ono) {
+		return sm.product_select(ono);
 	}
-
+	
+	public ArrayList<HashMap<String, Object>> product_List(String ono){
+		return sm.product_List(ono);
+	}
+	
+	public HashMap<String, Object> osuju_select(int ono){
+		return sm.osuju_select(ono);
+	}
+	
+	public HashMap<String, Object> issuance_pdf(int ono){
+		return sm.issuance_pdf(ono);
+	}
+	
 	//수주상태 변경 - > '견적서 발행'
 	public int osuju_update(int ono) {
 		return sm.osuju_update(ono);
+	}
+	
+	public ArrayList<HashMap<String, Object>> sujuletter_select(int ono){
+		return sm. sujuletter_select(ono);
 	}
 
 	//출고일 등록
@@ -62,6 +78,30 @@ public class StoreServiceImpl implements StoreService {
 	public int storerelease_count() {
 		return sm.storerelease_count();
 	}
-
+	
+	public void shipment_insert(int ono) {
+		 sm.shipment_insert(ono);
+	}
+	
+	public int shipment_cselect(int ono) {
+		return sm.shipment_cselect(ono);
+	}
+	
+	public void snumber_update(OrderDTO od) {
+		sm.snumber_update(od);
+	}
+	
+	public int snumber_select(int ono) {
+		return sm.snumber_select(ono);
+	}
+	
+	public void shipment_delivery(int ono) {
+		sm.shipment_delivery(ono);
+	}
+	
+	public ArrayList<HashMap<String, Object>> shipment_select(int ono) {
+		return sm.shipment_select(ono);
+	}
+	
 }
 

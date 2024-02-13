@@ -28,6 +28,7 @@ public class OrderDTO {
 	private int scount;  
 	// 출고 날짜
 	private String sdate;
+
 	// 배달 상황
 	private String sdel; 
 	// 구분자
@@ -40,8 +41,34 @@ public class OrderDTO {
 	private String odetail;
 	// 수주하는 거래처 대표자 이름
 	private String ceo;
+	//수주수량 합계
+	private int tcount;
+	//출하수량 합계
+	private int tscount;
+	//잔량 합계
+	private int tamount;
+	
 	
 	// getter + setter
+	
+	public int getTscount() {
+		return tscount;
+	}
+	public void setTscount(int tscount) {
+		this.tscount = tscount;
+	}
+	public int getTamount() {
+		return tamount;
+	}
+	public void setTamount(int tamount) {
+		this.tamount = tamount;
+	}
+	public int getTcount() {
+		return tcount;
+	}
+	public void setTcount(int tcount) {
+		this.tcount = tcount;
+	}
 	
 	public int getOcount() {
 		return ocount;
@@ -91,9 +118,6 @@ public class OrderDTO {
 	}
 	public int getAmount() {
 		return amount;
-	}
-	public void setAamount(int amount) {
-		this.amount = amount;
 	}
 	public String getSdel() {
 		return sdel;

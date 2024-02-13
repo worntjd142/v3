@@ -1,34 +1,89 @@
 @charset "UTF-8";
 
-#release_check, #change ,#buttons, #detailed{
+#change_total {
+	width: 47%;
 	position: absolute;
-	width: 49%;
+	left: 50.997%;
+	top: 846px;
 }
 
+#Shipment_Request {
+	position: absolute;
+	top: 200px;
+	left: 4%;
+}
 
-#change{
-	top:350px;
+#Shipment_Details {
+	position: absolute;
+	left: 53%;
+	top: 200px;
+}
+
+#release_check {
+	top: 240px;
+}
+
+#detailed_total {
+	position: absolute;
 	left: 51%;
+	top: 480px;
+	width: 47%;
 }
 
-#buttons{
-	left:51%;
+#release_check, #change, #detailed {
+	position: absolute;
+	width: 47%;
+}
+
+#release {
+	margin: 0px 40px;
+}
+
+#change {
+	top: 605px;
+	left: 51%;
+	position: absolute;
+	width: 47%;
+	overflow: scroll;
+	height: 257px;
+	scrollbar-width: none;
+}
+
+#buttons {
 	border-bottom: 1px solid;
-    padding-bottom: 20px;
-}
-
-#detailed{
-	top:205px;
-	left: 51%;
-}
-
-#ment{
+	padding-bottom: 20px;
 	position: absolute;
-    left: 15%;
-    top: -10px;
+	top: 130px;
+	width: 47%;
 }
 
-#culha, #culgo {
+#detailed {
+	top: 240px;
+	left: 51%;
+	overflow: scroll;
+	height: 256px;
+	scrollbar-width: none;
+}
+
+#Shipment_ment {
+	position: absolute;
+	left: 56%;
+	top: 190px;
+}
+
+#culha, #culgo, #culha_sinho {
 	color: black;
 	border: 1px solid;
+}
+
+#culha_sinho {
+	position: absolute;
+	left: 58%;
+	top: 560px;
+}
+
+#title_psock {
+	position: absolute;
+	top: 565px;
+	left: 53.5%;
 }
