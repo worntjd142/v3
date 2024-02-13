@@ -25,7 +25,7 @@
 		<h3 id="Shipment_Request">출하 요청</h3>
 		<div id="release_check" class="tableData thead tr th">
 			<table
-				class="table table-striped table-hover table-bordered table-responsive">
+				class="table table-striped table-hover table-bordered table-responsive tableData">
 				<thead>
 					<tr class="table-dark" style="text-align: center;" >
 						<th class="title_th" style="width: 30px;"></th>
@@ -75,14 +75,14 @@
 		<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
 					<tr class="table-dark" style="text-align: center;" >
-						<th class="title_th" style="width: 30px;"></th>
-						<th class="title_th" style="width: 200px;">거래처</th>
-						<th class="title_th" style="width: 130px;">품목명</th>
-						<th class="title_th" style="width: 80px;">품목코드</th>
-						<th class="title_th" style="width: 90px;">수주수량</th>
-						<th class="title_th" style="width: 90px;">출하수량</th>
-						<th class="title_th" style="width: 100px;">단가</th>
-						<th class="title_th" style="width: 150px;">합계</th>
+						<th scope="col"  style="width: 30px;"></th>
+						<th scope="col"  style="width: 200px;">거래처</th>
+						<th scope="col" style="width: 130px;">품목명</th>
+						<th scope="col" style="width: 80px;">품목코드</th>
+						<th scope="col"  style="width: 90px;">수주수량</th>
+						<th scope="col" style="width: 90px;">출하수량</th>
+						<th scope="col"style="width: 100px;">단가</th>
+						<th scope="col"  style="width: 150px;">합계</th>
 					</tr>
 					<tbody Id="table_culha">
 				</tbody >
@@ -90,13 +90,13 @@
 			</div>
 			
 			<div id="detailed_total">
-				<table class="table table-striped table-hover table-bordered table-responsive">
+				<table class="table table-striped table-hover table-bordered table-responsive tableData">
 			<tr>
-					<th colspan="4" style="width: 441px;text-align: center;">합 계</th>
+					<th colspan="4" style="width: 445px;text-align: center;">합 계</th>
 					<th id="ocount_total" style="width: 90px; text-align: right;"></th>
 					<th id="scount_total" style="width: 90px; text-align: right; "></th>
 					<th id="sum_price" style="width: 100px; text-align: right;"> </th>
-					<th id="total_price" style="width: 150px;text-align: right: ;"> </th>
+					<th id="total_price" style="width: 150px; text-align: right;"> </th>
 					</tr>
 			</table>
 			</div>
@@ -107,14 +107,14 @@
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
-				<tr style="text-align: center;" >
-					<th scope="col" class="table-dark" style="width: 30;"></th>
-					<th scope="col" class="table-dark" style="width: 180px;">품목명</th>
-					<th scope="col" class="table-dark">품목코드</th>
-					<th scope="col" class="table-dark">재고량</th>
-					<th scope="col" class="table-dark">수주수량</th>
-					<th scope="col" class="table-dark">출하수량</th>
-					<th scope="col" class="table-dark">요청잔량</th>
+				<tr style="text-align: center;"class="table-dark" >
+					<th scope="col" style="width: 30px;"></th>
+					<th scope="col" style="width: 196px;">품목명</th>
+					<th scope="col" style="width: 130px;">품목코드</th>
+					<th scope="col" style="width: 130px;">재고량</th>
+					<th scope="col" style="width: 130px;">수주수량</th>
+					<th scope="col" style="width: 130px;">출하수량</th>
+					<th scope="col" style="width: 130px;">요청잔량</th>
 				</tr>
 			</thead>
 			<tbody id="stock">
@@ -124,12 +124,12 @@
 	
 	<div id="change_total">
 				<table class="table table-striped table-hover table-bordered table-responsive">
-			<tr class="table-dark">
-					<th colspan="4" style="text-alzign: center;" id="to">합 계</th>
-					<th id="total_psock" style="width: 30px;"></th>
-					<th id="total_ocount" ></th>
-					<th id="total_scount"> </th>
-					<th id="total_amount"> </th>
+			<tr>
+					<th colspan="4" style="text-align: center; width: 360px;" id="to">합 계</th>
+					<th id="total_psock" style="width: 130px; text-align: right;"></th>
+					<th id="total_ocount" style="width: 130px; text-align: right;"></th>
+					<th id="total_scount" style="width: 130px; text-align: right;"> </th>
+					<th id="total_amount" style="width: 130px; text-align: right;"> </th>
 					</tr>
 			</table>
 			</div>
