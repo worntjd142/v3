@@ -58,13 +58,13 @@
 					<tr>
 						<th scope="col">수주제품</th>
 						<td colspan="3">
-							<label for="pcount">품목 수</label>
+							<label for="pcount">품목 수 : </label>
 							<input type="text" name="pcount" id="pcount" style = "border-width: 0" readonly>
-							<label for="pproduct">제품명</label>
+							<label for="pproduct">제품명 : </label>
 							<input type="text" name="pproduct" id="pproduct" style = "border-width: 0" readonly><br>
-							<label for="pprice">제품단가</label>
+							<label for="pprice">제품단가 : </label>
 							<input type="text" name="pprice" id="pprice" style = "border-width: 0" readonly>
-							<label for="ocount">제품수량</label>
+							<label for="ocount">제품수량 : </label>
 							<input type="text" name="ocount" id="ocount" style = "border-width: 0" readonly>
 						</td>
 						<th scope="col">총 합계</th>
@@ -104,7 +104,7 @@
 			      	<!-- 제품명 -->
 			      	<td><input type="hidden" name="pname">${prolist.pname}</td>
 			      	<!-- 제품단가 -->
-			      	<td><input type="hidden" id="pprice${count.index}" name="pprice">${prolist.pprice}</td> 
+			      	<td id="tdbox"><input type="hidden" id="pprice${count.index}" name="pprice">${prolist.pprice}</td> 
 			      	<!-- 수주수량 -->
 			  		<td><input type="text" class = "count2box" name="ocount" id="countBox${count.index}" value = 0> 
 			      		<button class = "allbtn" onclick = "minus(${count.index})"> - </button>
@@ -128,24 +128,31 @@
 		<table class="table table-striped table-hover table-bordered table-responsive" id="mainsujutable">
 			<thead>
 			<tr class="table-dark">
-						<th colspan="6" class="title_th">검색</th>
+						<th colspan="9" class="title_th">검색</th>
 					</tr>
 					<tr>
 						<th scope="col">수주일</th>
 															<!-- 컨트롤 "paging" 변수에 저장된 cdto모델에 있는 startday  -->
-						<td><input type="date" name="startday" id="startday" value="${paging.cd.startday}"> 
+						<td colspan="7">
+						<input type="date" name="startday" id="startday" value="${paging.cd.startday}"> 
 							<label> ~ </label> 
-						<input type="date" name="endday" id="endday" value="${paging.cd.endday}"></td>
-						<td><input type="submit" value="조회" name="search"
+						<input type="date" name="endday" id="endday" value="${paging.cd.endday}">
+						</td>
+						<td id="tdborder"><input type="submit" value="조회" name="search"
 							class="btn btn-outline-secondary btn-sm"></td>
 					</tr>
-			<tr>
-				<td>
-				<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
-				<input type="button" class = "allbtn" name="companyname" value="일괄등록" onclick="update()"></td>
-			</tr>
 				<tr>
-					<th scope="col" class="table-dark"><input type="checkbox" id="check_all"></th>
+				<th>
+				<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
+					<input type="button" class = "allbtn" name="companyname" value="일괄출하" onclick="update()">
+				</th>
+				</tr>
+				
+				<tr>
+					<th scope="col" class="table-dark">
+					
+				
+					<input type="checkbox" id="check_all"></th>
 					<th scope="col" class="table-dark">수주번호</th>
 					<!-- 발주 데이터 -->
 					<th scope="col" class="table-dark">수주일자</th>

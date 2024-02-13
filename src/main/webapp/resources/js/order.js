@@ -433,12 +433,6 @@ function update(){
 };
 
 
-/* 수주 상세정보 팝업창 띄우기 */
-
-
-
-
-
 /*$(function(){
 
 // pcode 배열선언

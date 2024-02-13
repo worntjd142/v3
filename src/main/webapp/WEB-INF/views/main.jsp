@@ -45,11 +45,6 @@
 									placeholder="비밀번호" name="usepassword" required> <label
 									for="inputPassword">비밀번호</label>
 							</div>
-							<div class="custom-control custom-checkbox mb-3">
-								<input type="checkbox" class="custom-control-input"
-									id="customCheck1" name="login_Cookie" value="checked"> 
-							<label class="custom-control-label" for="customCheck1">로그인 상태 유지하기</label>
-							</div>
 							<input type="submit" value="로그인" class="btn btn-lg btn-primary btn-block text-uppercase">
 						</form>
 												

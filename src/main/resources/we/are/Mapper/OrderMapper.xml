@@ -32,8 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 수주 등록 insert -->
    <insert id="order_insert">
       INSERT INTO
-         orderr (uuid, cno, ceo, cname, pcount, omanager) 
-            VALUE (uuid_short(), #{cno}, #{ceo}, #{cname}, #{pcount}, #{omanager});
+         orderr (uuid, cno, ceo, cname, pcount, omanager, otext) 
+            VALUE (uuid_short(), #{cno}, #{ceo}, #{cname}, #{pcount}, #{omanager}, #{otext});
    </insert>
    
    <!-- 제품 INSERT -->
@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 <![CDATA[
           WHERE rownum > (#{pageNum}-1)*#{amount} AND rownum <= #{pageNum}*#{amount}          
          ]]>
-         ORDER BY uuid DESC;
+         ORDER BY rownum ASC;
 	</select>
 	
 	
