@@ -97,10 +97,15 @@ public class OrderController {
 	
 	
 	// 수주 상세정보
-	@RequestMapping("order/order_detail_popup")
-	public String order_detail (OrderDTO od, Model model) {
-		model.addAttribute("orderdetail", os.order_detail(od));
-		return "order/order_detail_popup";
+	@RequestMapping("orderDetail")
+	public String order_detail (OrderDTO od, Model model, @RequestParam (value="ono") int ono) {
+		System.out.println(ono);
+		// Join된 결과 값 select
+		ArrayList<HashMap<String, Object>> orderdetail = os.order_detail(ono);
+		
+		
+		model.addAttribute("orderdetail", orderdetail);
+		return "orderDetail";
 	}
 	
 
@@ -138,7 +143,7 @@ public class OrderController {
 	//임시등록 수주서1
 			@GetMapping("sujuletter1")
 			public String sujuletter1(@RequestParam("ono")int ono, Model model) {
-					
+				
 					model.addAttribute("connection", ssi.sujuletter_select(ono));
 					
 				return  "sujuletter1";

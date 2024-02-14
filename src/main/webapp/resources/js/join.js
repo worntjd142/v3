@@ -27,7 +27,7 @@ $('input[name=usetel]').keydown(function(event) {
         if ($text.val().length === 3) { //지역번호
             $text.val($text.val() + '-');
         }
-        if ($text.val().length === 8) { //전화번호뒷자리
+        if ($text.val().length === 7) { //전화번호뒷자리
             $text.val($text.val() + '-');
         }
     }
@@ -58,7 +58,7 @@ $(function(){
 				// 숫자3개 - 숫자2개 - 숫자5개인지 검사한다.
 	let checkNum =  /^[0-9]{3}-[0-9]{2}-[0-9]{5}$/;
 				// 숫자2~3개 - 숫자3~4개 - 숫자4개인지 검사한다.
-	let checkTEL = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/;
+	let checkTEL = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
 	
 	
 	function checkForm() {

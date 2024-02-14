@@ -57,6 +57,7 @@ public class StoreController {
 																			   @RequestParam("update_scount[]") int scount[])
 							
 		{
+			
 			OrderDTO od = new OrderDTO();
 			
 			int result = 0;
@@ -93,13 +94,13 @@ public class StoreController {
 			ssi.osuju_update(ono); // osuju -> '견적서 발행' 변경
 			
 			issuance = ssi.osuju_select(ono); // 
-				
+				System.out.println(issuance);
 			return new ResponseEntity<>(issuance,HttpStatus.OK);
 		}
 		
 		//견적서 발행 하기전 리스트 출력
 		@GetMapping("issuance_pdf")
-		public ResponseEntity<?> issuance_select(@RequestParam("ono") int ono) {	
+		public ResponseEntity<?> issuance_select(@RequestParam("ono") int ono) {
 			
 			HashMap<String, Object>  pdf= new HashMap<String, Object>();
 			

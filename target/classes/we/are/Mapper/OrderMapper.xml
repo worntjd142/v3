@@ -24,14 +24,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="pprice" property="pprice" />
 	<result column="ocount" property="ocount" />
 	<result column="osum" property="osum" />
-	<result column="ono" property="ono" />	
+	<result column="ono" property="ono" />
+	<result column="caddress" property="caddress" />
+	<result column="cnumber" property="cnumber" />
 </resultMap>
 
 	<!-- 수주 등록 insert -->
    <insert id="order_insert">
       INSERT INTO
-         orderr (uuid, cno, ceo, cname, pcount, omanager) 
-            VALUE (uuid_short(), #{cno}, #{ceo}, #{cname}, #{pcount}, #{omanager});
+         orderr (uuid, cno, ceo, cname, pcount, omanager, otext) 
+            VALUE (uuid_short(), #{cno}, #{ceo}, #{cname}, #{pcount}, #{omanager}, #{otext});
    </insert>
    
    <!-- 제품 INSERT -->
@@ -87,13 +89,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 <![CDATA[
           WHERE rownum > (#{pageNum}-1)*#{amount} AND rownum <= #{pageNum}*#{amount}          
          ]]>
-         ORDER BY uuid DESC;
+         ORDER BY rownum ASC;
 	</select>
 	
 	
 	<!-- 수주 상세정보 -->
-	<select id="order_detail" resultType="we.are.Model.OrderDTO">
-	SELECT * FROM orderr WHERE uuid = #{uuid};
+	<select id="order_detail" resultMap="order_select">
+		SELECT a.ono, uuid, oday, a.cno, a.ceo, a.cname, pcount, omanager, otext, b.pproduct, b.pprice, b.ocount, b.osum, c.caddress, c.cnumber FROM orderr AS a 
+		JOIN cart AS b JOIN connection AS c on a.ono = b.ono and a.cname = c.cname where a.ono = #{ono};
 	</select>
 
 	<update id="suju_update">

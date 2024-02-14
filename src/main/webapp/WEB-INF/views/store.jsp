@@ -25,16 +25,16 @@
 		<h3 id="Shipment_Request">출하 요청</h3>
 		<div id="release_check" class="tableData thead tr th">
 			<table
-				class="table table-striped table-hover table-bordered table-responsive">
+				class="table table-striped table-hover table-bordered table-responsive tableData">
 				<thead>
-					<tr class="table-dark">
-						<th class="title_th"></th>
-						<th class="title_th">요청일자</th>
-						<th class="title_th">거래처</th>
-						<th class="title_th">수주번호</th>
-						<th class="title_th">품목명</th>
-						<th class="title_th">진행상태</th>
-						<th class="title_th">비고</th>
+					<tr class="table-dark" style="text-align: center;" >
+						<th class="title_th" style="width: 30px;"></th>
+						<th class="title_th" style="width: 115px;">요청일자</th>
+						<th class="title_th" style="width: 200px;">거래처</th>
+						<th class="title_th" style="width: 180px;">수주번호</th>
+						<th class="title_th" style="width: 180px;">품목명</th>
+						<th class="title_th" style="width: 80px;">진행상태</th>
+						<th class="title_th" style="width: 116px;">비고</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -68,21 +68,20 @@
 	
 		<h3  id="Shipment_Details">상세</h3>
 		<ul id= "Shipment_ment" style="list-style: none;">
-		<li style="color:red;">※ 출하일의 기본값은 현재일로 지정되어있습니다.</li>
-		<li style="color:red;">※ 출하수량은 요청수량을 초과 할 수 없습니다.</li>
+		<li style="color:red;">※ 출하수량은 수주수량을 초과 할 수 없습니다.</li>
 		</ul>
 		<div id="detailed" class="tableData thead tr th">
 		<table class="table table-striped table-hover table-bordered table-responsive">
 				<thead>
-					<tr class="table-dark">
-						<th class="title_th"></th>
-						<th class="title_th">거래처</th>
-						<th class="title_th">품목명</th>
-						<th class="title_th">품목코드</th>
-						<th class="title_th">수주수량</th>
-						<th class="title_th">출하수량</th>
-						<th class="title_th">단가</th>
-						<th class="title_th">합계</th>
+					<tr class="table-dark" style="text-align: center;" >
+						<th scope="col"  style="width: 30px;"></th>
+						<th scope="col"  style="width: 200px;">거래처</th>
+						<th scope="col" style="width: 130px;">품목명</th>
+						<th scope="col" style="width: 80px;">품목코드</th>
+						<th scope="col"  style="width: 90px;">수주수량</th>
+						<th scope="col" style="width: 90px;">출하수량</th>
+						<th scope="col"style="width: 100px;">단가</th>
+						<th scope="col"  style="width: 150px;">합계</th>
 					</tr>
 					<tbody Id="table_culha">
 				</tbody >
@@ -90,13 +89,13 @@
 			</div>
 			
 			<div id="detailed_total">
-				<table class="table table-striped table-hover table-bordered table-responsive">
-			<tr class="table-dark">
-					<th colspan="4" style="text-alzign: center;">합 계</th>
-					<th id="ocount_total"></th>
-					<th id="scount_total" ></th>
-					<th id="sum_price"> </th>
-					<th id="total_price"> </th>
+				<table class="table table-striped table-hover table-bordered table-responsive tableData">
+			<tr>
+					<th colspan="4" style="width: 445px;text-align: center;">합 계</th>
+					<th id="ocount_total" style="width: 90px; text-align: right;"></th>
+					<th id="scount_total" style="width: 90px; text-align: right; "></th>
+					<th id="sum_price" style="width: 100px; text-align: right;"> </th>
+					<th id="total_price" style="width: 150px; text-align: right;"> </th>
 					</tr>
 			</table>
 			</div>
@@ -107,14 +106,14 @@
 		<table
 			class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
-				<tr>
-					<th scope="col" class="table-dark"></th>
-					<th scope="col" class="table-dark">품목명</th>
-					<th scope="col" class="table-dark">품목코드</th>
-					<th scope="col" class="table-dark">재고량</th>
-					<th scope="col" class="table-dark">수주수량</th>
-					<th scope="col" class="table-dark">출하수량</th>
-					<th scope="col" class="table-dark">요청잔량</th>
+				<tr style="text-align: center;"class="table-dark" >
+					<th scope="col" style="width: 30px;"></th>
+					<th scope="col" style="width: 196px;">품목명</th>
+					<th scope="col" style="width: 130px;">품목코드</th>
+					<th scope="col" style="width: 130px;">재고량</th>
+					<th scope="col" style="width: 130px;">수주수량</th>
+					<th scope="col" style="width: 130px;">출하수량</th>
+					<th scope="col" style="width: 130px;">요청잔량</th>
 				</tr>
 			</thead>
 			<tbody id="stock">
@@ -124,12 +123,12 @@
 	
 	<div id="change_total">
 				<table class="table table-striped table-hover table-bordered table-responsive">
-			<tr class="table-dark">
-					<th colspan="4" style="text-alzign: center;" id="to">합 계</th>
-					<th id="total_psock"></th>
-					<th id="total_ocount" ></th>
-					<th id="total_scount"> </th>
-					<th id="total_amount"> </th>
+			<tr>
+					<th colspan="4" style="text-align: center; width: 360px;" id="to">합 계</th>
+					<th id="total_psock" style="width: 130px; text-align: right;"></th>
+					<th id="total_ocount" style="width: 130px; text-align: right;"></th>
+					<th id="total_scount" style="width: 130px; text-align: right;"> </th>
+					<th id="total_amount" style="width: 130px; text-align: right;"> </th>
 					</tr>
 			</table>
 			</div>

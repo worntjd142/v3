@@ -29,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="dday" property="dday" />	
 		<result column="tscount" property="tscount" />	
 		<result column="tamount" property="tamount" />	
+		<result column="rday" property="rday" />	
 </resultMap>
 		<!-- resultMap ='store_select' 같은 resultMap을 찾아서 실행  -->
 		
@@ -87,7 +88,7 @@ update orderr set osuju = "견적서 발행", sdel="출고 중" where ono =#{ono
 </update>
 
 <select id="osuju_select" resultMap="store_select">
-select uuid, cname, otext,ono from orderr where osuju = "견적서 발행" and ono = #{ono}; 
+select uuid, a.cname, cemail, ono from orderr a join connection b on a.cname = b.cname where osuju = "견적서 발행" and ono = #{ono}; 
 </select>
 
 <select id="check" resultMap="store_select"> 
@@ -103,7 +104,7 @@ where osuju = "출고 요청" and a.ono = #{ono} order by a.ono asc;
 </select>
 
 <select id="sujuletter_select"  resultMap="store_select">
-select a.ono, oday, a.cno, a.cname, cnumber,uuid, pproduct, d.pcode, ocount, d.pprice, osum, otext   
+select a.ono, oday, a.cno, a.cname, cnumber,uuid, pproduct, d.pcode, ocount, d.pprice, osum, otext, pcount   
 from orderr a join cart b join connection c join product d 
 on a.ono = b.ono and a.cname = c.cname and d.pname = b.pproduct 
 where b.ono =#{ono};
@@ -114,7 +115,7 @@ select uuid, a.cname, ono, cemail  from orderr a join connection b on a.cname = 
 </select>
 
 <select id="management_select" resultMap="store_select">
-select distinct oday,osuju, 
+select distinct oday,osuju, rday,
 						(select pcode from product limit 1)as pcode,  tscount, tamount,
 						(select pname from product limit 1)as pproduct, tcount, uuid, sdel,pcount, a.ono,x,y,a.cname
 from  orderr a join product b join cart c join connection d on c.pproduct = b.pname and a.ono = c.ono and a.cname = d.cname
@@ -122,8 +123,8 @@ where osuju="견적서 발행" order by a.ono asc ;
 </select>
 
 <insert id="shipment_insert">
-insert into shipment(ono, sname, sday, product, pcode , tcount, price, osum)
-(select a.ono, a.cname, oday, pproduct, pcode, tcount, c.pprice, osum  from orderr a join cart b join product c on a.ono = b.ono and b.pproduct = c.pname where b.ono = #{ono}); 
+insert into shipment(ono, sname, sday, product, pcode , ocount, price, osum, pcount)
+(select a.ono, a.cname, oday, pproduct, pcode, ocount, c.pprice, osum, pcount  from orderr a join cart b join product c on a.ono = b.ono and b.pproduct = c.pname where b.ono = #{ono}); 
 </insert>
 
 <select id ="shipment_cselect" resultType="int"> 
@@ -139,7 +140,7 @@ update shipment set snumber = #{ceo} where ono =#{ono}
 </update>
 
 <update id="shipment_delivery">
-update orderr set sdel = "배송 중" where ono = #{ono};
+update orderr set sdel = "배송 중" , rday = current_date where ono = #{ono};
 </update>
 
 <select id="shipment_select" resultMap="store_select">
