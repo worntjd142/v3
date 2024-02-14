@@ -24,7 +24,7 @@ public class ConnectionController {
 		public String connection_list(Model model, CriteriaDTO cd) {
 			model.addAttribute("c_list", cs.connection_list(cd));
 			int total = cs.total(cd);
-			model.addAttribute("paging", new PageDTO(cd, total));
+			model.addAttribute("cpaging", new PageDTO(cd, total));
 			return "connection";
 		}
 		

@@ -143,8 +143,9 @@
 		</table>
 	</div>
 	
-	<div class="time">도착까지:<label id="time"></label></div>
+	
 	<h3 id="po">위치</h3>
+	<div class="time"><b style= "color: #4682B4;">도착까지:<label id="time"></label></b></div>
 	<div id = "map">
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e53e51300b84c3acadbd93d20d9fea8"></script>
 	<script>

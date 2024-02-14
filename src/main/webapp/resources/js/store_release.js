@@ -95,7 +95,7 @@ function del(x,y,name){
 		    	console.log(data.routes[0].sections[0].roads[0]);
 		    	
 		    	//초를 60분으로 나누고 소수점 올림하여 분으로 나타냄
-		        $("#time").html(Math.floor(data.routes[0].sections[0].duration / 60) +"분"); 
+		        $("#time").html(Math.floor(data.routes[0].sections[0].duration / 60) +"분 남았습니다."); 
 		    	
 		        const linePath = []; // linePath 배열 선언
 		        
