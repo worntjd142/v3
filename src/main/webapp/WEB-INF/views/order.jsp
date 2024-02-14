@@ -129,12 +129,12 @@
 		<table class="table  table-hover table-bordered" id="mainsujutable" >
 			<thead id="stock_thead">
 			<tr class="table-dark">
-						<th colspan="9" class="title_th">검색</th>
+						<th colspan="10" class="title_th">검색</th>
 					</tr>
 					<tr>
-						<th scope="col">수주일</th>
+						<td scope="col">수주일</td>
 															<!-- 컨트롤 "paging" 변수에 저장된 cdto모델에 있는 startday  -->
-						<td colspan="7">
+						<td colspan="8">
 						<input type="date" name="startday" id="startday" value="${paging.cd.startday}"> 
 							<label> ~ </label> 
 						<input type="date" name="endday" id="endday" value="${paging.cd.endday}">
@@ -144,13 +144,16 @@
 					</tr>
 				<tr>
 				<th>
-				<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
-					<input type="button" class = "allbtn" name="companyname" value="출하" onclick="update()">
+
 				</th>
 				</tr>
 				
 				<tr>
-					<th scope="col" class="table-dark"></th>
+					<th scope="col" id="tthbox" class="table-dark">
+									<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
+					<input type="button" class = "allbtn" name="companyname" value="출하" onclick="update()">
+					
+					</th>
 					<th scope="col" class="table-dark" style="text-align:center;">
 					<input type="checkbox" id="check_all"></th>
 					<th scope="col" class="table-dark">수주번호</th>
@@ -164,7 +167,7 @@
 					<!-- 수주 데이터 -->
 					<th scope="col" class="table-dark">수주상태</th>
 					<th scope="col" class="table-dark">수주담당자</th>
-					<th scope="col" class="table-dark">요청사항</th>
+					<th scope="col" class="table-dark" id="d_Btn">요청사항</th>
 				</tr>
 			</thead>
 			<tbody id="stock_tbody">

@@ -514,13 +514,13 @@ function product_details(ono){
 
 function button(ono, name){
 	console.log(name);
-	$("#mody_button *").remove();
+	$("#d_Btn *").remove();
 
-	let insert_val = "<input type='button' value='수정' onclick='md("+ono+" , \"" + name + "\")'>";
-	let elimination_val = "<input type='button' value='삭제' onclick='dv("+ono+" , \"" + name + "\")'>";
+	let insert_val = "<input type='button' id='m_Btn' value='수정' onclick='md("+ono+" , \"" + name + "\")'>";
+	let elimination_val = "<input type='button' id='d_Btn' value='삭제' onclick='dv("+ono+" , \"" + name + "\")'>";
 
-	$("#mody_button").append(insert_val);
-	$("#mody_button").append(elimination_val);
+	$("#d_Btn").append(insert_val);
+	$("#d_Btn").append(elimination_val);
 
 }
 
