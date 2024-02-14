@@ -9,21 +9,21 @@
 #time {
 	position: absolute;
 	top: 0px;
-	width: 40px;
+	width: 127px;
 	left: 75px;
 	top: 0px;
 }
 
 #po {
-	position: absolute;
-	left: 58%;
-	top: 140px;
+    position: absolute;
+    left: 57%;
+    top: 140px;
 }
 
 .time {
-	position: absolute;
-	left: 57%;
-	top: 530px;
+    position: absolute;
+    left: 60.5%;
+    top: 150px;
 }
 
 #map {

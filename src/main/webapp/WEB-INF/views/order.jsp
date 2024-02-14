@@ -185,7 +185,7 @@
 				<tr>
 					<td colspan="12"><div>
 							<nav aria-label="Page navigation example">
-								<ul class="pagination">
+								<ul class="pagination ">
 
 									<!-- prev(이전)이 true면 버튼 활성화 -->
 									<c:if test="${paging.prev}">
