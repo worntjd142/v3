@@ -65,9 +65,8 @@ public class StoreController {
 				if(cut[i] == 1) {
 					
 					od.setOno(ono);
-					od.setUuid(pcode[i]);
 					od.setPproduct(pname[i]);
-					
+					od.setScount(cut[i]);
 					ssi.cut(od);
 					
 				}else {

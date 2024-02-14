@@ -9,20 +9,6 @@ let update_tamount;
 let update_tcount;
 let ssum_price = 0;
 let cut = [];
-$(function(){
-
- calender = document.getElementById("balju_day");
-	
-	const nowDate = new Date();
-
-	let currentYear = nowDate.getFullYear();
-	let currentMonth = String((nowDate.getMonth()+1)).padStart(2,"0")
-	let currentDate = String(nowDate.getDate()).padStart(2,"0")
-
-	// 새로고침했을 때 오늘 날짜를 자동으로 세팅
-//	calender.value = `${currentYear}-${currentMonth}-${currentDate}`;
-	
-})
 //출고 리스트 출력하기
 function balju(ono){
 	 update_ocount.length=0;

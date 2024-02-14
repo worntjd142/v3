@@ -148,7 +148,9 @@ select * from shipment where ono = #{ono}
 </select>
 
 <update id="cut">
-update cart set scount ="제품 부족" where ono = #{ono} and pproduct =#{pproduct} ;
+update cart a, orderr b set scount ="제품 부족", 
+pcount = (select pcount from (select (pcount - #{scount}) pcount from orderr where ono = #{ono})as pcount) 
+where b.ono = #{ono} and pproduct = #{pproduct} 
 </update>
 
 
