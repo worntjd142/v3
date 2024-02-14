@@ -1,5 +1,9 @@
+$(function(){
+	
+	//부모 페이지 새로고침
 opener.parent.location.reload();
 
+})
 
  프린트
 //프린트 함수 선언

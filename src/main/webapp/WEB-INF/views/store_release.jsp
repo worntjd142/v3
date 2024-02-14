@@ -34,9 +34,9 @@
 						<th class="title_th" style="width: 80px;">진행상태</th>
 						<th class="title_th" style="width: 200px;">거래처</th>
 						<th class="title_th" style="width: 80px;">품목코드</th>
-						<th class="title_th" style="width: 180px;">품목명</th>
-						<th class="title_th" style="width: 90px;">요청수량</th>
-						<th class="title_th" style="width: 50px;">발행창</th>
+						<th class="title_th" style="width: 170px;">품목명</th>
+						<th class="title_th" style="width: 90px; ">요청수량</th>
+						<th class="title_th" style="width: 60px;">발행창</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,7 +46,7 @@
 					<td>${stroeList.oday}</td>
 					<td>${stroeList.uuid}</td>
 					<td>${stroeList.osuju}</td>
-					<td>${stroeList.cname}</td>
+					<td style = "text-align: center;">${stroeList.cname}</td>
 					<td>${stroeList.pcode}</td>
 					<td>
 					<c:choose>
@@ -58,7 +58,7 @@
 					</c:otherwise>
 					</c:choose>
 					</td>
-					<td>${stroeList.tcount}</td>
+					<td style = "text-align: right;">${stroeList.tcount}</td>
 					<td>	<input type="button" value="발행" onclick="issuance(${stroeList.ono})"> </td>
 					</tr>
 					
@@ -74,30 +74,30 @@
 		<div id="change" class="tableData thead tr th">
 		<table class="table table-striped table-hover table-bordered table-responsive">
 			<thead>
-				<tr>
+				<tr style="text-align: center;">
 					<th scope="col" class="table-dark" style="width: 30px;"></th>
 					<th scope="col" class="table-dark" style="width: 115px;">출하일자</th>
 					<th scope="col" class="table-dark" style="width: 180px;">수주번호</th>
 					<th scope="col" class="table-dark" style="width: 200px;">거래처</th>
 					<th scope="col" class="table-dark" style="width: 95px;">진행상태</th>
 					<th scope="col" class="table-dark" style="width: 80px;">품목코드</th>
-					<th scope="col" class="table-dark"> 품목명 </th>
+					<th scope="col" class="table-dark" style="width: 180px;"> 품목명 </th>
 					<th scope="col" class="table-dark">기준단위</th>
 					<th scope="col" class="table-dark" style="width: 90px;">요청수량</th>
 					<th scope="col" class="table-dark" style="width: 90px;">출하수량</th>
 					<th scope="col" class="table-dark"style="width: 90px;">요청잔량</th>
 					<th scope="col" class="table-dark" style="width: 110px;">마감상황</th>
-					<th scope="col" class="table-dark" style="width: 90px;">출하서</th>
-					<th scope="col" class="table-dark" style="width: 480px;">비고</th>
+					<th scope="col" class="table-dark" style="width: 60px;">출하서</th>
+					<th scope="col" class="table-dark" style="width: 400px;">비고</th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach items="${Management}" var="ManagementList" varStatus="a">
-					<tr>
+					<tr >
 						<td>${a.count}</td>
-						<td>${ManagementList.oday}</td>
+						<td>${ManagementList.rday}</td>
 						<td>${ManagementList.uuid}</td>
-						<td>${ManagementList.cname}</td>
+						<td style = "text-align: center;">${ManagementList.cname}</td>
 						<td>${ManagementList.osuju}</td>
 						<td>${ManagementList.pcode}</td>
 						<td>
@@ -110,10 +110,10 @@
 					</c:otherwise>
 					</c:choose>
 					</td>
-						<td>EA</td>
-						<td>${ManagementList.tcount}</td>
-						<td>${ManagementList.tscount}</td>
-						<td>${ManagementList.tamount}</td>
+						<td style = "text-align: center;">EA</td>
+						<td style = "text-align: right;">${ManagementList.tcount}</td>
+						<td style = "text-align: right;">${ManagementList.tscount}</td>
+						<td style = "text-align: right;">${ManagementList.tamount}</td>
 						
 						<td class="sdel${a.index}">
 						<c:choose>

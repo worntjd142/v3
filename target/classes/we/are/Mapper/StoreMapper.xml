@@ -29,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="dday" property="dday" />	
 		<result column="tscount" property="tscount" />	
 		<result column="tamount" property="tamount" />	
+		<result column="rday" property="rday" />	
 </resultMap>
 		<!-- resultMap ='store_select' 같은 resultMap을 찾아서 실행  -->
 		
@@ -114,7 +115,7 @@ select uuid, a.cname, ono, cemail  from orderr a join connection b on a.cname = 
 </select>
 
 <select id="management_select" resultMap="store_select">
-select distinct oday,osuju, 
+select distinct oday,osuju, rday,
 						(select pcode from product limit 1)as pcode,  tscount, tamount,
 						(select pname from product limit 1)as pproduct, tcount, uuid, sdel,pcount, a.ono,x,y,a.cname
 from  orderr a join product b join cart c join connection d on c.pproduct = b.pname and a.ono = c.ono and a.cname = d.cname
@@ -139,7 +140,7 @@ update shipment set snumber = #{ceo} where ono =#{ono}
 </update>
 
 <update id="shipment_delivery">
-update orderr set sdel = "배송 중" where ono = #{ono};
+update orderr set sdel = "배송 중" , rday = current_date where ono = #{ono};
 </update>
 
 <select id="shipment_select" resultMap="store_select">
