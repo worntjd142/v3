@@ -44,4 +44,11 @@ public interface OrderMapper {
 	//장바구니로 넣을 ono 검색
 	public int ono_select(OrderDTO od);
 	
+	//제품 상세보기
+	public ArrayList<CartDTO> cart_dselect(int ono);
+	//제품 수정
+	public int cart_update(CartDTO cd);
+	//
+	public int cart_elimination(CartDTO cd);
+	
 }
