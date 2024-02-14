@@ -2,7 +2,7 @@
 
 $(function() { // 화면 다 뜨면 시작
 
-	    $(document).on('click', function() { //jsp 빈 공간을 클릭하면
+	    $(document).on('dblclick', function() { //jsp 빈 공간을  더블클릭하면
 	    	$("#m *").remove(); // 세부사항 다 닫기.
 	    });
 	
