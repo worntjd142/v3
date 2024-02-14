@@ -122,8 +122,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 
-	<select id="sujuletter_select"
-		resultType="we.are.Model.OrderDTO">
+	<select id="sujuletter_select" resultType="we.are.Model.OrderDTO">
 		SELECT * FROM orders WHERE bno = #{bno};
 	</select>
 	
@@ -131,6 +130,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="ono_select" resultType="int">
 	select ono from orderr where pcount = #{pcount} and osuju="수주 대기" and  cname = #{cname} order by ono desc limit 1;
 	</select>
-
-
+	
+	<select id="cart_dselect" resultMap="order_select">
+	select a.pproduct, ocount, a.pprice,cname,osum from cart a join orderr b on a.ono = b.ono where a.ono = #{ono}
+	</select>
+	
+	
 </mapper>

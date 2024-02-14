@@ -73,6 +73,10 @@ public class OrderServiceImpl implements OrderService {
 		public int ono_select(OrderDTO od) {
 			return om.ono_select(od);
 		}
+		
+		public ArrayList<CartDTO> cart_dselect(int ono) {
+			return om.cart_dselect(ono);
+		}
 
 	
 }

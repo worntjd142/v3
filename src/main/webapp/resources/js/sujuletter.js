@@ -27,10 +27,11 @@ function issuance(){
 
 //입퇴원 확인서 다운로드
 function dopdf(cname, uuid, cemail) {
-	$("#print_page").css("display","block");
+	
 	const pdf = document.getElementById('print_page');
+	
 	file = cname +'.'+uuid;
-		// 변수 pdf에 div의 경로 지정
+	
 		html2canvas(pdf).then(canvas => {
 		saveImg(canvas.toDataURL('image/png'), ""+file+".jpg");
 		

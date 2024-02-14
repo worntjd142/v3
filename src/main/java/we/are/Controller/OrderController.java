@@ -91,7 +91,6 @@ public class OrderController {
 									// 생성자 호출(매개변수가 2개인 생성자)
 									// new PageDTO(cdto, 190));
 		model.addAttribute("paging", new PageDTO(cd, total));
-		System.out.println(cd.getOrderno());
 		return "order";
 	}
 	
@@ -148,4 +147,10 @@ public class OrderController {
 					
 				return  "sujuletter1";
 			}
+			
+		@GetMapping("product_details")
+		public ResponseEntity<?> product_details(@RequestParam("ono") int ono) { 
+	        return new ResponseEntity<>(os.cart_dselect(ono),HttpStatus.OK);
+	        }
+		
 }
