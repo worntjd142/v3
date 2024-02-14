@@ -87,6 +87,7 @@ public class StoreController {
 		//출하 상세
 		@GetMapping("ono_balju")
 		public ResponseEntity<?> ono_balju(@RequestParam("ono") String ono){
+			System.out.println(ono);
 			return new ResponseEntity<>(ssi.product_select(ono),HttpStatus.OK);
 		}
 		// 재고

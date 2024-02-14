@@ -210,7 +210,7 @@ function culha(){
 			
 			if(data  == 0){
 				
-				alert("오류 발생, 새로고침 하겠습니다")
+				alert("제품 부족, 입고 확인 후 다시 출하 부탁드립니다.")
 				location.reload();
 			}else{
 			
