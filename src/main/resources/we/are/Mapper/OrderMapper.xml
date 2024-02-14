@@ -135,5 +135,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select a.pproduct, ocount, a.pprice,cname,osum from cart a join orderr b on a.ono = b.ono where a.ono = #{ono}
 	</select>
 	
+	<update id="cart_update">
+	update cart set ocount = #{ocount} where ono=#{ono} and pproduct= #{pproduct}; 
+	</update>
+	
+	<delete id="cart_elimination">
+	DELETE FROM cart WHERE ono = #{ono} and pproduct = #{pproduct};
+	</delete>
+	
 	
 </mapper>

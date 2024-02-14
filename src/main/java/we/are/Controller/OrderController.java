@@ -153,4 +153,56 @@ public class OrderController {
 	        return new ResponseEntity<>(os.cart_dselect(ono),HttpStatus.OK);
 	        }
 		
+		@GetMapping("cart_product")
+		public ResponseEntity<?> cart_product(@RequestParam("ono") int ono, @RequestParam("name") String name[],
+											  @RequestParam("mod_num[]")int mod_num[]) { 
+			CartDTO cd = new CartDTO();
+			
+			int result = 0;
+			
+			for(int i = 0; i < name.length; i++) { //name 의 배열만큼 반복
+				
+				 
+				//CartDTO cd에 값을 저장
+				
+				cd.setOno(ono);
+				cd.setPproduct(name[i]);
+				cd.setOcount(mod_num[i]); 
+				
+			
+				
+				
+				//카트 db의 값을 수정함.
+				result = os.cart_update(cd);
+			}
+			
+	        return new ResponseEntity<>(result,HttpStatus.OK);
+	        }
+		
+		
+		@GetMapping("cart_elimination")
+		public ResponseEntity<?> cart_elimination(@RequestParam("ono") int ono, @RequestParam("name") String name[]) { 
+			CartDTO cd = new CartDTO();
+			
+			System.out.println(ono);
+			System.out.println(name);
+			
+			int result = 0;
+			
+			for(int i = 0; i < name.length; i++) { //name 의 배열만큼 반복
+				
+				System.out.println(name[i]);
+				//CartDTO cd에 값을 저장
+				
+				cd.setOno(ono);
+				cd.setPproduct(name[i]);
+				
+				
+				//카트 db의 값을 수정함.
+				result = os.cart_elimination(cd);
+			}
+			
+	        return new ResponseEntity<>(result,HttpStatus.OK);
+	        }
+		
 }

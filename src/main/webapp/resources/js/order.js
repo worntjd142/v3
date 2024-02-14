@@ -433,6 +433,8 @@ function update(){
 };
 
 
+let inn = [];
+
 function product_details(ono){
 	
 	let name =[]; 
@@ -451,9 +453,10 @@ function product_details(ono){
 			console.log(data)
 
 			let html = "";
-			let n = 1;
+			let n = 0;
+			let ii = 0;
 			for(let i = 0; i < data.length+1; i++){
-
+					
 				if(i == 0){
 
 					html += "<tr style='border:1px solid gray'class='table-success ' id='m' >"
@@ -465,7 +468,8 @@ function product_details(ono){
 					html += "</tr>"
 
 				}else{
-
+					ii = ono +"_"+ n
+					
 					sum = data[i-1].pprice * data[i-1].ocount;
 					price = parseInt(data[i-1].pprice).toLocaleString("ko-KR")
 					ocount = parseInt(data[i-1].ocount).toLocaleString("ko-KR")
@@ -475,10 +479,12 @@ function product_details(ono){
 					html += "<td colspan='2'></td>" 
 					html += "<td ><input type='checkbox' value="+data[i-1].pproduct+" class='chk'></td>" 
 					html += "<td colspan='2'>"+data[i-1].pproduct+"</td>"
-					html += "<td colspan='2'><input type='number' value="+ocount+" style='width: 100%;text-align: right;'></td>"
+					html += "<td colspan='2'><input type='number' value="+ocount+" style='width: 100%;text-align: right;' id='ip"+ii+"' class='inn'></td>"
 					html += "<td style='text-align:right' colspan='2'>"+price+"</td>"
 					html += "<td style='text-align:right; text-align: right;' colspan='2'>"+sum.toLocaleString("ko-KR")+"</td>"
 					html += "</tr>"
+						
+						n++
 				}
 			}
 			$("#d_r" + ono).after(html)
@@ -506,19 +512,70 @@ function product_details(ono){
 		})   
 	}
 
-
-
 function button(ono, name){
-
-		
+	console.log(name);
 	$("#mody_button *").remove();
 
-	let button = "<input type='button' value='수정' onclick='md("+ono+" , '"+name+"')'>" 
+	let insert_val = "<input type='button' value='수정' onclick='md("+ono+" , \"" + name + "\")'>";
+	let elimination_val = "<input type='button' value='삭제' onclick='dv("+ono+" , \"" + name + "\")'>";
 
-	$("#mody_button").append(button);
+	$("#mody_button").append(insert_val);
+	$("#mody_button").append(elimination_val);
 
 }
 
 function md(ono, name){
-	alert(ono, name);
+	console.log(name);
+	
+	let n = 0;
+	let mod_num=[];
+	
+	for(i = 0; i < name.length; i++){ // name의 렝스만큼 반복
+		
+		let inco = ono +"_"+ n;  
+		
+		n++
+										// 1_0 > 1_1 > 1_2 까지 반복
+		
+		mod_num.push($("#ip" +inco).val()); // 해당하는 id의 인풋의 값을 num에 저장
+		
+	
+	}
+	
+	$.ajax({
+		url: 'cart_product',
+		data: {'ono':ono,'name':name, 'mod_num':mod_num},
+		dataType: 'json',
+		type: 'get',
+		success: function(data) {
+			
+			if(data > 0){
+				location.reload();
+				
+			}
+		}
+	})
+	
 }
+
+
+
+function dv(ono, name){
+	console.log(name, ono);
+	
+	$.ajax({
+		url: 'cart_elimination',
+		data: {'ono':ono,'name':name},
+		dataType: 'json',
+		type: 'get',
+		success: function(data) {
+			
+			if(data > 0){
+				location.reload();
+				
+			}
+		}
+	})
+	
+}
+
