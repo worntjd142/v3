@@ -102,6 +102,10 @@ public class StoreServiceImpl implements StoreService {
 	public ArrayList<HashMap<String, Object>> shipment_select(int ono) {
 		return sm.shipment_select(ono);
 	}
+
+	public void cut(OrderDTO od) {
+		 sm.cut(od);
+	}
 	
 }
 

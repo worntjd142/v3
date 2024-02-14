@@ -54,4 +54,6 @@ public interface StoreMapper {
 	public int snumber_select(int ono);
 	
 	public ArrayList<HashMap<String, Object>> shipment_select(int ono);
+	
+	public void cut(OrderDTO od);
 }

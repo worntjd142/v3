@@ -26,7 +26,6 @@ public interface StoreService {
 	public int storerelease_count();
 	
 	
-	
 	public ArrayList<HashMap<String, Object>> shipment_select(int ono);
 	
 	public int shipment_cselect(int ono);
@@ -58,7 +57,11 @@ public interface StoreService {
 	//견적서 발행하기
 	public OrderDTO check(int ono);
 	
+	//요청잔량 컷
+	public void cut(OrderDTO od);
+	
 	public ArrayList<HashMap<String, Object>> issuance_select(int ono);
+	
 	
 	
 	

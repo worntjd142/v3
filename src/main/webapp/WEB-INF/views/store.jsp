@@ -53,7 +53,20 @@
 					${stroeList.pproduct}
 					</c:otherwise>
 					</c:choose></td>
-					<td>${stroeList.osuju}</td>
+					<td id="osuju">
+					<c:choose>
+					<c:when test="${stroeList.scount == '제품 부족'}">
+					${stroeList.scount}
+					<script>
+					$("#osuju").css("color", "red");
+					</script>
+					</c:when>
+					<c:otherwise>
+					${stroeList.osuju} 
+					</c:otherwise>
+					</c:choose>
+					
+					</td>
 					<td>${stroeList.otext}</td>
 					</tr>
 					</c:forEach>

@@ -35,9 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 <!--  osuju가 "수주 확인"인것만 List 뽑기 -->
 <select id="store_select" resultMap="store_select"> 
-select distinct a.ono,uuid,osuju,a.cname,otext,oday,pcount, (select pproduct from cart limit 1)as pproduct, pcount  
+select distinct a.ono,uuid,osuju,a.cname,otext,oday,pcount, (select pproduct from cart limit 1)as pproduct, pcount ,scount 
 from orderr a join cart b on a.ono = b.ono 
-where osuju = "수주 확인" order by a.ono asc;
+where osuju = "수주 확인" or b.scount ="제품 부족" order by a.ono asc;
 </select>
 
 <!-- 수주상태가 '출고 요청 '인 것 리스트의 갯수 -->
@@ -146,5 +146,12 @@ update orderr set sdel = "배송 중" , rday = current_date where ono = #{ono};
 <select id="shipment_select" resultMap="store_select">
 select * from shipment where ono = #{ono}
 </select>
+
+<update id="cut">
+update cart a, orderr b set scount ="제품 부족", 
+pcount = (select pcount from (select (pcount - #{scount}) pcount from orderr where ono = #{ono})as pcount) 
+where b.ono = #{ono} and pproduct = #{pproduct} 
+</update>
+
 
 </mapper>
