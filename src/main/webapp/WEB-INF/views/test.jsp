@@ -18,92 +18,32 @@
 </head>
 
 <body>
-	<!-- 헤더 -->
-	<jsp:include page="include/header.jsp"></jsp:include>
+<div class="form-group">
+	<label>동적테이블 행추가하기</label>
+	<button type=button class='btn btn-default' id='btn_add' style='float:right; margin-bottom:5px;'>추가버튼</button>	
+</div>
 
-	<div>
-		<form action="p_insert" method="post">
-		<input type = "hidden" name = "pcode" id = "randomcode">
-			<table
-				class="table table-striped table-secondary table-hover table-bordered table-responsive">
-				<thead>
-					<tr>
-						<td colspan="6"><input type="submit" value="등록"></td>
-					</tr>
-					<tr class="table-dark">
-						<th colspan="6" class="title_th">제품 등록</th>
-					</tr>
-					<tr>					
-						<th scope="col">제품명</th>
-						<td><input type="text" name="pname"></td>								
-						<th scope="col">제품단가</th>
-						<td><input type="text" name="pprice"></td>
-						<th scope="col">제조사</th>
-						<td><input type="text" name="pmc"></td>
-					</tr>
-					<tr>
-						<th scope="col">입고수량</th>
-						<td><input type="text" name="pstock"> </td>
-						<th scope="col">제품설명</th>
-						<td colspan = "4"><input type="text" name="pmi"></td>
-					</tr>
-				</thead>
-			</table>
-		</form>
-	</div>
-<!-- 제품 리스트 div -->
-	<div>
-		<table class = "table table-striped table-hover table-bordered table-responsive">
-		<caption id = temple>제품창고 온도 :<label id = wtemple></label>℃ </caption>
-			<thead>
-				<tr>
-					<th scope="col" class="table-dark">제품코드</th>
-					<th scope="col" class="table-dark">제품명</th>
-					<th scope="col" class="table-dark">제품단가</th>
-					<th scope="col" class="table-dark">재고 수</th>
-				</tr>
-			</thead>
-			<tbody>
-		<c:forEach items = "${p_list}" var = "pro" varStatus="a">
-				<tr onclick = "insert_info('${pro.pcode}','${pro.pname}','${pro.pprice}','${pro.pmc}','${pro.pstock}','${pro.pmi}')">
-					<td>${pro.pcode}</td>
-					<td>${pro.pname}</td>
-					<td>${pro.pprice}</td>
-					<td>${pro.pstock}</td>
-				</tr>
-		</c:forEach>
-			</tbody>
-		</table>
-	</div>
-<!-- 상세내역 div -->
-	<div class = "col-md-8">
-		<table class="table table-striped table-secondary table-hover table-bordered table-responsive" >
-			<thead>
-				<tr class="table-dark">
-						<th colspan="6" class="title_th">제품 상세 정보</th>
-				</tr>
-				<tr>
-					<th>제품 코드</th>
-					<td id = "pcodei"></td>
-				</tr>
-				<tr>
-					<th>제품명</th>
-					<td id = "pnamei"></td>
-					<th>제품단가</th>
-					<td id = "ppricei"></td>
-				</tr>
-				<tr>
-					<th>제조사</th>
-					<td id = "pmci"></td>
-					<th>재고수량</th>
-					<td id = "pstocki"></td>
-				</tr>
-				<tr>
-					<th>제품설명</th>
-					<td id = "pmii"></td>
-				</tr>
-			<thead>
-		</table>
-	</div>
+<table id='table_ipaddr'> 	
+	<tbody>
+	<c:forEach items="${test}" var="test">
+	<tr>
+		<td>
+			<div class="label_group">
+			<label for="manager_ipaddr_label">행</label>
+			</div>
+		</td>
+		<td>	
+			<div class="form_group" style="margin:5px;">
+				<input name="manager_ipaddr" class="form-control" class='ipaddr' 
+                	style='width:300px; float:left; margin-right:5px'>
+				<button type="button" name="btn_delete" class="btn btn-default btn-sm" style="height:30px">
+				<span class="glyphicon glyphicon-minus"></span>
+				</button>
+			</div>
+		</td>
+	</tr>
+	</c:forEach>
+</tbody>
+</table>
 </body>
 </html>

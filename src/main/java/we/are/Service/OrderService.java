@@ -40,6 +40,13 @@ public interface OrderService {
 	
 	//장바구니로 넣을 ono 검색
 	public int ono_select(OrderDTO od);
-
+	
+	//수주내역 상세보기
+	public ArrayList<CartDTO> cart_dselect(int ono);
+	
+	public int cart_update(CartDTO cd);
+	
+	public int cart_elimination(CartDTO cd);
+	
 	
 }

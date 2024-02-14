@@ -94,7 +94,13 @@
 				<th scope="col" id="th1"><input type="checkbox" id="all_Check" name="all_Check"></th>
 				<th scope="col" id="th2">제품명</th>
 				<th scope="col" id="th3">제품단가</th>
-				<th scope="col" id="th4">주문수량</th>
+				<th scope="col" id="th4">주문수량
+					<div class = "pbutton">
+						<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
+						<input type="button"  class = "allbtn" id="delete_Btn" name="delete_Btn" value="제품삭제">
+					</div> 
+					
+				</th>
 		    </tr>
 		  </thead>		  
 		  <tbody class="scroll">	    
@@ -114,19 +120,14 @@
 			   </c:forEach>			   
 		  </tbody>
 		</table>		
-		 <div class = "pbutton">
-				<input type="button" class="allbtn" id="btn_Chklist" name="btn_Chklist" value="제품추가">
-				<input type="button"  class = "allbtn" id="delete_Btn" name="delete_Btn" value="제품삭제">
-		</div> 
+		 
 	</div>	
 	
 
 	<div class="main4">
-		<!-- <button type="button" id="check_button" class="btn btn-outline-secondary btn-sm">일괄체크</button>
-	<button type="button" class="btn btn-outline-secondary btn-sm">일괄수주</button> -->
 		<form action="order" method="get">
-		<table class="table table-striped table-hover table-bordered table-responsive" id="mainsujutable">
-			<thead>
+		<table class="table  table-hover table-bordered" id="mainsujutable" >
+			<thead id="stock_thead">
 			<tr class="table-dark">
 						<th colspan="9" class="title_th">검색</th>
 					</tr>
@@ -144,14 +145,13 @@
 				<tr>
 				<th>
 				<input type="button" class = "allbtn" name="companyname" value="일괄체크" id="check_button">
-					<input type="button" class = "allbtn" name="companyname" value="일괄출하" onclick="update()">
+					<input type="button" class = "allbtn" name="companyname" value="출하" onclick="update()">
 				</th>
 				</tr>
 				
 				<tr>
-					<th scope="col" class="table-dark">
-					
-				
+					<th scope="col" class="table-dark"></th>
+					<th scope="col" class="table-dark" style="text-align:center;">
 					<input type="checkbox" id="check_all"></th>
 					<th scope="col" class="table-dark">수주번호</th>
 					<!-- 발주 데이터 -->
@@ -167,10 +167,11 @@
 					<th scope="col" class="table-dark">요청사항</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="stock_tbody">
 				<c:forEach items="${olist}" var="orderlist" varStatus="a">
-					<tr>
-						<td><c:if test="${orderlist.osuju == '수주 대기'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
+					<tr onclick="product_details(${orderlist.ono})" style="cursor: pointer;" id="d_r${orderlist.ono}">
+						<td>${a.count}</td>
+						<td style="text-align:center;"><c:if test="${orderlist.osuju == '수주 대기'}"><input type="checkbox" class='check_all' id="check_val${a.index}" value="${orderlist.ono}"></c:if></td>
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
 						<td><a href="orderDetail?ono=${orderlist.ono}" onclick="window.open(this.href, '_blank', top=100, left=40, 'width=800, height=600'); return false;">${orderlist.cname}</a></td> 
@@ -182,10 +183,11 @@
 					</tr>
 					<!-- /반복문으로 데이터 가져오기 -->
 				</c:forEach>
+				
 				<tr>
 					<td colspan="12"><div>
 							<nav aria-label="Page navigation example">
-								<ul class="pagination">
+								<ul class="pagination justify-content-center" >
 
 									<!-- prev(이전)이 true면 버튼 활성화 -->
 									<c:if test="${paging.prev}">
@@ -219,6 +221,7 @@
 		</table>
 		</form>
 	</div>
+	<div id="mody_button"></div>
 </div>
 
 
