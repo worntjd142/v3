@@ -68,8 +68,7 @@
 	
 		<h3  id="Shipment_Details">상세</h3>
 		<ul id= "Shipment_ment" style="list-style: none;">
-		<li style="color:red;">※ 출하일의 기본값은 현재일로 지정되어있습니다.</li>
-		<li style="color:red;">※ 출하수량은 요청수량을 초과 할 수 없습니다.</li>
+		<li style="color:red;">※ 출하수량은 수주수량을 초과 할 수 없습니다.</li>
 		</ul>
 		<div id="detailed" class="tableData thead tr th">
 		<table class="table table-striped table-hover table-bordered table-responsive">
