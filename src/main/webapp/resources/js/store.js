@@ -8,6 +8,7 @@ let update_tscount;
 let update_tamount;
 let update_tcount;
 let ssum_price = 0;
+let cut = [];
 $(function(){
 
  calender = document.getElementById("balju_day");
@@ -28,6 +29,7 @@ function balju(ono){
 	 update_pcode.length=0;
 	 update_amount.length=0;
 	 update_pname.length = 0;
+	 
 	update_ono = ono;
 	
 	$("#update_ono").val(update_ono);
@@ -94,11 +96,13 @@ function balju(ono){
 			let d;
 			
 			for(let i = 0; i < data.length; i++){
-					
+				
 				total_count += data[i].ocount;
 				total_pstock += data[i].pstock;
 					
 			 if(data[i].pstock - data[i].ocount < 0){ // 재고량 - 수주량이 0보다 낮을 시
+				 
+				 cut.push(1);
 						 amount  = data[i].pstock - data[i].ocount // 요청잔량 =재고량 - 수주수량
 						 pamount = Math.abs(amount); // 음수로 나온 값음 양수로 변경
 						 
@@ -115,6 +119,7 @@ function balju(ono){
 						 }
 						 	
 					}else{
+						cut.push(0);
 						pamount = 0; // 요청잔량이 발생하지 않으면 0으로 초기화
 						data[i].scount = data[i].ocount// 요청잔량이 발생하지 않을경우 scount의값은 ocount와 같게하라
 					}
@@ -200,6 +205,7 @@ function culha(){
 	console.log( update_tscount);
 	console.log( update_tamount);
 	console.log(update_scount);*/
+	console.log(cut)
 	
 	if(update_amount.length == 0){// 제품을 선택하지 않고 출하요청 시
 		alert("수주내용이 없습니다. ")
@@ -210,7 +216,9 @@ function culha(){
 		url : "pstock_update",
 		data : {'update_ocount':update_ocount, 'update_pcode':update_pcode,'update_amount':update_amount,  
 				   'update_ono':update_ono, 'update_pname':update_pname ,'update_tcount':update_tcount, 
-				   'update_scount':update_scount, 'update_tscount':update_tscount,'update_tamount':update_tamount },
+				   'update_scount':update_scount, 'update_tscount':update_tscount,'update_tamount':update_tamount,
+				   'cut':cut
+		},
 		dataType : 'json',
 		success : function(data) {
 			

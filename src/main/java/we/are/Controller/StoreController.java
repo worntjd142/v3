@@ -54,14 +54,23 @@ public class StoreController {
 																			   @RequestParam("update_pcode[]") String pcode[],
 																			   @RequestParam("update_amount[]") int amount[],
 																			   @RequestParam("update_pname[]") String pname[],
-																			   @RequestParam("update_scount[]") int scount[])
-							
-		{
+																			   @RequestParam("update_scount[]") int scount[],
+																			   @RequestParam("cut[]") int cut[]){
 			
 			OrderDTO od = new OrderDTO();
 			
 			int result = 0;
-			for(int i = 0 ; i < pcode.length; i++ ) { // pcode 배열의 길이만큼 반복 ;
+			for(int i = 0 ; i < pname.length; i++ ) { // pcode 배열의 길이만큼 반복 ;
+				
+				if(cut[i] == 1) {
+					
+					od.setOno(ono);
+					od.setUuid(pcode[i]);
+					od.setPproduct(pname[i]);
+					
+					ssi.cut(od);
+					
+				}else {
 				od.setOno(ono);
 				od.setTcount(tcount);
 				od.setOcount(ocount[i]);
@@ -72,6 +81,7 @@ public class StoreController {
 				od.setTscount(tscount);
 				od.setTamount(tamount);
 				result = ssi.balju_update(od);
+				}
 			}
 			return new ResponseEntity<>(result,HttpStatus.OK);
 		}
