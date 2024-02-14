@@ -95,29 +95,30 @@
 				<tr>
 					<td colspan="12"><div>
 							<nav aria-label="Page navigation example">
-								<ul class="pagination">
+								<ul class="pagination justify-content-center">
 
 									<!-- prev(이전)이 true면 버튼 활성화 -->
-									<c:if test="${paging.prev}">
+									<c:if test="${cpaging.prev}">
 										<li class="page-item"><a class="page-link"
-											href="order?pageNum=${paging.startPage-1}&amount=${paging.cd.amount}"
+											href="connection?pageNum=${cpaging.startPage-1}&amount=${cpaging.cd.amount}"
 											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 										</a></li>
 									</c:if>
 
 									<!-- [1][2][3][4][5][6][7][8][9][10] -->
 									<!-- [1]:begin이 [10]:end될 동안 반복 -->
-									<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+									<c:forEach begin="${cpaging.startPage}" end="${cpaging.endPage}"
 										var="num">
 										<li class="page-item"><a class="page-link"
-											href="order?pageNum=${num}&amount=${paging.cd.amount}">
+											href="connection?pageNum=${num}&amount=${cpaging.cd.amount}">
 												${num}</a></li>
 									</c:forEach>
 
 									<!-- next(다음)이 true면 버튼 활성화 -->
-									<c:if test="${paging.next}">
-										<li class="page-item"><a class="page-link"
-											href="order?pageNum=${paging.endPage+1}&amount=${paging.cd.amount}"
+									<c:if test="${cpaging.next}">
+										<li class="page-item">
+										<a class="page-link"
+											href="connection?pageNum=${cpaging.endPage+1}&amount=${cpaging.cd.amount}"
 											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 										</a></li>
 									</c:if>
