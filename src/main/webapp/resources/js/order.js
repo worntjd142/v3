@@ -2,11 +2,6 @@
 
 $(function() { // 화면 다 뜨면 시작
 
-	    $(document).on('dblclick', function() { //jsp 빈 공간을  더블클릭하면
-	    	$("#m *").remove(); // 세부사항 다 닫기.
-	    });
-	
-	
 	$("#auto").autocomplete({
 
 		// source 는 자동 완성 대상
@@ -439,15 +434,27 @@ function update(){
 
 
 let inn = [];
-
+let v = [];
 function product_details(ono){
+	
+	
+	$("#m *").remove(); // 누른거 제외 삭제
+
 	
 	let name =[]; 
 	
 	name.length =0;
 
-	$("#m *").remove(); // 누른거 제외 삭제
-
+	if(v.includes(ono)){
+		v = v.filter((element) => element !== ono); 
+		$("#m *").remove()
+		return false;
+	}else{ 
+		v.push(ono); // 개별체크박스의 값을 ono배열에 저장
+	}
+	
+	console.log(v);
+	
 
 	$.ajax({
 		url: 'product_details',

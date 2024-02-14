@@ -47,9 +47,12 @@ select count(*) from orderr a join connection b on a.cname = b.cname  where osuj
 
 <!--  osuju가 "출고 요청"인것만 List 뽑기 -->
 <select id="storerelease_select" resultMap="store_select"> 
-select distinct a.ono, oday, uuid, osuju, a.cname, (select pname from product limit 1)as pproduct, pcount,(select pcode from product limit 1) pcode , tcount
-from orderr a join cart b on a.ono = b.ono 
-where osuju = "출고 요청" order by a.ono asc;
+select a.ono, oday, uuid, osuju, a.cname, min(pproduct) as pproduct, min(pcount) as pcount, min(tcount) as tcount, min(pcode) as pcode, min(scount) as scount
+from orderr a
+join cart b on a.ono = b.ono
+join product c on b.pproduct = c.pname
+where osuju ='출고 요청' and scount not in ('제품 부족')
+group by ono, oday, uuid, osuju, cname;
 </select>
 
 
