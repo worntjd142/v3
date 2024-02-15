@@ -38,6 +38,12 @@ public interface StoreService {
 	
 	public void shipment_delivery(int ono);
 	
+	public int count_s(int ono);
+	
+	public void update_ocount(OrderDTO od);
+	
+	
+	
 	
 	
 	

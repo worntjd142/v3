@@ -56,4 +56,11 @@ public interface StoreMapper {
 	public ArrayList<HashMap<String, Object>> shipment_select(int ono);
 	
 	public void cut(OrderDTO od);
+	
+	public int count_s(int ono);
+	
+	public void update_ocount(OrderDTO od);
+	
+	
+	
 }
