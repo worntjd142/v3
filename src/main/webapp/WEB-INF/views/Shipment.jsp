@@ -16,6 +16,7 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="/resources/js/Shipment.js"></script>
+<link rel = "stylesheet" href = "resources/css/shipment.css" />
 <title>출하서</title>
 </head>
 	<body     style="height: 400px;">	
@@ -66,5 +67,6 @@
 		
 		</table>
 </div>
+<button onclick = "return printPage()" id = "prtin_after">출력</button>
 </body>
 </html>
