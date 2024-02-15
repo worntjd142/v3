@@ -60,14 +60,32 @@ public class StoreController {
 			OrderDTO od = new OrderDTO();
 			
 			int result = 0;
+			int ot = 0;
+			
 			for(int i = 0 ; i < pname.length; i++ ) { // pcode 배열의 길이만큼 반복 ;
 				
-				if(cut[i] == 1) {
+				int count = ssi.count_s(ono); // 제품이 이미 출하요청이 있었고 재고량이 부족하여 제품부족인 상태가 있는지 확인.
+			
+				if(cut[i] == 1) { //요청잔량이 발생한 값이 있는지 확인 -> 잔량이 발생하면 1 발생하지않으면 0
+				
+					 ot = ocount[i];
+					
+					System.out.println("요청잔량 발생");
+				
+					if(count == 0){ //출하요청이 처음인 제품만 출하요청이 되게끔 하기. 
+				
+						System.out.println("출하요청 금지는 처음");
 					
 					od.setOno(ono);
 					od.setPproduct(pname[i]);
 					od.setScount(cut[i]);
 					ssi.cut(od);
+					
+					count = 1;
+					
+					}
+					
+					result = 0;
 					
 				}else {
 				od.setOno(ono);
@@ -79,9 +97,17 @@ public class StoreController {
 				od.setScount(scount[i]);
 				od.setTscount(tscount);
 				od.setTamount(tamount);
+				
 				result = ssi.balju_update(od);
+				
 				}
 			}
+			
+			od.setOcount(ot);
+			od.setOno(ono);
+			
+			ssi.update_ocount(od);
+			
 			return new ResponseEntity<>(result,HttpStatus.OK);
 		}
 		//출하 상세
