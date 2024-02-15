@@ -85,6 +85,8 @@ public class OrderServiceImpl implements OrderService {
 	public int cart_elimination(CartDTO cd) {
 		return om.cart_elimination(cd);
 	}
-
+	public void cart_pcount(CartDTO cd) {
+		om.cart_pcount(cd);
+	}
 
 }

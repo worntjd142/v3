@@ -3,7 +3,6 @@
 function issuance(){
 
 	let ono = $("#pdf_ono").val();
-	alert(ono);
 	$.ajax({
 		type : "GET", // method 타입 get
 		url : "issuance_pdf", // url value

@@ -107,5 +107,13 @@ public class StoreServiceImpl implements StoreService {
 		 sm.cut(od);
 	}
 	
+	public int count_s(int ono) {
+		return sm.count_s(ono);
+	}
+	
+	public void update_ocount(OrderDTO od) {
+		sm.update_ocount(od);
+	}
+	
 }
 

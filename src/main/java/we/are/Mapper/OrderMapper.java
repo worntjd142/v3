@@ -51,4 +51,6 @@ public interface OrderMapper {
 	//
 	public int cart_elimination(CartDTO cd);
 	
+	public void cart_pcount(CartDTO cd);
+	
 }
