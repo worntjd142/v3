@@ -485,7 +485,15 @@ function product_details(ono){
 					price = parseInt(data[i-1].pprice).toLocaleString("ko-KR")
 					ocount = parseInt(data[i-1].ocount).toLocaleString("ko-KR")
 
-
+			/*	mocount = "";
+				mocount += "<c:choose>";
+				mocount += "<c:when test='"+data[i-1].scount+" ge 0'>";
+				mocount += " - ";
+				mocount += "</c:when>";
+				mocount += "<c:otherwise>";
+				mocount += "" + data[i-1].scount + "</c:otherwise>";
+				mocount += "</c:choose>";*/
+					
 					html += "<tr style='border:1px solid gray' id='m'>"
 					html += "<td colspan='2'></td>" 
 					html += "<td ><input type='checkbox' value="+data[i-1].pproduct+" class='chk'></td>" 

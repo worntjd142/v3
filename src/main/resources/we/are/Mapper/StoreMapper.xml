@@ -129,7 +129,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		d.pprice, osum, otext, pcount
 		from orderr a join cart b join connection c join product d
 		on a.ono = b.ono and a.cname = c.cname and d.pname = b.pproduct
-		where b.ono =#{ono};
+		where b.ono = #{ono} and not scount in('제품 부족');
 	</select>
 
 	<select id="issuance_pdf" resultMap="store_select">
@@ -152,7 +152,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		pcount)
 		(select a.ono, a.cname, oday, pproduct, pcode, ocount, c.pprice, osum, pcount
 		from orderr a join cart b join product c on a.ono = b.ono and
-		b.pproduct = c.pname where b.ono = #{ono});
+		b.pproduct = c.pname where b.ono = #{ono} and scount not in('제품 부족'));
 	</insert>
 
 	<select id="shipment_cselect" resultType="int">
@@ -177,7 +177,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="cut">
 	update cart a, orderr b set scount ="제품 부족",
-	b. pcount = (select pcount - #{scount} as pcount from orderr where ono = #{ono}),
+	b. pcount = (select pcount - #{scount} as pcount from orderr where ono = #{ono})
 	where b.ono = #{ono} and pproduct = #{pproduct};
 	</update>
 

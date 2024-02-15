@@ -178,7 +178,16 @@
 						<td>${orderlist.uuid}</td>
 						<td>${orderlist.oday}</td>
 						<td><a href="orderDetail?ono=${orderlist.ono}" onclick="window.open(this.href, '_blank', top=100, left=40, 'width=800, height=600'); return false;">${orderlist.cname}</a></td> 
-						<td>${orderlist.pcount} </td>						
+						<td>
+						<c:choose>
+						<c:when test="${orderlist.pcount ge 2 }">
+						${orderlist.pproduct} 외  ${orderlist.pcount - 1}개
+						</c:when>
+						<c:otherwise>
+						${orderlist.pproduct}
+						</c:otherwise>
+						</c:choose>
+						</td>						
 						<td>${orderlist.osum}</td>
 						<td>${orderlist.osuju}</td>
 						<td>${orderlist.omanager}</td>

@@ -68,5 +68,9 @@
 		</table>
 </div>
 <button onclick = "return printPage()" id = "prtin_after">출력</button>
+<script>
+reload();
+</script>
+
 </body>
 </html>

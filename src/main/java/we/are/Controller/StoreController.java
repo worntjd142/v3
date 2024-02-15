@@ -124,13 +124,11 @@ public class StoreController {
 		//견적서 발행
 		@GetMapping("issuance")
 		public ResponseEntity<?> issuance(@RequestParam("ono")int ono) {	
-			System.out.println(ono);
 			HashMap<String, Object>  issuance= new HashMap<String, Object>();
 			
 			ssi.osuju_update(ono); // osuju -> '견적서 발행' 변경
 			
 			issuance = ssi.osuju_select(ono); // 
-				System.out.println(issuance);
 			return new ResponseEntity<>(issuance,HttpStatus.OK);
 		}
 		
@@ -141,6 +139,7 @@ public class StoreController {
 			HashMap<String, Object>  pdf= new HashMap<String, Object>();
 			
 			pdf = ssi.issuance_pdf(ono);
+			
 			return new ResponseEntity<>(pdf,HttpStatus.OK);
 		}
 		

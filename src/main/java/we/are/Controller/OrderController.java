@@ -184,10 +184,11 @@ public class OrderController {
 		public ResponseEntity<?> cart_elimination(@RequestParam("ono") int ono, @RequestParam("name") String name[]) { 
 			CartDTO cd = new CartDTO();
 			
-			System.out.println(ono);
-			System.out.println(name);
-			
 			int result = 0;
+			
+			cd.setOno(ono);
+			cd.setAmount(name.length);
+			os.cart_pcount(cd);
 			
 			for(int i = 0; i < name.length; i++) { //name 의 배열만큼 반복
 				
