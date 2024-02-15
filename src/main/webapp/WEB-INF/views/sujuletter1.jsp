@@ -63,8 +63,7 @@
 	<div id="money">
 	<label id="suju_ment1">아래와 같이 수주합니다.</label>
 	<label id="suju_ment2">수주 금액 : </label> 
-	<div id="total_money">₩ <fmt:formatNumber value="${connection[0].osum}" pattern="#,###" ></fmt:formatNumber>원
-	</div>
+	<div id="total_money">₩ <label id="osum_psum2"></label>원</div>
 	</div>
 	</div>
 	
@@ -92,28 +91,9 @@
 	</c:forEach>
 	<tr>
 	<td colspan="3" style="text-align: center;">합 계</td>
-	<td id="tocount" style="text-align: right;">
-	
-	<script>
-	let osum = 0;
- 	for(let i = 0; i < ${connection[0].pcount}; i++){
-		 osum += parseInt($(".ocount").val());
-	}
- 	
- 	$("#tocount").html(osum.toLocaleString("ko-KR"));
-	</script>
-	</td>
-	<td id="tpprice" style="text-align: right;">
-	<script>
-	let psum = 0;
- 	for(var i = 0; i < ${connection[0].pcount}; i++){
-		 psum += parseInt($("#pprice"+i).val());
-	}
- 	$("#tpprice").html(psum.toLocaleString("ko-KR"));
- 	</script>
- 	
-	</td>
-	<td style="text-align: right;"><fmt:formatNumber value="${connection[0].osum}" pattern="#,###" ></fmt:formatNumber> </td>
+	<td id="tocount" style="text-align: right;"></td> 
+	<td id="tpprice" style="text-align: right;"></td>
+	<td style="text-align: right;" id="osum_psum1"></td>
 	<td></td>
 	</tr>
 	</table>
@@ -121,7 +101,26 @@
 	</div>
 </div>
 <script>
+
+let osum = 0;
+let psum = 0;
+let osum_psum = 0;
+	for(let i = 0; i < ${connection[0].pcount}; i++){
+	 osum += parseInt($(".ocount").val());
+	 psum += parseInt($("#pprice"+i).val());
+	 
+	 osum_psum +=  osum * psum 
+}
+	$("#tpprice").html(psum.toLocaleString("ko-KR"));
+	$("#tocount").html(osum.toLocaleString("ko-KR"));
+	$("#osum_psum1").html(osum_psum.toLocaleString("ko-KR"));
+	$("#osum_psum2").html(osum_psum.toLocaleString("ko-KR"));
+
+
 issuance()
+
+
+
 </script>
 </body>
 </html>

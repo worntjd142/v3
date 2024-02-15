@@ -20,7 +20,6 @@
 <body>
  	<!-- 헤더 -->
 	<jsp:include page="include/header.jsp"></jsp:include>
-	${stroe[0]}
 	<div id="release">
 		<h3 id="Shipment_Request">출하 요청</h3>
 		<div id="release_check" class="tableData thead tr th">
