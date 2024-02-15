@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="order_select" resultMap="order_select">
 	 
 	 <!-- orderr에서 중복제거할 컬럼 -->
-		SELECT DISTINCT a.ono, a.uuid, a.oday, a.cno, a.ceo, a.cname, a.pcount, a.osuju, a.omanager, a.otext, a.sdate, a.sdel,
+		SELECT DISTINCT a.rownum, a.ono, a.uuid, a.oday, a.cno, a.ceo, a.cname, a.pcount, a.osuju, a.omanager, a.otext, a.sdate, a.sdel,
 		<!-- cart에서 중복제거할 컬럼 -->
 		( SELECT osum FROM cart limit 1) AS osum 
 		FROM

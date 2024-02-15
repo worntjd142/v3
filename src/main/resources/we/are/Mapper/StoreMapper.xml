@@ -35,9 +35,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 <!--  osuju가 "수주 확인"인것만 List 뽑기 -->
 <select id="store_select" resultMap="store_select"> 
-select distinct a.ono,uuid,osuju,a.cname,otext,oday,pcount, (select pproduct from cart limit 1)as pproduct, pcount  
+select  a.ono, uuid, osuju, a.cname,otext,oday,pcount, min(pproduct) pproduct,  min(pcount) pcount ,min(scount) scount
 from orderr a join cart b on a.ono = b.ono 
-where osuju = "수주 확인" order by a.ono asc;
+where osuju = "수주 확인" or osuju ="출고 요청" 
+group by ono, oday, uuid, osuju, cname order by a.ono asc;
 </select>
 
 <!-- 수주상태가 '출고 요청 '인 것 리스트의 갯수 -->
@@ -47,19 +48,26 @@ select count(*) from orderr a join connection b on a.cname = b.cname  where osuj
 
 <!--  osuju가 "출고 요청"인것만 List 뽑기 -->
 <select id="storerelease_select" resultMap="store_select"> 
-select distinct a.ono, oday, uuid, osuju, a.cname, (select pname from product limit 1)as pproduct, pcount,(select pcode from product limit 1) pcode , tcount
-from orderr a join cart b on a.ono = b.ono 
-where osuju = "출고 요청" order by a.ono asc;
+select a.ono, oday, uuid, osuju, a.cname, min(pproduct) as pproduct, min(pcount) as pcount, min(tcount) as tcount, min(pcode) as pcode, min(scount) as scount
+from orderr a
+join cart b on a.ono = b.ono
+join product c on b.pproduct = c.pname
+where osuju ='출고 요청' and scount not in ('제품 부족')
+group by ono, oday, uuid, osuju, cname;
 </select>
 
 
 <!-- 장바구니 조인 -->
 <select id="product_select" resultMap="store_select">
-select cname, pproduct, pcode,ocount,b.pprice from orderr a join cart b join product c on a.ono = b.ono and  b.pproduct = c.pname where a.ono = #{ono};
+SELECT cname, pproduct, pcode, ocount, b.pprice, a.ono, scount 
+FROM orderr a 
+JOIN cart b ON a.ono = b.ono 
+JOIN product c ON b.pproduct = c.pname 
+WHERE a.ono =#{ono} AND (scount IS NULL OR scount IN ('제품 부족'));
 </select>
 
 <select id="product_List" resultMap="store_select">
-select pproduct, pcode,pstock,ocount,amount from orderr a join cart b join product c on a.ono = b.ono and  b.pproduct = c.pname where a.ono = #{ono};
+select pproduct, pcode,pstock,ocount,amount from orderr a join cart b join product c on a.ono = b.ono and  b.pproduct = c.pname where a.ono = #{ono} AND (scount IS NULL OR scount IN ('제품 부족'));
 </select>
 
 <update id="balju_update">
@@ -146,5 +154,12 @@ update orderr set sdel = "배송 중" , rday = current_date where ono = #{ono};
 <select id="shipment_select" resultMap="store_select">
 select * from shipment where ono = #{ono}
 </select>
+
+<update id="cut">
+update cart a, orderr b set scount ="제품 부족", 
+pcount = (select pcount from (select (pcount - #{scount}) pcount from orderr where ono = #{ono})as pcount) 
+where b.ono = #{ono} and pproduct = #{pproduct} 
+</update>
+
 
 </mapper>

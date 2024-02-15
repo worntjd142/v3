@@ -434,15 +434,26 @@ function update(){
 
 
 let inn = [];
-
+let v = [];
 function product_details(ono){
+	
+	
+	$("#m *").remove(); // 누른거 제외 삭제
+
 	
 	let name =[]; 
 	
 	name.length =0;
 
-	$("#m *").remove(); // 누른거 제외 삭제
-
+	if(v.includes(ono)){ // v의 배열안에 ono값의 중복이 있는지 확인
+		v = v.filter((element) => element !== ono);  // 중복이 있으면 ono 값을 삭제하고
+		$("#m *").remove() // table의 자식들을 삭제.
+		return false;
+	}else{  
+		v.length = 0; // v의 배열안에 ono값의 중복이 없다면 배열 v의 값을 삭제하고
+		v.push(ono); // 개별체크박스의 값을 ono배열에 저장
+	}
+	
 
 	$.ajax({
 		url: 'product_details',
